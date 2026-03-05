@@ -28,102 +28,123 @@
       <input type="text" id="idName" placeholder="e.g. Alex"
         style="margin-bottom:16px; width: 100%; border: 1px solid var(--border-soft); background: rgba(255, 255, 255, 0.06); color: var(--text); border-radius: 12px; padding: 10px 12px; outline: none;" />
 
+      <label
+        style="display: flex; align-items: flex-start; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+        <input type="checkbox" id="idConsent" style="margin-right: 10px; margin-top: 3px;" />
+        <span>I would like to get a free special take-away of this concert uniquely made for me via email.</span>
+      </label>
+
       <button id="btnJoin" class="primary" type="button">Enter</button>
       <div id="idError" class="error" style="margin-top: 10px;"></div>
     </div>
   </div>
 
   <div id="appShell" style="display: none;">
-    <header>
-      <h1 id="dynTitle">Concert Companion</h1>
-      <p class="subtitle" id="dynSubtitle">Listen. Feel. Create.</p>
-
-      <div class="event-meta" aria-label="Event details">
-        <div><strong id="dynArtistLabel">Artist:</strong> <span id="dynArtist">Loading...</span></div>
-        <div><strong id="dynLocationLabel">Location:</strong> <span id="dynLocation">Loading...</span></div>
-        <div><span id="dynParticipation"></span></div>
+    <header style="position: relative;">
+      <button id="btnSwitchUser" class="secondary" type="button" aria-label="Switch User"
+        style="position: absolute; top: 10px; right: 10px; padding: 6px 10px; font-size: 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid var(--border-soft);">
+        Switch User
+      </button>
+      <div id="trackBanner" class="track-banner"
+        style="display: none; margin-top: 40px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+        <strong>Now Playing:</strong> <span id="currentTrackTitle">Waiting for track...</span>
       </div>
     </header>
 
     <main>
-      <!-- Welcome / instructions -->
-      <section class="card" aria-label="Welcome">
-        <h2><span id="dynWelcomeTitle">Welcome,</span> <span id="welcomeName">User</span></h2>
-        <p class="note" id="dynWelcomeText">
-          Loading configuration...
-        </p>
+
+      <!-- Color selection -->
+      <section id="colorCard" class="card" aria-label="Choose the Color"
+        style="position: relative; transition: background-color 0.5s ease, color 0.5s ease, padding 0.5s ease, height 0.5s ease; overflow: hidden;">
+        <div id="colorCloseBtn"
+          style="display:none; position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s;">
+          ✕</div>
+        <h2 id="colorHeading">1) What color does this feel like?</h2>
+        <div id="colorCardBody"
+          style="transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;">
+          <!-- Grayscale Column -->
+          <div id="grayscaleSwatches" style="display: flex; flex-direction: column; gap: 15px;">
+            <button class="grayscale-swatch"
+              style="background: repeating-conic-gradient(#ccc 0% 25%, transparent 0% 50%) 50% / 10px 10px; background-color: #fff; border: 1px solid #ccc; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; transition: transform 0.2s;"
+              data-color-name="Transparent" data-color="transparent" aria-label="Transparent"></button>
+            <button class="grayscale-swatch"
+              style="background: #ffffff; border: 1px solid #ccc; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; transition: transform 0.2s;"
+              data-color-name="White" data-color="#ffffff" aria-label="White"></button>
+            <button class="grayscale-swatch"
+              style="background: #808080; border: 1px solid #808080; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; transition: transform 0.2s;"
+              data-color-name="Gray" data-color="#808080" aria-label="Gray"></button>
+            <button class="grayscale-swatch"
+              style="background: #000000; border: 1px solid #333; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; transition: transform 0.2s;"
+              data-color-name="Black" data-color="#000000" aria-label="Black"></button>
+          </div>
+          <div id="colorWheelWrap" style="position:relative;">
+            <div id="colorSuccessOverlay" class="success-overlay" style="z-index: 100;">✓</div>
+            <div id="colorWheel" class="wheel-container" role="group" aria-label="Color options">
+              <div id="colorNameDisplay" class="selected-color-name"></div>
+              <!-- JS renders color swatches here -->
+            </div>
+          </div>
+        </div>
+        <p id="colorHint" class="hint" style="text-align:center;">Pick an intuitive color from the wheel.</p>
       </section>
 
       <!-- Mood selection -->
-      <section class="card" aria-label="Set the Mood">
-        <h2>1) How does this make you feel right now?</h2>
-        <div id="emotionButtons" class="wheel-container" role="group" aria-label="Mood options">
-          <!-- JS renders wheel items here -->
-        </div>
-        <p class="hint" style="text-align:center;">Tap the mood that best matches what you feel.</p>
-      </section>
-
-      <!-- Color selection -->
-      <section class="card" aria-label="Choose the Color">
-        <h2>3) What color does this feel like?</h2>
-        <div id="colorWheel" class="wheel-container" role="group" aria-label="Color options">
-          <div id="colorNameDisplay" class="selected-color-name"></div>
-          <!-- JS renders color swatches here -->
-        </div>
-        <p class="hint" style="text-align:center;">Pick an intuitive color from the wheel.</p>
-      </section>
-
-      <!-- Like / Dislike -->
-      <section class="card" aria-label="Moment Reaction">
-        <h2 style="display:none;">Reaction</h2>
-        <div style="display:flex; gap:10px; justify-content:space-between; margin-top:10px;">
-          <button id="btnLike" class="btn-like" type="button">👍 I like this part</button>
-          <button id="btnDislike" class="btn-dislike" type="button">👎 I don't like this</button>
-        </div>
-      </section>
-
-      <!-- Optional note -->
-      <section class="card" aria-label="Optional note">
-        <h2>Optional Note</h2>
-        <p class="note">Add a short note (optional). Keep it brief and non-personal. Saves automatically when you finish
-          typing.</p>
-
-        <label for="comment" class="hint" style="display:block;margin-bottom:6px;">Your note (optional)</label>
-        <textarea id="comment" maxlength="140"
-          placeholder="A short image, feeling, or idea the music brings up…"></textarea>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <div id="charHint" class="hint" style="margin-top:0;">0 / 140</div>
-          <div id="successMsg" class="success" role="status" aria-live="polite"></div>
-        </div>
-      </section>
-
-      <!-- Extras -->
-      <section class="card" aria-label="Extras">
-        <h2>Extras</h2>
-        <p class="note">
-          You're signed in as <strong id="currentUserEmail"></strong>. We will use this email if you requested to take
-          the music home.
-        </p>
-      </section>
-
-      <!-- Visualizations -->
-      <section class="card" aria-label="Collective story visualization">
-        <h2>Historical Activity (on this device)</h2>
-
-        <div class="chart-grid" style="margin-top:4px;">
-          <div class="chart-card" aria-label="Mood chart" style="grid-column: 1 / -1;">
-            <h3 style="margin:0 0 4px;font-size:0.9rem;">Mood Timeline</h3>
-            <canvas id="emotionChart"></canvas>
+      <section id="moodCard" class="card" aria-label="Set the Mood"
+        style="position: relative; transition: background-color 0.5s ease, color 0.5s ease, padding 0.5s ease, height 0.5s ease; overflow: hidden;">
+        <div id="moodCloseBtn"
+          style="display:none; position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s;">
+          ✕</div>
+        <h2 id="moodHeading">2) How does this make you feel right now?</h2>
+        <div id="moodCardBody" style="transition: opacity 0.3s ease;">
+          <div id="emotionButtons" class="wheel-container" role="group" aria-label="Mood options">
+            <!-- JS renders wheel items here -->
+            <div id="moodSuccessOverlay" class="success-overlay" style="z-index: 100;">✓</div>
           </div>
         </div>
+        <p id="moodHint" class="hint" style="text-align:center;">Tap the mood that best matches what you feel.</p>
+      </section>
 
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px; justify-content:center;">
-          <button id="refreshCharts" class="secondary" type="button" style="flex:1;">Refresh Charts</button>
-          <button id="exportCSV" class="secondary" type="button" style="flex:1;">Export CSV</button>
-          <button id="clearLocal" class="secondary" type="button" style="flex:1;">Logout</button>
+      <!-- Interaction Slider (now Buttons) -->
+      <section id="reactionCard" class="card" aria-label="Moment Reaction"
+        style="transition: background-color 0.5s ease, color 0.5s ease;">
+        <h2 id="reactionHeading">3) How do you respond?</h2>
+        <div id="reactionButtonsWrap" style="margin-top:15px; position:relative;">
+          <div id="reactionSuccessOverlay" class="success-overlay" style="margin-top:-10px;">✓</div>
+          <div
+            style="display:flex; justify-content:space-around; margin-top:5px; font-size: 1rem; color: var(--text-muted); transition: opacity 0.3s ease;"
+            id="mainReactionButtonGroup">
+            <button id="btnMeh" class="reaction-snap-btn" type="button" aria-label="Meh">
+              <div>😐</div>
+              <span>Meh</span>
+            </button>
+            <button id="btnLike" class="reaction-snap-btn" type="button" aria-label="Like">
+              <div>👍</div>
+              <span>Like</span>
+            </button>
+            <button id="btnApplause" class="reaction-snap-btn" type="button" aria-label="Applause">
+              <div>👏</div>
+              <span>Applause</span>
+            </button>
+          </div>
         </div>
+      </section>
 
-        <div id="exportMsg" class="hint" style="margin-top:10px;text-align:center;"></div>
+      <!-- Visualizations Navigation -->
+      <section class="card" aria-label="Visualizations">
+        <h2>Live Data Views</h2>
+        <p class="note">See how the audience is feeling together.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; justify-content:center;">
+          <a href="charts-all.html" class="secondary"
+            style="flex:1; text-align:center; text-decoration:none; padding: 10px;">Combined Dashboard</a>
+          <a href="chart-mood.html" class="secondary"
+            style="flex:1; text-align:center; text-decoration:none; padding: 10px;">Mood Chart</a>
+          <a href="chart-color.html" class="secondary"
+            style="flex:1; text-align:center; text-decoration:none; padding: 10px;">Color Chart</a>
+          <a href="chart-reaction.html" class="secondary"
+            style="flex:1; text-align:center; text-decoration:none; padding: 10px;">Reaction Chart</a>
+          <a href="chart-words.html" class="secondary"
+            style="flex:1; text-align:center; text-decoration:none; padding: 10px;">Word Cloud</a>
+        </div>
       </section>
     </main>
 
@@ -133,6 +154,59 @@
         <a href="admin.html" style="color: inherit; text-decoration: none;">&gear; Config Admin</a>
       </p>
     </footer>
+  </div>
+
+  <!-- Word Cloud Popup Modal -->
+  <div id="wordCloudModal"
+    style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center; padding: 16px;">
+    <div class="card modal-content">
+      <h2 id="wordCloudTitle">New Track! What words come to mind?</h2>
+      <p class="note">Add a short note or keyword inspired by this track.</p>
+
+      <label for="comment" class="hint" style="display:block;margin-bottom:6px;">Your text</label>
+      <textarea id="comment" maxlength="140"
+        placeholder="A short image, feeling, or idea the music brings up…"></textarea>
+
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div id="charHint" class="hint" style="margin-top:0;">0 / 140</div>
+        <div id="successMsg" class="success" role="status" aria-live="polite"></div>
+      </div>
+
+      <button id="btnCloseWordCloud" class="secondary" type="button"
+        style="margin-top:15px; width: 100%;">Close</button>
+    </div>
+  </div>
+
+  <!-- Strength Popup Modal -->
+  <div id="strengthModal"
+    style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center; padding: 16px;">
+    <div class="card modal-content"
+      style="border: 1px solid var(--border); box-shadow: 0 0 30px rgba(var(--moodGlow), 0.5);">
+      <h2 style="font-size: 1.3rem; margin-bottom: 5px;">New Track!</h2>
+      <p class="note" style="margin-bottom: 20px;">What's your immediate reaction?</p>
+
+      <div style="margin-top:10px;">
+        <input type="range" id="popupReactionSlider" class="reaction-slider" min="0" max="2" value="1" step="1"
+          style="width: 100%;" />
+        <div
+          style="display:flex; justify-content:space-between; margin-top:5px; font-size: 0.85rem; color: var(--text-muted);">
+          <button id="btnPopupMeh" class="reaction-snap-btn" type="button" aria-label="Meh">
+            <span>Meh</span>
+            <div>😐</div>
+          </button>
+          <button id="btnPopupLike" class="reaction-snap-btn" type="button" aria-label="Like">
+            <span>Like</span>
+            <div>👍</div>
+          </button>
+          <button id="btnPopupApplause" class="reaction-snap-btn" type="button" aria-label="Applause">
+            <span>Applause</span>
+            <div>👏</div>
+          </button>
+        </div>
+      </div>
+
+      <button id="btnCloseStrength" class="primary" type="button" style="margin-top:20px; width: 100%;">Done</button>
+    </div>
   </div>
 
   <script src="script.js"></script>

@@ -335,32 +335,8 @@ input[type="checkbox"] {
   background: rgba(255, 255, 255, 0.06);
 }
 
-.btn-like {
-  background: rgba(100, 255, 150, 0.15);
-  border-color: rgba(100, 255, 150, 0.3);
-  flex: 1;
-}
-
-.btn-like:hover,
-.btn-like.active {
-  background: rgba(100, 255, 150, 0.3);
-}
-
-.btn-dislike {
-  background: rgba(255, 100, 100, 0.15);
-  border-color: rgba(255, 100, 100, 0.3);
-  flex: 1;
-}
-
-.btn-dislike:hover,
-.btn-dislike.active {
-  background: rgba(255, 100, 100, 0.3);
-}
-
 .primary:active,
-.secondary:active,
-.btn-like:active,
-.btn-dislike:active {
+.secondary:active {
   transform: translateY(1px);
 }
 
@@ -421,4 +397,28 @@ a {
 
 a:hover {
   opacity: 0.9;
+}
+
+/* ---------- Reaction Snap Buttons ---------- */
+.reaction-snap-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.1s ease, color 0.1s ease;
+}
+
+.reaction-snap-btn div {
+  font-size: 1.4rem;
+  margin-bottom: 2px;
+}
+
+.reaction-snap-btn:hover {
+  transform: scale(1.1);
+  color: var(--text);
 }

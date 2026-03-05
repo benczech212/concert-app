@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Mood Chart</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            padding: 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 80vh !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align:center; margin-bottom: 20px;">
+        <h1>Live Mood Chart</h1>
+        <a href="index.html" class="secondary" style="text-decoration: none; padding: 5px 10px;">&larr; Back to App</a>
+    </div>
+    <canvas id="viewChart"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        let chartInst = null;
+        async function loadData() {
+            const res = await fetch('/api/events');
+            const events = await res.json();
+            const counts = {};
+            events.forEach(e => { if (e.category === 'mood') counts[e.value] = (counts[e.value] || 0) + 1; });
+
+            if (chartInst) {
+                chartInst.data.labels = Object.keys(counts);
+                chartInst.data.datasets[0].data = Object.values(counts);
+                chartInst.update();
+            } else {
+                chartInst = new Chart(document.getElementById('viewChart').getContext('2d'), {
+                    type: 'bar',
+                    data: { labels: Object.keys(counts), datasets: [{ label: 'Moods', data: Object.values(counts), backgroundColor: 'rgba(150, 200, 255, 0.6)' }] },
+                    options: { responsive: true, maintainAspectRatio: false }
+                });
+            }
+        }
+        loadData(); setInterval(loadData, 5000);
+    </script>
+</body>
+
+</html>

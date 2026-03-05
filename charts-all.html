@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>All Charts Data Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            padding: 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .chart-container {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 300px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align:center; margin-bottom: 20px;">
+        <h1>Live Dashboard</h1>
+        <a href="index.html" class="secondary" style="text-decoration: none; padding: 5px 10px;">&larr; Back to App</a>
+    </div>
+    <div class="grid">
+        <div class="chart-container">
+            <h3>Mood</h3>
+            <canvas id="moodChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Color</h3>
+            <canvas id="colorChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Reaction</h3>
+            <canvas id="reactionChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Words</h3>
+            <canvas id="wordCloud"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.2/wordcloud2.min.js"></script>
+
+    <script>
+        let moodChartInstance = null;
+        let colorChartInstance = null;
+        let reactionChartInstance = null;
+
+        async function loadData() {
+            try {
+                const res = await fetch('/api/events');
+                const events = await res.json();
+
+                const moods = {};
+                const colors = {};
+                const reactions = {};
+                const wordCounts = {};
+
+                events.forEach(e => {
+                    if (e.category === 'mood') moods[e.value] = (moods[e.value] || 0) + 1;
+                    if (e.category === 'color') colors[e.value] = (colors[e.value] || 0) + 1;
+                    if (e.category === 'reaction') reactions[e.value] = (reactions[e.value] || 0) + 1;
+                    if (e.category === 'note' && e.value) {
+                        const words = e.value.toLowerCase().match(/\w+/g);
+                        if (words) {
+                            words.forEach(w => {
+                                if (w.length > 3) wordCounts[w] = (wordCounts[w] || 0) + 1;
+                            });
+                        }
+                    }
+                });
+
+                updateChart(document.getElementById('moodChart'), 'moodChartInstance', 'Moods', moods, 'rgba(150, 200, 255, 0.6)');
+                updateChart(document.getElementById('colorChart'), 'colorChartInstance', 'Colors', colors, 'rgba(255, 150, 200, 0.6)');
+                updateChart(document.getElementById('reactionChart'), 'reactionChartInstance', 'Reactions', reactions, 'rgba(150, 255, 150, 0.6)');
+
+                const list = Object.entries(wordCounts).map(([w, c]) => [w, c * 10 + 10]);
+                if (list.length) {
+                    WordCloud(document.getElementById('wordCloud'), { list, weightFactor: 2, color: 'random-light', backgroundColor: 'transparent' });
+                }
+            } catch (err) { console.error(err); }
+        }
+
+        function updateChart(canvasEl, instanceRefName, label, dataMap, bgColor) {
+            const labels = Object.keys(dataMap);
+            const data = Object.values(dataMap);
+
+            if (window[instanceRefName]) {
+                window[instanceRefName].data.labels = labels;
+                window[instanceRefName].data.datasets[0].data = data;
+                window[instanceRefName].update();
+            } else {
+                const ctx = canvasEl.getContext('2d');
+                window[instanceRefName] = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{ label, data, backgroundColor: bgColor }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+                });
+            }
+        }
+
+        loadData();
+        setInterval(loadData, 5000); // 5 sec refresh
+    </script>
+</body>
+
+</html>

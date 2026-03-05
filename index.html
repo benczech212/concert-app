@@ -1,128 +1,141 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Concert Companion</title>
-  <meta name="description" content="A mobile-first audience companion app for mood + setting selection during a live concert." />
+  <meta name="description"
+    content="A mobile-first audience companion app for mood + setting selection during a live concert." />
   <link rel="stylesheet" href="styles.css" />
   <!-- Chart.js (required for the charts section).  -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- js-yaml for parsing configuration -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
 
 <body>
-  <header>
-    <h1>Concert Companion</h1>
-    <p class="subtitle">Listen. Feel. Create.</p>
+  <!-- Identity Prompt Modal -->
+  <div id="identityModal" style="display: none;">
+    <div class="card modal-content">
+      <h2>Join the Experience</h2>
+      <p class="note">Please identify yourself to resume past sessions or start a new one.</p>
 
-    <div class="event-meta" aria-label="Event details">
-      <div><strong>Artist:</strong> Markus Gottschlich</div>
-      <div><strong>Location:</strong> Museum Performance</div>
-      <div><strong>Participation:</strong> Anonymous by default</div>
+      <label for="idEmail" class="hint" style="display:block;margin-bottom:6px;">Email Address</label>
+      <input type="email" id="idEmail" placeholder="you@example.com" style="margin-bottom:12px;" />
+
+      <label for="idName" class="hint" style="display:block;margin-bottom:6px;">Your Name / Preferred Name</label>
+      <input type="text" id="idName" placeholder="e.g. Alex"
+        style="margin-bottom:16px; width: 100%; border: 1px solid var(--border-soft); background: rgba(255, 255, 255, 0.06); color: var(--text); border-radius: 12px; padding: 10px 12px; outline: none;" />
+
+      <button id="btnJoin" class="primary" type="button">Enter</button>
+      <div id="idError" class="error" style="margin-top: 10px;"></div>
     </div>
-  </header>
+  </div>
 
-  <main>
-    <!-- Welcome / instructions -->
-    <section class="card" aria-label="Welcome">
-      <h2>Welcome</h2>
-      <p class="note">
-        Help us build a screenplay for tonight’s performance. Select the mood and setting you hear in the music.
-        At the end, we’ll reveal the collective story we wrote together.
-      </p>
-      <p class="hint">
-        No login needed. Please avoid entering personal information in notes.
-      </p>
-    </section>
+  <div id="appShell" style="display: none;">
+    <header>
+      <h1 id="dynTitle">Concert Companion</h1>
+      <p class="subtitle" id="dynSubtitle">Listen. Feel. Create.</p>
 
-    <!-- Mood selection -->
-    <section class="card" aria-label="Set the Mood">
-      <h2>1) Set the Mood.</h2>
-      <div id="emotionButtons" class="pill-grid" role="group" aria-label="Mood options">
-        <!-- JS renders pills here -->
+      <div class="event-meta" aria-label="Event details">
+        <div><strong id="dynArtistLabel">Artist:</strong> <span id="dynArtist">Loading...</span></div>
+        <div><strong id="dynLocationLabel">Location:</strong> <span id="dynLocation">Loading...</span></div>
+        <div><span id="dynParticipation"></span></div>
       </div>
-      <p class="hint">Tap one mood that best matches what you feel right now.</p>
-    </section>
+    </header>
 
-    <!-- Setting selection -->
-    <section class="card" aria-label="Choose the Setting">
-      <h2>2) Choose the Setting.</h2>
-      <div id="storyButtons" class="pill-grid" role="group" aria-label="Setting options">
-        <!-- JS renders pills here -->
-      </div>
-      <p class="hint">Pick the place or atmosphere the music suggests.</p>
-    </section>
+    <main>
+      <!-- Welcome / instructions -->
+      <section class="card" aria-label="Welcome">
+        <h2><span id="dynWelcomeTitle">Welcome,</span> <span id="welcomeName">User</span></h2>
+        <p class="note" id="dynWelcomeText">
+          Loading configuration...
+        </p>
+      </section>
 
-    <!-- Optional note -->
-    <section class="card" aria-label="Optional note">
-      <h2>3) Optional note</h2>
-      <p class="note">Add a short note (optional). Keep it brief and non-personal.</p>
+      <!-- Mood selection -->
+      <section class="card" aria-label="Set the Mood">
+        <h2>1) How does this make you feel right now?</h2>
+        <div id="emotionButtons" class="wheel-container" role="group" aria-label="Mood options">
+          <!-- JS renders wheel items here -->
+        </div>
+        <p class="hint" style="text-align:center;">Tap the mood that best matches what you feel.</p>
+      </section>
 
-      <label for="comment" class="hint" style="display:block;margin-bottom:6px;">Your note (optional)</label>
-      <textarea id="comment" maxlength="140" placeholder="A short image, feeling, or idea the music brings up…"></textarea>
-      <div id="charHint" class="hint">0 / 140</div>
-    </section>
+      <!-- Color selection -->
+      <section class="card" aria-label="Choose the Color">
+        <h2>3) What color does this feel like?</h2>
+        <div id="colorWheel" class="wheel-container" role="group" aria-label="Color options">
+          <div id="colorNameDisplay" class="selected-color-name"></div>
+          <!-- JS renders color swatches here -->
+        </div>
+        <p class="hint" style="text-align:center;">Pick an intuitive color from the wheel.</p>
+      </section>
 
-    <!-- Submit -->
-    <section class="card" aria-label="Submit response">
-      <button id="submitResponse" class="primary" type="button">Add to the Script</button>
-      <div id="successMsg" class="success" role="status" aria-live="polite"></div>
-    </section>
+      <!-- Like / Dislike -->
+      <section class="card" aria-label="Moment Reaction">
+        <h2 style="display:none;">Reaction</h2>
+        <div style="display:flex; gap:10px; justify-content:space-between; margin-top:10px;">
+          <button id="btnLike" class="btn-like" type="button">👍 I like this part</button>
+          <button id="btnDislike" class="btn-dislike" type="button">👎 I don't like this</button>
+        </div>
+      </section>
 
-    <!-- Opt-in email -->
-    <section class="card" aria-label="Take the music home">
-      <h2>Take the music home.</h2>
-      <p class="note">
-        Want concert highlights and digital extras after the event? This is optional and separate from participation.
-      </p>
+      <!-- Optional note -->
+      <section class="card" aria-label="Optional note">
+        <h2>Optional Note</h2>
+        <p class="note">Add a short note (optional). Keep it brief and non-personal. Saves automatically when you finish
+          typing.</p>
 
-      <label class="hint" style="display:flex;gap:10px;align-items:center;margin-top:10px;">
-        <input id="optIn" type="checkbox" />
-        <span>Send me the highlights.</span>
-      </label>
+        <label for="comment" class="hint" style="display:block;margin-bottom:6px;">Your note (optional)</label>
+        <textarea id="comment" maxlength="140"
+          placeholder="A short image, feeling, or idea the music brings up…"></textarea>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div id="charHint" class="hint" style="margin-top:0;">0 / 140</div>
+          <div id="successMsg" class="success" role="status" aria-live="polite"></div>
+        </div>
+      </section>
 
-      <div id="emailRow" style="display:none;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap;">
-        <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
-        <button id="saveEmail" class="secondary" type="button">Save Email</button>
-      </div>
+      <!-- Extras -->
+      <section class="card" aria-label="Extras">
+        <h2>Extras</h2>
+        <p class="note">
+          You're signed in as <strong id="currentUserEmail"></strong>. We will use this email if you requested to take
+          the music home.
+        </p>
+      </section>
 
-      <div id="emailMsg" class="success" role="status" aria-live="polite" style="margin-top:8px;"></div>
-    </section>
+      <!-- Visualizations -->
+      <section class="card" aria-label="Collective story visualization">
+        <h2>Historical Activity (on this device)</h2>
 
-    <!-- Visualizations -->
-    <section class="card" aria-label="Collective story visualization">
-      <h2>Collective Story (on this device)</h2>
-      <p class="note">
-        These charts summarize responses stored on <em>this device</em> (prototype behavior). For the live show,
-        we’ll connect this to a shared database.
-      </p>
-
-      <div class="chart-grid" style="margin-top:12px;">
-        <div class="chart-card" aria-label="Mood chart">
-          <h3 style="margin:0 0 8px;font-size:1rem;">Mood</h3>
-          <canvas id="emotionChart"></canvas>
+        <div class="chart-grid" style="margin-top:4px;">
+          <div class="chart-card" aria-label="Mood chart" style="grid-column: 1 / -1;">
+            <h3 style="margin:0 0 4px;font-size:0.9rem;">Mood Timeline</h3>
+            <canvas id="emotionChart"></canvas>
+          </div>
         </div>
 
-        <div class="chart-card" aria-label="Setting chart">
-          <h3 style="margin:0 0 8px;font-size:1rem;">Setting</h3>
-          <canvas id="storyChart"></canvas>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px; justify-content:center;">
+          <button id="refreshCharts" class="secondary" type="button" style="flex:1;">Refresh Charts</button>
+          <button id="exportCSV" class="secondary" type="button" style="flex:1;">Export CSV</button>
+          <button id="clearLocal" class="secondary" type="button" style="flex:1;">Logout</button>
         </div>
-      </div>
 
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
-        <button id="refreshCharts" class="secondary" type="button">Refresh Charts</button>
-        <button id="exportCSV" class="secondary" type="button">Export CSV</button>
-        <button id="clearLocal" class="secondary" type="button">Clear Local Data</button>
-      </div>
+        <div id="exportMsg" class="hint" style="margin-top:10px;text-align:center;"></div>
+      </section>
+    </main>
 
-      <div id="exportMsg" class="hint" style="margin-top:10px;"></div>
-    </section>
-  </main>
-
-  <footer>
-    <p>Thank you for participating — enjoy the performance.</p>
-  </footer>
+    <footer>
+      <p id="dynFooterText">Thank you for participating — enjoy the performance.</p>
+      <p style="margin-top:20px; font-size: 0.8em; opacity: 0.5;">
+        <a href="admin.html" style="color: inherit; text-decoration: none;">&gear; Config Admin</a>
+      </p>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>

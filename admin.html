@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Concert Companion Admin</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- js-yaml for parsing and dumping yaml -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Concert Configuration Admin</h1>
+        <p class="subtitle">Modify moods, settings, and colors.</p>
+    </header>
+
+    <main style="display: flex; flex-direction: column; gap: 20px;">
+        <!-- Layout for tablet/desktop -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+
+            <!-- Visual Editor -->
+            <section class="card" aria-label="Visual Editor">
+                <h2>Visual Editor</h2>
+                <p class="note">Easily modify basic event info and moods.</p>
+
+                <div id="visualBuilder" style="margin-top: 15px;">
+                    <!-- JS injects form elements here -->
+                </div>
+            </section>
+
+            <!-- Text Editor -->
+            <section class="card" aria-label="Configuration Editor">
+                <h2>YAML Editor</h2>
+                <p class="note">Edit the raw YAML configuration. Advanced users only.</p>
+
+                <label for="configEditor" class="hint" style="display:block;margin-bottom:6px;">Config YAML</label>
+                <textarea id="configEditor"
+                    style="min-height: 480px; font-family: monospace; padding: 10px; width: 100%; box-sizing: border-box;"></textarea>
+            </section>
+        </div>
+
+        <!-- Controls -->
+        <section class="card" style="text-align: center;">
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <button id="saveConfigBtn" class="primary" type="button" style="max-width: 250px;">Save
+                    Configuration</button>
+                <button id="resetConfigBtn" class="secondary" type="button" style="max-width: 250px;">Reset to
+                    Default</button>
+            </div>
+            <div id="statusMsg" role="status" aria-live="polite" style="margin-top: 15px;"></div>
+        </section>
+
+        <section class="card" style="text-align: center;">
+            <a href="index.html" style="color: var(--primary); text-decoration: none;">&larr; Back to App</a>
+        </section>
+    </main>
+
+    <script>
+        const CONFIG_KEY = "concertCustomConfig";
+        const DEFAULT_CONFIG_URL = "config.yaml";
+        const editor = document.getElementById("configEditor");
+        const builder = document.getElementById("visualBuilder");
+        const saveBtn = document.getElementById("saveConfigBtn");
+        const resetBtn = document.getElementById("resetConfigBtn");
+        const statusMsg = document.getElementById("statusMsg");
+
+        let currentConfigObj = null;
+
+        function setMsg(msg, isError) {
+            statusMsg.textContent = msg;
+            statusMsg.className = isError ? "error" : "success";
+        }
+
+        // ----- Build Visual UI from Object -----
+        function renderVisualBuilder() {
+            builder.innerHTML = "";
+            if (!currentConfigObj) return;
+
+            // Render Event Info
+            const eventSection = document.createElement("div");
+            eventSection.innerHTML = `<h3 style="margin-top:0;">Event Details</h3>`;
+            const eventBlock = document.createElement("div");
+            eventBlock.style.display = "flex"; eventBlock.style.flexDirection = "column"; eventBlock.style.gap = "8px";
+            eventSection.appendChild(eventBlock);
+
+            const ev = currentConfigObj.event || {};
+            eventBlock.innerHTML = `
+              <input type="text" id="vb-artist" value="${ev.artist || ''}" placeholder="Artist Name" />
+              <input type="text" id="vb-location" value="${ev.location || ''}" placeholder="Location" />
+              <input type="text" id="vb-participation" value="${ev.participation || ''}" placeholder="Participation Details" />
+            `;
+            builder.appendChild(eventSection);
+            builder.appendChild(document.createElement("hr"));
+
+            // Render Copy Info
+            const copySection = document.createElement("div");
+            copySection.innerHTML = `<h3>Messaging</h3>`;
+            const copyBlock = document.createElement("div");
+            copyBlock.style.display = "flex"; copyBlock.style.flexDirection = "column"; copyBlock.style.gap = "8px";
+            copySection.appendChild(copyBlock);
+
+            const cp = currentConfigObj.copy || {};
+            copyBlock.innerHTML = `
+              <input type="text" id="vb-wel-title" value="${cp.welcomeTitle || ''}" placeholder="Welcome Title" />
+              <textarea id="vb-wel-text" placeholder="Welcome Text" style="resize:vertical;min-height:60px;">${cp.welcomeText || ''}</textarea>
+              <textarea id="vb-foot-text" placeholder="Footer Text" style="resize:vertical;min-height:50px;">${cp.footerText || ''}</textarea>
+            `;
+            builder.appendChild(copySection);
+            builder.appendChild(document.createElement("hr"));
+
+            // Render Moods
+            const moodSection = document.createElement("div");
+            moodSection.innerHTML = `<h3>Moods</h3>`;
+            const moodList = document.createElement("div");
+            moodList.style.display = "flex"; moodList.style.flexDirection = "column"; moodList.style.gap = "8px";
+            moodSection.appendChild(moodList);
+
+            (currentConfigObj.moods || []).forEach((moodObj, index) => {
+                const row = document.createElement("div");
+                row.style.display = "flex"; row.style.gap = "8px"; row.style.alignItems = "center";
+                row.innerHTML = `
+                <input type="text" class="vb-mood-name" value="${moodObj.name || ''}" placeholder="Mood Name" style="flex:1;" />
+                <input type="text" class="vb-mood-glow" value="${moodObj.glow || ''}" placeholder="rgba(...)" style="flex:1;" />
+                <button type="button" class="secondary btn-del-mood" data-index="${index}" style="padding:6px 12px;">X</button>
+              `;
+                moodList.appendChild(row);
+            });
+            const btnAddMood = document.createElement("button");
+            btnAddMood.textContent = "+ Add Mood";
+            btnAddMood.className = "secondary";
+            btnAddMood.style.marginTop = "8px";
+            btnAddMood.style.padding = "6px 12px";
+            btnAddMood.style.fontSize = "0.85rem";
+            btnAddMood.onclick = () => {
+                currentConfigObj.moods = currentConfigObj.moods || [];
+                currentConfigObj.moods.push({ name: "", glow: "" });
+                updateTextEditorFromObj();
+            };
+            moodSection.appendChild(btnAddMood);
+            builder.appendChild(moodSection);
+
+            // Add common styling to inputs in visual builder
+            builder.querySelectorAll('input, textarea').forEach(i => {
+                i.style.border = "1px solid var(--border-soft)";
+                i.style.background = "rgba(255,255,255,0.06)";
+                i.style.color = "var(--text)";
+                i.style.padding = "6px 8px";
+                i.style.borderRadius = "6px";
+            });
+
+            // Bind deletes
+            builder.querySelectorAll('.btn-del-mood').forEach(btn => {
+                btn.onclick = (e) => {
+                    currentConfigObj.moods.splice(e.target.dataset.index, 1);
+                    updateTextEditorFromObj();
+                };
+            });
+
+            // Bind input changes to real-time update YAML
+            builder.querySelectorAll('input, textarea').forEach(inp => {
+                inp.addEventListener('input', syncFormToObject);
+            });
+        }
+
+        function syncFormToObject() {
+            // Rebuild the object from the DOM inputs
+            const newObj = {
+                event: {
+                    artist: document.getElementById('vb-artist')?.value || '',
+                    location: document.getElementById('vb-location')?.value || '',
+                    participation: document.getElementById('vb-participation')?.value || ''
+                },
+                copy: {
+                    welcomeTitle: document.getElementById('vb-wel-title')?.value || '',
+                    welcomeText: document.getElementById('vb-wel-text')?.value || '',
+                    footerText: document.getElementById('vb-foot-text')?.value || ''
+                },
+                moods: [],
+                colors: currentConfigObj.colors
+            };
+
+            builder.querySelectorAll('.vb-mood-name').forEach((inp, idx) => {
+                const glowInp = builder.querySelectorAll('.vb-mood-glow')[idx];
+                newObj.moods.push({ name: inp.value, glow: glowInp.value });
+            });
+
+            currentConfigObj = newObj;
+
+            // Update text editor silently without triggering its own input event
+            const yamlStr = jsyaml.dump(currentConfigObj);
+            if (editor.value !== yamlStr) {
+                editor.value = yamlStr;
+            }
+        }
+
+        function updateTextEditorFromObj() {
+            editor.value = jsyaml.dump(currentConfigObj);
+            renderVisualBuilder();
+        }
+
+        function updateObjFromTextEditor() {
+            try {
+                const parsed = jsyaml.load(editor.value);
+                if (typeof parsed === 'object' && parsed !== null) {
+                    currentConfigObj = parsed;
+                    renderVisualBuilder();
+                    setMsg("", false);
+                }
+            } catch (e) {
+                setMsg("Invalid YAML format: " + e.message, true);
+            }
+        }
+
+        // Sync Text -> Form on input
+        editor.addEventListener("input", updateObjFromTextEditor);
+
+        async function loadConfig() {
+            let yamlText = "";
+            // 1. Try local storage first
+            const localConfigStr = localStorage.getItem(CONFIG_KEY);
+            if (localConfigStr) {
+                yamlText = localConfigStr;
+            } else {
+                // 2. Try fetching default
+                try {
+                    const res = await fetch(DEFAULT_CONFIG_URL);
+                    if (res.ok) {
+                        yamlText = await res.text();
+                    } else {
+                        setMsg("Could not load default config.", true);
+                    }
+                } catch (e) {
+                    console.error("Failed to fetch config.yaml", e);
+                    setMsg("Could not load config due to CORS. Using hardcoded fallback format.", true);
+                    yamlText = `event:\n  artist: "Fallback"\nmoods:\n  - name: "Happy"\n    glow: "rgba(255, 230, 150, .25)"`;
+                }
+            }
+
+            editor.value = yamlText;
+            updateObjFromTextEditor();
+        }
+
+        saveBtn.addEventListener("click", () => {
+            const val = editor.value;
+            try {
+                // validate YAML
+                jsyaml.load(val);
+                localStorage.setItem(CONFIG_KEY, val);
+                setMsg("Configuration saved successfully to this device.", false);
+            } catch (e) {
+                console.error(e);
+                setMsg("Invalid YAML format: " + e.message, true);
+            }
+        });
+
+        resetBtn.addEventListener("click", async () => {
+            localStorage.removeItem(CONFIG_KEY);
+            setMsg("Reset to default.", false);
+            await loadConfig();
+        });
+
+        loadConfig();
+    </script>
+</body>
+
+</html>

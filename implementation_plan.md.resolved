@@ -1,0 +1,42 @@
+# Data Feeds, Track API & Chart Views
+
+The user wants to transition the app from a static local prototype to a system that can distribute a "Current Track" via an API request, collect data from multiple users, and display independent chart views (including a word cloud).
+
+## User Review Required
+> [!IMPORTANT]
+> To support an API request to set the track and to collect word cloud texts from multiple users simultaneously, we should introduce a lightweight Node.js backend. We can use Express and Server-Sent Events (SSE) to push track updates to the audience. This replaces the `python -m http.server` approach. Please confirm if adding a Node.js server is acceptable.
+
+## Proposed Changes
+
+### Backend & API (`server.js`)
+We will create a simple Node.js/Express server to:
+- Serve the static files ([index.html](file:///d:/dev/chadmairn/concert-app/index.html), [styles.css](file:///d:/dev/chadmairn/concert-app/styles.css), [script.js](file:///d:/dev/chadmairn/concert-app/script.js), etc.).
+- Expose a `POST /api/track` endpoint to set the current track by ID or title.
+- Expose a SSE endpoint `/api/stream` so clients automatically update their UI when the track changes.
+- Expose a `POST /api/events` endpoint to collect data feeds (moods, colors, reactions, texts).
+- Expose a `GET /api/events` endpoint to serve data to the chart pages.
+
+### Configuration updates ([config.yaml](file:///d:/dev/chadmairn/concert-app/config.yaml))
+- Add a `tracks` list to [config.yaml](file:///d:/dev/chadmairn/concert-app/config.yaml).
+- Each track will have `id`, `title`, `artist`, and `color`.
+
+### UI Updates ([index.html](file:///d:/dev/chadmairn/concert-app/index.html), [styles.css](file:///d:/dev/chadmairn/concert-app/styles.css), [script.js](file:///d:/dev/chadmairn/concert-app/script.js))
+- **Track Banner**: Add a banner at the top of the app shell displaying the current track.
+- **Text Prompt**: Modify the "Optional Note" area to prompt for text associated with the current track (for the word cloud).
+- **Reaction Slider**: Replace the "Like / Dislike" buttons with a slider (values: "Meh", "Like", "Applause"). Ensure this fires a specific event when changed.
+- **Remove Extras & Inline Charts**: Remove the "Extras" section. Replace the inline charts area at the bottom with large buttons/links navigating to the chart views.
+
+### Chart Views
+We will create dedicated HTML pages (or a routing mechanism) for the charts:
+- `charts-all.html`: A dashboard showing all 3 charts (Mood, Color, Reaction) and the Word Cloud.
+- `chart-mood.html`: Full-screen Mood chart.
+- `chart-color.html`: Full-screen Color chart.
+- `chart-reaction.html`: Full-screen Reaction chart.
+- `chart-words.html`: Full-screen Word Cloud (using a library like `wordcloud2.js` or similar).
+
+## Verification Plan
+1. Start the Node.js server.
+2. Open the app in multiple browser tabs simulating different users.
+3. Make an API request (e.g., via `curl`) to set the current track. Verify the banner updates in all open tabs instantly.
+4. Test the slider, color, mood, and word cloud inputs.
+5. Open the data views and ensure they pull from the aggregated Node.js memory/data store and render correctly.

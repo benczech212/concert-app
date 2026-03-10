@@ -86,10 +86,11 @@ app.get('/api/stream', (req, res) => {
 
 // Set current track
 app.post('/api/track', (req, res) => {
-  const { trackId, title } = req.body;
+  const { trackId, title, id } = req.body;
+  const finalTrackId = trackId || id;
 
   // Try to load config.yaml to find the track details
-  let trackDetails = { id: trackId, title: title || 'Unknown Track' };
+  let trackDetails = { id: finalTrackId, title: title || 'Unknown Track' };
 
   try {
     const fileContents = fs.readFileSync(path.join(__dirname, 'config.yaml'), 'utf8');
@@ -105,15 +106,41 @@ app.post('/api/track', (req, res) => {
   }
 
   currentTrack = trackDetails;
-  broadcast({ type: 'track', track: currentTrack });
+  broadcast({ type: 'track_start', track: currentTrack });
+
+  // Record system event for timeline
+  const systemEvent = {
+    id: `evt_${Date.now()}`,
+    timestamp: new Date().toISOString(),
+    category: 'system',
+    value: 'track_start',
+    trackId: currentTrack.id,
+    trackTitle: currentTrack.title
+  };
+  events.push(systemEvent);
+  fs.appendFile(path.join(__dirname, 'events_log.jsonl'), JSON.stringify(systemEvent) + '\n', () => { });
 
   res.json({ success: true, track: currentTrack });
 });
 
 // Clear track
-app.delete('/api/track', (req, res) => {
+app.post('/api/track/end', (req, res) => {
+  if (currentTrack) {
+    // Record system event for timeline
+    const systemEvent = {
+      id: `evt_${Date.now()}`,
+      timestamp: new Date().toISOString(),
+      category: 'system',
+      value: 'track_end',
+      trackId: currentTrack.id,
+      trackTitle: currentTrack.title
+    };
+    events.push(systemEvent);
+    fs.appendFile(path.join(__dirname, 'events_log.jsonl'), JSON.stringify(systemEvent) + '\n', () => { });
+  }
+
   currentTrack = null;
-  broadcast({ type: 'track', track: null });
+  broadcast({ type: 'track_end', track: null });
   res.json({ success: true });
 });
 
@@ -205,8 +232,10 @@ app.get('/metrics', async (req, res) => {
 // Reset Prometheus metrics
 app.post('/api/metrics/reset', (req, res) => {
   client.register.resetMetrics();
-  console.log("Prometheus metrics reset via API");
-  res.json({ success: true, message: "Metrics reset successfully" });
+  events = []; // Clear in-memory datastore so charts reset
+  fs.writeFileSync(path.join(__dirname, 'events_log.jsonl'), ''); // Clear the persistent log
+  console.log("Prometheus metrics, events array, and log file reset via API");
+  res.json({ success: true, message: "Metrics, events, and log reset successfully" });
 });
 
 // Fallback to index.html for SPA routing if needed

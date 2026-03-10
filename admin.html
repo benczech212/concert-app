@@ -57,14 +57,23 @@
             </div>
 
             <!-- Controls -->
+            <section class="card" aria-label="Playback Controls">
+                <h2>Live Playback Control</h2>
+                <p class="note">Manually push track start and end events to the dashboard.</p>
+                <div style="display:flex;gap:10px;justify-content:center;margin-top:15px;align-items:center;">
+                    <select id="trackSelect" style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-soft); background: rgba(255,255,255,0.06); color: var(--text); flex: 1; max-width: 300px;">
+                        <option value="">Select a Track...</option>
+                    </select>
+                    <button id="startTrackBtn" class="primary" type="button">Start Track</button>
+                    <button id="endTrackBtn" class="secondary" type="button">End Track</button>
+                </div>
+            </section>
+
             <section class="card" style="text-align: center;">
                 <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-                    <button id="saveConfigBtn" class="primary" type="button" style="max-width: 250px;">Save
-                        Configuration</button>
-                    <button id="resetConfigBtn" class="secondary" type="button" style="max-width: 250px;">Reset to
-                        Default</button>
-                    <button id="resetMetricsBtn" class="secondary" type="button" style="max-width: 250px;">Reset Server
-                        Metrics</button>
+                    <button id="saveConfigBtn" class="primary" type="button" style="max-width: 250px;">Save Configuration</button>
+                    <button id="resetConfigBtn" class="secondary" type="button" style="max-width: 250px;">Reset to Default</button>
+                    <button id="resetMetricsBtn" class="error" type="button" style="max-width: 250px;">Clear All Data & Metrics</button>
                 </div>
                 <div id="statusMsg" role="status" aria-live="polite" style="margin-top: 15px;"></div>
             </section>
@@ -245,6 +254,18 @@
             builder.querySelectorAll('input, textarea').forEach(inp => {
                 inp.addEventListener('input', syncFormToObject);
             });
+
+            // Update Track Select Dropdown
+            const trackSelect = document.getElementById("trackSelect");
+            if (trackSelect) {
+                trackSelect.innerHTML = '<option value="">Select a Track...</option>';
+                (currentConfigObj.tracks || []).forEach(t => {
+                    const opt = document.createElement("option");
+                    opt.value = t.id;
+                    opt.textContent = `${t.id}: ${t.title}`;
+                    trackSelect.appendChild(opt);
+                });
+            }
         }
 
         function syncFormToObject() {
@@ -360,19 +381,58 @@
 
         if (resetMetricsBtn) {
             resetMetricsBtn.addEventListener("click", async () => {
+                if (!confirm("Are you sure you want to permanently clear all events and reset metrics?")) return;
                 try {
                     const res = await fetch('/api/metrics/reset', { method: 'POST' });
                     if (res.ok) {
-                        setMsg("Prometheus metrics successfully reset to zero.", false);
+                        setMsg("All server data successfully reset to zero.", false);
                     } else {
-                        setMsg("Failed to reset server metrics.", true);
+                        setMsg("Failed to reset server data.", true);
                     }
                 } catch (e) {
-                    console.error("Error resetting metrics:", e);
-                    setMsg("Error reaching server to reset metrics.", true);
+                    console.error("Error resetting data:", e);
+                    setMsg("Error reaching server to reset data.", true);
                 }
             });
         }
+
+        document.getElementById("startTrackBtn").addEventListener("click", async () => {
+            const trackId = document.getElementById("trackSelect").value;
+            if (!trackId) {
+                setMsg("Please select a track first.", true);
+                return;
+            }
+            const trackTitle = document.getElementById("trackSelect").options[document.getElementById("trackSelect").selectedIndex].text.split(": ").slice(1).join(": ");
+            try {
+                const res = await fetch('/api/track', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: trackId, title: trackTitle })
+                });
+                if (res.ok) {
+                    setMsg(`Live track started: ${trackTitle}`, false);
+                } else {
+                    setMsg("Failed to start track.", true);
+                }
+            } catch (e) {
+                console.error("Error starting track:", e);
+                setMsg("Error reaching server.", true);
+            }
+        });
+
+        document.getElementById("endTrackBtn").addEventListener("click", async () => {
+            try {
+                const res = await fetch('/api/track/end', { method: 'POST' });
+                if (res.ok) {
+                    setMsg("Live track ended.", false);
+                } else {
+                    setMsg("Failed to end track.", true);
+                }
+            } catch (e) {
+                console.error("Error ending track:", e);
+                setMsg("Error reaching server.", true);
+            }
+        });
 
         // We no longer call loadConfig() here independently, because we only want to fetch/parse the config
         // *after* the user successfully provides the 'czech' password in the auth listener above.

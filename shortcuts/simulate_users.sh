@@ -14,7 +14,7 @@ for i in {1..20}; do
   REACTION=${REACTIONS[$IDX]}
   VAL=${VALUES[$IDX]}
 
-  curl -s -X POST http://localhost:8000/api/events \
+  curl -s -X POST ${HOST:-http://localhost:8000}/api/events \
     -H "Content-Type: application/json" \
     -d "{\"category\": \"combined_reaction\", \"value\": $VAL, \"colorName\": \"$COLOR\", \"mood\": \"$MOOD\", \"colorRgba\": \"#ffffff\", \"reactionLabel\": \"$REACTION\"}" > /dev/null
   echo -n "."
@@ -28,7 +28,7 @@ for i in {1..20}; do
   WORDS=("Amazing" "Loud" "Beautiful" "Confusing" "Electric" "Moving" "Boring" "Sad" "Happy" "Epic")
   WORD=${WORDS[$RANDOM % ${#WORDS[@]}]}
 
-  curl -s -X POST http://localhost:8000/api/events \
+  curl -s -X POST ${HOST:-http://localhost:8000}/api/events \
     -H "Content-Type: application/json" \
     -d "{\"category\": \"note\", \"value\": \"$WORD user $i\"}" > /dev/null
   echo -n "."

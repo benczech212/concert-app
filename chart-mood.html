@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Mood Chart</title>
     <link rel="stylesheet" href="styles.css" />
     <style>
@@ -12,9 +13,69 @@
             color: var(--text);
         }
 
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .chart-container {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .chart-header h3 {
+            margin: 0;
+        }
+
+        .toggle-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text);
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+        }
+
+        .filter-container select {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            flex-grow: 1;
+            height: 350px;
+            width: 100%;
+        }
+
         canvas {
             width: 100% !important;
-            height: 80vh !important;
+            height: 100% !important;
         }
     </style>
 </head>
@@ -22,33 +83,361 @@
 <body>
     <div style="text-align:center; margin-bottom: 20px;">
         <h1>Live Mood Chart</h1>
+        <div class="filter-container">
+            <label for="trackFilter">Filter by Track: </label>
+            <select id="trackFilter" onchange="handleTrackFilterChange()">
+                <option value="all">All Time</option>
+            </select>
+        </div>
         <a href="index.html" class="secondary" style="text-decoration: none; padding: 5px 10px;">&larr; Back to App</a>
     </div>
-    <canvas id="viewChart"></canvas>
+    <div>
+        <div class="chart-container">
+            <div class="chart-header">
+                <h3>Mood</h3>
+                <button class="toggle-btn" onclick="toggleView('mood')">Switch to Timeline</button>
+            </div>
+            <div class="canvas-wrapper">
+                <canvas id="moodChart"></canvas>
+            </div>
+        </div>
+        
+        
+        
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <script>
-        let chartInst = null;
-        async function loadData() {
-            const res = await fetch('/api/events');
-            const events = await res.json();
-            const counts = {};
-            events.forEach(e => { if (e.category === 'mood') counts[e.value] = (counts[e.value] || 0) + 1; });
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.2/wordcloud2.min.js"></script>
 
-            if (chartInst) {
-                chartInst.data.labels = Object.keys(counts);
-                chartInst.data.datasets[0].data = Object.values(counts);
-                chartInst.update();
+    <script>
+        let moodChartInstance = null;
+        let colorChartInstance = null;
+        let reactionChartInstance = null;
+        let timelineChartInstance = null;
+
+        let chartViews = {
+            mood: 'bar',
+            color: 'bar',
+            reaction: 'pie'
+        };
+
+        // Track filtering state
+        let currentTrackFilter = 'all';
+        let rawEventsData = [];
+        let trackRanges = {}; // Map of trackId -> {start: time, end: time, title: str}
+
+        function toggleView(category) {
+            const btn = document.querySelector(`button[onclick="toggleView('${category}')"]`);
+            if (chartViews[category] === 'bar' || chartViews[category] === 'pie') {
+                chartViews[category] = 'timeline';
+                btn.textContent = `Switch to ${category === 'reaction' ? 'Pie' : 'Bar'}`;
             } else {
-                chartInst = new Chart(document.getElementById('viewChart').getContext('2d'), {
-                    type: 'bar',
-                    data: { labels: Object.keys(counts), datasets: [{ label: 'Moods', data: Object.values(counts), backgroundColor: 'rgba(150, 200, 255, 0.6)' }] },
-                    options: { responsive: true, maintainAspectRatio: false }
+                chartViews[category] = category === 'reaction' ? 'pie' : 'bar';
+                btn.textContent = 'Switch to Timeline';
+            }
+            // Destroy existing instance so we can recreate it with a new type
+            if (window[`${category}ChartInstance`]) {
+                window[`${category}ChartInstance`].destroy();
+                window[`${category}ChartInstance`] = null;
+            }
+            renderData();
+        }
+
+        function handleTrackFilterChange() {
+            const selectEl = document.getElementById('trackFilter');
+            currentTrackFilter = selectEl.value;
+            renderData();
+        }
+
+        function createAnnotations(trackEvents) {
+            let annotations = {};
+            trackEvents.forEach((evt, i) => {
+                const labelText = evt.value === 'track_start' ? `Start Track ${evt.id || ''}` : `End Track ${evt.id || ''}`;
+                annotations[`line${i}`] = {
+                    type: 'line',
+                    xMin: evt.time,
+                    xMax: evt.time,
+                    borderColor: evt.value === 'track_start' ? 'rgba(50, 255, 100, 0.8)' : 'rgba(255, 100, 50, 0.8)',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    label: {
+                        content: labelText,
+                        display: true,
+                        position: 'start',
+                        backgroundColor: 'rgba(0,0,0,0.7)',
+                        color: evt.value === 'track_start' ? 'rgba(50, 255, 100, 1)' : 'rgba(255, 100, 50, 1)'
+                    }
+                };
+            });
+            return annotations;
+        }
+
+        async function loadData() {
+            try {
+                const res = await fetch('/api/events');
+                rawEventsData = await res.json();
+
+                // First pass: extract track ranges
+                trackRanges = {};
+                rawEventsData.forEach(e => {
+                    if (e.category === 'system' && (e.value === 'track_start' || e.value === 'track_end') && e.timestamp) {
+                        const t = new Date(e.timestamp).getTime();
+                        const idStr = String(e.trackId);
+                        if (!trackRanges[idStr]) trackRanges[idStr] = { title: e.trackTitle || idStr };
+
+                        if (e.value === 'track_start') trackRanges[idStr].start = t;
+                        if (e.value === 'track_end') trackRanges[idStr].end = t;
+                    }
                 });
+
+                // Populate track filter dropdown
+                const filterSelect = document.getElementById('trackFilter');
+                // Keep the "all" option, remove the rest
+                while (filterSelect.options.length > 1) { filterSelect.remove(1); }
+
+                Object.keys(trackRanges).forEach(id => {
+                    const opt = document.createElement('option');
+                    opt.value = id;
+                    opt.textContent = trackRanges[id].title || `Track ${id}`;
+                    if (currentTrackFilter === id) opt.selected = true;
+                    filterSelect.appendChild(opt);
+                });
+
+                renderData();
+
+            } catch (err) { console.error(err); }
+        }
+
+        function renderData() {
+            try {
+                const moods = {};
+                const colors = {};
+                const reactions = {};
+                const wordCounts = {};
+
+                const timelineMood = {};
+                const timelineColor = {};
+                const timelineReaction = {};
+                const trackEvents = [];
+
+                let activeRange = null;
+                if (currentTrackFilter !== 'all' && trackRanges[currentTrackFilter]) {
+                    activeRange = trackRanges[currentTrackFilter];
+                }
+
+                rawEventsData.forEach(e => {
+                    if (e.timestamp) {
+                        const d = new Date(e.timestamp);
+                        const t = d.getTime();
+
+                        // Filter by active track range if necessary
+                        if (activeRange) {
+                            if (activeRange.start && t < activeRange.start) return;
+                            if (activeRange.end && t > activeRange.end) return;
+                        }
+
+                        if (e.category === 'system' && e.value === 'track_start') {
+                            const dStart = new Date(e.timestamp);
+                            dStart.setSeconds(0);
+                            dStart.setMilliseconds(0);
+                            trackEvents.push({ time: dStart.getTime(), value: e.value, title: e.trackTitle, id: e.trackId });
+                        }
+
+                        if (['mood', 'color', 'reaction'].includes(e.category)) {
+                            // Bucket into 60-second intervals for timeline
+                            d.setSeconds(0);
+                            d.setMilliseconds(0);
+                            const bucketTime = d.getTime();
+
+                            if (e.category === 'mood') {
+                                timelineMood[bucketTime] = timelineMood[bucketTime] || {};
+                                timelineMood[bucketTime][e.value] = (timelineMood[bucketTime][e.value] || 0) + 1;
+                            }
+                            if (e.category === 'color') {
+                                timelineColor[bucketTime] = timelineColor[bucketTime] || {};
+                                timelineColor[bucketTime][e.value] = (timelineColor[bucketTime][e.value] || 0) + 1;
+                            }
+                            if (e.category === 'reaction') {
+                                timelineReaction[bucketTime] = timelineReaction[bucketTime] || {};
+                                timelineReaction[bucketTime][e.value] = (timelineReaction[bucketTime][e.value] || 0) + 1;
+                            }
+                        }
+                    }
+
+                    // For non-timed exact counting
+                    let passFilter = true;
+                    if (activeRange && e.timestamp) {
+                        const t2 = new Date(e.timestamp).getTime();
+                        if (activeRange.start && t2 < activeRange.start) passFilter = false;
+                        if (activeRange.end && t2 > activeRange.end) passFilter = false;
+                    }
+
+                    if (passFilter) {
+                        if (e.category === 'mood') moods[e.value] = (moods[e.value] || 0) + 1;
+                        if (e.category === 'color') colors[e.value] = (colors[e.value] || 0) + 1;
+                        if (e.category === 'reaction') reactions[e.value] = (reactions[e.value] || 0) + 1;
+                        if (e.category === 'note' && e.value) {
+                            const words = e.value.toLowerCase().match(/\w+/g);
+                            if (words) {
+                                words.forEach(w => {
+                                    if (w.length > 3) wordCounts[w] = (wordCounts[w] || 0) + 1;
+                                });
+                            }
+                        }
+                    }
+                });
+
+                const annotations = createAnnotations(trackEvents);
+
+                updateChart(document.getElementById('moodChart'), 'moodChartInstance', 'Mood', moods, timelineMood, 'rgba(150, 200, 255, 0.6)', 'rgba(150, 200, 255, 1)', annotations, chartViews.mood);
+                updateChart(document.getElementById('colorChart'), 'colorChartInstance', 'Color', colors, timelineColor, 'rgba(255, 150, 200, 0.6)', 'rgba(255, 150, 200, 1)', annotations, chartViews.color);
+                updateChart(document.getElementById('reactionChart'), 'reactionChartInstance', 'Reaction', reactions, timelineReaction,
+                    ['rgba(200, 200, 200, 0.6)', 'rgba(150, 255, 150, 0.6)', 'rgba(255, 200, 50, 0.6)'],
+                    'rgba(150, 255, 150, 1)', annotations, chartViews.reaction);
+
+                const list = Object.entries(wordCounts).map(([w, c]) => [w, c * 6 + 15]);
+                const wcEl = document.getElementById('wordCloud');
+                if (list.length && wcEl) {
+                    WordCloud(wcEl, {
+                        list,
+                        weightFactor: 2,
+                        color: 'random-light',
+                        backgroundColor: 'transparent',
+                        shape: 'circle',
+                        fontFamily: 'system-ui, sans-serif',
+                        rotateRatio: 0.5,
+                        rotationSteps: 2
+                    });
+                }
+            } catch (err) { console.error(err); }
+        }
+
+        const palette = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#8AC926', '#1982C4', '#6A4C93', '#F15BB5'];
+
+        function updateChart(canvasEl, instanceRefName, label, totalsMap, timelineMap, bgColorBar, bgColorLine, annotations, viewMode) {
+            if (!canvasEl) return;
+            const labels = Object.keys(totalsMap);
+
+            if (viewMode === 'timeline') {
+                const times = Object.keys(timelineMap).sort((a, b) => parseInt(a) - parseInt(b));
+                const dataData = times.map(t => parseInt(t));
+
+                const datasets = labels.map((labelValue, i) => {
+                    const pointData = times.map(t => (timelineMap[t] && timelineMap[t][labelValue]) || 0);
+                    let color = palette[i % palette.length];
+
+                    if (label === 'Color') {
+                        const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
+                        color = colorMap[labelValue] || labelValue.toLowerCase();
+                    }
+
+                    return {
+                        label: labelValue,
+                        data: pointData,
+                        borderColor: color,
+                        backgroundColor: color,
+                        tension: 0.1,
+                        fill: false
+                    };
+                });
+
+                if (window[instanceRefName] && window[instanceRefName].config.type === 'line') {
+                    window[instanceRefName].data.labels = dataData;
+                    window[instanceRefName].data.datasets = datasets;
+                    // Update annotations in case new ones arrived
+                    window[instanceRefName].options.plugins.annotation.annotations = annotations;
+                    window[instanceRefName].update();
+                } else {
+                    if (window[instanceRefName]) window[instanceRefName].destroy();
+                    const ctx = canvasEl.getContext('2d');
+                    window[instanceRefName] = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: dataData,
+                            datasets: datasets
+                        },
+                        options: {
+                            responsive: true, maintainAspectRatio: false,
+                            animation: false,
+                            scales: { x: { type: 'time', time: { unit: 'minute' } }, y: { beginAtZero: true } },
+                            plugins: { annotation: { annotations: annotations } }
+                        }
+                    });
+                }
+            } else { // bar or pie
+                let labels = Object.keys(totalsMap);
+                let data = Object.values(totalsMap);
+
+                let renderBgColors = bgColorBar;
+                if (label === 'Color') {
+                    const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
+                    const hueMap = { "Red": 0, "Amber": 45, "Yellow": 60, "Green": 120, "Cyan": 180, "Blue": 240, "Purple": 300 };
+
+                    const sortedIndices = labels.map((l, i) => i).sort((a, b) => (hueMap[labels[a]] || 999) - (hueMap[labels[b]] || 999));
+                    labels = sortedIndices.map(i => labels[i]);
+                    data = sortedIndices.map(i => data[i]);
+
+                    renderBgColors = labels.map(l => colorMap[l] || l.toLowerCase());
+                }
+
+                if (window[instanceRefName] && window[instanceRefName].config.type === viewMode) {
+                    window[instanceRefName].data.labels = labels;
+                    window[instanceRefName].data.datasets[0].data = data;
+                    if (label === 'Color') window[instanceRefName].data.datasets[0].backgroundColor = renderBgColors;
+                    window[instanceRefName].update();
+                } else {
+                    if (window[instanceRefName]) window[instanceRefName].destroy();
+                    const ctx = canvasEl.getContext('2d');
+                    window[instanceRefName] = new Chart(ctx, {
+                        type: viewMode,
+                        data: {
+                            labels: labels,
+                            datasets: [{ label: `${label} Totals`, data: data, backgroundColor: renderBgColors }]
+                        },
+                        options: { animation: false, responsive: true, maintainAspectRatio: false, scales: viewMode === 'bar' ? { y: { beginAtZero: true } } : {} }
+                    });
+                }
             }
         }
-        loadData(); setInterval(loadData, 5000);
+
+        loadData();
+        setInterval(loadData, 5000); // 5 sec refresh
     </script>
+
+    <div style="text-align: center; margin-top: 40px; padding-top: 20px;">
+        <p><strong>View Individual Charts:</strong></p>
+        <a href="charts-all.html" class="secondary" style="margin: 0 10px;">All Charts</a> |
+        <a href="chart-mood.html" class="secondary" style="margin: 0 10px;">Mood</a> |
+        <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
+        <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
+        <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a> |
+        <a href="kiosk.html" class="secondary" style="margin: 0 10px;">Kiosk Mode</a>
+    </div>
+
+
+    <div style="text-align: center; margin-top: 40px; padding-top: 20px;">
+        <p><strong>View Individual Charts:</strong></p>
+        <a href="charts-all.html" class="secondary" style="margin: 0 10px;">All Charts</a> |
+        <a href="chart-mood.html" class="secondary" style="margin: 0 10px;">Mood</a> |
+        <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
+        <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
+        <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a>
+    </div>
+
+
+    <div style="text-align: center; margin-top: 40px; padding-top: 20px;">
+        <p><strong>View Individual Charts:</strong></p>
+        <a href="charts-all.html" class="secondary" style="margin: 0 10px;">All Charts</a> |
+        <a href="chart-mood.html" class="secondary" style="margin: 0 10px;">Mood</a> |
+        <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
+        <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
+        <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a>
+    </div>
+
 </body>
 
 </html>

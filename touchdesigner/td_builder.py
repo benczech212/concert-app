@@ -24,17 +24,11 @@ def build_osc_to_rest_bridge():
     web_client = base.create(webclientDAT, 'webclient1')
     web_client.nodeX = 400
     web_client.nodeY = 0
-    # Use WSL IP instead of localhost so TouchDesigner (Windows) can reach it
-    web_client.par.url = "http://172.29.191.61:8000/api/track"
+    web_client.par.url = "https://concert-app-r52d.onrender.com"
     
-    # Optional: ensure we parse JSON responses if needed
-    # web_client.par.output = 'json'
-
     # 4. Create or grab the Text DAT for the OSC In callbacks
     callback_dat_name = osc_in.par.callbacks.eval()
     
-    # Let's ensure TouchDesigner's auto-generation doesn't accidentally wire it
-    # We don't need a wired connection, just the parameter reference
     osc_callbacks = base.op(callback_dat_name)
     if not osc_callbacks:
         osc_callbacks = base.create(textDAT, callback_dat_name if callback_dat_name else 'oscin1_callbacks')
@@ -47,51 +41,48 @@ def build_osc_to_rest_bridge():
     osc_callbacks.inputConnectors[0].disconnect()
 
     # 6. Write the Python logic inside the callback DAT
-    callback_script = """# OSC In DAT Callback script
+    callback_script = """# OSC In Callback Script
 import json
 
 def onReceiveOSC(dat, rowIndex, message, bytes, timeStamp, source, sendPort, receivePort):
-    # This runs every time an OSC message is received
-    
-    # Retrieve the Web Client DAT
     webclient = op('webclient1')
+    base_url = webclient.par.url.eval()
     
-    # Extract the address and argument from the incoming message
     raw_message = str(dat[rowIndex, 0].val)
-    
-    # Since we removed 'numstrings' format, it defaults to a combined string like:
-    # '/track/update 0' 
     parts = raw_message.split()
-    address = parts[0] if len(parts) > 0 else "Unknown"
-    argument_val = parts[1] if len(parts) > 1 else "Unknown"
+    address = parts[0] if len(parts) > 0 else ""
+    argument_val = parts[1] if len(parts) > 1 else ""
     
-    # -- LOGGING: Print the raw incoming details to the TouchDesigner Textport --
-    print(f"--- OSC Message Received on port {receivePort} ---")
-    print(f"Address: {address}")
-    print(f"Argument 1: {argument_val}")
-    print("---------------------------------")
-    
-    # Formulate the JSON payload for the Node.js API
-    # Assuming 'argument_val' matches the track ID
-    payload = {
-        "trackId": int(argument_val) if argument_val.isdigit() else argument_val,
-        "title": "Track " + argument_val if argument_val != "Unknown" else "Unknown"
-    }
-    
-    # TouchDesigner's built-in way to send body parameters easily is via a dictionary
-    # assigned to the 'data' keyword argument. 
-    # This automatically sets Content-Type to application/x-www-form-urlencoded
-    webclient.request(
-        webclient.par.url.eval(),
-        'POST',
-        data=payload
-    )
+    # Only forward specific addresses
+    if address == "/track/start":
+        print(f"OSC Track Start Received: {argument_val}")
+        payload = {
+            "id": argument_val,
+            "title": "Track " + argument_val
+        }
+        
+        # We need to send as JSON for your express backend config
+        json_payload = json.dumps(payload)
+        
+        webclient.request(
+            base_url + "/api/track",
+            'POST',
+            header1Name="Content-Type",
+            header1Value="application/json",
+            data=json_payload
+        )
+        
+    elif address == "/track/stop":
+        print(f"OSC Track Stop Received")
+        webclient.request(
+            base_url + "/api/track/end",
+            'POST'
+        )
 
     return
 """
     
     osc_callbacks.text = callback_script
-    
     print("Successfully built OSC to REST Bridge inside /project1/osc_to_rest_bridge")
 
 # Execute the builder function

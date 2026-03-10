@@ -253,6 +253,23 @@ const btnApplause = document.getElementById("btnApplause");
 
 const trackBanner = document.getElementById("trackBanner");
 const currentTrackTitle = document.getElementById("currentTrackTitle");
+const trackPopupOverlay = document.createElement("div");
+
+// Setup track popup overlay
+trackPopupOverlay.style.position = "fixed";
+trackPopupOverlay.style.top = "0";
+trackPopupOverlay.style.left = "0";
+trackPopupOverlay.style.width = "100%";
+trackPopupOverlay.style.height = "100%";
+trackPopupOverlay.style.backgroundColor = "rgba(0,0,0,0.85)";
+trackPopupOverlay.style.display = "none";
+trackPopupOverlay.style.alignItems = "center";
+trackPopupOverlay.style.justifyContent = "center";
+trackPopupOverlay.style.flexDirection = "column";
+trackPopupOverlay.style.zIndex = "9999";
+trackPopupOverlay.style.color = "white";
+trackPopupOverlay.innerHTML = `<h2 style="font-size: 2rem; margin-bottom: 10px;">Now Playing</h2><h1 id="popupTrackTitle" style="font-size: 3rem; text-align: center; color: var(--primary);"></h1>`;
+document.body.appendChild(trackPopupOverlay);
 
 const wordCloudModal = document.getElementById("wordCloudModal");
 const btnCloseWordCloud = document.getElementById("btnCloseWordCloud");
@@ -788,32 +805,55 @@ function connectStream() {
   sseSource.onmessage = (e) => {
     try {
       const data = JSON.parse(e.data);
+
+      // Handle legacy 'track' event for backwards compatibility with existing clients/connections
       if (data.type === 'track') {
-        const oldTrackId = currentTrack ? currentTrack.id : null;
-        const oldTrackTitle = currentTrack ? currentTrack.title : null;
         currentTrack = data.track;
         if (currentTrack) {
           trackBanner.style.display = "block";
           currentTrackTitle.textContent = currentTrack.title;
-
-          // If this is a new track that isn't the one we just had, popup the strength modal
-          if (oldTrackId !== currentTrack.id && oldTrackId !== null) {
-            // Note: oldTrackId !== null ensures it doesn't pop up immediately on first load
-            const wordCloudTitle = document.getElementById("wordCloudTitle");
-            if (wordCloudTitle) {
-              wordCloudTitle.textContent = `How did "${oldTrackTitle}" make you feel?`;
-            }
-
-            // Clear out old text/counters before showing
-            if (commentEl) commentEl.value = "";
-            if (charHintEl) charHintEl.textContent = "0 / 140";
-            if (successMsgEl) successMsgEl.textContent = "";
-
-            if (wordCloudModal) wordCloudModal.style.display = "flex";
-          }
         } else {
           trackBanner.style.display = "none";
-          currentTrackTitle.textContent = "Waiting for track...";
+        }
+      }
+
+      if (data.type === 'track_start') {
+        const oldTrackId = currentTrack ? currentTrack.id : null;
+        currentTrack = data.track;
+
+        if (currentTrack) {
+          trackBanner.style.display = "block";
+          currentTrackTitle.textContent = currentTrack.title;
+
+          // If this is actually a new track starting, show the big popup for 5 seconds
+          if (oldTrackId !== currentTrack.id) {
+            document.getElementById("popupTrackTitle").textContent = currentTrack.title;
+            trackPopupOverlay.style.display = "flex";
+            setTimeout(() => {
+              trackPopupOverlay.style.display = "none";
+            }, 5000);
+          }
+        }
+      }
+
+      if (data.type === 'track_end') {
+        const finishedTrack = currentTrack;
+        currentTrack = null;
+        trackBanner.style.display = "none";
+
+        // If a track just finished, pop up the word cloud prompt
+        if (finishedTrack) {
+          const wordCloudTitle = document.getElementById("wordCloudTitle");
+          if (wordCloudTitle) {
+            wordCloudTitle.textContent = `How did "${finishedTrack.title}" make you feel?`;
+          }
+
+          // Clear out old text/counters before showing
+          if (commentEl) commentEl.value = "";
+          if (charHintEl) charHintEl.textContent = "0 / 140";
+          if (successMsgEl) successMsgEl.textContent = "";
+
+          if (wordCloudModal) wordCloudModal.style.display = "flex";
         }
       }
     } catch (err) {

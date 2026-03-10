@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Concert App Kiosk</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            padding: 5px;
+            background: rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            margin: 10px 0 0 0;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            flex-grow: 1;
+            padding: 20px 40px 40px 40px; /* add bottom padding to stop axis clipping */
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 0; /* ensures flexbox lets it shrink */
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .canvas-wrapper.fade-out {
+            opacity: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+        
+        /* Word cloud wrapper */
+        #wordCloud {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        
+        #kioskChart {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Concert Live Data</h1>
+        <h2 id="viewTitle">Loading...</h2>
+    </div>
+    <div class="canvas-wrapper">
+        <canvas id="kioskChart"></canvas>
+        <canvas id="wordCloud"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.2/wordcloud2.min.js"></script>
+
+    <script>
+        const CYCLE_INTERVAL_MS = 10000; // 10 seconds per view
+        const DATA_REFRESH_MS = 5000;    // 5 seconds data fetch
+
+        let rawEventsData = [];
+        let chartInstance = null;
+        let wordCloudInst = null;
+        let lastRenderedCloudIndex = -1; // Throttle cloud redraws
+        
+        let currentViewIndex = 0; // Replaced by wall clock
+        let currentTimelineSeries = null;
+        const views = [
+            { id: 'mood_bar', title: 'Mood Distribution', category: 'mood', type: 'bar' },
+            { id: 'color_bar', title: 'Color Distribution', category: 'color', type: 'bar' },
+            { id: 'reaction_pie', title: 'Reaction Distribution', category: 'reaction', type: 'pie' },
+            { id: 'mood_time', title: 'Mood Timeline', category: 'mood', type: 'timeline' },
+            { id: 'color_time', title: 'Color Timeline', category: 'color', type: 'timeline' },
+            { id: 'reaction_time', title: 'Reaction Timeline', category: 'reaction', type: 'timeline' },
+            { id: 'words', title: 'Word Cloud', category: 'note', type: 'cloud' }
+        ];
+
+        let displayData = {
+            mood: { totals: {}, timeline: {} },
+            color: { totals: {}, timeline: {} },
+            reaction: { totals: {}, timeline: {} },
+            words: {},
+            trackEvents: []
+        };
+
+        const palette = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#8AC926', '#1982C4', '#6A4C93', '#F15BB5'];
+
+        function createAnnotations() {
+            let annotations = {};
+            displayData.trackEvents.forEach((evt, i) => {
+                const labelText = evt.value === 'track_start' ? `Start Track ${evt.id || ''}` : `End Track ${evt.id || ''}`;
+                annotations[`line${i}`] = {
+                    type: 'line',
+                    xMin: evt.time,
+                    xMax: evt.time,
+                    borderColor: evt.value === 'track_start' ? 'rgba(50, 255, 100, 0.8)' : 'rgba(255, 100, 50, 0.8)',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    label: {
+                        content: labelText,
+                        display: true,
+                        position: 'start',
+                        backgroundColor: 'rgba(0,0,0,0.7)',
+                        color: evt.value === 'track_start' ? 'rgba(50, 255, 100, 1)' : 'rgba(255, 100, 50, 1)'
+                    }
+                };
+            });
+            return annotations;
+        }
+
+        async function fetchAndProcessData() {
+            try {
+                const res = await fetch('/api/events');
+                rawEventsData = await res.json();
+
+                // Reset display data
+                displayData = {
+                    mood: { totals: {}, timeline: {} },
+                    color: { totals: {}, timeline: {} },
+                    reaction: { totals: {}, timeline: {} },
+                    words: {},
+                    trackEvents: []
+                };
+
+                rawEventsData.forEach(e => {
+                    if (e.timestamp) {
+                        const d = new Date(e.timestamp);
+                        const t = d.getTime();
+
+                        if (e.category === 'system' && (e.value === 'track_start')) { // only show start for timelines
+                            const dStart = new Date(e.timestamp);
+                            dStart.setSeconds(0);
+                            dStart.setMilliseconds(0);
+                            displayData.trackEvents.push({ time: dStart.getTime(), value: e.value, title: e.trackTitle, id: e.trackId });
+                        }
+
+                        if (['mood', 'color', 'reaction'].includes(e.category)) {
+                            // Timeline bucket
+                            const bd = new Date(e.timestamp);
+                            bd.setSeconds(0);
+                            bd.setMilliseconds(0);
+                            const bucketTime = bd.getTime();
+
+                            const catData = displayData[e.category];
+                            
+                            // Timeline
+                            catData.timeline[bucketTime] = catData.timeline[bucketTime] || {};
+                            catData.timeline[bucketTime][e.value] = (catData.timeline[bucketTime][e.value] || 0) + 1;
+                            
+                            // Totals
+                            catData.totals[e.value] = (catData.totals[e.value] || 0) + 1;
+                        }
+                        
+                        if (e.category === 'note' && e.value) {
+                            const words = e.value.toLowerCase().match(/\w+/g);
+                            if (words) {
+                                words.forEach(w => {
+                                    if (w.length > 3) displayData.words[w] = (displayData.words[w] || 0) + 1;
+                                });
+                            }
+                        }
+                    }
+                });
+
+                renderCurrentView();
+
+            } catch (err) { console.error("Error fetching data:", err); }
+        }
+
+        function renderCurrentView() {
+            const view = views[currentViewIndex];
+            let titleText = view.title;
+            if (view.type === 'timeline' && currentTimelineSeries) {
+                titleText += ` (${currentTimelineSeries})`;
+            }
+            document.getElementById('viewTitle').innerText = titleText;
+            
+            const chartCanvas = document.getElementById('kioskChart');
+            const wordCanvas = document.getElementById('wordCloud');
+            
+            if (view.type === 'cloud') {
+                chartCanvas.style.display = 'none';
+                wordCanvas.style.display = 'block';
+                
+                if (lastRenderedCloudIndex === currentViewIndex) return; // Skip re-rendering if already showing
+                lastRenderedCloudIndex = currentViewIndex;
+
+                const list = Object.entries(displayData.words).map(([w, c]) => [w, c * 6 + 15]);
+                if (list.length) {
+                    WordCloud(wordCanvas, {
+                        list,
+                        weightFactor: 2,
+                        color: 'random-light',
+                        backgroundColor: 'transparent',
+                        shape: 'circle',
+                        fontFamily: 'system-ui, sans-serif',
+                        rotateRatio: 0.5,
+                        rotationSteps: 2
+                    });
+                }
+                return;
+            } else {
+                lastRenderedCloudIndex = -1; // Reset when leaving cloud view
+                chartCanvas.style.display = 'block';
+                wordCanvas.style.display = 'none';
+            }
+
+            const catData = displayData[view.category];
+            const annotations = createAnnotations();
+            
+            let bgColorBar = 'rgba(150, 200, 255, 0.6)';
+            if (view.category === 'color') bgColorBar = 'rgba(255, 150, 200, 0.6)';
+            if (view.category === 'reaction') bgColorBar = ['rgba(200, 200, 200, 0.6)', 'rgba(150, 255, 150, 0.6)', 'rgba(255, 200, 50, 0.6)'];
+
+            updateChart(chartCanvas, view.category, catData.totals, catData.timeline, bgColorBar, annotations, view.type);
+        }
+
+        function updateChart(canvasEl, categoryLabel, totalsMap, timelineMap, bgColorBar, annotations, viewMode) {
+            let labels = Object.keys(totalsMap);
+
+            if (viewMode === 'timeline') {
+                const times = Object.keys(timelineMap).sort((a, b) => parseInt(a) - parseInt(b));
+                const dataData = times.map(t => parseInt(t));
+
+                let labelsToShow = labels;
+                if (currentTimelineSeries && labels.includes(currentTimelineSeries)) {
+                    labelsToShow = [currentTimelineSeries];
+                }
+
+                const datasets = labelsToShow.map((labelValue, i) => {
+                    const pointData = times.map(t => (timelineMap[t] && timelineMap[t][labelValue]) || 0);
+                    
+                    // For finding original palette index
+                    const originalIndex = labels.indexOf(labelValue);
+                    let color = palette[originalIndex % palette.length];
+
+                    if (categoryLabel === 'color') {
+                        const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
+                        color = colorMap[labelValue] || labelValue.toLowerCase();
+                    }
+
+                    return {
+                        label: labelValue,
+                        data: pointData,
+                        borderColor: color,
+                        backgroundColor: color,
+                        tension: 0.1,
+                        fill: false
+                    };
+                });
+
+                if (chartInstance && chartInstance.config.type === 'line') {
+                    chartInstance.data.labels = dataData;
+                    chartInstance.data.datasets = datasets;
+                    chartInstance.options.plugins.annotation.annotations = annotations;
+                    chartInstance.update('none');
+                } else {
+                    if (chartInstance) chartInstance.destroy();
+                    const ctx = canvasEl.getContext('2d');
+                    Chart.defaults.color = '#fff';
+                    chartInstance = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: dataData,
+                            datasets: datasets
+                        },
+                        options: {
+                            responsive: true, maintainAspectRatio: false,
+                            animation: { duration: 500 },
+                            scales: { 
+                                x: { type: 'time', time: { unit: 'minute' }, grid: { color: 'rgba(255,255,255,0.1)' } }, 
+                                y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' } } 
+                            },
+                            plugins: { 
+                                annotation: { annotations: annotations },
+                                legend: { labels: { color: 'white' } }
+                            }
+                        }
+                    });
+                }
+            } else { // bar or pie
+                let data = Object.values(totalsMap);
+                let renderBgColors = bgColorBar;
+                
+                if (categoryLabel === 'color') {
+                    const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
+                    const hueMap = { "Red": 0, "Amber": 45, "Yellow": 60, "Green": 120, "Cyan": 180, "Blue": 240, "Purple": 300 };
+
+                    const sortedIndices = labels.map((l, i) => i).sort((a, b) => (hueMap[labels[a]] || 999) - (hueMap[labels[b]] || 999));
+                    labels = sortedIndices.map(i => labels[i]);
+                    data = sortedIndices.map(i => data[i]);
+                    renderBgColors = labels.map(l => colorMap[l] || l.toLowerCase());
+                }
+
+                if (chartInstance && chartInstance.config.type === viewMode) {
+                    chartInstance.data.labels = labels;
+                    chartInstance.data.datasets[0].data = data;
+                    if (categoryLabel === 'color') chartInstance.data.datasets[0].backgroundColor = renderBgColors;
+                    chartInstance.update('none');
+                } else {
+                    if (chartInstance) chartInstance.destroy();
+                    const ctx = canvasEl.getContext('2d');
+                    Chart.defaults.color = '#fff';
+                    chartInstance = new Chart(ctx, {
+                        type: viewMode,
+                        data: {
+                            labels: labels,
+                            datasets: [{ label: `${categoryLabel} Totals`, data: data, backgroundColor: renderBgColors }]
+                        },
+                        options: { 
+                            animation: { duration: 500 }, 
+                            responsive: true, 
+                            maintainAspectRatio: false, 
+                            layout: { padding: viewMode === 'pie' ? 100 : 0 },
+                            scales: viewMode === 'bar' ? { 
+                                x: { grid: { color: 'rgba(255,255,255,0.1)' } },
+                                y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' } } 
+                            } : {},
+                            plugins: { legend: { labels: { color: 'white' } } } 
+                        }
+                    });
+                }
+            }
+        }
+
+        const KIOSK_OFFSET = 0; // Kiosk 1
+        let lastCycleIndex = -1;
+
+        function updateCycleFromTime() {
+            const cycleIndex = Math.floor(Date.now() / CYCLE_INTERVAL_MS);
+            
+            if (cycleIndex !== lastCycleIndex) {
+                const isFirstRun = (lastCycleIndex === -1);
+                lastCycleIndex = cycleIndex;
+                const targetIndex = (cycleIndex + KIOSK_OFFSET) % views.length;
+
+                const wrapper = document.querySelector('.canvas-wrapper');
+                if (!isFirstRun) wrapper.classList.add('fade-out');
+
+                setTimeout(() => {
+                    currentViewIndex = targetIndex;
+                    const view = views[currentViewIndex];
+                    
+                    if (view.type === 'timeline') {
+                        const totals = displayData[view.category].totals;
+                        const keys = Object.keys(totals);
+                        if (keys.length > 0) {
+                            currentTimelineSeries = keys[cycleIndex % keys.length]; // Deterministic
+                        } else {
+                            currentTimelineSeries = null;
+                        }
+                    } else {
+                        currentTimelineSeries = null;
+                    }
+                    
+                    renderCurrentView();
+                    
+                    if (!isFirstRun) wrapper.classList.remove('fade-out');
+                }, isFirstRun ? 0 : 500);
+            }
+        }
+
+        // Initialize loops
+        fetchAndProcessData().then(() => {
+            updateCycleFromTime();
+            setInterval(updateCycleFromTime, 1000); // Check every second
+            setInterval(fetchAndProcessData, DATA_REFRESH_MS);
+        });
+
+    </script>
+</body>
+
+</html>

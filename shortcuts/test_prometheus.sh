@@ -4,7 +4,7 @@
 echo "Fetching /metrics from Local Node server..."
 echo "----------------------------------------"
 
-curl -s http://localhost:8000/metrics | grep ^concert_
+curl -s ${HOST:-http://localhost:8000}/metrics | grep ^concert_
 
 echo "----------------------------------------"
 echo "Done."

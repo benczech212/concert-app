@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the same directory
 app.use(express.static(__dirname));
@@ -138,6 +139,11 @@ app.post('/api/events', (req, res) => {
   events.push(event);
   console.log("Recorded event:", event);
 
+  // Append to persistent log file
+  fs.appendFile(path.join(__dirname, 'events_log.jsonl'), JSON.stringify(event) + '\n', (err) => {
+    if (err) console.error("Failed to write to events_log.jsonl:", err);
+  });
+
   // Increment Prometheus Counter
   if (event.category === 'combined_reaction') {
     const labels = {
@@ -194,6 +200,13 @@ app.get('/api/users', (req, res) => {
 app.get('/metrics', async (req, res) => {
   res.set('Content-Type', client.register.contentType);
   res.send(await client.register.metrics());
+});
+
+// Reset Prometheus metrics
+app.post('/api/metrics/reset', (req, res) => {
+  client.register.resetMetrics();
+  console.log("Prometheus metrics reset via API");
+  res.json({ success: true, message: "Metrics reset successfully" });
 });
 
 // Fallback to index.html for SPA routing if needed

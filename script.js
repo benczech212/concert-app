@@ -256,6 +256,7 @@ const currentTrackTitle = document.getElementById("currentTrackTitle");
 
 const wordCloudModal = document.getElementById("wordCloudModal");
 const btnCloseWordCloud = document.getElementById("btnCloseWordCloud");
+const btnSkipWordCloud = document.getElementById("btnSkipWordCloud");
 
 const strengthModal = document.getElementById("strengthModal");
 const btnCloseStrength = document.getElementById("btnCloseStrength");
@@ -802,6 +803,12 @@ function connectStream() {
             if (wordCloudTitle) {
               wordCloudTitle.textContent = `How did "${oldTrackTitle}" make you feel?`;
             }
+
+            // Clear out old text/counters before showing
+            if (commentEl) commentEl.value = "";
+            if (charHintEl) charHintEl.textContent = "0 / 140";
+            if (successMsgEl) successMsgEl.textContent = "";
+
             if (wordCloudModal) wordCloudModal.style.display = "flex";
           }
         } else {
@@ -815,9 +822,26 @@ function connectStream() {
   };
 }
 
+if (btnSkipWordCloud) {
+  btnSkipWordCloud.addEventListener("click", () => {
+    wordCloudModal.style.display = "none";
+  });
+}
+
 if (btnCloseWordCloud) {
   btnCloseWordCloud.addEventListener("click", () => {
-    wordCloudModal.style.display = "none";
+    const note = commentEl.value.trim();
+    if (note) {
+      recordEvent("note", note);
+      setMessage(successMsgEl, "Note saved.", false);
+      setTimeout(() => {
+        setMessage(successMsgEl, "", false);
+        wordCloudModal.style.display = "none";
+      }, 1000); // short delay to show 'saved' before closing
+    } else {
+      // If empty, just close it
+      wordCloudModal.style.display = "none";
+    }
   });
 }
 
@@ -1264,19 +1288,6 @@ if (btnCloseStrength) {
     strengthModal.style.display = "none";
   });
 }
-
-// ---------- Note auto-save ----------
-commentEl.addEventListener("change", () => {
-  const note = commentEl.value.trim();
-  if (note) {
-    recordEvent("note", note);
-    setMessage(successMsgEl, "Note saved.", false);
-    setTimeout(() => {
-      setMessage(successMsgEl, "", false);
-      if (wordCloudModal) wordCloudModal.style.display = "none";
-    }, 1500);
-  }
-});
 
 // ---------- Character counter ----------
 commentEl.addEventListener("input", () => {

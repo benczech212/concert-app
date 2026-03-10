@@ -11,51 +11,69 @@
 </head>
 
 <body>
-    <header>
-        <h1>Concert Configuration Admin</h1>
-        <p class="subtitle">Modify moods, settings, and colors.</p>
-    </header>
-
-    <main style="display: flex; flex-direction: column; gap: 20px;">
-        <!-- Layout for tablet/desktop -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
-
-            <!-- Visual Editor -->
-            <section class="card" aria-label="Visual Editor">
-                <h2>Visual Editor</h2>
-                <p class="note">Easily modify basic event info and moods.</p>
-
-                <div id="visualBuilder" style="margin-top: 15px;">
-                    <!-- JS injects form elements here -->
-                </div>
-            </section>
-
-            <!-- Text Editor -->
-            <section class="card" aria-label="Configuration Editor">
-                <h2>YAML Editor</h2>
-                <p class="note">Edit the raw YAML configuration. Advanced users only.</p>
-
-                <label for="configEditor" class="hint" style="display:block;margin-bottom:6px;">Config YAML</label>
-                <textarea id="configEditor"
-                    style="min-height: 480px; font-family: monospace; padding: 10px; width: 100%; box-sizing: border-box;"></textarea>
-            </section>
+    <!-- Password Login -->
+    <div id="loginSection"
+        style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <div class="card" style="text-align: center; max-width: 400px; width: 100%;">
+            <h2>Admin Login</h2>
+            <p class="note" style="margin-bottom: 20px;">Enter the password to access configuration.</p>
+            <input type="password" id="adminPassword" placeholder="Password"
+                style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-soft); background: rgba(255,255,255,0.06); color: var(--text);" />
+            <button id="btnLogin" class="primary" type="button" style="width: 100%;">Unlock</button>
+            <div id="loginError" class="error" style="margin-top: 10px;"></div>
         </div>
+    </div>
 
-        <!-- Controls -->
-        <section class="card" style="text-align: center;">
-            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-                <button id="saveConfigBtn" class="primary" type="button" style="max-width: 250px;">Save
-                    Configuration</button>
-                <button id="resetConfigBtn" class="secondary" type="button" style="max-width: 250px;">Reset to
-                    Default</button>
+    <!-- Main Admin Content -->
+    <div id="adminContent" style="display: none;">
+        <header>
+            <h1>Concert Configuration Admin</h1>
+            <p class="subtitle">Modify moods, settings, and colors.</p>
+        </header>
+
+        <main style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- Layout for tablet/desktop -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+
+                <!-- Visual Editor -->
+                <section class="card" aria-label="Visual Editor">
+                    <h2>Visual Editor</h2>
+                    <p class="note">Easily modify basic event info and moods.</p>
+
+                    <div id="visualBuilder" style="margin-top: 15px;">
+                        <!-- JS injects form elements here -->
+                    </div>
+                </section>
+
+                <!-- Text Editor -->
+                <section class="card" aria-label="Configuration Editor">
+                    <h2>YAML Editor</h2>
+                    <p class="note">Edit the raw YAML configuration. Advanced users only.</p>
+
+                    <label for="configEditor" class="hint" style="display:block;margin-bottom:6px;">Config YAML</label>
+                    <textarea id="configEditor"
+                        style="min-height: 480px; font-family: monospace; padding: 10px; width: 100%; box-sizing: border-box;"></textarea>
+                </section>
             </div>
-            <div id="statusMsg" role="status" aria-live="polite" style="margin-top: 15px;"></div>
-        </section>
 
-        <section class="card" style="text-align: center;">
-            <a href="index.html" style="color: var(--primary); text-decoration: none;">&larr; Back to App</a>
-        </section>
-    </main>
+            <!-- Controls -->
+            <section class="card" style="text-align: center;">
+                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                    <button id="saveConfigBtn" class="primary" type="button" style="max-width: 250px;">Save
+                        Configuration</button>
+                    <button id="resetConfigBtn" class="secondary" type="button" style="max-width: 250px;">Reset to
+                        Default</button>
+                    <button id="resetMetricsBtn" class="secondary" type="button" style="max-width: 250px;">Reset Server
+                        Metrics</button>
+                </div>
+                <div id="statusMsg" role="status" aria-live="polite" style="margin-top: 15px;"></div>
+            </section>
+
+            <section class="card" style="text-align: center;">
+                <a href="index.html" style="color: var(--primary); text-decoration: none;">&larr; Back to App</a>
+            </section>
+        </main>
+    </div>
 
     <script>
         const CONFIG_KEY = "concertCustomConfig";
@@ -64,9 +82,32 @@
         const builder = document.getElementById("visualBuilder");
         const saveBtn = document.getElementById("saveConfigBtn");
         const resetBtn = document.getElementById("resetConfigBtn");
+        const resetMetricsBtn = document.getElementById("resetMetricsBtn");
         const statusMsg = document.getElementById("statusMsg");
 
+        // Auth elements
+        const loginSection = document.getElementById("loginSection");
+        const adminContent = document.getElementById("adminContent");
+        const adminPassword = document.getElementById("adminPassword");
+        const btnLogin = document.getElementById("btnLogin");
+        const loginError = document.getElementById("loginError");
+
         let currentConfigObj = null;
+
+        // ----- Authentication -----
+        btnLogin.addEventListener("click", () => {
+            if (adminPassword.value === "czech") {
+                loginSection.style.display = "none";
+                adminContent.style.display = "block";
+                loadConfig(); // Boot the editor only once authenticated
+            } else {
+                loginError.textContent = "Incorrect password.";
+            }
+        });
+
+        adminPassword.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") btnLogin.click();
+        });
 
         function setMsg(msg, isError) {
             statusMsg.textContent = msg;
@@ -140,6 +181,40 @@
             };
             moodSection.appendChild(btnAddMood);
             builder.appendChild(moodSection);
+            builder.appendChild(document.createElement("hr"));
+
+            // Render Tracks
+            const trackSection = document.createElement("div");
+            trackSection.innerHTML = `<h3>Tracks</h3>`;
+            const trackList = document.createElement("div");
+            trackList.style.display = "flex"; trackList.style.flexDirection = "column"; trackList.style.gap = "8px";
+            trackSection.appendChild(trackList);
+
+            (currentConfigObj.tracks || []).forEach((trackObj, index) => {
+                const row = document.createElement("div");
+                row.style.display = "flex"; row.style.gap = "8px"; row.style.alignItems = "center";
+                row.innerHTML = `
+                <input type="text" class="vb-track-id" value="${trackObj.id || ''}" placeholder="ID" style="width:40px;" />
+                <input type="text" class="vb-track-title" value="${trackObj.title || ''}" placeholder="Title" style="flex:2;" />
+                <input type="text" class="vb-track-artist" value="${trackObj.artist || ''}" placeholder="Artist" style="flex:1;" />
+                <input type="text" class="vb-track-color" value="${trackObj.color || ''}" placeholder="#Color" style="flex:1;" />
+                <button type="button" class="secondary btn-del-track" data-index="${index}" style="padding:6px 12px;">X</button>
+              `;
+                trackList.appendChild(row);
+            });
+            const btnAddTrack = document.createElement("button");
+            btnAddTrack.textContent = "+ Add Track";
+            btnAddTrack.className = "secondary";
+            btnAddTrack.style.marginTop = "8px";
+            btnAddTrack.style.padding = "6px 12px";
+            btnAddTrack.style.fontSize = "0.85rem";
+            btnAddTrack.onclick = () => {
+                currentConfigObj.tracks = currentConfigObj.tracks || [];
+                currentConfigObj.tracks.push({ id: currentConfigObj.tracks.length + 1, title: "", artist: "", color: "" });
+                updateTextEditorFromObj();
+            };
+            trackSection.appendChild(btnAddTrack);
+            builder.appendChild(trackSection);
 
             // Add common styling to inputs in visual builder
             builder.querySelectorAll('input, textarea').forEach(i => {
@@ -150,10 +225,18 @@
                 i.style.borderRadius = "6px";
             });
 
-            // Bind deletes
+            // Bind deletes for moods
             builder.querySelectorAll('.btn-del-mood').forEach(btn => {
                 btn.onclick = (e) => {
                     currentConfigObj.moods.splice(e.target.dataset.index, 1);
+                    updateTextEditorFromObj();
+                };
+            });
+
+            // Bind deletes for tracks
+            builder.querySelectorAll('.btn-del-track').forEach(btn => {
+                btn.onclick = (e) => {
+                    currentConfigObj.tracks.splice(e.target.dataset.index, 1);
                     updateTextEditorFromObj();
                 };
             });
@@ -178,12 +261,26 @@
                     footerText: document.getElementById('vb-foot-text')?.value || ''
                 },
                 moods: [],
-                colors: currentConfigObj.colors
+                colors: currentConfigObj.colors,
+                tracks: []
             };
 
             builder.querySelectorAll('.vb-mood-name').forEach((inp, idx) => {
                 const glowInp = builder.querySelectorAll('.vb-mood-glow')[idx];
                 newObj.moods.push({ name: inp.value, glow: glowInp.value });
+            });
+
+            builder.querySelectorAll('.vb-track-id').forEach((inp, idx) => {
+                const titleInp = builder.querySelectorAll('.vb-track-title')[idx];
+                const artistInp = builder.querySelectorAll('.vb-track-artist')[idx];
+                const colorInp = builder.querySelectorAll('.vb-track-color')[idx];
+                // Ensure ID parses as integer if possible, config might expect numbers
+                newObj.tracks.push({
+                    id: isNaN(parseInt(inp.value)) ? inp.value : parseInt(inp.value),
+                    title: titleInp.value,
+                    artist: artistInp.value,
+                    color: colorInp.value
+                });
             });
 
             currentConfigObj = newObj;
@@ -261,7 +358,24 @@
             await loadConfig();
         });
 
-        loadConfig();
+        if (resetMetricsBtn) {
+            resetMetricsBtn.addEventListener("click", async () => {
+                try {
+                    const res = await fetch('/api/metrics/reset', { method: 'POST' });
+                    if (res.ok) {
+                        setMsg("Prometheus metrics successfully reset to zero.", false);
+                    } else {
+                        setMsg("Failed to reset server metrics.", true);
+                    }
+                } catch (e) {
+                    console.error("Error resetting metrics:", e);
+                    setMsg("Error reaching server to reset metrics.", true);
+                }
+            });
+        }
+
+        // We no longer call loadConfig() here independently, because we only want to fetch/parse the config
+        // *after* the user successfully provides the 'czech' password in the auth listener above.
     </script>
 </body>
 

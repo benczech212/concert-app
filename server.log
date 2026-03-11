@@ -10513,3 +10513,2940 @@ Recorded event: {
   id: 'evt_1773179584607',
   timestamp: '2026-03-10T21:53:04.607Z'
 }
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179585622',
+  timestamp: '2026-03-10T21:53:05.622Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179585633',
+  timestamp: '2026-03-10T21:53:05.633Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179585645',
+  timestamp: '2026-03-10T21:53:05.645Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179586658',
+  timestamp: '2026-03-10T21:53:06.658Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179586675',
+  timestamp: '2026-03-10T21:53:06.675Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179587689',
+  timestamp: '2026-03-10T21:53:07.689Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179587699',
+  timestamp: '2026-03-10T21:53:07.699Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179588710',
+  timestamp: '2026-03-10T21:53:08.710Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179588720',
+  timestamp: '2026-03-10T21:53:08.720Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179589730',
+  timestamp: '2026-03-10T21:53:09.730Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179589740',
+  timestamp: '2026-03-10T21:53:09.740Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179590750',
+  timestamp: '2026-03-10T21:53:10.750Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179591761',
+  timestamp: '2026-03-10T21:53:11.761Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179592772',
+  timestamp: '2026-03-10T21:53:12.772Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179592781',
+  timestamp: '2026-03-10T21:53:12.781Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179593795',
+  timestamp: '2026-03-10T21:53:13.795Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179593803',
+  timestamp: '2026-03-10T21:53:13.803Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179595814',
+  timestamp: '2026-03-10T21:53:15.814Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179595823',
+  timestamp: '2026-03-10T21:53:15.823Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179596832',
+  timestamp: '2026-03-10T21:53:16.832Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179597845',
+  timestamp: '2026-03-10T21:53:17.845Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179597855',
+  timestamp: '2026-03-10T21:53:17.855Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179598864',
+  timestamp: '2026-03-10T21:53:18.864Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179598876',
+  timestamp: '2026-03-10T21:53:18.876Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179599886',
+  timestamp: '2026-03-10T21:53:19.886Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179599893',
+  timestamp: '2026-03-10T21:53:19.893Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179600906',
+  timestamp: '2026-03-10T21:53:20.906Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179601917',
+  timestamp: '2026-03-10T21:53:21.917Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179603930',
+  timestamp: '2026-03-10T21:53:23.930Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179604942',
+  timestamp: '2026-03-10T21:53:24.942Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179604953',
+  timestamp: '2026-03-10T21:53:24.953Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179604965',
+  timestamp: '2026-03-10T21:53:24.965Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179605978',
+  timestamp: '2026-03-10T21:53:25.978Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179605993',
+  timestamp: '2026-03-10T21:53:25.993Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179607005',
+  timestamp: '2026-03-10T21:53:27.005Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179607016',
+  timestamp: '2026-03-10T21:53:27.016Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179608030',
+  timestamp: '2026-03-10T21:53:28.030Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179608043',
+  timestamp: '2026-03-10T21:53:28.043Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179609061',
+  timestamp: '2026-03-10T21:53:29.061Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179609086',
+  timestamp: '2026-03-10T21:53:29.086Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179610099',
+  timestamp: '2026-03-10T21:53:30.099Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179610110',
+  timestamp: '2026-03-10T21:53:30.110Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179611123',
+  timestamp: '2026-03-10T21:53:31.123Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179613139',
+  timestamp: '2026-03-10T21:53:33.139Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179613150',
+  timestamp: '2026-03-10T21:53:33.150Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179614163',
+  timestamp: '2026-03-10T21:53:34.163Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179615175',
+  timestamp: '2026-03-10T21:53:35.175Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179615186',
+  timestamp: '2026-03-10T21:53:35.186Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179616199',
+  timestamp: '2026-03-10T21:53:36.199Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179617213',
+  timestamp: '2026-03-10T21:53:37.213Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179617223',
+  timestamp: '2026-03-10T21:53:37.223Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179617235',
+  timestamp: '2026-03-10T21:53:37.235Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179618248',
+  timestamp: '2026-03-10T21:53:38.248Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179618259',
+  timestamp: '2026-03-10T21:53:38.259Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179618271',
+  timestamp: '2026-03-10T21:53:38.271Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179619286',
+  timestamp: '2026-03-10T21:53:39.286Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179623307',
+  timestamp: '2026-03-10T21:53:43.307Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179624321',
+  timestamp: '2026-03-10T21:53:44.321Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179626344',
+  timestamp: '2026-03-10T21:53:46.344Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179626360',
+  timestamp: '2026-03-10T21:53:46.360Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179627373',
+  timestamp: '2026-03-10T21:53:47.373Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179628388',
+  timestamp: '2026-03-10T21:53:48.388Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179629412',
+  timestamp: '2026-03-10T21:53:49.412Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179629432',
+  timestamp: '2026-03-10T21:53:49.432Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179630446',
+  timestamp: '2026-03-10T21:53:50.446Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179630460',
+  timestamp: '2026-03-10T21:53:50.460Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179630472',
+  timestamp: '2026-03-10T21:53:50.472Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179631486',
+  timestamp: '2026-03-10T21:53:51.486Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179632501',
+  timestamp: '2026-03-10T21:53:52.501Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179633515',
+  timestamp: '2026-03-10T21:53:53.515Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179633531',
+  timestamp: '2026-03-10T21:53:53.531Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179634545',
+  timestamp: '2026-03-10T21:53:54.545Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179635559',
+  timestamp: '2026-03-10T21:53:55.559Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179636575',
+  timestamp: '2026-03-10T21:53:56.575Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179637591',
+  timestamp: '2026-03-10T21:53:57.591Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179637601',
+  timestamp: '2026-03-10T21:53:57.601Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179637615',
+  timestamp: '2026-03-10T21:53:57.615Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179638629',
+  timestamp: '2026-03-10T21:53:58.629Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179638641',
+  timestamp: '2026-03-10T21:53:58.641Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179638655',
+  timestamp: '2026-03-10T21:53:58.655Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179640670',
+  timestamp: '2026-03-10T21:54:00.670Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179641684',
+  timestamp: '2026-03-10T21:54:01.684Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179641700',
+  timestamp: '2026-03-10T21:54:01.700Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179641712',
+  timestamp: '2026-03-10T21:54:01.712Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179642725',
+  timestamp: '2026-03-10T21:54:02.725Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179643745',
+  timestamp: '2026-03-10T21:54:03.745Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179643763',
+  timestamp: '2026-03-10T21:54:03.763Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179644777',
+  timestamp: '2026-03-10T21:54:04.777Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179645792',
+  timestamp: '2026-03-10T21:54:05.792Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179646803',
+  timestamp: '2026-03-10T21:54:06.803Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179646813',
+  timestamp: '2026-03-10T21:54:06.813Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179648827',
+  timestamp: '2026-03-10T21:54:08.827Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179648837',
+  timestamp: '2026-03-10T21:54:08.838Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179649848',
+  timestamp: '2026-03-10T21:54:09.848Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179649857',
+  timestamp: '2026-03-10T21:54:09.857Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179650870',
+  timestamp: '2026-03-10T21:54:10.870Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179650881',
+  timestamp: '2026-03-10T21:54:10.881Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179651893',
+  timestamp: '2026-03-10T21:54:11.893Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179651902',
+  timestamp: '2026-03-10T21:54:11.902Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179652914',
+  timestamp: '2026-03-10T21:54:12.914Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179653926',
+  timestamp: '2026-03-10T21:54:13.926Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179654938',
+  timestamp: '2026-03-10T21:54:14.938Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179654947',
+  timestamp: '2026-03-10T21:54:14.947Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179655962',
+  timestamp: '2026-03-10T21:54:15.962Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179655973',
+  timestamp: '2026-03-10T21:54:15.973Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179656985',
+  timestamp: '2026-03-10T21:54:16.985Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179658999',
+  timestamp: '2026-03-10T21:54:18.999Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179660011',
+  timestamp: '2026-03-10T21:54:20.011Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179660024',
+  timestamp: '2026-03-10T21:54:20.024Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179660035',
+  timestamp: '2026-03-10T21:54:20.035Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179661048',
+  timestamp: '2026-03-10T21:54:21.048Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179662059',
+  timestamp: '2026-03-10T21:54:22.059Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179663070',
+  timestamp: '2026-03-10T21:54:23.070Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179664083',
+  timestamp: '2026-03-10T21:54:24.083Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179664092',
+  timestamp: '2026-03-10T21:54:24.092Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179665105',
+  timestamp: '2026-03-10T21:54:25.105Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179666120',
+  timestamp: '2026-03-10T21:54:26.120Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179666134',
+  timestamp: '2026-03-10T21:54:26.134Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179667152',
+  timestamp: '2026-03-10T21:54:27.152Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179667164',
+  timestamp: '2026-03-10T21:54:27.164Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179667177',
+  timestamp: '2026-03-10T21:54:27.177Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179669196',
+  timestamp: '2026-03-10T21:54:29.196Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179670212',
+  timestamp: '2026-03-10T21:54:30.212Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179671225',
+  timestamp: '2026-03-10T21:54:31.225Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179671244',
+  timestamp: '2026-03-10T21:54:31.244Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179672258',
+  timestamp: '2026-03-10T21:54:32.258Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179672270',
+  timestamp: '2026-03-10T21:54:32.270Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179673287',
+  timestamp: '2026-03-10T21:54:33.287Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179674301',
+  timestamp: '2026-03-10T21:54:34.301Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179674317',
+  timestamp: '2026-03-10T21:54:34.317Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179675331',
+  timestamp: '2026-03-10T21:54:35.331Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179675356',
+  timestamp: '2026-03-10T21:54:35.356Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179676370',
+  timestamp: '2026-03-10T21:54:36.370Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179679389',
+  timestamp: '2026-03-10T21:54:39.389Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179681409',
+  timestamp: '2026-03-10T21:54:41.409Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179682425',
+  timestamp: '2026-03-10T21:54:42.425Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179684442',
+  timestamp: '2026-03-10T21:54:44.442Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179684455',
+  timestamp: '2026-03-10T21:54:44.455Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179684471',
+  timestamp: '2026-03-10T21:54:44.471Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179685485',
+  timestamp: '2026-03-10T21:54:45.485Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179685497',
+  timestamp: '2026-03-10T21:54:45.497Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179686511',
+  timestamp: '2026-03-10T21:54:46.511Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179686523',
+  timestamp: '2026-03-10T21:54:46.523Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179688539',
+  timestamp: '2026-03-10T21:54:48.539Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179688551',
+  timestamp: '2026-03-10T21:54:48.551Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179689566',
+  timestamp: '2026-03-10T21:54:49.566Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179690579',
+  timestamp: '2026-03-10T21:54:50.579Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179690591',
+  timestamp: '2026-03-10T21:54:50.591Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179691608',
+  timestamp: '2026-03-10T21:54:51.608Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179691628',
+  timestamp: '2026-03-10T21:54:51.628Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179694645',
+  timestamp: '2026-03-10T21:54:54.645Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179695659',
+  timestamp: '2026-03-10T21:54:55.659Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179695678',
+  timestamp: '2026-03-10T21:54:55.678Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179697693',
+  timestamp: '2026-03-10T21:54:57.693Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179698705',
+  timestamp: '2026-03-10T21:54:58.705Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179698716',
+  timestamp: '2026-03-10T21:54:58.716Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179700731',
+  timestamp: '2026-03-10T21:55:00.731Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179701745',
+  timestamp: '2026-03-10T21:55:01.745Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179703761',
+  timestamp: '2026-03-10T21:55:03.761Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179703773',
+  timestamp: '2026-03-10T21:55:03.773Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179704787',
+  timestamp: '2026-03-10T21:55:04.787Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179707802',
+  timestamp: '2026-03-10T21:55:07.802Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179707811',
+  timestamp: '2026-03-10T21:55:07.811Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179708822',
+  timestamp: '2026-03-10T21:55:08.822Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179709834',
+  timestamp: '2026-03-10T21:55:09.834Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179709845',
+  timestamp: '2026-03-10T21:55:09.845Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179710857',
+  timestamp: '2026-03-10T21:55:10.857Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179710869',
+  timestamp: '2026-03-10T21:55:10.869Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179710886',
+  timestamp: '2026-03-10T21:55:10.886Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179711897',
+  timestamp: '2026-03-10T21:55:11.897Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179711906',
+  timestamp: '2026-03-10T21:55:11.906Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179712916',
+  timestamp: '2026-03-10T21:55:12.916Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179713927',
+  timestamp: '2026-03-10T21:55:13.927Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179713935',
+  timestamp: '2026-03-10T21:55:13.935Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179714947',
+  timestamp: '2026-03-10T21:55:14.947Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179714958',
+  timestamp: '2026-03-10T21:55:14.958Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179715968',
+  timestamp: '2026-03-10T21:55:15.968Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179716977',
+  timestamp: '2026-03-10T21:55:16.977Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179716986',
+  timestamp: '2026-03-10T21:55:16.986Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179716994',
+  timestamp: '2026-03-10T21:55:16.994Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179719005',
+  timestamp: '2026-03-10T21:55:19.005Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179719015',
+  timestamp: '2026-03-10T21:55:19.015Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179720027',
+  timestamp: '2026-03-10T21:55:20.027Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179721040',
+  timestamp: '2026-03-10T21:55:21.040Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179721049',
+  timestamp: '2026-03-10T21:55:21.049Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179722060',
+  timestamp: '2026-03-10T21:55:22.060Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179722069',
+  timestamp: '2026-03-10T21:55:22.069Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179725083',
+  timestamp: '2026-03-10T21:55:25.083Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179726097',
+  timestamp: '2026-03-10T21:55:26.097Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179727109',
+  timestamp: '2026-03-10T21:55:27.109Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179728121',
+  timestamp: '2026-03-10T21:55:28.121Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179728132',
+  timestamp: '2026-03-10T21:55:28.132Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179728143',
+  timestamp: '2026-03-10T21:55:28.143Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179729156',
+  timestamp: '2026-03-10T21:55:29.156Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179729167',
+  timestamp: '2026-03-10T21:55:29.167Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179729178',
+  timestamp: '2026-03-10T21:55:29.178Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179732195',
+  timestamp: '2026-03-10T21:55:32.195Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179732203',
+  timestamp: '2026-03-10T21:55:32.203Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179733214',
+  timestamp: '2026-03-10T21:55:33.214Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179734227',
+  timestamp: '2026-03-10T21:55:34.227Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179736243',
+  timestamp: '2026-03-10T21:55:36.243Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179737255',
+  timestamp: '2026-03-10T21:55:37.255Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179737267',
+  timestamp: '2026-03-10T21:55:37.267Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179737278',
+  timestamp: '2026-03-10T21:55:37.278Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179738291',
+  timestamp: '2026-03-10T21:55:38.291Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179738303',
+  timestamp: '2026-03-10T21:55:38.303Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179738319',
+  timestamp: '2026-03-10T21:55:38.319Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179739331',
+  timestamp: '2026-03-10T21:55:39.331Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179739341',
+  timestamp: '2026-03-10T21:55:39.341Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179740354',
+  timestamp: '2026-03-10T21:55:40.354Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179740364',
+  timestamp: '2026-03-10T21:55:40.365Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179741379',
+  timestamp: '2026-03-10T21:55:41.379Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179741390',
+  timestamp: '2026-03-10T21:55:41.390Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179741402',
+  timestamp: '2026-03-10T21:55:41.402Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179742414',
+  timestamp: '2026-03-10T21:55:42.414Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179742424',
+  timestamp: '2026-03-10T21:55:42.424Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179742433',
+  timestamp: '2026-03-10T21:55:42.433Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179743447',
+  timestamp: '2026-03-10T21:55:43.447Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179743460',
+  timestamp: '2026-03-10T21:55:43.460Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179744475',
+  timestamp: '2026-03-10T21:55:44.475Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179746490',
+  timestamp: '2026-03-10T21:55:46.490Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179746501',
+  timestamp: '2026-03-10T21:55:46.501Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179747514',
+  timestamp: '2026-03-10T21:55:47.514Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179748528',
+  timestamp: '2026-03-10T21:55:48.529Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179749543',
+  timestamp: '2026-03-10T21:55:49.543Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179750557',
+  timestamp: '2026-03-10T21:55:50.557Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179750567',
+  timestamp: '2026-03-10T21:55:50.567Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179751582',
+  timestamp: '2026-03-10T21:55:51.582Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179751596',
+  timestamp: '2026-03-10T21:55:51.596Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179753613',
+  timestamp: '2026-03-10T21:55:53.613Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179753628',
+  timestamp: '2026-03-10T21:55:53.628Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179754644',
+  timestamp: '2026-03-10T21:55:54.644Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179754659',
+  timestamp: '2026-03-10T21:55:54.659Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179755673',
+  timestamp: '2026-03-10T21:55:55.673Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179755685',
+  timestamp: '2026-03-10T21:55:55.685Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179756698',
+  timestamp: '2026-03-10T21:55:56.698Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179757715',
+  timestamp: '2026-03-10T21:55:57.715Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179757729',
+  timestamp: '2026-03-10T21:55:57.729Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179757741',
+  timestamp: '2026-03-10T21:55:57.741Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179758756',
+  timestamp: '2026-03-10T21:55:58.756Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179758771',
+  timestamp: '2026-03-10T21:55:58.771Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179759786',
+  timestamp: '2026-03-10T21:55:59.786Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179759798',
+  timestamp: '2026-03-10T21:55:59.798Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179760813',
+  timestamp: '2026-03-10T21:56:00.813Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179762829',
+  timestamp: '2026-03-10T21:56:02.829Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179763845',
+  timestamp: '2026-03-10T21:56:03.845Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179763864',
+  timestamp: '2026-03-10T21:56:03.864Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179764878',
+  timestamp: '2026-03-10T21:56:04.878Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179764896',
+  timestamp: '2026-03-10T21:56:04.896Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179765911',
+  timestamp: '2026-03-10T21:56:05.911Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Cyan',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179765927',
+  timestamp: '2026-03-10T21:56:05.927Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179765940',
+  timestamp: '2026-03-10T21:56:05.940Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179767955',
+  timestamp: '2026-03-10T21:56:07.955Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179768966',
+  timestamp: '2026-03-10T21:56:08.966Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179768975',
+  timestamp: '2026-03-10T21:56:08.975Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179768987',
+  timestamp: '2026-03-10T21:56:08.987Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179770001',
+  timestamp: '2026-03-10T21:56:10.001Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179770011',
+  timestamp: '2026-03-10T21:56:10.011Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179771026',
+  timestamp: '2026-03-10T21:56:11.026Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179772039',
+  timestamp: '2026-03-10T21:56:12.039Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179773050',
+  timestamp: '2026-03-10T21:56:13.050Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179773061',
+  timestamp: '2026-03-10T21:56:13.061Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179775074',
+  timestamp: '2026-03-10T21:56:15.074Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179775082',
+  timestamp: '2026-03-10T21:56:15.082Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179776093',
+  timestamp: '2026-03-10T21:56:16.093Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179776101',
+  timestamp: '2026-03-10T21:56:16.101Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179778114',
+  timestamp: '2026-03-10T21:56:18.114Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179779128',
+  timestamp: '2026-03-10T21:56:19.128Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179779140',
+  timestamp: '2026-03-10T21:56:19.140Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179779149',
+  timestamp: '2026-03-10T21:56:19.149Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179780167',
+  timestamp: '2026-03-10T21:56:20.167Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179780179',
+  timestamp: '2026-03-10T21:56:20.179Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179782195',
+  timestamp: '2026-03-10T21:56:22.195Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179782207',
+  timestamp: '2026-03-10T21:56:22.207Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179783218',
+  timestamp: '2026-03-10T21:56:23.218Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179784230',
+  timestamp: '2026-03-10T21:56:24.230Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179785245',
+  timestamp: '2026-03-10T21:56:25.245Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179786265',
+  timestamp: '2026-03-10T21:56:26.265Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Blue',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179786276',
+  timestamp: '2026-03-10T21:56:26.276Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179786292',
+  timestamp: '2026-03-10T21:56:26.292Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179787308',
+  timestamp: '2026-03-10T21:56:27.308Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179787321',
+  timestamp: '2026-03-10T21:56:27.321Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179788340',
+  timestamp: '2026-03-10T21:56:28.340Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179789356',
+  timestamp: '2026-03-10T21:56:29.356Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179791373',
+  timestamp: '2026-03-10T21:56:31.373Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179792386',
+  timestamp: '2026-03-10T21:56:32.386Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Purple',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179793399',
+  timestamp: '2026-03-10T21:56:33.399Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179793411',
+  timestamp: '2026-03-10T21:56:33.411Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179794423',
+  timestamp: '2026-03-10T21:56:34.423Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179795437',
+  timestamp: '2026-03-10T21:56:35.437Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Amber',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179795452',
+  timestamp: '2026-03-10T21:56:35.452Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'color',
+  value: 'Red',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179796464',
+  timestamp: '2026-03-10T21:56:36.464Z'
+}
+Recorded event: {
+  userId: 'sim3',
+  userName: 'Sim',
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk-3',
+  trackTitle: 'The Chaotic Finale',
+  id: 'evt_1773179796473',
+  timestamp: '2026-03-10T21:56:36.473Z'
+}
+Registered user: {
+  email: 'benczech212@gmail.com',
+  name: 'Ben',
+  mockIp: '223.71.33.147',
+  emailConsent: true,
+  lastSeen: '2026-03-11T18:02:41.082Z'
+}

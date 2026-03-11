@@ -214,6 +214,12 @@ const mainReactionButtonGroup = document.getElementById("mainReactionButtonGroup
 const reactionSuccessOverlay = document.getElementById("reactionSuccessOverlay");
 const btnMeh = document.getElementById("btnMeh");
 
+const continuousCommentEl = document.getElementById("continuousComment");
+const continuousCharHintEl = document.getElementById("continuousCharHint");
+const btnSubmitContinuousNote = document.getElementById("btnSubmitContinuousNote");
+const noteSuccessOverlay = document.getElementById("noteSuccessOverlay");
+const noteCardBody = document.getElementById("noteCardBody");
+
 document.querySelectorAll(".grayscale-swatch").forEach(swatch => {
   swatch.addEventListener("click", () => {
     const isActive = swatch.classList.contains("active");
@@ -773,7 +779,6 @@ btnJoin.addEventListener("click", async () => {
 
 function startSession() {
   identityModal.style.display = "none";
-  appShell.style.display = "block";
   if (welcomeName) welcomeName.textContent = currentUser.name;
 
   // Generate a distinct session ID for this browser tab instance
@@ -786,6 +791,67 @@ function startSession() {
 
   // Connect to SSE stream
   connectStream();
+
+  // Fetch initial show state to display the correct top-level container
+  fetch('/api/state')
+    .then(r => r.json())
+    .then(data => {
+      applyShowState(data.showState);
+    })
+    .catch(() => {
+      applyShowState('ACTIVE'); // fallback
+    });
+}
+
+function applyShowState(state) {
+  const preShow = document.getElementById("preShowLobby");
+  const appShell = document.getElementById("appShell");
+  const postShow = document.getElementById("postShowRecap");
+  
+  if (preShow) preShow.style.display = "none";
+  if (appShell) appShell.style.display = "none";
+  if (postShow) postShow.style.display = "none";
+
+  if (state === "PRE_SHOW") {
+    if (preShow) preShow.style.display = "flex";
+  } else if (state === "ACTIVE") {
+    if (appShell) appShell.style.display = "block";
+  } else if (state === "POST_SHOW") {
+    if (postShow) postShow.style.display = "flex";
+    generateRecap();
+  }
+}
+
+async function generateRecap() {
+  const recapEl = document.getElementById("recapContent");
+  if (!recapEl || !currentUser) return;
+  
+  try {
+    const res = await fetch('/api/events');
+    const allEvents = await res.json();
+    const myEvents = allEvents.filter(e => e.userId === currentUser.email);
+    
+    // Ignore system events
+    const myUserEvents = myEvents.filter(e => e.category !== 'system');
+    const allUserEvents = allEvents.filter(e => e.category !== 'system');
+
+    const colors = myUserEvents.filter(e => e.category === 'color').length;
+    const moods = myUserEvents.filter(e => e.category === 'mood').length;
+    const notes = myUserEvents.filter(e => e.category === 'note').length;
+    const total = myUserEvents.length;
+    
+    recapEl.innerHTML = `
+      <p>You contributed <strong style="color: var(--primary); font-size: 1.3em;">${total}</strong> interactions tonight.</p>
+      <ul style="list-style: none; padding: 0; margin-top: 20px; color: var(--text-muted); text-align: left; display: inline-block;">
+        <li style="margin-bottom: 8px;">🎨 Colors picked: <strong style="color: #fff;">${colors}</strong></li>
+        <li style="margin-bottom: 8px;">🎭 Moods felt: <strong style="color: #fff;">${moods}</strong></li>
+        <li style="margin-bottom: 8px;">📝 Notes sent: <strong style="color: #fff;">${notes}</strong></li>
+      </ul>
+      <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">Compared to the <strong style="color: #fff;">${allUserEvents.length}</strong> total interactions from the entire audience.</p>
+    `;
+  } catch (err) {
+    recapEl.innerHTML = "Unable to fetch recap data.";
+  }
 }
 
 if (btnSwitchUser) {
@@ -805,6 +871,10 @@ function connectStream() {
   sseSource.onmessage = (e) => {
     try {
       const data = JSON.parse(e.data);
+
+      if (data.type === 'state_change') {
+        applyShowState(data.showState);
+      }
 
       // Handle legacy 'track' event for backwards compatibility with existing clients/connections
       if (data.type === 'track') {
@@ -1334,6 +1404,36 @@ commentEl.addEventListener("input", () => {
   const len = commentEl.value.length;
   charHintEl.textContent = `${len} / 140`;
 });
+
+if (continuousCommentEl && continuousCharHintEl) {
+  continuousCommentEl.addEventListener("input", () => {
+    const len = continuousCommentEl.value.length;
+    continuousCharHintEl.textContent = `${len} / 140`;
+  });
+}
+
+if (btnSubmitContinuousNote && continuousCommentEl) {
+  btnSubmitContinuousNote.addEventListener("click", () => {
+    const note = continuousCommentEl.value.trim();
+    if (note) {
+      recordEvent("note", note);
+      
+      if (noteCardBody) noteCardBody.style.opacity = "0";
+      if (noteSuccessOverlay) {
+        noteSuccessOverlay.classList.add("show");
+        setTimeout(() => {
+          noteSuccessOverlay.classList.remove("show");
+          if (noteCardBody) noteCardBody.style.opacity = "1";
+          continuousCommentEl.value = "";
+          if (continuousCharHintEl) continuousCharHintEl.textContent = "0 / 140";
+        }, 1500);
+      } else {
+        continuousCommentEl.value = "";
+        continuousCharHintEl.textContent = "0 / 140";
+      }
+    }
+  });
+}
 
 // ---------- Removed local data features and charts ----------
 

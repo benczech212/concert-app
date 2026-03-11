@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Concert Companion Admin Controls</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+
+<body>
+    <div id="loginSection"
+        style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <div class="card" style="text-align: center; max-width: 400px; width: 100%;">
+            <h2>Controls Login</h2>
+            <p class="note" style="margin-bottom: 20px;">Enter the password to access controls.</p>
+            <input type="password" id="adminPassword" placeholder="Password"
+                style="margin-bottom: 15px; width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-soft); background: rgba(255,255,255,0.06); color: var(--text);" />
+            <button id="btnLogin" class="primary" type="button" style="width: 100%;">Unlock</button>
+            <div id="loginError" class="error" style="margin-top: 10px;"></div>
+        </div>
+    </div>
+
+    <div id="adminContent" style="display: none;">
+        <header>
+            <h1>Show Controls</h1>
+            <p class="subtitle">Manage show state, track playback, and data exports.</p>
+            <div style="margin-top: 10px;">
+                <a href="admin-settings.html" class="secondary" style="text-decoration: none; padding: 6px 12px;">Go to Settings</a>
+            </div>
+        </header>
+
+        <main style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- Audience Metrics -->
+            <section class="card" aria-label="Audience Metrics">
+                <h2>Audience Overview</h2>
+                <div style="display:flex; justify-content:space-around; align-items:center; margin-top:15px; text-align:center;">
+                    <div>
+                        <div id="connectedUsers" style="font-size: 3rem; font-weight:800; color:var(--primary);">0</div>
+                        <div class="note">Connected Devices</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Show States -->
+            <section class="card" aria-label="Show States">
+                <h2>Show State</h2>
+                <p class="note">Switching states applies globally across all connected web clients.</p>
+                <div style="display:flex;gap:10px;justify-content:center;margin-top:15px;">
+                    <button id="btnStatePre" class="primary" type="button" style="flex:1;">Lobby / Pre-show</button>
+                    <button id="btnStateActive" class="secondary" type="button" style="flex:1;">Active Show</button>
+                    <button id="btnStatePost" class="secondary" type="button" style="flex:1;">Ended / Recap</button>
+                </div>
+                <div style="text-align:center; margin-top:15px;">
+                    <p>Current State: <strong id="currentStateLabel">PRE_SHOW</strong></p>
+                </div>
+            </section>
+
+            <!-- Controls -->
+            <section class="card" aria-label="Playback Controls">
+                <h2>Live Playback Control</h2>
+                <p class="note">Manually push track start and end events (Fallback for OSC).</p>
+                <div style="display:flex;gap:10px;justify-content:center;margin-top:15px;align-items:center;">
+                    <select id="trackSelect" style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-soft); background: rgba(255,255,255,0.06); color: var(--text); flex: 1; max-width: 300px;">
+                        <option value="">Select a Track...</option>
+                    </select>
+                    <button id="startTrackBtn" class="primary" type="button">Start Track</button>
+                    <button id="endTrackBtn" class="secondary" type="button">End Track</button>
+                </div>
+            </section>
+
+            <section class="card" style="text-align: center;">
+                <h2>Data Exports & Resets</h2>
+                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
+                    <a href="/api/users/export" download="participants.csv" class="primary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px;">Download CSV</a>
+                    <button id="resetMetricsBtn" class="error" type="button" style="max-width: 250px;">Clear All Data & Metrics</button>
+                </div>
+                <div id="statusMsg" role="status" aria-live="polite" style="margin-top: 15px;"></div>
+            </section>
+
+            <section class="card" style="text-align: center;">
+                <a href="index.html" style="color: var(--primary); text-decoration: none;">&larr; Back to App</a>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const resetMetricsBtn = document.getElementById("resetMetricsBtn");
+        const statusMsg = document.getElementById("statusMsg");
+
+        const loginSection = document.getElementById("loginSection");
+        const adminContent = document.getElementById("adminContent");
+        const adminPassword = document.getElementById("adminPassword");
+        const btnLogin = document.getElementById("btnLogin");
+        const loginError = document.getElementById("loginError");
+
+        btnLogin.addEventListener("click", () => {
+            if (adminPassword.value === "czech") {
+                loginSection.style.display = "none";
+                adminContent.style.display = "block";
+                fetchConfigTracks();
+                startPollingState();
+            } else {
+                loginError.textContent = "Incorrect password.";
+            }
+        });
+
+        adminPassword.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") btnLogin.click();
+        });
+
+        function setMsg(msg, isError) {
+            statusMsg.textContent = msg;
+            statusMsg.className = isError ? "error" : "success";
+        }
+
+        async function fetchConfigTracks() {
+            try {
+                let yamlText = localStorage.getItem("concertCustomConfig");
+                if (!yamlText) {
+                    const res = await fetch("config.yaml");
+                    if (res.ok) yamlText = await res.text();
+                }
+                
+                if (yamlText) {
+                    const parsed = jsyaml.load(yamlText);
+                    const trackSelect = document.getElementById("trackSelect");
+                    if (trackSelect && parsed && parsed.tracks) {
+                        trackSelect.innerHTML = '<option value="">Select a Track...</option>';
+                        parsed.tracks.forEach(t => {
+                            const opt = document.createElement("option");
+                            opt.value = t.id;
+                            opt.textContent = `${t.id}: ${t.title}`;
+                            trackSelect.appendChild(opt);
+                        });
+                    }
+                }
+            } catch (e) {
+                console.error("Failed to load tracks for track list", e);
+            }
+        }
+
+        async function updateState(newState) {
+            try {
+                const res = await fetch('/api/state', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ newState })
+                });
+                if (res.ok) pollState();
+            } catch (e) {
+                setMsg("Error reaching server.", true);
+            }
+        }
+
+        document.getElementById("btnStatePre").addEventListener("click", () => updateState("PRE_SHOW"));
+        document.getElementById("btnStateActive").addEventListener("click", () => updateState("ACTIVE"));
+        document.getElementById("btnStatePost").addEventListener("click", () => updateState("POST_SHOW"));
+
+        function pollState() {
+            fetch("/api/state").then(r => r.json()).then(data => {
+                document.getElementById("connectedUsers").textContent = data.connectedUsers;
+                document.getElementById("currentStateLabel").textContent = data.showState;
+                
+                // Active button styling
+                document.getElementById("btnStatePre").className = data.showState === "PRE_SHOW" ? "primary" : "secondary";
+                document.getElementById("btnStateActive").className = data.showState === "ACTIVE" ? "primary" : "secondary";
+                document.getElementById("btnStatePost").className = data.showState === "POST_SHOW" ? "primary" : "secondary";
+            }).catch(e => console.error(e));
+        }
+
+        let pollInterval;
+        function startPollingState() {
+            pollState();
+            pollInterval = setInterval(pollState, 2000); // Polling every 2s for concurrent users
+        }
+
+        if (resetMetricsBtn) {
+            resetMetricsBtn.addEventListener("click", async () => {
+                if (!confirm("Are you sure you want to permanently clear all events and reset metrics?")) return;
+                try {
+                    const res = await fetch('/api/metrics/reset', { method: 'POST' });
+                    if (res.ok) {
+                        setMsg("All server data successfully reset to zero.", false);
+                    } else {
+                        setMsg("Failed to reset server data.", true);
+                    }
+                } catch (e) {
+                    setMsg("Error reaching server to reset data.", true);
+                }
+            });
+        }
+
+        document.getElementById("startTrackBtn").addEventListener("click", async () => {
+            const trackId = document.getElementById("trackSelect").value;
+            if (!trackId) {
+                setMsg("Please select a track first.", true);
+                return;
+            }
+            const trackTitle = document.getElementById("trackSelect").options[document.getElementById("trackSelect").selectedIndex].text.split(": ").slice(1).join(": ");
+            try {
+                const res = await fetch('/api/track', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: trackId, title: trackTitle })
+                });
+                if (res.ok) {
+                    setMsg(`Live track started: ${trackTitle}`, false);
+                } else {
+                    setMsg("Failed to start track.", true);
+                }
+            } catch (e) {
+                setMsg("Error reaching server.", true);
+            }
+        });
+
+        document.getElementById("endTrackBtn").addEventListener("click", async () => {
+            try {
+                const res = await fetch('/api/track/end', { method: 'POST' });
+                if (res.ok) {
+                    setMsg("Live track ended.", false);
+                } else {
+                    setMsg("Failed to end track.", true);
+                }
+            } catch (e) {
+                setMsg("Error reaching server.", true);
+            }
+        });
+    </script>
+</body>
+
+</html>

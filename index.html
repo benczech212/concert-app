@@ -39,6 +39,13 @@
     </div>
   </div>
 
+  <!-- Pre-Show Lobby -->
+  <div id="preShowLobby" style="display: none; height: 100vh; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+    <h1>Welcome to the Concert</h1>
+    <p class="note">The show will begin shortly. Please stand by...</p>
+    <div class="loader" style="margin-top: 20px; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid var(--primary); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite;"></div>
+  </div>
+
   <div id="appShell" style="display: none;">
     <header style="position: relative;">
       <button id="btnSwitchUser" class="secondary" type="button" aria-label="Switch User"
@@ -129,6 +136,20 @@
         </div>
       </section>
 
+      <!-- Continuous Note Input -->
+      <section id="noteCard" class="card" aria-label="Drop a Note" style="position: relative; transition: background-color 0.5s ease, color 0.5s ease; overflow: hidden;">
+        <h2 id="noteHeading">4) Any thoughts or feelings?</h2>
+        <div id="noteCardBody" style="transition: opacity 0.3s ease; margin-top: 10px;">
+          <p class="note" style="margin-top: 5px;">Listen and drop a keyword or note anytime.</p>
+          <textarea id="continuousComment" maxlength="140" placeholder="A short image, feeling, or idea..." style="width: 100%; box-sizing: border-box; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px; margin-bottom: 5px; resize: vertical; min-height: 50px; outline: none;"></textarea>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div id="continuousCharHint" class="hint" style="margin-top:0;">0 / 140</div>
+            <button id="btnSubmitContinuousNote" class="primary" type="button" style="padding: 6px 16px; min-width: 80px;">Send Note</button>
+          </div>
+        </div>
+        <div id="noteSuccessOverlay" class="success-overlay" style="z-index: 100; font-size: 2rem; display: flex; align-items: center; justify-content: center;">✓ Delivered</div>
+      </section>
+
       <!-- Visualizations Navigation -->
       <section class="card" aria-label="Visualizations">
         <h2>Live Data Views</h2>
@@ -151,9 +172,26 @@
     <footer>
       <p id="dynFooterText">Thank you for participating — enjoy the performance.</p>
       <p style="margin-top:20px; font-size: 0.8em; opacity: 0.5;">
-        <a href="admin.html" style="color: inherit; text-decoration: none;">&gear; Config Admin</a>
+        <a href="admin-controls.html" style="color: inherit; text-decoration: none;">&gear; Config Admin</a>
       </p>
     </footer>
+  </div>
+
+  <!-- Post-Show Recap -->
+  <div id="postShowRecap" style="display: none; height: 100vh; flex-direction: column; padding: 20px; max-width: 600px; margin: 0 auto; text-align: center;">
+    <h1 style="margin-top: 10vh;">Show Ended</h1>
+    <p class="note" style="margin-bottom: 30px;">Thank you for participating!</p>
+    
+    <div class="card" aria-label="Personal Recap">
+      <h2>Your Personal Recap</h2>
+      <div id="recapContent" style="margin-top: 15px; font-size: 1.1em; line-height: 1.5;">
+        Loading your recap...
+      </div>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <a href="charts-all.html" class="primary" style="text-decoration: none; padding: 12px 24px; font-weight: bold; border-radius: 8px;">View the Global Dashboard</a>
+    </div>
   </div>
 
   <!-- Word Cloud Popup Modal -->

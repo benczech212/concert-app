@@ -97,10 +97,11 @@
         let currentTimelineSeries = null;
         const views = [
             { id: 'mood_bar', title: 'Mood Distribution', category: 'mood', type: 'bar' },
+            { id: 'color_heatmap', title: 'Color Heatmap Timeline', category: 'color', type: 'bubble' },
+            { id: 'total_time', title: 'Total Engagement Over Time', category: 'overall', type: 'timeline_total' },
             { id: 'color_bar', title: 'Color Distribution', category: 'color', type: 'bar' },
             { id: 'reaction_pie', title: 'Reaction Distribution', category: 'reaction', type: 'pie' },
             { id: 'mood_time', title: 'Mood Timeline', category: 'mood', type: 'timeline' },
-            { id: 'color_time', title: 'Color Timeline', category: 'color', type: 'timeline' },
             { id: 'reaction_time', title: 'Reaction Timeline', category: 'reaction', type: 'timeline' },
             { id: 'words', title: 'Word Cloud', category: 'note', type: 'cloud' }
         ];
@@ -110,7 +111,8 @@
             color: { totals: {}, timeline: {} },
             reaction: { totals: {}, timeline: {} },
             words: {},
-            trackEvents: []
+            trackEvents: [],
+            overall: { timeline: {} }
         };
 
         const palette = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#8AC926', '#1982C4', '#6A4C93', '#F15BB5'];
@@ -149,7 +151,8 @@
                     color: { totals: {}, timeline: {} },
                     reaction: { totals: {}, timeline: {} },
                     words: {},
-                    trackEvents: []
+                    trackEvents: [],
+                    overall: { timeline: {} }
                 };
 
                 rawEventsData.forEach(e => {
@@ -179,9 +182,17 @@
                             
                             // Totals
                             catData.totals[e.value] = (catData.totals[e.value] || 0) + 1;
+                            
+                            displayData.overall.timeline[bucketTime] = (displayData.overall.timeline[bucketTime] || 0) + 1;
                         }
                         
                         if (e.category === 'note' && e.value) {
+                            const bd = new Date(e.timestamp);
+                            bd.setSeconds(0);
+                            bd.setMilliseconds(0);
+                            const bucketTime = bd.getTime();
+                            displayData.overall.timeline[bucketTime] = (displayData.overall.timeline[bucketTime] || 0) + 1;
+                            
                             const words = e.value.toLowerCase().match(/\w+/g);
                             if (words) {
                                 words.forEach(w => {
@@ -242,7 +253,7 @@
             if (view.category === 'color') bgColorBar = 'rgba(255, 150, 200, 0.6)';
             if (view.category === 'reaction') bgColorBar = ['rgba(200, 200, 200, 0.6)', 'rgba(150, 255, 150, 0.6)', 'rgba(255, 200, 50, 0.6)'];
 
-            updateChart(chartCanvas, view.category, catData.totals, catData.timeline, bgColorBar, annotations, view.type);
+            updateChart(chartCanvas, view.category, catData.totals || {}, catData.timeline, bgColorBar, annotations, view.type);
         }
 
         function updateChart(canvasEl, categoryLabel, totalsMap, timelineMap, bgColorBar, annotations, viewMode) {
@@ -304,6 +315,117 @@
                             plugins: { 
                                 annotation: { annotations: annotations },
                                 legend: { labels: { color: 'white' } }
+                            }
+                        }
+                    });
+                }
+            } else if (viewMode === 'timeline_total') {
+                const times = Object.keys(timelineMap).sort((a, b) => parseInt(a) - parseInt(b));
+                const dataData = times.map(t => parseInt(t));
+                const pointData = times.map(t => timelineMap[t] || 0);
+
+                const dataset = {
+                    label: 'Total Engagement',
+                    data: pointData,
+                    borderColor: 'rgba(50, 255, 150, 1)',
+                    backgroundColor: 'rgba(50, 255, 150, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                };
+
+                if (chartInstance && chartInstance.config.type === 'line' && chartInstance.data.datasets.length === 1 && chartInstance.data.datasets[0].label === 'Total Engagement') {
+                    chartInstance.data.labels = dataData;
+                    chartInstance.data.datasets = [dataset];
+                    chartInstance.options.plugins.annotation.annotations = annotations;
+                    chartInstance.update('none');
+                } else {
+                    if (chartInstance) chartInstance.destroy();
+                    const ctx = canvasEl.getContext('2d');
+                    Chart.defaults.color = '#fff';
+                    chartInstance = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: dataData,
+                            datasets: [dataset]
+                        },
+                        options: {
+                            responsive: true, maintainAspectRatio: false,
+                            animation: { duration: 500 },
+                            scales: { 
+                                x: { type: 'time', time: { unit: 'minute' }, grid: { color: 'rgba(255,255,255,0.1)' } }, 
+                                y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' } } 
+                            },
+                            plugins: { 
+                                annotation: { annotations: annotations },
+                                legend: { labels: { color: 'white' } }
+                            }
+                        }
+                    });
+                }
+            } else if (viewMode === 'bubble') {
+                // Color Heatmap Bubble
+                const times = Object.keys(timelineMap).sort((a, b) => parseInt(a) - parseInt(b));
+                const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
+                const colorKeys = Object.keys(colorMap);
+                
+                let bubbleData = [];
+                let maxCount = 1;
+                
+                times.forEach(tStr => {
+                    const t = parseInt(tStr);
+                    colorKeys.forEach((colorName, yIndex) => {
+                        const count = (timelineMap[tStr] && timelineMap[tStr][colorName]) || 0;
+                        if (count > maxCount) maxCount = count;
+                        if (count > 0) {
+                            bubbleData.push({
+                                x: t,
+                                y: yIndex,
+                                r: count,
+                                colorValue: colorMap[colorName]
+                            });
+                        }
+                    });
+                });
+                
+                // Scale radius so maxCount is something like 25px
+                const radiusScale = 25 / maxCount;
+                bubbleData.forEach(d => { d.r = Math.max(d.r * radiusScale, 3); });
+                
+                const dataset = {
+                    label: 'Color Pulses',
+                    data: bubbleData,
+                    backgroundColor: (ctx) => {
+                        const raw = ctx.raw;
+                        return raw ? raw.colorValue : 'white';
+                    }
+                };
+                
+                if (chartInstance && chartInstance.config.type === 'bubble') {
+                    chartInstance.data.datasets = [dataset];
+                    chartInstance.options.plugins.annotation.annotations = annotations;
+                    chartInstance.update('none');
+                } else {
+                    if (chartInstance) chartInstance.destroy();
+                    const ctx = canvasEl.getContext('2d');
+                    Chart.defaults.color = '#fff';
+                    chartInstance = new Chart(ctx, {
+                        type: 'bubble',
+                        data: { datasets: [dataset] },
+                        options: {
+                            responsive: true, maintainAspectRatio: false,
+                            animation: { duration: 500 },
+                            scales: { 
+                                x: { type: 'time', time: { unit: 'minute' }, grid: { color: 'rgba(255,255,255,0.1)' } }, 
+                                y: { 
+                                    type: 'category', 
+                                    labels: colorKeys,
+                                    grid: { color: 'rgba(255,255,255,0.1)' } 
+                                } 
+                            },
+                            plugins: { 
+                                annotation: { annotations: annotations },
+                                legend: { display: false },
+                                tooltip: { enabled: false }
                             }
                         }
                     });

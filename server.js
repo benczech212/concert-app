@@ -16,11 +16,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the same directory
 app.use(express.static(__dirname));
 
-// In-memory data store
 let events = [];
 let users = {}; // Map of email -> user object
 let currentTrack = null;
 let connectedClients = [];
+let showState = 'PRE_SHOW';
 
 // Prometheus metrics setup
 const collectDefaultMetrics = client.collectDefaultMetrics;
@@ -221,6 +221,43 @@ app.post('/api/users', (req, res) => {
 // Retrieve users database
 app.get('/api/users', (req, res) => {
   res.json(Object.values(users));
+});
+
+// Export users database to CSV
+app.get('/api/users/export', (req, res) => {
+  const usersList = Object.values(users);
+  let csv = 'Name,Email,Consent\\n';
+  usersList.forEach(u => {
+    // Escape quotes to be safe
+    const name = u.name ? `"${u.name.replace(/"/g, '""')}"` : '""';
+    const email = u.email ? `"${u.email.replace(/"/g, '""')}"` : '""';
+    const consent = u.emailConsent ? 'True' : 'False';
+    csv += `${name},${email},${consent}\\n`;
+  });
+  
+  res.header('Content-Type', 'text/csv');
+  res.attachment('participants.csv');
+  return res.send(csv);
+});
+
+// Get show state and concurrent connections
+app.get('/api/state', (req, res) => {
+  res.json({
+    showState: showState,
+    connectedUsers: connectedClients.length
+  });
+});
+
+// Update show state
+app.post('/api/state', (req, res) => {
+  const { newState } = req.body;
+  if (['PRE_SHOW', 'ACTIVE', 'POST_SHOW'].includes(newState)) {
+    showState = newState;
+    broadcast({ type: 'state_change', showState });
+    res.json({ success: true, showState });
+  } else {
+    res.status(400).json({ error: 'Invalid state' });
+  }
 });
 
 // Prometheus metrics endpoint

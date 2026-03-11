@@ -281,8 +281,9 @@
                                 timelineMood[bucketTime][e.value] = (timelineMood[bucketTime][e.value] || 0) + 1;
                             }
                             if (e.category === 'color') {
+                                const val = e.colorRgba || e.value;
                                 timelineColor[bucketTime] = timelineColor[bucketTime] || {};
-                                timelineColor[bucketTime][e.value] = (timelineColor[bucketTime][e.value] || 0) + 1;
+                                timelineColor[bucketTime][val] = (timelineColor[bucketTime][val] || 0) + 1;
                             }
                             if (e.category === 'reaction') {
                                 timelineReaction[bucketTime] = timelineReaction[bucketTime] || {};
@@ -301,7 +302,10 @@
 
                     if (passFilter) {
                         if (e.category === 'mood') moods[e.value] = (moods[e.value] || 0) + 1;
-                        if (e.category === 'color') colors[e.value] = (colors[e.value] || 0) + 1;
+                        if (e.category === 'color') {
+                            const val = e.colorRgba || e.value;
+                            colors[val] = (colors[val] || 0) + 1;
+                        }
                         if (e.category === 'reaction') reactions[e.value] = (reactions[e.value] || 0) + 1;
                         if (e.category === 'note' && e.value) {
                             const words = e.value.toLowerCase().match(/\w+/g);
@@ -353,16 +357,21 @@
                     const pointData = times.map(t => (timelineMap[t] && timelineMap[t][labelValue]) || 0);
                     let color = palette[i % palette.length];
 
+                    let borderColor = color;
+                    let borderDash = [];
+                    
                     if (label === 'Color') {
-                        const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
-                        color = colorMap[labelValue] || labelValue.toLowerCase();
+                        color = labelValue;
+                        borderColor = labelValue === 'transparent' ? '#ffffff' : labelValue;
+                        borderDash = labelValue === 'transparent' ? [5, 5] : [];
                     }
 
                     return {
                         label: labelValue,
                         data: pointData,
-                        borderColor: color,
+                        borderColor: borderColor,
                         backgroundColor: color,
+                        borderDash: borderDash,
                         tension: 0.1,
                         fill: false
                     };
@@ -396,21 +405,23 @@
                 let data = Object.values(totalsMap);
 
                 let renderBgColors = bgColorBar;
+                let renderBorderColors = 'rgba(255, 255, 255, 0.2)';
+                let renderBorderWidths = 1;
+                
                 if (label === 'Color') {
-                    const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
-                    const hueMap = { "Red": 0, "Amber": 45, "Yellow": 60, "Green": 120, "Cyan": 180, "Blue": 240, "Purple": 300 };
-
-                    const sortedIndices = labels.map((l, i) => i).sort((a, b) => (hueMap[labels[a]] || 999) - (hueMap[labels[b]] || 999));
-                    labels = sortedIndices.map(i => labels[i]);
-                    data = sortedIndices.map(i => data[i]);
-
-                    renderBgColors = labels.map(l => colorMap[l] || l.toLowerCase());
+                    renderBgColors = labels;
+                    renderBorderColors = labels.map(l => l === 'transparent' ? '#ffffff' : 'rgba(0,0,0,0)');
+                    renderBorderWidths = labels.map(l => l === 'transparent' ? 2 : 0);
                 }
 
                 if (window[instanceRefName] && window[instanceRefName].config.type === viewMode) {
                     window[instanceRefName].data.labels = labels;
                     window[instanceRefName].data.datasets[0].data = data;
-                    if (label === 'Color') window[instanceRefName].data.datasets[0].backgroundColor = renderBgColors;
+                    if (label === 'Color') {
+                        window[instanceRefName].data.datasets[0].backgroundColor = renderBgColors;
+                        window[instanceRefName].data.datasets[0].borderColor = renderBorderColors;
+                        window[instanceRefName].data.datasets[0].borderWidth = renderBorderWidths;
+                    }
                     window[instanceRefName].update();
                 } else {
                     if (window[instanceRefName]) window[instanceRefName].destroy();
@@ -419,7 +430,7 @@
                         type: viewMode,
                         data: {
                             labels: labels,
-                            datasets: [{ label: `${label} Totals`, data: data, backgroundColor: renderBgColors }]
+                            datasets: [{ label: `${label} Totals`, data: data, backgroundColor: renderBgColors, borderColor: renderBorderColors, borderWidth: renderBorderWidths }]
                         },
                         options: { animation: false, responsive: true, maintainAspectRatio: false, scales: viewMode === 'bar' ? { y: { beginAtZero: true } } : {} }
                     });
@@ -438,8 +449,8 @@
         <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
         <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
         <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a> |
-        <a href="kiosk1.html" class="secondary" style="margin: 0 10px;">Kiosk 1</a> |
-        <a href="kiosk2.html" class="secondary" style="margin: 0 10px;">Kiosk 2</a>
+        <a href="kiosk.html?kiosk=1" class="secondary" style="margin: 0 10px;">Kiosk 1</a> |
+        <a href="kiosk.html?kiosk=2" class="secondary" style="margin: 0 10px;">Kiosk 2</a>
     </div>
 
 

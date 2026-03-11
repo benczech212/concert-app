@@ -43,7 +43,7 @@ def setup_concert_kiosks():
     web1.par.resolutionh = 720
     web1.nodeX = -200
     web1.nodeY = 200
-    web1.par.url.expr = "(parent().par.Prodhost.eval() if parent().par.Useprod.eval() else parent().par.Localhost.eval()) + '/kiosk1.html'"
+    web1.par.url.expr = "(parent().par.Prodhost.eval() if parent().par.Useprod.eval() else parent().par.Localhost.eval()) + '/kiosk.html?kiosk=1'"
     web1.par.active.expr = "parent().par.Active.eval()"
 
     spout1 = kiosks_base.create(spoutoutTOP, 'spout_kiosk1')
@@ -57,7 +57,7 @@ def setup_concert_kiosks():
     web2.par.resolutionh = 720
     web2.nodeX = -200
     web2.nodeY = 0
-    web2.par.url.expr = "(parent().par.Prodhost.eval() if parent().par.Useprod.eval() else parent().par.Localhost.eval()) + '/kiosk2.html'"
+    web2.par.url.expr = "(parent().par.Prodhost.eval() if parent().par.Useprod.eval() else parent().par.Localhost.eval()) + '/kiosk.html?kiosk=2'"
     web2.par.active.expr = "parent().par.Active.eval()"
 
     spout2 = kiosks_base.create(spoutoutTOP, 'spout_kiosk2')

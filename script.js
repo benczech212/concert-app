@@ -250,7 +250,7 @@ document.querySelectorAll(".grayscale-swatch").forEach(swatch => {
       updateColorDisplay(disp, "", "");
     }
 
-    recordEvent("color", swatch.dataset.colorName);
+    recordEvent("color", swatch.dataset.colorName, { colorRgba: swatch.dataset.color });
     handleSelection("color", swatch.dataset.colorName, swatch.dataset.color);
   });
 });
@@ -293,7 +293,9 @@ const btnPopupApplause = document.getElementById("btnPopupApplause");
 let sseSource = null;
 
 // Identity elements
-const identityModal = document.getElementById("identityModal");
+const lobbyAuthForm = document.getElementById("lobbyAuthForm");
+const lobbyWaitGroup = document.getElementById("lobbyWaitGroup");
+const preShowLobby = document.getElementById("preShowLobby");
 const appShell = document.getElementById("appShell");
 const idEmailInput = document.getElementById("idEmail");
 const idNameInput = document.getElementById("idName");
@@ -726,7 +728,9 @@ function checkIdentity() {
     currentUser = savedUser;
     startSession();
   } else {
-    identityModal.style.display = "flex";
+    if (preShowLobby) preShowLobby.style.display = "flex";
+    if (lobbyAuthForm) lobbyAuthForm.style.display = "block";
+    if (lobbyWaitGroup) lobbyWaitGroup.style.display = "none";
   }
 }
 
@@ -778,7 +782,8 @@ btnJoin.addEventListener("click", async () => {
 });
 
 function startSession() {
-  identityModal.style.display = "none";
+  if (lobbyAuthForm) lobbyAuthForm.style.display = "none";
+  if (lobbyWaitGroup) lobbyWaitGroup.style.display = "block";
   if (welcomeName) welcomeName.textContent = currentUser.name;
 
   // Generate a distinct session ID for this browser tab instance
@@ -858,8 +863,13 @@ if (btnSwitchUser) {
   btnSwitchUser.addEventListener("click", () => {
     localStorage.removeItem(IDENTITY_KEY);
     currentUser = null;
-    appShell.style.display = "none";
-    identityModal.style.display = "flex";
+    if (appShell) appShell.style.display = "none";
+    const postShow = document.getElementById("postShowRecap");
+    if (postShow) postShow.style.display = "none";
+    
+    if (preShowLobby) preShowLobby.style.display = "flex";
+    if (lobbyAuthForm) lobbyAuthForm.style.display = "block";
+    if (lobbyWaitGroup) lobbyWaitGroup.style.display = "none";
     idEmailInput.value = "";
     idNameInput.value = "";
   });

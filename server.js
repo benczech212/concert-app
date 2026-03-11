@@ -240,6 +240,38 @@ app.get('/api/users/export', (req, res) => {
   return res.send(csv);
 });
 
+// Export events log
+app.get('/api/export/events', (req, res) => {
+  const filePath = path.join(__dirname, 'events_log.jsonl');
+  if (fs.existsSync(filePath)) {
+    res.download(filePath, 'events_log.jsonl');
+  } else {
+    res.status(404).send('Events log not found');
+  }
+});
+
+// Export server log
+app.get('/api/export/logs', (req, res) => {
+  const filePath = path.join(__dirname, 'server.log');
+  if (fs.existsSync(filePath)) {
+    res.download(filePath, 'server.log');
+  } else {
+    res.status(404).send('Server log not found');
+  }
+});
+
+// Export Prometheus metrics as a file
+app.get('/api/export/metrics', async (req, res) => {
+  try {
+    const metricsHtml = await client.register.metrics();
+    res.header('Content-Type', 'text/plain');
+    res.attachment('prometheus_metrics.txt');
+    return res.send(metricsHtml);
+  } catch (err) {
+    res.status(500).send('Failed to fetch metrics');
+  }
+});
+
 // Get show state and concurrent connections
 app.get('/api/state', (req, res) => {
   res.json({

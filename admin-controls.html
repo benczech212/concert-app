@@ -72,11 +72,33 @@
 
             <section class="card" style="text-align: center;">
                 <h2>Data Exports & Resets</h2>
+                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:15px;align-items:center;">
+                    <a href="/api/users/export" download="participants.csv" class="primary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Participants CSV</a>
+                    <a href="/api/export/events" download="events_log.jsonl" class="secondary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Events JSONL</a>
+                    <a href="/api/export/metrics" download="prometheus_metrics.txt" class="secondary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Metrics TXT</a>
+                    <a href="/api/export/logs" download="server.log" class="secondary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Server Log</a>
+                </div>
                 <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
-                    <a href="/api/users/export" download="participants.csv" class="primary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px;">Download CSV</a>
                     <button id="resetMetricsBtn" class="error" type="button" style="max-width: 250px;">Clear All Data & Metrics</button>
                 </div>
                 <div id="statusMsg" role="status" aria-live="polite" style="margin-top: 15px;"></div>
+            </section>
+
+            <section class="card" aria-label="Data Preview">
+                <h2>Data Preview</h2>
+                <div style="display:flex;gap:10px;margin-top:15px;flex-wrap:wrap;">
+                    <div style="flex:1;min-width:300px;">
+                        <h3>Recent Events (Last 10)</h3>
+                        <pre id="previewEvents" style="background:rgba(0,0,0,0.3);padding:10px;border-radius:6px;color:rgba(255,255,255,0.8);max-height:200px;overflow-y:auto;font-size:0.8rem;white-space:pre-wrap;"></pre>
+                    </div>
+                    <div style="flex:1;min-width:300px;">
+                        <h3>Recent Participants (Last 10)</h3>
+                        <pre id="previewUsers" style="background:rgba(0,0,0,0.3);padding:10px;border-radius:6px;color:rgba(255,255,255,0.8);max-height:200px;overflow-y:auto;font-size:0.8rem;white-space:pre-wrap;"></pre>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:10px;">
+                    <button id="btnRefreshPreview" class="secondary" type="button" style="padding: 5px 15px; font-size: 0.85rem;">Refresh Preview</button>
+                </div>
             </section>
 
             <section class="card" style="text-align: center;">
@@ -173,8 +195,36 @@
         let pollInterval;
         function startPollingState() {
             pollState();
-            pollInterval = setInterval(pollState, 2000); // Polling every 2s for concurrent users
+            pollInterval = setInterval(() => {
+                pollState();
+                refreshPreview();
+            }, 2000); // Polling every 2s for concurrent users
         }
+
+        async function refreshPreview() {
+            try {
+                const [eventsRes, usersRes] = await Promise.all([
+                    fetch('/api/events'),
+                    fetch('/api/users')
+                ]);
+                
+                if (eventsRes.ok) {
+                    const eventsData = await eventsRes.json();
+                    const recentEvents = eventsData.slice(-10).reverse();
+                    document.getElementById("previewEvents").textContent = recentEvents.length ? JSON.stringify(recentEvents, null, 2) : "No events yet.";
+                }
+                
+                if (usersRes.ok) {
+                    const usersData = await usersRes.json();
+                    const recentUsers = usersData.slice(-10).reverse();
+                    document.getElementById("previewUsers").textContent = recentUsers.length ? JSON.stringify(recentUsers, null, 2) : "No participants yet.";
+                }
+            } catch (e) {
+                console.error("Failed to refresh preview", e);
+            }
+        }
+
+        document.getElementById("btnRefreshPreview").addEventListener("click", refreshPreview);
 
         if (resetMetricsBtn) {
             resetMetricsBtn.addEventListener("click", async () => {

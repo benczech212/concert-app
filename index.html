@@ -16,7 +16,7 @@
 
 <body>
   <!-- Pre-Show Lobby -->
-  <div id="preShowLobby" style="display: none; height: 100vh; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+  <div id="preShowLobby" style="display: none; height: 100vh; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; animation: hueShift 60s infinite linear;">
     <h1>Welcome to the Concert</h1>
 
     <!-- Auth form inside lobby -->
@@ -45,6 +45,7 @@
     <div id="lobbyWaitGroup">
       <p class="note">The show will begin shortly. Please stand by...</p>
       <div class="loader" style="margin: 20px auto 0; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid var(--primary); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite;"></div>
+      <button id="btnLobbySwitchUser" class="secondary" style="margin-top: 30px; font-size: 0.8rem; background: transparent; border: 1px solid var(--border-soft);">Edit Details / Switch User</button>
     </div>
   </div>
 

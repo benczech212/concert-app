@@ -3,6 +3,11 @@
    Supports HTML structure + mood glow variable
   ========================================================= */
 
+@keyframes hueShift {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
+}
+
 :root {
   --bg: #1a1c1f;
   --card: rgba(42, 46, 52, 0.96);

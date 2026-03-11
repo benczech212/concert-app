@@ -223,6 +223,7 @@
                 const timelineColor = {};
                 const timelineReaction = {};
                 const trackEvents = [];
+                const colorHexMap = {};
 
                 let activeRange = null;
                 if (currentTrackFilter !== 'all' && trackRanges[currentTrackFilter]) {
@@ -258,9 +259,10 @@
                                 timelineMood[bucketTime][e.value] = (timelineMood[bucketTime][e.value] || 0) + 1;
                             }
                             if (e.category === 'color') {
-                                const val = e.colorRgba || e.value;
+                                const name = e.value;
+                                colorHexMap[name] = e.colorRgba || name;
                                 timelineColor[bucketTime] = timelineColor[bucketTime] || {};
-                                timelineColor[bucketTime][val] = (timelineColor[bucketTime][val] || 0) + 1;
+                                timelineColor[bucketTime][name] = (timelineColor[bucketTime][name] || 0) + 1;
                             }
                             if (e.category === 'reaction') {
                                 timelineReaction[bucketTime] = timelineReaction[bucketTime] || {};
@@ -280,8 +282,9 @@
                     if (passFilter) {
                         if (e.category === 'mood') moods[e.value] = (moods[e.value] || 0) + 1;
                         if (e.category === 'color') {
-                            const val = e.colorRgba || e.value;
-                            colors[val] = (colors[val] || 0) + 1;
+                            const name = e.value;
+                            colorHexMap[name] = e.colorRgba || name;
+                            colors[name] = (colors[name] || 0) + 1;
                         }
                         if (e.category === 'reaction') reactions[e.value] = (reactions[e.value] || 0) + 1;
                         if (e.category === 'note' && e.value) {
@@ -338,9 +341,10 @@
                     let borderDash = [];
                     
                     if (label === 'Color') {
-                        color = labelValue;
-                        borderColor = labelValue === 'transparent' ? '#ffffff' : labelValue;
-                        borderDash = labelValue === 'transparent' ? [5, 5] : [];
+                        const hex = colorHexMap[labelValue] || labelValue;
+                        color = hex;
+                        borderColor = hex === 'transparent' ? '#ffffff' : hex;
+                        borderDash = hex === 'transparent' ? [5, 5] : [];
                     }
 
                     return {
@@ -386,9 +390,9 @@
                 let renderBorderWidths = 1;
                 
                 if (label === 'Color') {
-                    renderBgColors = labels;
-                    renderBorderColors = labels.map(l => l === 'transparent' ? '#ffffff' : 'rgba(0,0,0,0)');
-                    renderBorderWidths = labels.map(l => l === 'transparent' ? 2 : 0);
+                    renderBgColors = labels.map(l => colorHexMap[l] || l);
+                    renderBorderColors = labels.map(l => (colorHexMap[l] || l) === 'transparent' ? '#ffffff' : 'rgba(0,0,0,0)');
+                    renderBorderWidths = labels.map(l => (colorHexMap[l] || l) === 'transparent' ? 2 : 0);
                 }
 
                 if (window[instanceRefName] && window[instanceRefName].config.type === viewMode) {
@@ -427,26 +431,6 @@
         <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
         <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a> |
         <a href="kiosk.html" class="secondary" style="margin: 0 10px;">Kiosk Mode</a>
-    </div>
-
-
-    <div style="text-align: center; margin-top: 40px; padding-top: 20px;">
-        <p><strong>View Individual Charts:</strong></p>
-        <a href="charts-all.html" class="secondary" style="margin: 0 10px;">All Charts</a> |
-        <a href="chart-mood.html" class="secondary" style="margin: 0 10px;">Mood</a> |
-        <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
-        <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
-        <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a>
-    </div>
-
-
-    <div style="text-align: center; margin-top: 40px; padding-top: 20px;">
-        <p><strong>View Individual Charts:</strong></p>
-        <a href="charts-all.html" class="secondary" style="margin: 0 10px;">All Charts</a> |
-        <a href="chart-mood.html" class="secondary" style="margin: 0 10px;">Mood</a> |
-        <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
-        <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
-        <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a>
     </div>
 
 </body>

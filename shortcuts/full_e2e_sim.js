@@ -13,6 +13,10 @@ const COLORS = [
   { name: "Cyan", hex: "#00ffff" }, { name: "White", hex: "#ffffff" }
 ];
 const REACTIONS = ["applause", "like", "meh"];
+const PHRASES = [
+  "I am feeling so", "This track is", "Wow", "Incredible performance", "Absolutely", "Just feeling the", 
+  "Loving the", "Really getting into the", "Cannot stop listening to this", "What a"
+];
 const WORDS = ["energetic", "wild", "fun", "amazing", "deep", "emotional", "moving", "profound", "slow", "intense", "chaotic", "loud", "crazy", "sharp", "awesome", "epic", "cool", "boring", "great", "huge", "fire", "rock", "synth", "bass", "vibes"];
 
 // Helper for generic HTTP POST (Works natively on older node vs fetch)
@@ -156,7 +160,14 @@ async function startTrackSimulation(trackNum, trackTitle, durationSecs) {
             u.sendEvent("color", c.name, { colorRgba: c.hex }); 
             break;
           case "reaction": u.sendEvent("reaction", pickRandom(REACTIONS)); break;
-          case "note": u.sendEvent("note", pickRandom(WORDS) + " " + pickRandom(WORDS)); break;
+          case "note": 
+            const length = Math.floor(Math.random() * 3) + 1; // 1 to 3 extra words
+            let note = Math.random() > 0.5 ? pickRandom(PHRASES) + " " : "";
+            for (let i = 0; i < length; i++) {
+                note += pickRandom(WORDS) + " ";
+            }
+            u.sendEvent("note", note.trim()); 
+            break;
         }
       }
     });

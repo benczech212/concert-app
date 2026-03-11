@@ -82,6 +82,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@3.0.0/dist/chartjs-chart-treemap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.2/wordcloud2.min.js"></script>
 
     <script>
@@ -132,7 +133,8 @@
             reaction: { totals: {}, timeline: {} },
             words: {},
             trackEvents: [],
-            overall: { timeline: {} }
+            overall: { timeline: {} },
+            colorHexMap: {}
         };
 
         const palette = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#8AC926', '#1982C4', '#6A4C93', '#F15BB5'];
@@ -172,7 +174,8 @@
                     reaction: { totals: {}, timeline: {} },
                     words: {},
                     trackEvents: [],
-                    overall: { timeline: {} }
+                    overall: { timeline: {} },
+                    colorHexMap: {}
                 };
 
                 rawEventsData.forEach(e => {
@@ -195,7 +198,11 @@
                             const bucketTime = bd.getTime();
 
                             const catData = displayData[e.category];
-                            const val = (e.category === 'color' && e.colorRgba) ? e.colorRgba : e.value;
+                            const val = e.value;
+                            
+                            if (e.category === 'color') {
+                                displayData.colorHexMap[val] = e.colorRgba || val;
+                            }
                             
                             // Timeline
                             catData.timeline[bucketTime] = catData.timeline[bucketTime] || {};
@@ -219,6 +226,18 @@
                                 words.forEach(w => {
                                     if (w.length > 3) displayData.words[w] = (displayData.words[w] || 0) + 1;
                                 });
+                                for (let i = 0; i < words.length - 1; i++) {
+                                    if (words[i].length > 2 && words[i+1].length > 2) {
+                                        const pair = words[i] + ' ' + words[i+1];
+                                        displayData.words[pair] = (displayData.words[pair] || 0) + 1;
+                                    }
+                                }
+                                for (let i = 0; i < words.length - 2; i++) {
+                                    if (words[i].length > 2 && words[i+1].length > 2 && words[i+2].length > 2) {
+                                        const triplet = words[i] + ' ' + words[i+1] + ' ' + words[i+2];
+                                        displayData.words[triplet] = (displayData.words[triplet] || 0) + 1;
+                                    }
+                                }
                             }
                         }
                     }
@@ -247,17 +266,22 @@
                 if (lastRenderedCloudIndex === currentViewIndex) return; // Skip re-rendering if already showing
                 lastRenderedCloudIndex = currentViewIndex;
 
-                const list = Object.entries(displayData.words).map(([w, c]) => [w, c * 6 + 15]);
+                const sortedWords = Object.entries(displayData.words).sort((a, b) => b[1] - a[1]).slice(0, 150);
+                const maxCount = sortedWords.length ? sortedWords[0][1] : 1;
+                const list = sortedWords.map(([w, c]) => [w, 14 + (c / maxCount) * 46]);
                 if (list.length) {
                     WordCloud(wordCanvas, {
                         list,
-                        weightFactor: 2,
+                        weightFactor: 1,
                         color: 'random-light',
                         backgroundColor: 'transparent',
                         shape: 'circle',
                         fontFamily: 'system-ui, sans-serif',
-                        rotateRatio: 0.5,
-                        rotationSteps: 2
+                        gridSize: 8,
+                        rotateRatio: 0.1,
+                        rotationSteps: 2,
+                        shrinkToFit: true,
+                        drawOutOfBound: false
                     });
                 }
                 return;
@@ -300,9 +324,10 @@
                     let borderDash = [];
 
                     if (categoryLabel === 'color') {
-                        color = labelValue;
-                        borderColor = labelValue === 'transparent' ? '#ffffff' : labelValue;
-                        borderDash = labelValue === 'transparent' ? [5, 5] : [];
+                        const hex = displayData.colorHexMap[labelValue] || labelValue;
+                        color = hex;
+                        borderColor = hex === 'transparent' ? '#ffffff' : hex;
+                        borderDash = hex === 'transparent' ? [5, 5] : [];
                     }
 
                     return {
@@ -426,7 +451,7 @@
                     data: bubbleData,
                     backgroundColor: (ctx) => {
                         const raw = ctx.raw;
-                        return raw ? raw.colorValue : 'white';
+                        return raw ? (displayData.colorHexMap[raw.colorValue] || raw.colorValue) : 'white';
                     }
                 };
                 
@@ -465,7 +490,7 @@
                 let renderBgColors = bgColorBar;
                 
                 if (categoryLabel === 'color') {
-                    renderBgColors = labels;
+                    renderBgColors = labels.map(l => displayData.colorHexMap[l] || l);
                 }
 
                 if (chartInstance && chartInstance.config.type === viewMode) {

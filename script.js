@@ -304,6 +304,7 @@ const btnJoin = document.getElementById("btnJoin");
 const idError = document.getElementById("idError");
 const welcomeName = document.getElementById("welcomeName");
 const btnSwitchUser = document.getElementById("btnSwitchUser");
+const btnLobbySwitchUser = document.getElementById("btnLobbySwitchUser");
 // Current track info
 let currentTrack = null;
 
@@ -859,21 +860,23 @@ async function generateRecap() {
   }
 }
 
-if (btnSwitchUser) {
-  btnSwitchUser.addEventListener("click", () => {
-    localStorage.removeItem(IDENTITY_KEY);
-    currentUser = null;
-    if (appShell) appShell.style.display = "none";
-    const postShow = document.getElementById("postShowRecap");
-    if (postShow) postShow.style.display = "none";
-    
-    if (preShowLobby) preShowLobby.style.display = "flex";
-    if (lobbyAuthForm) lobbyAuthForm.style.display = "block";
-    if (lobbyWaitGroup) lobbyWaitGroup.style.display = "none";
-    idEmailInput.value = "";
-    idNameInput.value = "";
-  });
+function doSwitchUser() {
+  localStorage.removeItem(IDENTITY_KEY);
+  currentUser = null;
+  if (appShell) appShell.style.display = "none";
+  const postShow = document.getElementById("postShowRecap");
+  if (postShow) postShow.style.display = "none";
+  
+  if (preShowLobby) preShowLobby.style.display = "flex";
+  if (lobbyAuthForm) lobbyAuthForm.style.display = "block";
+  if (lobbyWaitGroup) lobbyWaitGroup.style.display = "none";
+  idEmailInput.value = "";
+  idNameInput.value = "";
+  if (idConsentInput) idConsentInput.checked = false;
 }
+
+if (btnSwitchUser) btnSwitchUser.addEventListener("click", doSwitchUser);
+if (btnLobbySwitchUser) btnLobbySwitchUser.addEventListener("click", doSwitchUser);
 
 function connectStream() {
   if (sseSource) return;

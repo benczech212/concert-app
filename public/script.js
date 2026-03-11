@@ -300,6 +300,9 @@ const appShell = document.getElementById("appShell");
 const idEmailInput = document.getElementById("idEmail");
 const idNameInput = document.getElementById("idName");
 const idConsentInput = document.getElementById("idConsent");
+const idAnonymousInput = document.getElementById("idAnonymous");
+const personalInfoFields = document.getElementById("personalInfoFields");
+const emailFieldGroup = document.getElementById("emailFieldGroup");
 const btnJoin = document.getElementById("btnJoin");
 const idError = document.getElementById("idError");
 const welcomeName = document.getElementById("welcomeName");
@@ -739,15 +742,61 @@ function generateMockIp() {
   return Array.from({ length: 4 }, () => Math.floor(Math.random() * 256)).join('.');
 }
 
+if (idAnonymousInput) {
+  idAnonymousInput.addEventListener("change", (e) => {
+    if (e.target.checked) {
+      personalInfoFields.style.opacity = "0.3";
+      personalInfoFields.style.pointerEvents = "none";
+      idNameInput.value = "";
+      idEmailInput.value = "";
+      idConsentInput.checked = false;
+      emailFieldGroup.style.display = "none";
+    } else {
+      personalInfoFields.style.opacity = "1";
+      personalInfoFields.style.pointerEvents = "auto";
+    }
+  });
+}
+
+if (idConsentInput) {
+  idConsentInput.addEventListener("change", (e) => {
+    if (e.target.checked) {
+      emailFieldGroup.style.display = "block";
+    } else {
+      emailFieldGroup.style.display = "none";
+      idEmailInput.value = "";
+    }
+  });
+}
+
 btnJoin.addEventListener("click", async () => {
   idError.textContent = "";
-  const email = idEmailInput.value.trim();
-  const name = idNameInput.value.trim() || "Participant";
+  let email = idEmailInput.value.trim();
+  let name = idNameInput.value.trim();
   const emailConsent = idConsentInput ? idConsentInput.checked : false;
+  const isAnonymous = idAnonymousInput ? idAnonymousInput.checked : false;
 
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    idError.textContent = "Please provide a valid email address.";
-    return;
+  if (isAnonymous) {
+    name = "Anonymous";
+    // We still need a unique identifier for the backend since it keys on email
+    // For complete anonymity, we generate a random dummy email that isn't saved anywhere permanently on the client except for this session.
+    email = `anon_${Date.now()}_${Math.random().toString(16).slice(2)}@anonymous.local`;
+  } else {
+    if (!name) name = "Participant";
+    
+    // Only require/validate email if they checked the consent box
+    if (emailConsent) {
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        idError.textContent = "Please provide a valid email address.";
+        return;
+      }
+    } else {
+      // Create a unique dummy email keyed to their name so their sessions persist somewhat but we don't know their real email.
+      const sanitizedName = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const hasCrypto = typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function';
+      const randomPart = hasCrypto ? crypto.randomUUID().split('-')[0] : Math.random().toString(16).slice(2, 8);
+      email = `${sanitizedName}_${randomPart}@participant.local`;
+    }
   }
 
   // Check if existed, else generate mock IP
@@ -854,6 +903,7 @@ async function generateRecap() {
         <li style="margin-bottom: 8px;">📝 Notes sent: <strong style="color: #fff;">${notes}</strong></li>
       </ul>
       <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">Compared to the <strong style="color: #fff;">${allUserEvents.length}</strong> total interactions from the entire audience.</p>
+      <a href="stories.html" class="primary" style="display: block; width: 100%; margin-top: 25px; text-decoration: none; padding: 15px; border-radius: 8px; font-weight: bold; background-image: linear-gradient(90deg, #ff8a00, #e52e71); border: none;">View Tonight's Stories</a>
     `;
   } catch (err) {
     recapEl.innerHTML = "Unable to fetch recap data.";
@@ -873,6 +923,12 @@ function doSwitchUser() {
   idEmailInput.value = "";
   idNameInput.value = "";
   if (idConsentInput) idConsentInput.checked = false;
+  if (idAnonymousInput) idAnonymousInput.checked = false;
+  if (emailFieldGroup) emailFieldGroup.style.display = "none";
+  if (personalInfoFields) {
+    personalInfoFields.style.opacity = "1";
+    personalInfoFields.style.pointerEvents = "auto";
+  }
 }
 
 if (btnSwitchUser) btnSwitchUser.addEventListener("click", doSwitchUser);

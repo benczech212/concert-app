@@ -39,7 +39,7 @@
                     <div id="visualBuilder" style="margin-top: 15px;"></div>
                 </section>
 
-                <section class="card" aria-label="Configuration Editor">
+                <section class="card" aria-label="Configuration Editor" style="display: none;">
                     <h2>YAML Editor</h2>
                     <p class="note">Edit the raw YAML configuration. Advanced users only.</p>
                     <label for="configEditor" class="hint" style="display:block;margin-bottom:6px;">Config YAML</label>
@@ -163,37 +163,7 @@
             builder.appendChild(moodSection);
             builder.appendChild(document.createElement("hr"));
 
-            const trackSection = document.createElement("div");
-            trackSection.innerHTML = `<h3>Tracks</h3>`;
-            const trackList = document.createElement("div");
-            trackList.style.display = "flex"; trackList.style.flexDirection = "column"; trackList.style.gap = "8px";
-            trackSection.appendChild(trackList);
-
-            (currentConfigObj.tracks || []).forEach((trackObj, index) => {
-                const row = document.createElement("div");
-                row.style.display = "flex"; row.style.gap = "8px"; row.style.alignItems = "center";
-                row.innerHTML = `
-                <input type="text" class="vb-track-id" value="${trackObj.id || ''}" placeholder="ID" style="width:40px;" />
-                <input type="text" class="vb-track-title" value="${trackObj.title || ''}" placeholder="Title" style="flex:2;" />
-                <input type="text" class="vb-track-artist" value="${trackObj.artist || ''}" placeholder="Artist" style="flex:1;" />
-                <input type="text" class="vb-track-color" value="${trackObj.color || ''}" placeholder="#Color" style="flex:1;" />
-                <button type="button" class="secondary btn-del-track" data-index="${index}" style="padding:6px 12px;">X</button>
-              `;
-                trackList.appendChild(row);
-            });
-            const btnAddTrack = document.createElement("button");
-            btnAddTrack.textContent = "+ Add Track";
-            btnAddTrack.className = "secondary";
-            btnAddTrack.style.marginTop = "8px";
-            btnAddTrack.style.padding = "6px 12px";
-            btnAddTrack.style.fontSize = "0.85rem";
-            btnAddTrack.onclick = () => {
-                currentConfigObj.tracks = currentConfigObj.tracks || [];
-                currentConfigObj.tracks.push({ id: currentConfigObj.tracks.length + 1, title: "", artist: "", color: "" });
-                updateTextEditorFromObj();
-            };
-            trackSection.appendChild(btnAddTrack);
-            builder.appendChild(trackSection);
+            // Track section removed per user request
 
             builder.querySelectorAll('input, textarea').forEach(i => {
                 i.style.border = "1px solid var(--border-soft)";
@@ -210,12 +180,7 @@
                 };
             });
 
-            builder.querySelectorAll('.btn-del-track').forEach(btn => {
-                btn.onclick = (e) => {
-                    currentConfigObj.tracks.splice(e.target.dataset.index, 1);
-                    updateTextEditorFromObj();
-                };
-            });
+            // btn-del-track removed
 
             builder.querySelectorAll('input, textarea').forEach(inp => {
                 inp.addEventListener('input', syncFormToObject);
@@ -244,17 +209,7 @@
                 newObj.moods.push({ name: inp.value, glow: glowInp.value });
             });
 
-            builder.querySelectorAll('.vb-track-id').forEach((inp, idx) => {
-                const titleInp = builder.querySelectorAll('.vb-track-title')[idx];
-                const artistInp = builder.querySelectorAll('.vb-track-artist')[idx];
-                const colorInp = builder.querySelectorAll('.vb-track-color')[idx];
-                newObj.tracks.push({
-                    id: isNaN(parseInt(inp.value)) ? inp.value : parseInt(inp.value),
-                    title: titleInp.value,
-                    artist: artistInp.value,
-                    color: colorInp.value
-                });
-            });
+            // sync of Tracks removed
 
             currentConfigObj = newObj;
             const yamlStr = jsyaml.dump(currentConfigObj);
@@ -324,6 +279,7 @@
             await loadConfig();
         });
     </script>
+<script src="nav.js"></script>
 </body>
 
 </html>

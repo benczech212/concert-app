@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Reaction Chart</title>
+    <title>Mood Chart</title>
     <link rel="stylesheet" href="styles.css" />
     <style>
         body {
@@ -82,7 +82,7 @@
 
 <body>
     <div style="text-align:center; margin-bottom: 20px;">
-        <h1>Live Reaction Chart</h1>
+        <h1>Live Mood Chart</h1>
         <div class="filter-container">
             <label for="trackFilter">Filter by Track: </label>
             <select id="trackFilter" onchange="handleTrackFilterChange()">
@@ -92,17 +92,17 @@
         <a href="index.html" class="secondary" style="text-decoration: none; padding: 5px 10px;">&larr; Back to App</a>
     </div>
     <div>
-        
-        
         <div class="chart-container">
             <div class="chart-header">
-                <h3>Reaction</h3>
-                <button class="toggle-btn" onclick="toggleView('reaction')">Switch to Timeline</button>
+                <h3>Mood</h3>
+                <button class="toggle-btn" onclick="toggleView('mood')">Switch to Timeline</button>
             </div>
             <div class="canvas-wrapper">
-                <canvas id="reactionChart"></canvas>
+                <canvas id="moodChart"></canvas>
             </div>
         </div>
+        
+        
         
     </div>
 
@@ -438,6 +438,7 @@
         <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a>
     </div>
 
+<script src="nav.js"></script>
 </body>
 
 </html>

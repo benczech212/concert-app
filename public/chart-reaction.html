@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Word Cloud</title>
+    <title>Reaction Chart</title>
     <link rel="stylesheet" href="styles.css" />
     <style>
         body {
@@ -56,19 +56,13 @@
             margin-bottom: 20px;
         }
 
-        .filter-container select, .filter-container .radios {
+        .filter-container select {
             background: var(--card);
             color: var(--text);
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 8px 15px;
             border-radius: 6px;
             font-size: 1rem;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .filter-container .radios label {
-            margin-right: 15px;
             cursor: pointer;
         }
 
@@ -88,50 +82,49 @@
 
 <body>
     <div style="text-align:center; margin-bottom: 20px;">
-        <h1>Live Word Cloud</h1>
+        <h1>Live Reaction Chart</h1>
         <div class="filter-container">
             <label for="trackFilter">Filter by Track: </label>
             <select id="trackFilter" onchange="handleTrackFilterChange()">
                 <option value="all">All Time</option>
             </select>
-            
-            <label for="wordGroupFilter" style="margin-left: 20px;">Word Grouping: </label>
-            <div class="radios" style="display: inline-block;">
-                <label><input type="radio" name="wordGroup" value="1" checked onchange="handleTrackFilterChange()"> Single Words</label>
-                <label><input type="radio" name="wordGroup" value="2" onchange="handleTrackFilterChange()"> Two Words</label>
-                <label><input type="radio" name="wordGroup" value="3" onchange="handleTrackFilterChange()"> Three Words</label>
-            </div>
         </div>
         <a href="index.html" class="secondary" style="text-decoration: none; padding: 5px 10px;">&larr; Back to App</a>
     </div>
     <div>
         
         
-        
         <div class="chart-container">
             <div class="chart-header">
-                <h3>Words</h3>
-                <button class="toggle-btn" onclick="toggleWordView()">Switch to Bar Chart</button>
+                <h3>Reaction</h3>
             </div>
             <div class="canvas-wrapper">
-                <canvas id="wordCloud"></canvas>
-                <canvas id="wordBarChart" style="display: none;"></canvas>
-                <canvas id="wordTreemap" style="display: none;"></canvas>
+                <canvas id="reactionChart"></canvas>
             </div>
         </div>
+        <div class="chart-container">
+            <div class="chart-header">
+                <h3>Reaction Timeline</h3>
+            </div>
+            <div class="canvas-wrapper">
+                <canvas id="reactionTimelineChart"></canvas>
+            </div>
+        </div>
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@3.0.0/dist/chartjs-chart-treemap.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.2/wordcloud2.min.js"></script>
 
     <script>
         let moodChartInstance = null;
         let colorChartInstance = null;
         let reactionChartInstance = null;
+        let reactionTimelineChartInstance = null;
         let timelineChartInstance = null;
 
         let chartViews = {
@@ -139,9 +132,6 @@
             color: 'bar',
             reaction: 'pie'
         };
-        let wordView = 'cloud';
-        let wordCloudChartInstance = null;
-        let wordBarChartInstance = null;
 
         // Track filtering state
         let currentTrackFilter = 'all';
@@ -149,6 +139,7 @@
         let trackRanges = {}; // Map of trackId -> {start: time, end: time, title: str}
 
         function toggleView(category) {
+            if(category === 'reaction') return;
             const btn = document.querySelector(`button[onclick="toggleView('${category}')"]`);
             if (chartViews[category] === 'bar' || chartViews[category] === 'pie') {
                 chartViews[category] = 'timeline';
@@ -161,30 +152,6 @@
             if (window[`${category}ChartInstance`]) {
                 window[`${category}ChartInstance`].destroy();
                 window[`${category}ChartInstance`] = null;
-            }
-            renderData();
-        }
-
-        function toggleWordView() {
-            const btn = document.querySelector(`button[onclick="toggleWordView()"]`);
-            if (wordView === 'cloud') {
-                wordView = 'bar';
-                btn.textContent = 'Switch to Treemap';
-                document.getElementById('wordCloud').style.display = 'none';
-                document.getElementById('wordTreemap').style.display = 'none';
-                document.getElementById('wordBarChart').style.display = 'block';
-            } else if (wordView === 'bar') {
-                wordView = 'treemap';
-                btn.textContent = 'Switch to Word Cloud';
-                document.getElementById('wordCloud').style.display = 'none';
-                document.getElementById('wordTreemap').style.display = 'block';
-                document.getElementById('wordBarChart').style.display = 'none';
-            } else {
-                wordView = 'cloud';
-                btn.textContent = 'Switch to Bar Chart';
-                document.getElementById('wordCloud').style.display = 'block';
-                document.getElementById('wordTreemap').style.display = 'none';
-                document.getElementById('wordBarChart').style.display = 'none';
             }
             renderData();
         }
@@ -260,14 +227,6 @@
                 const colors = {};
                 const reactions = {};
                 const wordCounts = {};
-                let wordGroupFilter = 1;
-                const radios = document.getElementsByName('wordGroup');
-                for (let i = 0; i < radios.length; i++) {
-                    if (radios[i].checked) {
-                        wordGroupFilter = parseInt(radios[i].value);
-                        break;
-                    }
-                }
 
                 const timelineMood = {};
                 const timelineColor = {};
@@ -333,25 +292,9 @@
                         if (e.category === 'note' && e.value) {
                             const words = e.value.toLowerCase().match(/\w+/g);
                             if (words) {
-                                if (wordGroupFilter === 1) {
-                                    words.forEach(w => {
-                                        if (w.length > 3) wordCounts[w] = (wordCounts[w] || 0) + 1;
-                                    });
-                                } else if (wordGroupFilter === 2) {
-                                    for (let i = 0; i < words.length - 1; i++) {
-                                        if (words[i].length > 2 && words[i+1].length > 2) {
-                                            const pair = words[i] + ' ' + words[i+1];
-                                            wordCounts[pair] = (wordCounts[pair] || 0) + 1;
-                                        }
-                                    }
-                                } else if (wordGroupFilter === 3) {
-                                    for (let i = 0; i < words.length - 2; i++) {
-                                        if (words[i].length > 2 && words[i+1].length > 2 && words[i+2].length > 2) {
-                                            const triplet = words[i] + ' ' + words[i+1] + ' ' + words[i+2];
-                                            wordCounts[triplet] = (wordCounts[triplet] || 0) + 1;
-                                        }
-                                    }
-                                }
+                                words.forEach(w => {
+                                    if (w.length > 3) wordCounts[w] = (wordCounts[w] || 0) + 1;
+                                });
                             }
                         }
                     }
@@ -362,105 +305,25 @@
                 updateChart(document.getElementById('moodChart'), 'moodChartInstance', 'Mood', moods, timelineMood, 'rgba(150, 200, 255, 0.6)', 'rgba(150, 200, 255, 1)', annotations, chartViews.mood);
                 updateChart(document.getElementById('colorChart'), 'colorChartInstance', 'Color', colors, timelineColor, 'rgba(255, 150, 200, 0.6)', 'rgba(255, 150, 200, 1)', annotations, chartViews.color);
                 updateChart(document.getElementById('reactionChart'), 'reactionChartInstance', 'Reaction', reactions, timelineReaction,
-                    ['rgba(200, 200, 200, 0.6)', 'rgba(150, 255, 150, 0.6)', 'rgba(255, 200, 50, 0.6)'],
-                    'rgba(150, 255, 150, 1)', annotations, chartViews.reaction);
+                    ['#cccccc', '#90ee90', '#006400'],
+                    'rgba(150, 255, 150, 1)', annotations, 'pie');
+                updateChart(document.getElementById('reactionTimelineChart'), 'reactionTimelineChartInstance', 'Reaction', reactions, timelineReaction,
+                    ['#cccccc', '#90ee90', '#006400'],
+                    'rgba(150, 255, 150, 1)', annotations, 'timeline');
 
-                if (wordView === 'cloud') {
-                    const sortedWords = Object.entries(wordCounts).sort((a, b) => b[1] - a[1]).slice(0, 150);
-                    const maxCount = sortedWords.length ? sortedWords[0][1] : 1;
-                    const list = sortedWords.map(([w, c]) => [w, 14 + (c / maxCount) * 46]);
-                    
-                    const wcEl = document.getElementById('wordCloud');
-                    if (list.length && wcEl) {
-                        WordCloud(wcEl, {
-                            list,
-                            weightFactor: 1,
-                            color: 'random-light',
-                            backgroundColor: 'transparent',
-                            shape: 'circle',
-                            fontFamily: 'system-ui, sans-serif',
-                            gridSize: 8,
-                            rotateRatio: 0.1,
-                            rotationSteps: 2,
-                            shrinkToFit: true,
-                            drawOutOfBound: false
-                        });
-                    }
-                } else if (wordView === 'treemap') {
-                    const sortedWords = Object.entries(wordCounts).sort((a, b) => b[1] - a[1]).slice(0, 50);
-                    const treeData = sortedWords.map(w => ({ name: w[0], value: w[1] }));
-                    
-                    const canvasEl = document.getElementById('wordTreemap');
-                    if (wordCloudChartInstance) {
-                        wordCloudChartInstance.data.datasets[0].tree = treeData;
-                        wordCloudChartInstance.update('none');
-                    } else {
-                        const ctx = canvasEl.getContext('2d');
-                        Chart.defaults.color = '#fff';
-                        wordCloudChartInstance = new Chart(ctx, {
-                            type: 'treemap',
-                            data: {
-                                datasets: [{
-                                    tree: treeData,
-                                    key: 'value',
-                                    groups: ['name'],
-                                    backgroundColor: (ctx) => {
-                                        const value = ctx.raw ? ctx.raw.v : 0;
-                                        const alpha = Math.min(Math.max(value / 10, 0.2), 0.8);
-                                        return `rgba(150, 200, 255, ${alpha})`;
-                                    },
-                                    borderColor: 'rgba(255,255,255,0.2)',
-                                    borderWidth: 1,
-                                    labels: {
-                                        display: true,
-                                        formatter: (ctx) => ctx.raw.g,
-                                        color: '#ffffff',
-                                        font: (ctx) => {
-                                            const value = ctx.raw ? ctx.raw.v : 1;
-                                            const size = Math.max(12, Math.min(value * 3, 36));
-                                            return { size: size, weight: 'bold' };
-                                        }
-                                    }
-                                }]
-                            },
-                            options: {
-                                animation: false,
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: {
-                                    legend: { display: false },
-                                    tooltip: {
-                                        callbacks: {
-                                            title: (items) => items[0].raw.g,
-                                            label: (item) => `Count: ${item.raw.v}`
-                                        }
-                                    }
-                                }
-                            }
-                        });
-                    }
-                } else {
-                    const sortedWords = Object.entries(wordCounts).sort((a, b) => b[1] - a[1]).slice(0, 20);
-                    const labels = sortedWords.map(w => w[0]);
-                    const data = sortedWords.map(w => w[1]);
-                    
-                    const canvasEl = document.getElementById('wordBarChart');
-                    if (wordBarChartInstance) {
-                        wordBarChartInstance.data.labels = labels;
-                        wordBarChartInstance.data.datasets[0].data = data;
-                        wordBarChartInstance.update('none');
-                    } else {
-                        const ctx = canvasEl.getContext('2d');
-                        Chart.defaults.color = '#fff';
-                        wordBarChartInstance = new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: labels,
-                                datasets: [{ label: 'Word Frequency', data: data, backgroundColor: 'rgba(150, 200, 255, 0.6)' }]
-                            },
-                            options: { animation: false, responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
-                        });
-                    }
+                const list = Object.entries(wordCounts).map(([w, c]) => [w, c * 6 + 15]);
+                const wcEl = document.getElementById('wordCloud');
+                if (list.length && wcEl) {
+                    WordCloud(wcEl, {
+                        list,
+                        weightFactor: 2,
+                        color: 'random-light',
+                        backgroundColor: 'transparent',
+                        shape: 'circle',
+                        fontFamily: 'system-ui, sans-serif',
+                        rotateRatio: 0.5,
+                        rotationSteps: 2
+                    });
                 }
             } catch (err) { console.error(err); }
         }
@@ -482,6 +345,11 @@
                     if (label === 'Color') {
                         const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
                         color = colorMap[labelValue] || labelValue.toLowerCase();
+                    }
+                    if (label === 'Reaction') {
+                        if (labelValue === 'applause') { labelValue = 'Applause 👏'; color = '#006400'; }
+                        else if (labelValue === 'like') { labelValue = 'Like 👍'; color = '#90ee90'; }
+                        else { labelValue = 'Meh 😐'; color = '#808080'; }
                     }
 
                     return {
@@ -522,6 +390,21 @@
                 let data = Object.values(totalsMap);
 
                 let renderBgColors = bgColorBar;
+                
+                if (label === 'Reaction') {
+                    labels = labels.map(l => {
+                        if (l === 'applause') return 'Applause 👏';
+                        if (l === 'like') return 'Like 👍';
+                        if (l === 'meh') return 'Meh 😐';
+                        return l;
+                    });
+                    renderBgColors = labels.map(l => {
+                        if (l.includes('Applause')) return '#006400';
+                        if (l.includes('Like')) return '#90ee90';
+                        return '#808080';
+                    });
+                }
+                
                 if (label === 'Color') {
                     const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
                     const hueMap = { "Red": 0, "Amber": 45, "Yellow": 60, "Green": 120, "Cyan": 180, "Blue": 240, "Purple": 300 };
@@ -566,5 +449,28 @@
         <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a> |
         <a href="kiosk.html" class="secondary" style="margin: 0 10px;">Kiosk Mode</a>
     </div>
+
+
+    <div style="text-align: center; margin-top: 40px; padding-top: 20px;">
+        <p><strong>View Individual Charts:</strong></p>
+        <a href="charts-all.html" class="secondary" style="margin: 0 10px;">All Charts</a> |
+        <a href="chart-mood.html" class="secondary" style="margin: 0 10px;">Mood</a> |
+        <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
+        <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
+        <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a>
+    </div>
+
+
+    <div style="text-align: center; margin-top: 40px; padding-top: 20px;">
+        <p><strong>View Individual Charts:</strong></p>
+        <a href="charts-all.html" class="secondary" style="margin: 0 10px;">All Charts</a> |
+        <a href="chart-mood.html" class="secondary" style="margin: 0 10px;">Mood</a> |
+        <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
+        <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
+        <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a>
+    </div>
+
+<script src="nav.js"></script>
 </body>
+
 </html>

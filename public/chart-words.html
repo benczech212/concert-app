@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>All Charts Data Dashboard</title>
+    <title>Word Cloud</title>
     <link rel="stylesheet" href="styles.css" />
     <style>
         body {
@@ -56,13 +56,19 @@
             margin-bottom: 20px;
         }
 
-        .filter-container select {
+        .filter-container select, .filter-container .radios {
             background: var(--card);
             color: var(--text);
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 8px 15px;
             border-radius: 6px;
             font-size: 1rem;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .filter-container .radios label {
+            margin-right: 15px;
             cursor: pointer;
         }
 
@@ -82,49 +88,35 @@
 
 <body>
     <div style="text-align:center; margin-bottom: 20px;">
-        <h1>Live Dashboard</h1>
+        <h1>Live Word Cloud</h1>
         <div class="filter-container">
             <label for="trackFilter">Filter by Track: </label>
             <select id="trackFilter" onchange="handleTrackFilterChange()">
                 <option value="all">All Time</option>
             </select>
+            
+            <label for="wordGroupFilter" style="margin-left: 20px;">Word Grouping: </label>
+            <div class="radios" style="display: inline-block;">
+                <label><input type="radio" name="wordGroup" value="1" checked onchange="handleTrackFilterChange()"> Single Words</label>
+                <label><input type="radio" name="wordGroup" value="2" onchange="handleTrackFilterChange()"> Two Words</label>
+                <label><input type="radio" name="wordGroup" value="3" onchange="handleTrackFilterChange()"> Three Words</label>
+            </div>
         </div>
         <a href="index.html" class="secondary" style="text-decoration: none; padding: 5px 10px;">&larr; Back to App</a>
     </div>
-    <div class="grid">
-        <div class="chart-container">
-            <div class="chart-header">
-                <h3>Mood</h3>
-                <button class="toggle-btn" onclick="toggleView('mood')">Switch to Timeline</button>
-            </div>
-            <div class="canvas-wrapper">
-                <canvas id="moodChart"></canvas>
-            </div>
-        </div>
-        <div class="chart-container">
-            <div class="chart-header">
-                <h3>Color</h3>
-                <button class="toggle-btn" onclick="toggleView('color')">Switch to Timeline</button>
-            </div>
-            <div class="canvas-wrapper">
-                <canvas id="colorChart"></canvas>
-            </div>
-        </div>
-        <div class="chart-container">
-            <div class="chart-header">
-                <h3>Reaction</h3>
-                <button class="toggle-btn" onclick="toggleView('reaction')">Switch to Timeline</button>
-            </div>
-            <div class="canvas-wrapper">
-                <canvas id="reactionChart"></canvas>
-            </div>
-        </div>
+    <div>
+        
+        
+        
         <div class="chart-container">
             <div class="chart-header">
                 <h3>Words</h3>
+                <button class="toggle-btn" onclick="toggleWordView()">Switch to Bar Chart</button>
             </div>
             <div class="canvas-wrapper">
                 <canvas id="wordCloud"></canvas>
+                <canvas id="wordBarChart" style="display: none;"></canvas>
+                <canvas id="wordTreemap" style="display: none;"></canvas>
             </div>
         </div>
     </div>
@@ -141,13 +133,15 @@
         let colorChartInstance = null;
         let reactionChartInstance = null;
         let timelineChartInstance = null;
-        let wordCloudChartInstance = null;
 
         let chartViews = {
             mood: 'bar',
             color: 'bar',
             reaction: 'pie'
         };
+        let wordView = 'cloud';
+        let wordCloudChartInstance = null;
+        let wordBarChartInstance = null;
 
         // Track filtering state
         let currentTrackFilter = 'all';
@@ -167,6 +161,30 @@
             if (window[`${category}ChartInstance`]) {
                 window[`${category}ChartInstance`].destroy();
                 window[`${category}ChartInstance`] = null;
+            }
+            renderData();
+        }
+
+        function toggleWordView() {
+            const btn = document.querySelector(`button[onclick="toggleWordView()"]`);
+            if (wordView === 'cloud') {
+                wordView = 'bar';
+                btn.textContent = 'Switch to Treemap';
+                document.getElementById('wordCloud').style.display = 'none';
+                document.getElementById('wordTreemap').style.display = 'none';
+                document.getElementById('wordBarChart').style.display = 'block';
+            } else if (wordView === 'bar') {
+                wordView = 'treemap';
+                btn.textContent = 'Switch to Word Cloud';
+                document.getElementById('wordCloud').style.display = 'none';
+                document.getElementById('wordTreemap').style.display = 'block';
+                document.getElementById('wordBarChart').style.display = 'none';
+            } else {
+                wordView = 'cloud';
+                btn.textContent = 'Switch to Bar Chart';
+                document.getElementById('wordCloud').style.display = 'block';
+                document.getElementById('wordTreemap').style.display = 'none';
+                document.getElementById('wordBarChart').style.display = 'none';
             }
             renderData();
         }
@@ -242,12 +260,19 @@
                 const colors = {};
                 const reactions = {};
                 const wordCounts = {};
+                let wordGroupFilter = 1;
+                const radios = document.getElementsByName('wordGroup');
+                for (let i = 0; i < radios.length; i++) {
+                    if (radios[i].checked) {
+                        wordGroupFilter = parseInt(radios[i].value);
+                        break;
+                    }
+                }
 
                 const timelineMood = {};
                 const timelineColor = {};
                 const timelineReaction = {};
                 const trackEvents = [];
-                const colorHexMap = {};
 
                 let activeRange = null;
                 if (currentTrackFilter !== 'all' && trackRanges[currentTrackFilter]) {
@@ -283,10 +308,8 @@
                                 timelineMood[bucketTime][e.value] = (timelineMood[bucketTime][e.value] || 0) + 1;
                             }
                             if (e.category === 'color') {
-                                const name = e.value;
-                                colorHexMap[name] = e.colorRgba || name;
                                 timelineColor[bucketTime] = timelineColor[bucketTime] || {};
-                                timelineColor[bucketTime][name] = (timelineColor[bucketTime][name] || 0) + 1;
+                                timelineColor[bucketTime][e.value] = (timelineColor[bucketTime][e.value] || 0) + 1;
                             }
                             if (e.category === 'reaction') {
                                 timelineReaction[bucketTime] = timelineReaction[bucketTime] || {};
@@ -305,28 +328,28 @@
 
                     if (passFilter) {
                         if (e.category === 'mood') moods[e.value] = (moods[e.value] || 0) + 1;
-                        if (e.category === 'color') {
-                            const name = e.value;
-                            colorHexMap[name] = e.colorRgba || name;
-                            colors[name] = (colors[name] || 0) + 1;
-                        }
+                        if (e.category === 'color') colors[e.value] = (colors[e.value] || 0) + 1;
                         if (e.category === 'reaction') reactions[e.value] = (reactions[e.value] || 0) + 1;
                         if (e.category === 'note' && e.value) {
                             const words = e.value.toLowerCase().match(/\w+/g);
                             if (words) {
-                                words.forEach(w => {
-                                    if (w.length > 3) wordCounts[w] = (wordCounts[w] || 0) + 1;
-                                });
-                                for (let i = 0; i < words.length - 1; i++) {
-                                    if (words[i].length > 2 && words[i+1].length > 2) {
-                                        const pair = words[i] + ' ' + words[i+1];
-                                        wordCounts[pair] = (wordCounts[pair] || 0) + 1;
+                                if (wordGroupFilter === 1) {
+                                    words.forEach(w => {
+                                        if (w.length > 3) wordCounts[w] = (wordCounts[w] || 0) + 1;
+                                    });
+                                } else if (wordGroupFilter === 2) {
+                                    for (let i = 0; i < words.length - 1; i++) {
+                                        if (words[i].length > 2 && words[i+1].length > 2) {
+                                            const pair = words[i] + ' ' + words[i+1];
+                                            wordCounts[pair] = (wordCounts[pair] || 0) + 1;
+                                        }
                                     }
-                                }
-                                for (let i = 0; i < words.length - 2; i++) {
-                                    if (words[i].length > 2 && words[i+1].length > 2 && words[i+2].length > 2) {
-                                        const triplet = words[i] + ' ' + words[i+1] + ' ' + words[i+2];
-                                        wordCounts[triplet] = (wordCounts[triplet] || 0) + 1;
+                                } else if (wordGroupFilter === 3) {
+                                    for (let i = 0; i < words.length - 2; i++) {
+                                        if (words[i].length > 2 && words[i+1].length > 2 && words[i+2].length > 2) {
+                                            const triplet = words[i] + ' ' + words[i+1] + ' ' + words[i+2];
+                                            wordCounts[triplet] = (wordCounts[triplet] || 0) + 1;
+                                        }
                                     }
                                 }
                             }
@@ -342,25 +365,108 @@
                     ['rgba(200, 200, 200, 0.6)', 'rgba(150, 255, 150, 0.6)', 'rgba(255, 200, 50, 0.6)'],
                     'rgba(150, 255, 150, 1)', annotations, chartViews.reaction);
 
-                const sortedWords = Object.entries(wordCounts).sort((a, b) => b[1] - a[1]).slice(0, 150);
-                const maxCount = sortedWords.length ? sortedWords[0][1] : 1;
-                const list = sortedWords.map(([w, c]) => [w, 14 + (c / maxCount) * 46]);
-                
-                const wcEl = document.getElementById('wordCloud');
-                if (list.length && wcEl) {
-                    WordCloud(wcEl, {
-                        list,
-                        weightFactor: 1,
-                        color: 'random-light',
-                        backgroundColor: 'transparent',
-                        shape: 'circle',
-                        fontFamily: 'system-ui, sans-serif',
-                        gridSize: 8,
-                        rotateRatio: 0.1,
-                        rotationSteps: 2,
-                        shrinkToFit: true,
-                        drawOutOfBound: false
-                    });
+                if (wordView === 'cloud') {
+                    const sortedWords = Object.entries(wordCounts).sort((a, b) => b[1] - a[1]).slice(0, 150);
+                    const maxCount = sortedWords.length ? sortedWords[0][1] : 1;
+                    const list = sortedWords.map(([w, c]) => [w, 14 + (c / maxCount) * 46]);
+                    
+                    const wcEl = document.getElementById('wordCloud');
+                    if (list.length && wcEl) {
+                        const dpr = window.devicePixelRatio || 1;
+                        const rect = wcEl.parentElement.getBoundingClientRect();
+                        if (rect.width > 0 && rect.height > 0) {
+                            wcEl.width = rect.width * dpr;
+                            wcEl.height = rect.height * dpr;
+                        }
+                        WordCloud(wcEl, {
+                            list,
+                            weightFactor: dpr,
+                            color: 'random-light',
+                            backgroundColor: 'transparent',
+                            shape: 'circle',
+                            fontFamily: 'system-ui, sans-serif',
+                            gridSize: Math.round(8 * dpr),
+                            rotateRatio: 0.1,
+                            rotationSteps: 2,
+                            shrinkToFit: true,
+                            drawOutOfBound: false
+                        });
+                    }
+                } else if (wordView === 'treemap') {
+                    const sortedWords = Object.entries(wordCounts).sort((a, b) => b[1] - a[1]).slice(0, 50);
+                    const treeData = sortedWords.map(w => ({ name: w[0], value: w[1] }));
+                    
+                    const canvasEl = document.getElementById('wordTreemap');
+                    if (wordCloudChartInstance) {
+                        wordCloudChartInstance.data.datasets[0].tree = treeData;
+                        wordCloudChartInstance.update('none');
+                    } else {
+                        const ctx = canvasEl.getContext('2d');
+                        Chart.defaults.color = '#fff';
+                        wordCloudChartInstance = new Chart(ctx, {
+                            type: 'treemap',
+                            data: {
+                                datasets: [{
+                                    tree: treeData,
+                                    key: 'value',
+                                    groups: ['name'],
+                                    backgroundColor: (ctx) => {
+                                        const value = ctx.raw ? ctx.raw.v : 0;
+                                        const alpha = Math.min(Math.max(value / 10, 0.2), 0.8);
+                                        return `rgba(150, 200, 255, ${alpha})`;
+                                    },
+                                    borderColor: 'rgba(255,255,255,0.2)',
+                                    borderWidth: 1,
+                                    labels: {
+                                        display: true,
+                                        formatter: (ctx) => ctx.raw.g,
+                                        color: '#ffffff',
+                                        font: (ctx) => {
+                                            const value = ctx.raw ? ctx.raw.v : 1;
+                                            const size = Math.max(12, Math.min(value * 3, 36));
+                                            return { size: size, weight: 'bold' };
+                                        }
+                                    }
+                                }]
+                            },
+                            options: {
+                                animation: false,
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: { display: false },
+                                    tooltip: {
+                                        callbacks: {
+                                            title: (items) => items[0].raw.g,
+                                            label: (item) => `Count: ${item.raw.v}`
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    const sortedWords = Object.entries(wordCounts).sort((a, b) => b[1] - a[1]).slice(0, 20);
+                    const labels = sortedWords.map(w => w[0]);
+                    const data = sortedWords.map(w => w[1]);
+                    
+                    const canvasEl = document.getElementById('wordBarChart');
+                    if (wordBarChartInstance) {
+                        wordBarChartInstance.data.labels = labels;
+                        wordBarChartInstance.data.datasets[0].data = data;
+                        wordBarChartInstance.update('none');
+                    } else {
+                        const ctx = canvasEl.getContext('2d');
+                        Chart.defaults.color = '#fff';
+                        wordBarChartInstance = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: [{ label: 'Word Frequency', data: data, backgroundColor: 'rgba(150, 200, 255, 0.6)' }]
+                            },
+                            options: { animation: false, responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+                        });
+                    }
                 }
             } catch (err) { console.error(err); }
         }
@@ -379,22 +485,16 @@
                     const pointData = times.map(t => (timelineMap[t] && timelineMap[t][labelValue]) || 0);
                     let color = palette[i % palette.length];
 
-                    let borderColor = color;
-                    let borderDash = [];
-                    
                     if (label === 'Color') {
-                        const hex = colorHexMap[labelValue] || labelValue;
-                        color = hex;
-                        borderColor = hex === 'transparent' ? '#ffffff' : hex;
-                        borderDash = hex === 'transparent' ? [5, 5] : [];
+                        const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
+                        color = colorMap[labelValue] || labelValue.toLowerCase();
                     }
 
                     return {
                         label: labelValue,
                         data: pointData,
-                        borderColor: borderColor,
+                        borderColor: color,
                         backgroundColor: color,
-                        borderDash: borderDash,
                         tension: 0.1,
                         fill: false
                     };
@@ -428,23 +528,21 @@
                 let data = Object.values(totalsMap);
 
                 let renderBgColors = bgColorBar;
-                let renderBorderColors = 'rgba(255, 255, 255, 0.2)';
-                let renderBorderWidths = 1;
-                
                 if (label === 'Color') {
-                    renderBgColors = labels.map(l => colorHexMap[l] || l);
-                    renderBorderColors = labels.map(l => (colorHexMap[l] || l) === 'transparent' ? '#ffffff' : 'rgba(0,0,0,0)');
-                    renderBorderWidths = labels.map(l => (colorHexMap[l] || l) === 'transparent' ? 2 : 0);
+                    const colorMap = { "Red": "red", "Blue": "blue", "Green": "green", "Purple": "purple", "Yellow": "#FFD700", "Amber": "#FFBF00", "Cyan": "cyan" };
+                    const hueMap = { "Red": 0, "Amber": 45, "Yellow": 60, "Green": 120, "Cyan": 180, "Blue": 240, "Purple": 300 };
+
+                    const sortedIndices = labels.map((l, i) => i).sort((a, b) => (hueMap[labels[a]] || 999) - (hueMap[labels[b]] || 999));
+                    labels = sortedIndices.map(i => labels[i]);
+                    data = sortedIndices.map(i => data[i]);
+
+                    renderBgColors = labels.map(l => colorMap[l] || l.toLowerCase());
                 }
 
                 if (window[instanceRefName] && window[instanceRefName].config.type === viewMode) {
                     window[instanceRefName].data.labels = labels;
                     window[instanceRefName].data.datasets[0].data = data;
-                    if (label === 'Color') {
-                        window[instanceRefName].data.datasets[0].backgroundColor = renderBgColors;
-                        window[instanceRefName].data.datasets[0].borderColor = renderBorderColors;
-                        window[instanceRefName].data.datasets[0].borderWidth = renderBorderWidths;
-                    }
+                    if (label === 'Color') window[instanceRefName].data.datasets[0].backgroundColor = renderBgColors;
                     window[instanceRefName].update();
                 } else {
                     if (window[instanceRefName]) window[instanceRefName].destroy();
@@ -453,7 +551,7 @@
                         type: viewMode,
                         data: {
                             labels: labels,
-                            datasets: [{ label: `${label} Totals`, data: data, backgroundColor: renderBgColors, borderColor: renderBorderColors, borderWidth: renderBorderWidths }]
+                            datasets: [{ label: `${label} Totals`, data: data, backgroundColor: renderBgColors }]
                         },
                         options: { animation: false, responsive: true, maintainAspectRatio: false, scales: viewMode === 'bar' ? { y: { beginAtZero: true } } : {} }
                     });
@@ -472,10 +570,8 @@
         <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
         <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
         <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a> |
-        <a href="kiosk.html?kiosk=1" class="secondary" style="margin: 0 10px;">Kiosk 1</a> |
-        <a href="kiosk.html?kiosk=2" class="secondary" style="margin: 0 10px;">Kiosk 2</a>
+        <a href="kiosk.html" class="secondary" style="margin: 0 10px;">Kiosk Mode</a>
     </div>
-
+<script src="nav.js"></script>
 </body>
-
 </html>

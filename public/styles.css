@@ -427,3 +427,140 @@ a:hover {
   transform: scale(1.1);
   color: var(--text);
 }
+
+/* =========================================================
+   Global Navigation
+========================================================= */
+
+/* Hamburger Button */
+.global-nav-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  color: var(--text);
+  font-size: 1.5rem;
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.global-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Off-Canvas Menu */
+.global-nav-menu {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100vh;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  box-shadow: 4px 0 15px rgba(0,0,0,0.5);
+  z-index: 1001;
+  transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.global-nav-menu.open {
+  left: 0;
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.nav-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+#globalNavCloseBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+}
+
+#globalNavCloseBtn:hover {
+  color: var(--text);
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.nav-links li {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav-links a {
+  display: block;
+  padding: 15px 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.nav-links a:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  opacity: 1;
+}
+
+/* Overlay */
+.global-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.global-nav-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Subtle Admin Link */
+.global-admin-link {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 999;
+  font-size: 1rem;
+  opacity: 0.3;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.global-admin-link:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}

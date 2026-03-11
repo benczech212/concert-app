@@ -112,6 +112,7 @@
                 { id: 'reaction_time', title: 'Reaction Timeline', category: 'reaction', type: 'timeline' },
                 { id: 'color_bar', title: 'Color Distribution', category: 'color', type: 'bar' },
                 { id: 'mood_time', title: 'Mood Timeline', category: 'mood', type: 'timeline' },
+                { id: 'users_time', title: 'Connected Audience Over Time', category: 'users', type: 'timeline_users' },
                 { id: 'reaction_pie', title: 'Reaction Distribution', category: 'reaction', type: 'pie' }
             ];
         } else {
@@ -121,6 +122,7 @@
                 { id: 'total_time', title: 'Total Engagement Over Time', category: 'overall', type: 'timeline_total' },
                 { id: 'color_bar', title: 'Color Distribution', category: 'color', type: 'bar' },
                 { id: 'reaction_pie', title: 'Reaction Distribution', category: 'reaction', type: 'pie' },
+                { id: 'users_time', title: 'Connected Audience Over Time', category: 'users', type: 'timeline_users' },
                 { id: 'mood_time', title: 'Mood Timeline', category: 'mood', type: 'timeline' },
                 { id: 'reaction_time', title: 'Reaction Timeline', category: 'reaction', type: 'timeline' },
                 { id: 'words', title: 'Word Cloud', category: 'note', type: 'cloud' }
@@ -128,14 +130,40 @@
         }
 
         let displayData = {
-            mood: { totals: {}, timeline: {} },
-            color: { totals: {}, timeline: {} },
-            reaction: { totals: {}, timeline: {} },
+            mood: { totals: {}, timeline: {}, engCount: 0 },
+            color: { totals: {}, timeline: {}, engCount: 0 },
+            reaction: { totals: {}, timeline: {}, engCount: 0 },
+            overall: { timeline: {}, noteEngCount: 0 },
+            users: { timeline: {}, engCount: 0 },
             words: {},
             trackEvents: [],
-            overall: { timeline: {} },
             colorHexMap: {}
         };
+
+        function sortViewsByEngagement() {
+            views.sort((a, b) => {
+                let countA = 0;
+                let countB = 0;
+                
+                if (a.category === 'overall') countA = displayData.overall.noteEngCount + displayData.mood.engCount + displayData.color.engCount + displayData.reaction.engCount;
+                else if (a.category === 'note') countA = displayData.overall.noteEngCount;
+                else if (displayData[a.category]) countA = displayData[a.category].engCount;
+
+                if (b.category === 'overall') countB = displayData.overall.noteEngCount + displayData.mood.engCount + displayData.color.engCount + displayData.reaction.engCount;
+                else if (b.category === 'note') countB = displayData.overall.noteEngCount;
+                else if (displayData[b.category]) countB = displayData[b.category].engCount;
+
+                // Secondary sort to keep relative stable order for equal counts
+                if (countB === countA) return a.id.localeCompare(b.id);
+                return countB - countA;
+            });
+            
+            // Move users_time view to be somewhat randomized or prioritized based on overall engagement
+            views.sort((a, b) => {
+                if (a.id === 'users_time' && (displayData.overall.noteEngCount + displayData.mood.engCount) % 2 === 0) return -1;
+                return 0;
+            });
+        }
 
         const palette = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#8AC926', '#1982C4', '#6A4C93', '#F15BB5'];
 
@@ -169,12 +197,13 @@
 
                 // Reset display data
                 displayData = {
-                    mood: { totals: {}, timeline: {} },
-                    color: { totals: {}, timeline: {} },
-                    reaction: { totals: {}, timeline: {} },
+                    mood: { totals: {}, timeline: {}, engCount: 0 },
+                    color: { totals: {}, timeline: {}, engCount: 0 },
+                    reaction: { totals: {}, timeline: {}, engCount: 0 },
+                    overall: { timeline: {}, noteEngCount: 0 },
+                    users: { timeline: {}, engCount: 0 },
                     words: {},
                     trackEvents: [],
-                    overall: { timeline: {} },
                     colorHexMap: {}
                 };
 
@@ -188,6 +217,15 @@
                             dStart.setSeconds(0);
                             dStart.setMilliseconds(0);
                             displayData.trackEvents.push({ time: dStart.getTime(), value: e.value, title: e.trackTitle, id: e.trackId });
+                        }
+                        
+                        if (e.category === 'system' && (e.value === 'connected_users')) {
+                            const dUsers = new Date(e.timestamp);
+                            dUsers.setSeconds(0);
+                            dUsers.setMilliseconds(0);
+                            const bucketTime = dUsers.getTime();
+                            displayData.users.timeline[bucketTime] = Math.max(displayData.users.timeline[bucketTime] || 0, e.count || 0);
+                            displayData.users.engCount += 1; // Used for rotation weighting
                         }
 
                         if (['mood', 'color', 'reaction'].includes(e.category)) {
@@ -210,11 +248,13 @@
                             
                             // Totals
                             catData.totals[val] = (catData.totals[val] || 0) + 1;
+                            catData.engCount++;
                             
                             displayData.overall.timeline[bucketTime] = (displayData.overall.timeline[bucketTime] || 0) + 1;
                         }
                         
                         if (e.category === 'note' && e.value) {
+                            displayData.overall.noteEngCount++;
                             const bd = new Date(e.timestamp);
                             bd.setSeconds(0);
                             bd.setMilliseconds(0);
@@ -243,6 +283,7 @@
                     }
                 });
 
+                sortViewsByEngagement();
                 renderCurrentView();
 
             } catch (err) { console.error("Error fetching data:", err); }
@@ -270,14 +311,20 @@
                 const maxCount = sortedWords.length ? sortedWords[0][1] : 1;
                 const list = sortedWords.map(([w, c]) => [w, 14 + (c / maxCount) * 46]);
                 if (list.length) {
+                    const dpr = window.devicePixelRatio || 1;
+                    const rect = wordCanvas.parentElement.getBoundingClientRect();
+                    if (rect.width > 0 && rect.height > 0) {
+                        wordCanvas.width = rect.width * dpr;
+                        wordCanvas.height = rect.height * dpr;
+                    }
                     WordCloud(wordCanvas, {
                         list,
-                        weightFactor: 1,
+                        weightFactor: dpr,
                         color: 'random-light',
                         backgroundColor: 'transparent',
                         shape: 'circle',
                         fontFamily: 'system-ui, sans-serif',
-                        gridSize: 8,
+                        gridSize: Math.round(8 * dpr),
                         rotateRatio: 0.1,
                         rotationSteps: 2,
                         shrinkToFit: true,
@@ -294,6 +341,14 @@
             const catData = displayData[view.category];
             const annotations = createAnnotations();
             
+            function getHueMapValue(colorName) {
+                const hueMap = { 
+                    "Red": 0, "Amber": 45, "Yellow": 60, "Green": 120, "Cyan": 180, "Blue": 240, "Purple": 300,
+                    "Transparent": 1000, "White": 1001, "Gray": 1002, "Black": 1003 
+                };
+                return hueMap[colorName] !== undefined ? hueMap[colorName] : 999;
+            }
+
             let bgColorBar = 'rgba(150, 200, 255, 0.6)';
             if (view.category === 'color') bgColorBar = 'rgba(255, 150, 200, 0.6)';
             if (view.category === 'reaction') bgColorBar = ['rgba(200, 200, 200, 0.6)', 'rgba(150, 255, 150, 0.6)', 'rgba(255, 200, 50, 0.6)'];
@@ -328,6 +383,11 @@
                         color = hex;
                         borderColor = hex === 'transparent' ? '#ffffff' : hex;
                         borderDash = hex === 'transparent' ? [5, 5] : [];
+                    } else if (categoryLabel === 'reaction') {
+                        if (labelValue === 'applause') { labelValue = 'Applause 👏'; color = '#006400'; }
+                        else if (labelValue === 'like') { labelValue = 'Like 👍'; color = '#90ee90'; }
+                        else { labelValue = 'Meh 😐'; color = '#808080'; }
+                        borderColor = color;
                     }
 
                     return {
@@ -413,49 +473,22 @@
                         }
                     });
                 }
-            } else if (viewMode === 'bubble') {
-                // Color Heatmap Bubble
+            } else if (viewMode === 'timeline_users') {
                 const times = Object.keys(timelineMap).sort((a, b) => parseInt(a) - parseInt(b));
-                
-                const allColors = new Set();
-                times.forEach(tStr => {
-                    Object.keys(timelineMap[tStr]).forEach(c => allColors.add(c));
-                });
-                const colorKeys = Array.from(allColors);
-                
-                let bubbleData = [];
-                let maxCount = 1;
-                
-                times.forEach(tStr => {
-                    const t = parseInt(tStr);
-                    colorKeys.forEach((colorValue, yIndex) => {
-                        const count = (timelineMap[tStr] && timelineMap[tStr][colorValue]) || 0;
-                        if (count > maxCount) maxCount = count;
-                        if (count > 0) {
-                            bubbleData.push({
-                                x: t,
-                                y: yIndex,
-                                r: count,
-                                colorValue: colorValue
-                            });
-                        }
-                    });
-                });
-                
-                // Scale radius so maxCount is something like 25px
-                const radiusScale = 25 / maxCount;
-                bubbleData.forEach(d => { d.r = Math.max(d.r * radiusScale, 3); });
-                
+                const dataData = times.map(t => parseInt(t));
+                const pointData = times.map(t => timelineMap[t] || 0);
+
                 const dataset = {
-                    label: 'Color Pulses',
-                    data: bubbleData,
-                    backgroundColor: (ctx) => {
-                        const raw = ctx.raw;
-                        return raw ? (displayData.colorHexMap[raw.colorValue] || raw.colorValue) : 'white';
-                    }
+                    label: 'Connected Audience',
+                    data: pointData,
+                    borderColor: 'rgba(50, 150, 255, 1)',
+                    backgroundColor: 'rgba(50, 150, 255, 0.2)',
+                    tension: 0.4,
+                    fill: true
                 };
-                
-                if (chartInstance && chartInstance.config.type === 'bubble') {
+
+                if (chartInstance && chartInstance.config.type === 'line' && chartInstance.data.datasets.length === 1 && chartInstance.data.datasets[0].label === 'Connected Audience') {
+                    chartInstance.data.labels = dataData;
                     chartInstance.data.datasets = [dataset];
                     chartInstance.options.plugins.annotation.annotations = annotations;
                     chartInstance.update('none');
@@ -464,33 +497,120 @@
                     const ctx = canvasEl.getContext('2d');
                     Chart.defaults.color = '#fff';
                     chartInstance = new Chart(ctx, {
-                        type: 'bubble',
-                        data: { datasets: [dataset] },
+                        type: 'line',
+                        data: {
+                            labels: dataData,
+                            datasets: [dataset]
+                        },
                         options: {
                             responsive: true, maintainAspectRatio: false,
                             animation: { duration: 500 },
                             scales: { 
                                 x: { type: 'time', time: { unit: 'minute' }, grid: { color: 'rgba(255,255,255,0.1)' } }, 
-                                y: { 
-                                    type: 'category', 
-                                    labels: colorKeys,
-                                    grid: { color: 'rgba(255,255,255,0.1)' } 
-                                } 
+                                y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' } } 
                             },
                             plugins: { 
                                 annotation: { annotations: annotations },
-                                legend: { display: false },
-                                tooltip: { enabled: false }
+                                legend: { labels: { color: 'white' } }
                             }
                         }
                     });
+                }
+            } else if (viewMode === 'bubble') {
+                // Time-based Smooth Gradient (Dominant Color per Minute)
+                const times = Object.keys(timelineMap).sort((a, b) => parseInt(a) - parseInt(b));
+                if (times.length === 0) return;
+
+                if (chartInstance) {
+                    chartInstance.destroy();
+                    chartInstance = null;
+                }
+
+                const ctx = canvasEl.getContext('2d');
+                const width = canvasEl.width;
+                const height = canvasEl.height;
+
+                ctx.clearRect(0, 0, width, height);
+
+                let colorStops = [];
+                const startTime = parseInt(times[0]);
+                const endTime = parseInt(times[times.length - 1]);
+                let timeRange = endTime - startTime;
+                if (timeRange === 0) timeRange = 1; // Prevent division by zero
+
+                times.forEach(tStr => {
+                    const t = parseInt(tStr);
+                    let maxCount = 0;
+                    let dominantColor = 'transparent';
+                    
+                    Object.keys(timelineMap[tStr]).forEach(c => {
+                        const count = timelineMap[tStr][c];
+                        if (count > maxCount) {
+                            maxCount = count;
+                            dominantColor = c;
+                        }
+                    });
+                    
+                    if (maxCount > 0) {
+                        const position = (t - startTime) / timeRange;
+                        colorStops.push({
+                            pos: position,
+                            color: displayData.colorHexMap[dominantColor] || dominantColor
+                        });
+                    }
+                });
+
+                if (colorStops.length > 0) {
+                    const gradient = ctx.createLinearGradient(0, 0, width, 0);
+                    colorStops.forEach(stop => {
+                        gradient.addColorStop(stop.pos, stop.color);
+                    });
+
+                    ctx.fillStyle = gradient;
+                    // Draw a centered ribbon
+                    const ribbonHeight = height * 0.6;
+                    const yOffset = (height - ribbonHeight) / 2;
+                    ctx.fillRect(0, yOffset, width, ribbonHeight);
+
+                    // Draw time labels at start and end
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                    ctx.font = '12px system-ui, sans-serif';
+                    ctx.textAlign = 'left';
+                    const startLabel = new Date(startTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    ctx.fillText(startLabel, 10, height - 10);
+                    
+                    if (colorStops.length > 1) {
+                        ctx.textAlign = 'right';
+                        const endLabel = new Date(endTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                        ctx.fillText(endLabel, width - 10, height - 10);
+                    }
                 }
             } else { // bar or pie
                 let data = Object.values(totalsMap);
                 let renderBgColors = bgColorBar;
                 
                 if (categoryLabel === 'color') {
+                    function getHueMapValue(colorName) {
+                        const hueMap = { "Red": 0, "Amber": 45, "Yellow": 60, "Green": 120, "Cyan": 180, "Blue": 240, "Purple": 300, "Transparent": 1000, "White": 1001, "Gray": 1002, "Black": 1003 };
+                        return hueMap[colorName] !== undefined ? hueMap[colorName] : 999;
+                    }
+                    const sortedIndices = labels.map((l, i) => i).sort((a, b) => getHueMapValue(labels[a]) - getHueMapValue(labels[b]));
+                    labels = sortedIndices.map(i => labels[i]);
+                    data = sortedIndices.map(i => data[i]);
+                    
                     renderBgColors = labels.map(l => displayData.colorHexMap[l] || l);
+                } else if (categoryLabel === 'reaction') {
+                    labels = labels.map(l => {
+                        if (l === 'applause') return 'Applause 👏';
+                        if (l === 'like') return 'Like 👍';
+                        if (l === 'meh') return 'Meh 😐';
+                        return l;
+                    });
+                    renderBgColors = labels.map(l => {
+                        if (l.includes('Applause')) return '#006400';
+                        if (l.includes('Like')) return '#90ee90';
+                        return '#808080';
+                    });
                 }
 
                 if (chartInstance && chartInstance.config.type === viewMode) {
@@ -569,6 +689,7 @@
         });
 
     </script>
+<script src="nav.js"></script>
 </body>
 
 </html>

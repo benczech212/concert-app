@@ -5,16 +5,20 @@ const path = require('path');
 const fs = require('fs');
 const yaml = require('js-yaml');
 const client = require('prom-client');
+const https = require('https');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+const geminiApiKey = process.env.GEMINI_API_KEY;
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files from the same directory
-app.use(express.static(__dirname));
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 let events = [];
 let users = {}; // Map of email -> user object
@@ -84,26 +88,34 @@ app.get('/api/stream', (req, res) => {
   });
 });
 
-// Set current track
-app.post('/api/track', (req, res) => {
-  const { trackId, title, id } = req.body;
-  const finalTrackId = trackId || id;
-
-  // Try to load config.yaml to find the track details
-  let trackDetails = { id: finalTrackId, title: title || 'Unknown Track' };
-
-  try {
-    const fileContents = fs.readFileSync(path.join(__dirname, 'config.yaml'), 'utf8');
-    const config = yaml.load(fileContents);
-    if (config.tracks) {
-      const found = config.tracks.find(t => t.id === trackId || t.title === title);
-      if (found) {
-        trackDetails = found;
-      }
-    }
-  } catch (e) {
-    console.error("Failed to read config.yaml tracks", e);
+// Periodically record the connected user count
+setInterval(() => {
+  if (connectedClients.length > 0) {
+    const systemEvent = {
+        id: `evt_users_${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        category: 'system',
+        value: 'connected_users',
+        count: connectedClients.length
+    };
+    events.push(systemEvent);
+    fs.appendFile(path.join(__dirname, 'logs', 'events_log.jsonl'), JSON.stringify(systemEvent) + '\n', () => { });
   }
+}, 60000); // Every 60 seconds
+
+app.post('/api/track', (req, res) => {
+  const { title } = req.body;
+  const safeTitle = title ? title.trim() : 'Unknown Track';
+  
+  // Handle case where title is 'none' or empty (used as an end signal from some clients)
+  if (safeTitle.toLowerCase() === 'none' || safeTitle === '') {
+    req.url = '/api/track/end';
+    return app._router.handle(req, res); // Redirect to end track logic just in case
+  }
+
+  // Generate unique ID just in case of duplicate names
+  const uniqueId = `trk_${Date.now()}`;
+  let trackDetails = { id: uniqueId, title: safeTitle };
 
   currentTrack = trackDetails;
   broadcast({ type: 'track_start', track: currentTrack });
@@ -118,7 +130,7 @@ app.post('/api/track', (req, res) => {
     trackTitle: currentTrack.title
   };
   events.push(systemEvent);
-  fs.appendFile(path.join(__dirname, 'events_log.jsonl'), JSON.stringify(systemEvent) + '\n', () => { });
+  fs.appendFile(path.join(__dirname, 'logs', 'events_log.jsonl'), JSON.stringify(systemEvent) + '\n', () => { });
 
   res.json({ success: true, track: currentTrack });
 });
@@ -136,7 +148,7 @@ app.post('/api/track/end', (req, res) => {
       trackTitle: currentTrack.title
     };
     events.push(systemEvent);
-    fs.appendFile(path.join(__dirname, 'events_log.jsonl'), JSON.stringify(systemEvent) + '\n', () => { });
+    fs.appendFile(path.join(__dirname, 'logs', 'events_log.jsonl'), JSON.stringify(systemEvent) + '\n', () => { });
   }
 
   currentTrack = null;
@@ -159,6 +171,13 @@ app.post('/api/events', (req, res) => {
     return res.status(400).json({ error: 'Missing category or value' });
   }
 
+  // Basic bad word filter
+  if (event.category === 'note' && typeof event.value === 'string') {
+    const BAD_WORDS = ['fuck', 'shit', 'bitch', 'asshole', 'cunt', 'dick', 'pussy', 'whore', 'slut', 'faggot', 'nigger', 'cock', 'bastard'];
+    const regex = new RegExp(`\\b(${BAD_WORDS.join('|')})\\b`, 'gi');
+    event.value = event.value.replace(regex, '***');
+  }
+
   // Ensure it has an ID and timestamp
   if (!event.id) event.id = `evt_${Date.now()}`;
   if (!event.timestamp) event.timestamp = new Date().toISOString();
@@ -167,7 +186,7 @@ app.post('/api/events', (req, res) => {
   console.log("Recorded event:", event);
 
   // Append to persistent log file
-  fs.appendFile(path.join(__dirname, 'events_log.jsonl'), JSON.stringify(event) + '\n', (err) => {
+  fs.appendFile(path.join(__dirname, 'logs', 'events_log.jsonl'), JSON.stringify(event) + '\n', (err) => {
     if (err) console.error("Failed to write to events_log.jsonl:", err);
   });
 
@@ -242,7 +261,7 @@ app.get('/api/users/export', (req, res) => {
 
 // Export events log
 app.get('/api/export/events', (req, res) => {
-  const filePath = path.join(__dirname, 'events_log.jsonl');
+  const filePath = path.join(__dirname, 'logs', 'events_log.jsonl');
   if (fs.existsSync(filePath)) {
     res.download(filePath, 'events_log.jsonl');
   } else {
@@ -252,7 +271,7 @@ app.get('/api/export/events', (req, res) => {
 
 // Export server log
 app.get('/api/export/logs', (req, res) => {
-  const filePath = path.join(__dirname, 'server.log');
+  const filePath = path.join(__dirname, 'logs', 'server.log');
   if (fs.existsSync(filePath)) {
     res.download(filePath, 'server.log');
   } else {
@@ -272,6 +291,297 @@ app.get('/api/export/metrics', async (req, res) => {
   }
 });
 
+// Read existing stories
+app.get('/api/stories', (req, res) => {
+  const filePath = path.join(__dirname, 'logs', 'track_stories.json');
+  if (fs.existsSync(filePath)) {
+    try {
+      const data = fs.readFileSync(filePath, 'utf8');
+      res.json(JSON.parse(data));
+    } catch (e) {
+      res.json([]);
+    }
+  } else {
+    res.json([]);
+  }
+});
+
+// Generate stories using Gemini
+async function generateShowStories() {
+  if (!geminiApiKey) {
+    console.log("No GEMINI_API_KEY found, skipping story generation.");
+    return;
+  }
+  
+  console.log("Generating stories for all tracks...");
+  
+  // Group events by track
+  const trackData = {};
+  
+  events.forEach(evt => {
+    if (!evt.trackId || evt.trackId === 'none') return;
+    if (!trackData[evt.trackId]) {
+      trackData[evt.trackId] = {
+        title: evt.trackTitle || 'Unknown Track',
+        reactions: { meh: 0, like: 0, applause: 0 },
+        words: [],
+        colors: []
+      };
+    }
+    
+    if (evt.category === 'reaction') {
+       if (evt.value === 1) trackData[evt.trackId].reactions.meh++;
+       if (evt.value === 2) trackData[evt.trackId].reactions.like++;
+       if (evt.value === 4) trackData[evt.trackId].reactions.applause++;
+    } else if (evt.category === 'combined_reaction') {
+       const score = Number(evt.value);
+       if (score === 1) trackData[evt.trackId].reactions.meh++;
+       else if (score === 2) trackData[evt.trackId].reactions.like++;
+       else if (score >= 4) trackData[evt.trackId].reactions.applause++;
+    } else if (evt.category === 'note' && evt.value) {
+       trackData[evt.trackId].words.push(evt.value);
+    } else if (evt.category === 'color') {
+       trackData[evt.trackId].colors.push(evt.colorName || evt.value);
+    }
+  });
+  
+  const stories = [];
+  
+  for (const trackId of Object.keys(trackData)) {
+    const data = trackData[trackId];
+    
+    // Only process tracks with at least some interaction
+    if (data.reactions.applause === 0 && data.reactions.like === 0 && data.words.length === 0) continue;
+    
+    const topWords = data.words.slice(-20).join(', '); // up to 20 recent words
+    const topColors = [...new Set(data.colors)].slice(0, 5).join(', '); // up to 5 unique colors
+    
+    const prompt = `You are a creative storyteller. A live audience just listened to a musical track titled "${data.title}".
+During the performance, they interacted using an app. Here is their data:
+- Applause: ${data.reactions.applause}
+- Likes: ${data.reactions.like}
+- Meh/Neutral: ${data.reactions.meh}
+- Colors they felt: ${topColors}
+- Words they submitted to describe it: ${topWords}
+
+Based on this audience reaction, generate two things:
+1. A creative, evocative new name for this performance of the track.
+2. A very short (2-3 sentences) poetic summary or story of how the audience experienced this moment.
+
+Output format should be JSON exactly like this, no markdown formatting:
+{
+  "newName": "The Generated Name",
+  "story": "The generated story."
+}`;
+
+    try {
+      const responseText = await new Promise((resolve, reject) => {
+        const payload = JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }]
+        });
+        
+        const req = https.request({
+          hostname: 'generativelanguage.googleapis.com',
+          path: `/v1beta/models/gemini-2.5-pro:generateContent?key=${geminiApiKey}`,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(payload)
+          }
+        }, (res) => {
+          let body = '';
+          res.on('data', d => body += d);
+          res.on('end', () => {
+            if (res.statusCode >= 200 && res.statusCode < 300) {
+               resolve(body);
+            } else {
+               reject(new Error(`Gemini API returned ${res.statusCode}: ${body}`));
+            }
+          });
+        });
+        req.on('error', reject);
+        req.write(payload);
+        req.end();
+      });
+      
+      const geminiData = JSON.parse(responseText);
+      let rawText = geminiData.candidates && geminiData.candidates[0] && geminiData.candidates[0].content && geminiData.candidates[0].content.parts && geminiData.candidates[0].content.parts[0] ? geminiData.candidates[0].content.parts[0].text : "";
+      
+      if (rawText.startsWith('\`\`\`json')) {
+         rawText = rawText.replace(/\`\`\`json/g, '').replace(/\`\`\`/g, '').trim();
+      } else if (rawText.startsWith('\`\`\`')) {
+         rawText = rawText.replace(/\`\`\`/g, '').trim();
+      }
+      
+      const parsed = JSON.parse(rawText);
+      stories.push({
+        trackId: trackId,
+        originalTitle: data.title,
+        newName: parsed.newName,
+        story: parsed.story
+      });
+      console.log(`Generated story for ${data.title}`);
+    } catch (e) {
+      console.error(`Failed to generate story for ${data.title}:`, e);
+    }
+  }
+  
+  // Save to file
+  fs.writeFileSync(path.join(__dirname, 'logs', 'track_stories.json'), JSON.stringify(stories, null, 2));
+  console.log("Track stories saved to logs/track_stories.json");
+  
+  // Broadcast to let clients know stories are available
+  broadcast({ type: 'stories_ready' });
+}
+
+// Generate image prompts for admin review
+app.get('/api/images/preview', (req, res) => {
+  // Group events by track
+  const trackData = {};
+  
+  events.forEach(evt => {
+    if (!evt.trackId || evt.trackId === 'none') return;
+    if (!trackData[evt.trackId]) {
+      trackData[evt.trackId] = {
+        title: evt.trackTitle || 'Unknown Track',
+        reactions: { meh: 0, like: 0, applause: 0 },
+        words: [],
+        colors: []
+      };
+    }
+    
+    if (evt.category === 'reaction') {
+       if (evt.value === 1) trackData[evt.trackId].reactions.meh++;
+       if (evt.value === 2) trackData[evt.trackId].reactions.like++;
+       if (evt.value === 4) trackData[evt.trackId].reactions.applause++;
+    } else if (evt.category === 'combined_reaction') {
+       const score = Number(evt.value);
+       if (score === 1) trackData[evt.trackId].reactions.meh++;
+       else if (score === 2) trackData[evt.trackId].reactions.like++;
+       else if (score >= 4) trackData[evt.trackId].reactions.applause++;
+    } else if (evt.category === 'note' && evt.value) {
+       trackData[evt.trackId].words.push(evt.value);
+    } else if (evt.category === 'color') {
+       trackData[evt.trackId].colors.push(evt.colorName || evt.value);
+    }
+  });
+
+  const prompts = [];
+  
+  for (const trackId of Object.keys(trackData)) {
+    const data = trackData[trackId];
+    
+    // Skip if there's very little interaction (e.g., less than 5 total interactions to filter noise)
+    const interactionCount = data.reactions.applause + data.reactions.like + data.reactions.meh + data.words.length + data.colors.length;
+    if (interactionCount === 0) continue;
+    
+    // Extract audience details 
+    const reactionSummary = [];
+    if (data.reactions.applause > 0) reactionSummary.push(`${data.reactions.applause} applause`);
+    if (data.reactions.like > 0) reactionSummary.push(`${data.reactions.like} likes`);
+    if (data.reactions.meh > 0) reactionSummary.push(`${data.reactions.meh} neutral`);
+    
+    const reactionStr = reactionSummary.join(", ") || "no recorded reactions";
+    const topWords = data.words.slice(-20).join(', ') || "no words submitted";
+    const topColors = [...new Set(data.colors)].slice(0, 5).join(', ') || "no specific colors";
+
+    const promptText = `An abstract, highly emotional, and visually striking representation of a musical performance of "${data.title}".
+The audience felt the following primary colors: ${topColors}.
+The audience described the feeling with these words: ${topWords}.
+The audience reacted with: ${reactionStr}.
+Make the scene ethereal, concert-like, and highly evocative of those specific colors and emotions. No text in the image.`;
+
+    prompts.push({
+       trackId: trackId,
+       trackTitle: data.title,
+       prompt: promptText
+    });
+  }
+
+  res.json({ success: true, prompts });
+});
+
+app.post('/api/images/generate', async (req, res) => {
+  if (!geminiApiKey) {
+    return res.status(500).json({ error: 'GEMINI_API_KEY not found' });
+  }
+
+  const { prompts } = req.body;
+  if (!Array.isArray(prompts) || prompts.length === 0) {
+    return res.status(400).json({ error: 'Missing or empty prompts array' });
+  }
+
+  const images = [];
+
+  for (const p of prompts) {
+    try {
+      const responseText = await new Promise((resolve, reject) => {
+        const payload = JSON.stringify({
+          instances: [{ prompt: p.prompt }],
+          parameters: { sampleCount: 1 }
+        });
+        
+        const reqPost = https.request({
+          hostname: 'generativelanguage.googleapis.com',
+          path: `/v1beta/models/imagen-3.0-generate-002:predict?key=${geminiApiKey}`,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(payload)
+          }
+        }, (resPost) => {
+          let body = '';
+          resPost.on('data', d => body += d);
+          resPost.on('end', () => {
+             if (resPost.statusCode >= 200 && resPost.statusCode < 300) {
+                resolve(body);
+             } else {
+                reject(new Error(`Imagen API returned ${resPost.statusCode}: ${body}`));
+             }
+          });
+        });
+        reqPost.on('error', reject);
+        reqPost.write(payload);
+        reqPost.end();
+      });
+
+      const data = JSON.parse(responseText);
+      const b64 = data.predictions && data.predictions[0] && data.predictions[0].bytesBase64Encoded ? data.predictions[0].bytesBase64Encoded : null;
+      if (b64) {
+        images.push({
+          trackId: p.trackId,
+          trackTitle: p.trackTitle,
+          imageBase64: b64
+        });
+      }
+    } catch (e) {
+      console.error(`Failed to generate image for track ${p.trackId}:`);
+      console.error(e);
+    }
+  }
+
+  // Save the generated images to a file
+  fs.writeFileSync(path.join(__dirname, 'logs', 'track_images.json'), JSON.stringify(images, null, 2));
+  console.log("Track images saved to logs/track_images.json");
+
+  res.json({ success: true, count: images.length });
+});
+
+// Read existing images
+app.get('/api/images', (req, res) => {
+  const filePath = path.join(__dirname, 'logs', 'track_images.json');
+  if (fs.existsSync(filePath)) {
+    try {
+      const data = fs.readFileSync(filePath, 'utf8');
+      res.json(JSON.parse(data));
+    } catch (e) {
+      res.json([]);
+    }
+  } else {
+    res.json([]);
+  }
+});
+
 // Get show state and concurrent connections
 app.get('/api/state', (req, res) => {
   res.json({
@@ -286,6 +596,11 @@ app.post('/api/state', (req, res) => {
   if (['PRE_SHOW', 'ACTIVE', 'POST_SHOW'].includes(newState)) {
     showState = newState;
     broadcast({ type: 'state_change', showState });
+    
+    if (newState === 'POST_SHOW') {
+      generateShowStories().catch(console.error);
+    }
+    
     res.json({ success: true, showState });
   } else {
     res.status(400).json({ error: 'Invalid state' });
@@ -309,7 +624,7 @@ app.post('/api/metrics/reset', (req, res) => {
 
 // Fallback to index.html for SPA routing if needed
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {

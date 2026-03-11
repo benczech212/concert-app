@@ -1,6 +1,0 @@
-id,sessionId,userId,userName,mockIp,timestamp,category,value
-evt_1,sess_A,test@example.com,Jetski Test,192.168.1.100,2026-03-05T10:15:22.123Z,mood,Reflective
-evt_2,sess_A,test@example.com,Jetski Test,192.168.1.100,2026-03-05T10:16:45.456Z,color,Azure
-evt_3,sess_B,jane@example.com,Jane Doe,10.0.0.5,2026-03-05T10:18:10.789Z,mood,Awe
-evt_4,sess_B,jane@example.com,Jane Doe,10.0.0.5,2026-03-05T10:19:30.012Z,reaction,like
-evt_5,sess_C,anon_123@example.com,Anonymous,172.16.254.1,2026-03-05T10:22:05.345Z,mood,Happy

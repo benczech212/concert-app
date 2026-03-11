@@ -20,24 +20,34 @@
     <h1>Welcome to the Concert</h1>
 
     <!-- Auth form inside lobby -->
-    <div id="lobbyAuthForm" class="card" style="display:none; max-width: 400px; width: 100%; margin-top: 20px; text-align: left;">
+    <div id="lobbyAuthForm" class="card" style="display:none; max-width: 400px; width: 100%; margin-top: 20px; text-align: left; transition: opacity 0.3s ease;">
       <h2 style="margin-top: 0;">Join the Experience</h2>
       <p class="note">Please identify yourself to resume past sessions or start a new one.</p>
 
-      <label for="idEmail" class="hint" style="display:block;margin-bottom:6px;">Email Address</label>
-      <input type="email" id="idEmail" placeholder="you@example.com" style="margin-bottom:12px;" />
-
-      <label for="idName" class="hint" style="display:block;margin-bottom:6px;">Your Name / Preferred Name</label>
-      <input type="text" id="idName" placeholder="e.g. Alex"
-        style="margin-bottom:16px; width: 100%; border: 1px solid var(--border-soft); background: rgba(255, 255, 255, 0.06); color: var(--text); border-radius: 12px; padding: 10px 12px; outline: none;" />
-
       <label
-        style="display: flex; align-items: flex-start; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
-        <input type="checkbox" id="idConsent" style="margin-right: 10px; margin-top: 3px;" />
-        <span>I would like to get a free special take-away of this concert uniquely made for me via email.</span>
+        style="display: flex; align-items: flex-start; margin-bottom: 20px; font-size: 0.85rem; color: var(--text); cursor: pointer;">
+        <input type="checkbox" id="idAnonymous" style="margin-right: 10px; margin-top: 3px;" />
+        <span>Remain Anonymous</span>
       </label>
 
-      <button id="btnJoin" class="primary" type="button">Enter</button>
+      <div id="personalInfoFields" style="transition: opacity 0.3s ease;">
+        <label for="idName" class="hint" style="display:block;margin-bottom:6px;">First Name</label>
+        <input type="text" id="idName" placeholder="e.g. Alex"
+          style="margin-bottom:16px; width: 100%; border: 1px solid var(--border-soft); background: rgba(255, 255, 255, 0.06); color: var(--text); border-radius: 12px; padding: 10px 12px; outline: none;" />
+
+        <label
+          style="display: flex; align-items: flex-start; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+          <input type="checkbox" id="idConsent" style="margin-right: 10px; margin-top: 3px;" />
+          <span>I would like to get a free special take-away of this concert uniquely made for me via email.</span>
+        </label>
+
+        <div id="emailFieldGroup" style="display: none; margin-bottom: 20px;">
+          <label for="idEmail" class="hint" style="display:block;margin-bottom:6px;">Email Address</label>
+          <input type="email" id="idEmail" placeholder="you@example.com" style="width: 100%; border: 1px solid var(--border-soft); background: rgba(255, 255, 255, 0.06); color: var(--text); border-radius: 12px; padding: 10px 12px; outline: none;" />
+        </div>
+      </div>
+
+      <button id="btnJoin" class="primary" type="button" style="width: 100%;">Enter</button>
       <div id="idError" class="error" style="margin-top: 10px;"></div>
     </div>
 
@@ -253,6 +263,7 @@
   </div>
 
   <script src="script.js"></script>
+<script src="nav.js"></script>
 </body>
 
 </html>

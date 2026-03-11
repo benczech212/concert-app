@@ -325,6 +325,14 @@
 
         const palette = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#8AC926', '#1982C4', '#6A4C93', '#F15BB5'];
 
+        function getHueMapValue(colorName) {
+            const hueMap = { 
+                "Red": 0, "Amber": 45, "Yellow": 60, "Green": 120, "Cyan": 180, "Blue": 240, "Purple": 300,
+                "Transparent": 1000, "White": 1001, "Gray": 1002, "Black": 1003 
+            };
+            return hueMap[colorName] !== undefined ? hueMap[colorName] : 999;
+        }
+
         function updateChart(canvasEl, instanceRefName, label, totalsMap, timelineMap, bgColorBar, bgColorLine, annotations, viewMode) {
             if (!canvasEl) return;
             const labels = Object.keys(totalsMap);
@@ -385,6 +393,12 @@
                 let labels = Object.keys(totalsMap);
                 let data = Object.values(totalsMap);
 
+                if (label === 'Color') {
+                    const sortedIndices = labels.map((l, i) => i).sort((a, b) => getHueMapValue(labels[a]) - getHueMapValue(labels[b]));
+                    labels = sortedIndices.map(i => labels[i]);
+                    data = sortedIndices.map(i => data[i]);
+                }
+
                 let renderBgColors = bgColorBar;
                 let renderBorderColors = 'rgba(255, 255, 255, 0.2)';
                 let renderBorderWidths = 1;
@@ -433,6 +447,7 @@
         <a href="kiosk.html" class="secondary" style="margin: 0 10px;">Kiosk Mode</a>
     </div>
 
+<script src="nav.js"></script>
 </body>
 
 </html>

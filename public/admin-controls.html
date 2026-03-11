@@ -62,22 +62,34 @@
                 <h2>Live Playback Control</h2>
                 <p class="note">Manually push track start and end events (Fallback for OSC).</p>
                 <div style="display:flex;gap:10px;justify-content:center;margin-top:15px;align-items:center;">
-                    <select id="trackSelect" style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-soft); background: rgba(255,255,255,0.06); color: var(--text); flex: 1; max-width: 300px;">
-                        <option value="">Select a Track...</option>
-                    </select>
+                    <input type="text" id="trackInput" placeholder="Enter Track Name..." style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-soft); background: rgba(255,255,255,0.06); color: var(--text); flex: 1; max-width: 300px;" />
                     <button id="startTrackBtn" class="primary" type="button">Start Track</button>
                     <button id="endTrackBtn" class="secondary" type="button">End Track</button>
                 </div>
             </section>
 
             <section class="card" style="text-align: center;">
-                <h2>Data Exports & Resets</h2>
+                <h2>Data Exports & Stories</h2>
                 <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:15px;align-items:center;">
+                    <button id="btnPreviewImages" class="primary" type="button" style="padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px; background-image: linear-gradient(90deg, #ff8a00, #e52e71); border: none;">Preview Image Generation</button>
+                    <a href="stories.html" target="_blank" class="primary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px; background-image: linear-gradient(90deg, #ff8a00, #e52e71); border: none;">View Track Stories</a>
                     <a href="/api/users/export" download="participants.csv" class="primary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Participants CSV</a>
                     <a href="/api/export/events" download="events_log.jsonl" class="secondary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Events JSONL</a>
                     <a href="/api/export/metrics" download="prometheus_metrics.txt" class="secondary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Metrics TXT</a>
                     <a href="/api/export/logs" download="server.log" class="secondary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Server Log</a>
                 </div>
+                
+                <div id="imagePreviewArea" style="display:none; margin-top: 20px; text-align: left; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                    <h3>Image Prompts Preview</h3>
+                    <p class="note">These prompts will be sent to Gemini to generate the abstract images. Generating images may take time and consume API quota.</p>
+                    <div id="promptsList" style="margin-top: 10px; max-height: 250px; overflow-y: auto; font-size: 0.9em; color: var(--text-muted);">
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                       <button id="btnCancelImages" class="secondary" type="button" style="flex: 1;">Cancel</button>
+                       <button id="btnGenerateImages" class="primary" type="button" style="flex: 1; background-image: linear-gradient(90deg, #ff8a00, #e52e71); border: none;">Confirm & Generate</button>
+                    </div>
+                </div>
+
                 <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
                     <button id="resetMetricsBtn" class="error" type="button" style="max-width: 250px;">Clear All Data & Metrics</button>
                 </div>
@@ -138,29 +150,8 @@
         }
 
         async function fetchConfigTracks() {
-            try {
-                let yamlText = localStorage.getItem("concertCustomConfig");
-                if (!yamlText) {
-                    const res = await fetch("config.yaml");
-                    if (res.ok) yamlText = await res.text();
-                }
-                
-                if (yamlText) {
-                    const parsed = jsyaml.load(yamlText);
-                    const trackSelect = document.getElementById("trackSelect");
-                    if (trackSelect && parsed && parsed.tracks) {
-                        trackSelect.innerHTML = '<option value="">Select a Track...</option>';
-                        parsed.tracks.forEach(t => {
-                            const opt = document.createElement("option");
-                            opt.value = t.id;
-                            opt.textContent = `${t.id}: ${t.title}`;
-                            trackSelect.appendChild(opt);
-                        });
-                    }
-                }
-            } catch (e) {
-                console.error("Failed to load tracks for track list", e);
-            }
+            // Track selection dropdown has been removed per user request.
+            // Function preserved empty to avoid breaking the startup sequence.
         }
 
         async function updateState(newState) {
@@ -243,17 +234,16 @@
         }
 
         document.getElementById("startTrackBtn").addEventListener("click", async () => {
-            const trackId = document.getElementById("trackSelect").value;
-            if (!trackId) {
-                setMsg("Please select a track first.", true);
+            const trackTitle = document.getElementById("trackInput").value.trim();
+            if (!trackTitle) {
+                setMsg("Please enter a track name first.", true);
                 return;
             }
-            const trackTitle = document.getElementById("trackSelect").options[document.getElementById("trackSelect").selectedIndex].text.split(": ").slice(1).join(": ");
             try {
                 const res = await fetch('/api/track', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id: trackId, title: trackTitle })
+                    body: JSON.stringify({ title: trackTitle })
                 });
                 if (res.ok) {
                     setMsg(`Live track started: ${trackTitle}`, false);
@@ -277,7 +267,66 @@
                 setMsg("Error reaching server.", true);
             }
         });
+
+        // Image Generation Logic
+        let currentPrompts = [];
+        
+        document.getElementById("btnPreviewImages").addEventListener("click", async () => {
+            try {
+                const res = await fetch('/api/images/preview');
+                const data = await res.json();
+                if (data.success) {
+                    currentPrompts = data.prompts;
+                    const listEl = document.getElementById("promptsList");
+                    listEl.innerHTML = currentPrompts.length === 0 
+                        ? "No tracks with sufficient audience interaction yet." 
+                        : currentPrompts.map(p => `<strong>${p.trackTitle}</strong><br/><em>${p.prompt}</em><br/><br/>`).join("");
+                    
+                    document.getElementById("imagePreviewArea").style.display = "block";
+                    setMsg("Loaded image prompts for review.", false);
+                } else {
+                    setMsg("Failed to load prompts.", true);
+                }
+            } catch(e) {
+                setMsg("Error fetching prompts.", true);
+            }
+        });
+
+        document.getElementById("btnCancelImages").addEventListener("click", () => {
+            document.getElementById("imagePreviewArea").style.display = "none";
+            currentPrompts = [];
+        });
+
+        document.getElementById("btnGenerateImages").addEventListener("click", async () => {
+            if (currentPrompts.length === 0) return;
+            
+            setMsg("Generating images now... This may take up to a minute.", false);
+            document.getElementById("btnGenerateImages").disabled = true;
+            document.getElementById("btnGenerateImages").textContent = "Generating...";
+
+            try {
+                const res = await fetch('/api/images/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompts: currentPrompts })
+                });
+                
+                const data = await res.json();
+                if (data.success) {
+                    setMsg(`Successfully generated ${data.count} images! Verify them on the Track Stories page.`, false);
+                    document.getElementById("imagePreviewArea").style.display = "none";
+                } else {
+                    setMsg(data.error || "Failed to generate images.", true);
+                }
+            } catch (e) {
+                setMsg("Error reaching server for generation.", true);
+            } finally {
+                document.getElementById("btnGenerateImages").disabled = false;
+                document.getElementById("btnGenerateImages").textContent = "Confirm & Generate";
+            }
+        });
     </script>
+<script src="nav.js"></script>
 </body>
 
 </html>

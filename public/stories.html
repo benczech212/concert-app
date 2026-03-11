@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concert Stories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #ff8a00, #e52e71);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .story-card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .story-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.7);
+    }
+    .story-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .original-title {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .story-body {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ddd;
+    }
+    .loading {
+      color: #888;
+      font-size: 1.2rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tonight's Stories</h1>
+  <div id="stories-container">
+    <div class="loading">Loading stories...</div>
+  </div>
+
+  <script>
+    async function loadStories() {
+      try {
+        const [storiesRes, imagesRes] = await Promise.all([
+            fetch('/api/stories'),
+            fetch('/api/images')
+        ]);
+        
+        const stories = await storiesRes.json();
+        const imagesData = await imagesRes.json();
+        
+        // Create an image lookup map
+        const imageMap = {};
+        if (Array.isArray(imagesData)) {
+            imagesData.forEach(img => {
+               imageMap[img.trackId] = img.imageBase64;
+            });
+        }
+        
+        const container = document.getElementById('stories-container');
+        container.innerHTML = '';
+        
+        if (stories.length === 0) {
+          container.innerHTML = '<div class="loading">No stories have been generated yet.</div>';
+          return;
+        }
+
+        stories.forEach(story => {
+          const card = document.createElement('div');
+          card.className = 'story-card';
+          
+          const imgHtml = imageMap[story.trackId] ? `<img src="data:image/jpeg;base64,${imageMap[story.trackId]}" alt="Generated Image" style="width: 100%; border-radius: 8px; margin-bottom: 15px;" />` : '';
+          
+          card.innerHTML = `
+            ${imgHtml}
+            <div class="story-title">${story.newName}</div>
+            <div class="original-title">Original Track: ${story.originalTitle}</div>
+            <div class="story-body">${story.story}</div>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        document.getElementById('stories-container').innerHTML = '<div class="loading">Error loading stories.</div>';
+      }
+    }
+
+    loadStories();
+
+    // Listen for SSE events in case stories are ready while watching this page
+    const evtSource = new EventSource('/api/stream');
+    evtSource.onmessage = (event) => {
+        try {
+            const data = JSON.parse(event.data);
+            if (data.type === 'stories_ready') {
+                loadStories();
+            }
+        } catch (e) {
+            // ignore JSON parse errors from keepalives
+        }
+    };
+  </script>
+<script src="nav.js"></script>
+</body>
+</html>

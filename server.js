@@ -11,7 +11,18 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+// Load config.yaml
+let config = {};
+try {
+  const fileContents = fs.readFileSync(path.join(__dirname, 'config.yaml'), 'utf8');
+  config = yaml.load(fileContents);
+} catch (e) {
+  console.error("Failed to load config.yaml:", e);
+}
+
 const geminiApiKey = process.env.GEMINI_API_KEY;
+const STORY_MODEL = (config.ai_models && config.ai_models.story_model) ? config.ai_models.story_model : 'gemini-2.5-flash';
+const IMAGE_MODEL = (config.ai_models && config.ai_models.image_model) ? config.ai_models.image_model : 'imagen-3.0-generate-002';
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -20,7 +31,29 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Expose config.yaml to frontend
+app.get('/config.yaml', (req, res) => {
+  res.sendFile(path.join(__dirname, 'config.yaml'));
+});
+
 let events = [];
+
+try {
+  const logPath = path.join(__dirname, 'logs', 'events_log.jsonl');
+  if (fs.existsSync(logPath)) {
+    const fileData = fs.readFileSync(logPath, 'utf8');
+    const lines = fileData.split('\n');
+    lines.forEach(line => {
+      if (line.trim()) {
+        events.push(JSON.parse(line));
+      }
+    });
+    console.log(`Loaded ${events.length} prior events from jsonl log into memory.`);
+  }
+} catch (e) {
+  console.error("Failed to load prev events:", e);
+}
+
 let users = {}; // Map of email -> user object
 let currentTrack = null;
 let connectedClients = [];
@@ -74,7 +107,8 @@ app.get('/api/stream', (req, res) => {
   res.write(`data: ${JSON.stringify({ type: 'track', track: currentTrack })}\n\n`);
 
   const clientId = Date.now();
-  const newClient = { id: clientId, res };
+  const isBypass = req.query.bypass === 'true';
+  const newClient = { id: clientId, res, bypass: isBypass };
   connectedClients.push(newClient);
 
   // Keep connection alive with periodic "ping" comments
@@ -90,13 +124,14 @@ app.get('/api/stream', (req, res) => {
 
 // Periodically record the connected user count
 setInterval(() => {
-  if (connectedClients.length > 0) {
+  const activeUsersCount = connectedClients.filter(c => !c.bypass).length;
+  if (activeUsersCount > 0) {
     const systemEvent = {
         id: `evt_users_${Date.now()}`,
         timestamp: new Date().toISOString(),
         category: 'system',
         value: 'connected_users',
-        count: connectedClients.length
+        count: activeUsersCount
     };
     events.push(systemEvent);
     fs.appendFile(path.join(__dirname, 'logs', 'events_log.jsonl'), JSON.stringify(systemEvent) + '\n', () => { });
@@ -313,61 +348,136 @@ async function generateShowStories() {
     return;
   }
   
-  console.log("Generating stories for all tracks...");
+  try {
+    console.log("Generating stories for all tracks...");
   
   // Group events by track
   const trackData = {};
   
+  // First pass: find track start times
   events.forEach(evt => {
-    if (!evt.trackId || evt.trackId === 'none') return;
-    if (!trackData[evt.trackId]) {
+    if (evt.category === 'system' && evt.value === 'track_start' && evt.trackId) {
+       if (!trackData[evt.trackId]) {
+         trackData[evt.trackId] = {
+           title: evt.trackTitle || 'Unknown Track',
+           startTime: new Date(evt.timestamp).getTime(),
+           reactions: { meh: 0, like: 0, applause: 0 },
+           words: [],
+           colors: {},
+           moods: {},
+           minutes: {}
+         };
+       } else {
+         trackData[evt.trackId].startTime = new Date(evt.timestamp).getTime();
+       }
+    }
+  });
+
+  // Second pass: gather all user events
+  events.forEach(evt => {
+    if (!evt.trackId || evt.trackId === 'none' || evt.category === 'system') return;
+    let data = trackData[evt.trackId];
+    if (!data) {
+      // Fallback if no start event is found
       trackData[evt.trackId] = {
         title: evt.trackTitle || 'Unknown Track',
+        startTime: new Date(evt.timestamp).getTime(),
         reactions: { meh: 0, like: 0, applause: 0 },
         words: [],
-        colors: []
+        colors: {},
+        moods: {},
+        minutes: {}
       };
+      data = trackData[evt.trackId];
     }
     
+    // Calculate which minute this event belongs to
+    const evtTime = new Date(evt.timestamp).getTime();
+    const minIndex = Math.floor((evtTime - data.startTime) / 60000);
+    const m = Math.max(0, minIndex); // ensure non-negative
+    if (!data.minutes[m]) {
+       data.minutes[m] = { colors: {}, moods: {} };
+    }
+    
+    // Accumulate Data
     if (evt.category === 'reaction') {
-       if (evt.value === 1) trackData[evt.trackId].reactions.meh++;
-       if (evt.value === 2) trackData[evt.trackId].reactions.like++;
-       if (evt.value === 4) trackData[evt.trackId].reactions.applause++;
+       if (evt.value === 1) data.reactions.meh++;
+       if (evt.value === 2) data.reactions.like++;
+       if (evt.value === 4) data.reactions.applause++;
     } else if (evt.category === 'combined_reaction') {
        const score = Number(evt.value);
-       if (score === 1) trackData[evt.trackId].reactions.meh++;
-       else if (score === 2) trackData[evt.trackId].reactions.like++;
-       else if (score >= 4) trackData[evt.trackId].reactions.applause++;
+       if (score === 1) data.reactions.meh++;
+       else if (score === 2) data.reactions.like++;
+       else if (score >= 4) data.reactions.applause++;
     } else if (evt.category === 'note' && evt.value) {
-       trackData[evt.trackId].words.push(evt.value);
+       data.words.push(evt.value);
     } else if (evt.category === 'color') {
-       trackData[evt.trackId].colors.push(evt.colorName || evt.value);
+       const c = evt.colorName || evt.value;
+       data.colors[c] = (data.colors[c] || 0) + 1;
+       data.minutes[m].colors[c] = (data.minutes[m].colors[c] || 0) + 1;
+    } else if (evt.category === 'mood') {
+       const mId = evt.value;
+       data.moods[mId] = (data.moods[mId] || 0) + 1;
+       data.minutes[m].moods[mId] = (data.minutes[m].moods[mId] || 0) + 1;
     }
   });
   
   const stories = [];
   
+  console.log(`Aggregated trackData keys: ${Object.keys(trackData).length}`);
+
   for (const trackId of Object.keys(trackData)) {
     const data = trackData[trackId];
     
     // Only process tracks with at least some interaction
-    if (data.reactions.applause === 0 && data.reactions.like === 0 && data.words.length === 0) continue;
+    if (data.reactions.applause === 0 && data.reactions.like === 0 && data.words.length === 0 && Object.keys(data.colors).length === 0 && Object.keys(data.moods).length === 0) {
+        console.log(`Skipping track ${trackId} because of zero interaction.`);
+        continue;
+    }
     
-    const topWords = data.words.slice(-20).join(', '); // up to 20 recent words
-    const topColors = [...new Set(data.colors)].slice(0, 5).join(', '); // up to 5 unique colors
+    console.log(`Preparing prompts for track ${trackId} - ${data.title}`);
+    const getAllWords = [...new Set(data.words)].join(', ');
+
+    // Top 5 overall moods
+    const topMoods = Object.entries(data.moods).sort((a,b) => b[1] - a[1]).slice(0, 5).map(x => x[0]).join(', ');
+    
+    // Top 2 overall colors
+    const topColors = Object.entries(data.colors).sort((a,b) => b[1] - a[1]).slice(0, 2).map(x => x[0]).join(', ');
+
+    // Minute by minute summary
+    const minuteKeys = Object.keys(data.minutes).map(Number).sort((a,b) => a - b);
+    let timelineOverview = [];
+    for (const m of minuteKeys) {
+       const mData = data.minutes[m];
+       const topMinMods = Object.entries(mData.moods).sort((a,b) => b[1] - a[1]).slice(0, 2).map(x => x[0]);
+       const topMinCol = Object.entries(mData.colors).sort((a,b) => b[1] - a[1]).slice(0, 1).map(x => x[0]);
+       let parts = [];
+       if (topMinMods.length) parts.push(`Moods: ${topMinMods.join(', ')}`);
+       if (topMinCol.length) parts.push(`Top Color: ${topMinCol[0]}`);
+       if (parts.length) {
+         timelineOverview.push(`Minute ${m+1}: ${parts.join(' | ')}`);
+       }
+    }
+    const timelineStr = timelineOverview.join('\\n');
     
     const prompt = `You are a creative storyteller. A live audience just listened to a musical track titled "${data.title}".
-During the performance, they interacted using an app. Here is their data:
+During the performance, they interacted using an app. Here is their aggregated data:
+
+OVERALL TRACK SUMMARY:
 - Applause: ${data.reactions.applause}
 - Likes: ${data.reactions.like}
 - Meh/Neutral: ${data.reactions.meh}
-- Colors they felt: ${topColors}
-- Words they submitted to describe it: ${topWords}
+- Top 5 overall moods felt: ${topMoods || "none specified"}
+- Top 2 overall colors felt: ${topColors || "none specified"}
+- All words submitted to describe it: ${getAllWords || "none submitted"}
+
+MINUTE-BY-MINUTE TRAJECTORY:
+${timelineStr || "no timeline data"}
 
 Based on this audience reaction, generate two things:
-1. A creative, evocative new name for this performance of the track.
-2. A very short (2-3 sentences) poetic summary or story of how the audience experienced this moment.
-
+1. A creative, evocative new name for this performance of the track, based largely on the overall track summary (top 5 moods and top 2 colors).
+2. A short (2-3 sentences) poetic description/story that traces the audience's journey using the minute-by-minute trajectory and the submitted words.
+  
 Output format should be JSON exactly like this, no markdown formatting:
 {
   "newName": "The Generated Name",
@@ -375,50 +485,63 @@ Output format should be JSON exactly like this, no markdown formatting:
 }`;
 
     try {
-      const responseText = await new Promise((resolve, reject) => {
-        const payload = JSON.stringify({
+      // Use child_process to invoke curl, avoiding node version https/fetch incompatibilities or silent exits
+      const payloadFile = path.join(__dirname, 'logs', `gemini_payload_${trackId}.json`);
+      fs.writeFileSync(payloadFile, JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }]
-        });
+      }));
+      
+      const responseText = await new Promise((resolve, reject) => {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${STORY_MODEL}:generateContent?key=${geminiApiKey}`;
+        const cmd = `curl -s -X POST -H 'Content-Type: application/json' -d @${payloadFile} "${url}"`;
         
-        const req = https.request({
-          hostname: 'generativelanguage.googleapis.com',
-          path: `/v1beta/models/gemini-2.5-pro:generateContent?key=${geminiApiKey}`,
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': Buffer.byteLength(payload)
-          }
-        }, (res) => {
-          let body = '';
-          res.on('data', d => body += d);
-          res.on('end', () => {
-            if (res.statusCode >= 200 && res.statusCode < 300) {
-               resolve(body);
-            } else {
-               reject(new Error(`Gemini API returned ${res.statusCode}: ${body}`));
-            }
-          });
+        const { exec } = require('child_process');
+        exec(cmd, (error, stdout, stderr) => {
+           if (fs.existsSync(payloadFile)) fs.unlinkSync(payloadFile);
+           if (error) {
+              console.error(`Curl error execution: ${error}`);
+              resolve(JSON.stringify({ error: true, msg: error.message }));
+           } else {
+              resolve(stdout);
+           }
         });
-        req.on('error', reject);
-        req.write(payload);
-        req.end();
       });
       
       const geminiData = JSON.parse(responseText);
+      
+      // Save exact prompt & response pair to log file
+      try {
+          const logPayload = { timestamp: new Date().toISOString(), model: STORY_MODEL, trackId, prompt: prompt, response: geminiData };
+          fs.appendFileSync('/home/benczech/dev/concert-app/logs/ai_prompts.jsonl', JSON.stringify(logPayload) + '\\n');
+      } catch (logErr) {
+          console.error("Failed to append to ai_prompts.jsonl", logErr);
+      }
+
+      if (geminiData.error) {
+          console.error("Skipping track generation due to Gemini Error:", geminiData);
+          continue;
+      }
       let rawText = geminiData.candidates && geminiData.candidates[0] && geminiData.candidates[0].content && geminiData.candidates[0].content.parts && geminiData.candidates[0].content.parts[0] ? geminiData.candidates[0].content.parts[0].text : "";
       
-      if (rawText.startsWith('\`\`\`json')) {
-         rawText = rawText.replace(/\`\`\`json/g, '').replace(/\`\`\`/g, '').trim();
-      } else if (rawText.startsWith('\`\`\`')) {
-         rawText = rawText.replace(/\`\`\`/g, '').trim();
-      }
+      let parsed = { newName: "Unknown Story", story: "No story generated." };
       
-      const parsed = JSON.parse(rawText);
+      try {
+          if (rawText.includes('\`\`\`json')) {
+             rawText = rawText.split('\`\`\`json')[1].split('\`\`\`')[0].trim();
+          } else if (rawText.includes('\`\`\`')) {
+             rawText = rawText.split('\`\`\`')[1].trim();
+          }
+          parsed = JSON.parse(rawText);
+      } catch (parseErr) {
+          console.error(`Failed to parse Gemini generated JSON for track ${trackId}:`, parseErr);
+          console.error(`Raw text was: ${rawText}`);
+      }
+
       stories.push({
         trackId: trackId,
         originalTitle: data.title,
-        newName: parsed.newName,
-        story: parsed.story
+        newName: parsed.newName || "Unnamed Track",
+        story: parsed.story || "No story available."
       });
       console.log(`Generated story for ${data.title}`);
     } catch (e) {
@@ -432,10 +555,21 @@ Output format should be JSON exactly like this, no markdown formatting:
   
   // Broadcast to let clients know stories are available
   broadcast({ type: 'stories_ready' });
+  } catch(fatalErr) {
+    console.error("FATAL ERROR IN generateShowStories:", fatalErr);
+  }
 }
 
 // Generate image prompts for admin review
 app.get('/api/images/preview', (req, res) => {
+  let stories = [];
+  try {
+    const storiesPath = path.join(__dirname, 'logs', 'track_stories.json');
+    if (fs.existsSync(storiesPath)) {
+      stories = JSON.parse(fs.readFileSync(storiesPath, 'utf8'));
+    }
+  } catch(e) {}
+
   // Group events by track
   const trackData = {};
   
@@ -475,27 +609,34 @@ app.get('/api/images/preview', (req, res) => {
     const interactionCount = data.reactions.applause + data.reactions.like + data.reactions.meh + data.words.length + data.colors.length;
     if (interactionCount === 0) continue;
     
-    // Extract audience details 
-    const reactionSummary = [];
-    if (data.reactions.applause > 0) reactionSummary.push(`${data.reactions.applause} applause`);
-    if (data.reactions.like > 0) reactionSummary.push(`${data.reactions.like} likes`);
-    if (data.reactions.meh > 0) reactionSummary.push(`${data.reactions.meh} neutral`);
-    
-    const reactionStr = reactionSummary.join(", ") || "no recorded reactions";
-    const topWords = data.words.slice(-20).join(', ') || "no words submitted";
-    const topColors = [...new Set(data.colors)].slice(0, 5).join(', ') || "no specific colors";
+    // Find story for this track
+    const storyFile = path.join(__dirname, 'logs', 'track_stories.json');
+    let aiName = data.title;
+    let aiStory = "The abstract journey of the performance.";
+    try {
+        if(fs.existsSync(storyFile)) {
+             const parsed = JSON.parse(fs.readFileSync(storyFile, 'utf8'));
+             const matchingStory = parsed.find(k => k.trackId == trackId);
+             if(matchingStory) {
+                 aiName = matchingStory.newName;
+                 aiStory = matchingStory.story;
+             }
+        }
+    } catch(e) { }
 
-    const promptText = `An abstract, highly emotional, and visually striking representation of a musical performance of "${data.title}".
-The audience felt the following primary colors: ${topColors}.
-The audience described the feeling with these words: ${topWords}.
-The audience reacted with: ${reactionStr}.
-Make the scene ethereal, concert-like, and highly evocative of those specific colors and emotions. No text in the image.`;
+    const topWords = [...new Set(data.words)].slice(0, 10).join(', ');
+    const topColors = [...new Set(data.colors)].slice(0, 3).join(', ');
 
     prompts.push({
-       trackId: trackId,
-       trackTitle: data.title,
-       prompt: promptText
+      trackId: trackId,
+      title: data.title,
+      aiName: aiName,
+      aiStory: aiStory,
+      prompt: `Create a highly abstract, atmospheric, wide 16:9 concert visual background based on a song titled "${aiName}". \nStory meaning: ${aiStory}. \nThe dominant colors should be: ${topColors || 'vibrant shifting hues'}. \nThe visual mood and themes should reflect these words: ${topWords || 'ambient, energetic, musical'}. Do not include any text or UI elements in the image.`
     });
+    
+    // Extract audience details (if we ever need to review them)
+    // The single prompt push is kept just above.
   }
 
   res.json({ success: true, prompts });
@@ -523,7 +664,7 @@ app.post('/api/images/generate', async (req, res) => {
         
         const reqPost = https.request({
           hostname: 'generativelanguage.googleapis.com',
-          path: `/v1beta/models/imagen-3.0-generate-002:predict?key=${geminiApiKey}`,
+          path: `/v1beta/models/${IMAGE_MODEL}:predict?key=${geminiApiKey}`,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -546,6 +687,14 @@ app.post('/api/images/generate', async (req, res) => {
       });
 
       const data = JSON.parse(responseText);
+      
+      try {
+          const logPayload = { timestamp: new Date().toISOString(), model: IMAGE_MODEL, trackId: p.trackId, prompt: p.prompt, response: data };
+          fs.appendFileSync('/home/benczech/dev/concert-app/logs/ai_prompts.jsonl', JSON.stringify(logPayload) + '\\n');
+      } catch (logErr) {
+          console.error("Failed to append to ai_prompts.jsonl", logErr);
+      }
+
       const b64 = data.predictions && data.predictions[0] && data.predictions[0].bytesBase64Encoded ? data.predictions[0].bytesBase64Encoded : null;
       if (b64) {
         images.push({
@@ -582,11 +731,10 @@ app.get('/api/images', (req, res) => {
   }
 });
 
-// Get show state and concurrent connections
 app.get('/api/state', (req, res) => {
   res.json({
     showState: showState,
-    connectedUsers: connectedClients.length
+    connectedUsers: connectedClients.filter(c => !c.bypass).length
   });
 });
 

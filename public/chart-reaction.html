@@ -88,6 +88,12 @@
             <select id="trackFilter" onchange="handleTrackFilterChange()">
                 <option value="all">All Time</option>
             </select>
+            <span style="display:inline-block; width: 15px;"></span>
+            <label for="userFilter">Data Source: </label>
+            <select id="userFilter" onchange="handleUserFilterChange()">
+                <option value="crowd">Crowd Data</option>
+                <option value="me">My Data</option>
+            </select>
         </div>
         <a href="index.html" class="secondary" style="text-decoration: none; padding: 5px 10px;">&larr; Back to App</a>
     </div>
@@ -135,8 +141,19 @@
 
         // Track filtering state
         let currentTrackFilter = 'all';
+        let currentUserFilter = 'crowd';
         let rawEventsData = [];
-        let trackRanges = {}; // Map of trackId -> {start: time, end: time, title: str}
+        let trackRanges = {}; 
+        let currentUserId = null;
+try {
+    const u = localStorage.getItem("concertUser");
+    if (u) { const p = JSON.parse(u); currentUserId = p.email || p; }
+} catch(e) { currentUserId = localStorage.getItem("concertUser"); }
+
+        function handleUserFilterChange() {
+            currentUserFilter = document.getElementById("userFilter").value;
+            renderData();
+        }
 
         function toggleView(category) {
             if(category === 'reaction') return;
@@ -211,7 +228,8 @@
                 Object.keys(trackRanges).forEach(id => {
                     const opt = document.createElement('option');
                     opt.value = id;
-                    opt.textContent = trackRanges[id].title || `Track ${id}`;
+                    // Prefer the extracted title, if available
+                    opt.textContent = trackRanges[id].title && trackRanges[id].title !== id ? trackRanges[id].title : `Track ${id}`;
                     if (currentTrackFilter === id) opt.selected = true;
                     filterSelect.appendChild(opt);
                 });
@@ -239,6 +257,11 @@
                 }
 
                 rawEventsData.forEach(e => {
+                    // Filter by user dataset
+                    if (currentUserFilter === 'me' && currentUserId) {
+                        if (e.userId !== currentUserId && e.category !== 'system') return;
+                    }
+
                     if (e.timestamp) {
                         const d = new Date(e.timestamp);
                         const t = d.getTime();
@@ -451,24 +474,7 @@
     </div>
 
 
-    <div style="text-align: center; margin-top: 40px; padding-top: 20px;">
-        <p><strong>View Individual Charts:</strong></p>
-        <a href="charts-all.html" class="secondary" style="margin: 0 10px;">All Charts</a> |
-        <a href="chart-mood.html" class="secondary" style="margin: 0 10px;">Mood</a> |
-        <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
-        <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
-        <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a>
-    </div>
 
-
-    <div style="text-align: center; margin-top: 40px; padding-top: 20px;">
-        <p><strong>View Individual Charts:</strong></p>
-        <a href="charts-all.html" class="secondary" style="margin: 0 10px;">All Charts</a> |
-        <a href="chart-mood.html" class="secondary" style="margin: 0 10px;">Mood</a> |
-        <a href="chart-color.html" class="secondary" style="margin: 0 10px;">Color</a> |
-        <a href="chart-reaction.html" class="secondary" style="margin: 0 10px;">Reaction</a> |
-        <a href="chart-words.html" class="secondary" style="margin: 0 10px;">Words</a>
-    </div>
 
 <script src="nav.js"></script>
 </body>

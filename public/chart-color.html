@@ -88,6 +88,12 @@
             <select id="trackFilter" onchange="handleTrackFilterChange()">
                 <option value="all">All Time</option>
             </select>
+            <span style="display:inline-block; width: 15px;"></span>
+            <label for="userFilter">Data Source: </label>
+            <select id="userFilter" onchange="handleUserFilterChange()">
+                <option value="crowd">Crowd Data</option>
+                <option value="me">My Data</option>
+            </select>
         </div>
         <a href="index.html" class="secondary" style="text-decoration: none; padding: 5px 10px;">&larr; Back to App</a>
     </div>
@@ -127,6 +133,12 @@
 
         // Track filtering state
         let currentTrackFilter = 'all';
+        let currentUserFilter = 'crowd';
+        let currentUserId = null;
+try {
+    const u = localStorage.getItem("concertUser");
+    if (u) { const p = JSON.parse(u); currentUserId = p.email || p; }
+} catch(e) { currentUserId = localStorage.getItem("concertUser"); }
         let rawEventsData = [];
         let trackRanges = {}; // Map of trackId -> {start: time, end: time, title: str}
 
@@ -150,6 +162,11 @@
         function handleTrackFilterChange() {
             const selectEl = document.getElementById('trackFilter');
             currentTrackFilter = selectEl.value;
+            renderData();
+        }
+
+        function handleUserFilterChange() {
+            currentUserFilter = document.getElementById("userFilter").value;
             renderData();
         }
 
@@ -202,7 +219,8 @@
                 Object.keys(trackRanges).forEach(id => {
                     const opt = document.createElement('option');
                     opt.value = id;
-                    opt.textContent = trackRanges[id].title || `Track ${id}`;
+                    // Prefer the extracted title, if available
+                    opt.textContent = trackRanges[id].title && trackRanges[id].title !== id ? trackRanges[id].title : `Track ${id}`;
                     if (currentTrackFilter === id) opt.selected = true;
                     filterSelect.appendChild(opt);
                 });
@@ -231,6 +249,11 @@
                 }
 
                 rawEventsData.forEach(e => {
+                    // Filter by user dataset
+                    if (currentUserFilter === 'me' && currentUserId) {
+                        if (e.userId !== currentUserId && e.category !== 'system') return;
+                    }
+
                     if (e.timestamp) {
                         const d = new Date(e.timestamp);
                         const t = d.getTime();
@@ -325,12 +348,44 @@
 
         const palette = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#8AC926', '#1982C4', '#6A4C93', '#F15BB5'];
 
+        function hexToHSL(H) {
+            let r = 0, g = 0, b = 0;
+            if (H.length === 4) {
+                r = "0x" + H[1] + H[1];
+                g = "0x" + H[2] + H[2];
+                b = "0x" + H[3] + H[3];
+            } else if (H.length === 7) {
+                r = "0x" + H[1] + H[2];
+                g = "0x" + H[3] + H[4];
+                b = "0x" + H[5] + H[6];
+            }
+            r /= 255; g /= 255; b /= 255;
+            let cmin = Math.min(r, g, b),
+                cmax = Math.max(r, g, b),
+                delta = cmax - cmin,
+                h = 0, s = 0, l = 0;
+            if (delta === 0) h = 0;
+            else if (cmax === r) h = ((g - b) / delta) % 6;
+            else if (cmax === g) h = (b - r) / delta + 2;
+            else h = (r - g) / delta + 4;
+            h = Math.round(h * 60);
+            if (h < 0) h += 360;
+            l = (cmax + cmin) / 2;
+            s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+            s = +(s * 100).toFixed(1);
+            l = +(l * 100).toFixed(1);
+            return { h, s, l };
+        }
+
         function getHueMapValue(colorName) {
-            const hueMap = { 
-                "Red": 0, "Amber": 45, "Yellow": 60, "Green": 120, "Cyan": 180, "Blue": 240, "Purple": 300,
-                "Transparent": 1000, "White": 1001, "Gray": 1002, "Black": 1003 
-            };
-            return hueMap[colorName] !== undefined ? hueMap[colorName] : 999;
+            const hex = colorHexMap[colorName];
+            if (!hex) return 999;
+            if (hex === 'transparent') return 1000;
+            if (hex === '#ffffff' || hex === 'white') return 1001;
+            if (hex === '#000000' || hex === 'black') return 1003;
+            
+            const hsl = hexToHSL(hex);
+            return hsl.h;
         }
 
         function updateChart(canvasEl, instanceRefName, label, totalsMap, timelineMap, bgColorBar, bgColorLine, annotations, viewMode) {

@@ -240,19 +240,19 @@ async function runSimulation() {
   await sleep(3000);
 
   // Track 1
-  await startTrackSimulation(1, "The Grand Opening", 300); // 5 mins
+  await startTrackSimulation(1, "Track 1", 300); // 5 mins
   await sleep(15000); // 15 seconds banter
 
   // Track 2
-  await startTrackSimulation(2, "Electric Dreams", 300); 
+  await startTrackSimulation(2, "Track 2", 300); 
   await sleep(15000);
 
   // Track 3
-  await startTrackSimulation(3, "Sub Bass City", 300);
+  await startTrackSimulation(3, "Track 3", 300);
   await sleep(15000);
 
   // Track 4
-  await startTrackSimulation(4, "The Final Sendoff", 300);
+  await startTrackSimulation(4, "Track 4", 300);
   
   console.log("------------------------------------------");
   console.log("5. Show Ended! Transitioning to POST_SHOW Recap ");

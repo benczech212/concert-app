@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Concert Stories</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="nav.css" />
   <style>
     body {
       background-color: #0e0e0e;
@@ -120,7 +121,8 @@
     loadStories();
 
     // Listen for SSE events in case stories are ready while watching this page
-    const evtSource = new EventSource('/api/stream');
+    const isBypass = new URLSearchParams(window.location.search).get('bypass') === 'true';
+    const evtSource = new EventSource(`/api/stream${isBypass ? '?bypass=true' : ''}`);
     evtSource.onmessage = (event) => {
         try {
             const data = JSON.parse(event.data);

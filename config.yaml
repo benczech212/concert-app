@@ -9,6 +9,10 @@ copy:
   welcomeText: "Help us build a screenplay for tonight’s performance. Select the mood and color you hear in the music. Selections are saved instantly."
   footerText: "Thank you for participating — enjoy the performance."
 
+ai_models:
+  story_model: "gemini-2.5-flash"
+  image_model: "imagen-3.0-generate-002"
+
 moods:
   - name: "Anticipation"
     glow: "rgba(255, 230, 150, .25)"
@@ -102,12 +106,4 @@ colors:
     hex: "#ff0055"
   - name: "Ruby"
     hex: "#ff002b"
-tracks:
-  - id: 1
-    title: "Opening Overture"
-    artist: "Markus Gottschlich"
-    color: "#ff0000"
-  - id: 2
-    title: "Midnight Melody"
-    artist: "Markus Gottschlich"
-    color: "#0000ff"
+

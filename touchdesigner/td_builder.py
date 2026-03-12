@@ -130,7 +130,7 @@ def onReceiveOSC(dat, rowIndex, message, bytes, timeStamp, source, sendPort, rec
     osc_callbacks.text = callback_script
     
     # 7. Create Parameter Execute DAT to handle the UI buttons
-    ui_exec = base.create(parexecDAT, 'ui_exec')
+    ui_exec = base.create(parameterexecuteDAT, 'ui_exec')
     ui_exec.nodeX = 600
     ui_exec.nodeY = 0
     ui_exec.par.pars = 'Clearall Statepre Stateactive Statepost Updatetrack'
@@ -186,13 +186,6 @@ def onPulse(par):
 """
     ui_exec.text = ui_script
 
-    # 8. Create Web Render TOP for the Admin UI
-    webrender = base.create(webrenderTOP, 'admin_panel_render')
-    webrender.nodeX = 0
-    webrender.nodeY = -400
-    webrender.par.url.expr = "op('webclient1').par.url.eval() + '/admin-controls.html'"
-    webrender.par.resolutionw = 1100
-    webrender.par.resolutionh = 800
     
     print("Successfully built OSC to REST Bridge inside /project1/osc_to_rest_bridge")
 
@@ -240,7 +233,7 @@ def setup_concert_kiosks():
     web1.par.resolutionh = 720
     web1.nodeX = -200
     web1.nodeY = 200
-    web1.par.url.expr = "(parent().par.Prodhost.eval() if parent().par.Useprod.eval() else parent().par.Localhost.eval()) + '/kiosk.html?kiosk=1'"
+    web1.par.url.expr = "(parent().par.Prodhost.eval() if parent().par.Useprod.eval() else parent().par.Localhost.eval()) + '/kiosk.html?kiosk=1&bypass=true'"
     web1.par.active.expr = "parent().par.Active.eval()"
     web1.par.reloadsrc.expr = "parent().par.Reload"
 
@@ -255,7 +248,7 @@ def setup_concert_kiosks():
     web2.par.resolutionh = 720
     web2.nodeX = -200
     web2.nodeY = 0
-    web2.par.url.expr = "(parent().par.Prodhost.eval() if parent().par.Useprod.eval() else parent().par.Localhost.eval()) + '/kiosk.html?kiosk=2'"
+    web2.par.url.expr = "(parent().par.Prodhost.eval() if parent().par.Useprod.eval() else parent().par.Localhost.eval()) + '/kiosk.html?kiosk=2&bypass=true'"
     web2.par.active.expr = "parent().par.Active.eval()"
     web2.par.reloadsrc.expr = "parent().par.Reload"
 
@@ -264,6 +257,36 @@ def setup_concert_kiosks():
     spout2.nodeX = 0
     spout2.nodeY = 0
     spout2.inputConnectors[0].connect(web2)
+    
+    web_qr = kiosks_base.create(webrenderTOP, 'webrender_qr')
+    web_qr.par.resolutionw = 1280
+    web_qr.par.resolutionh = 720
+    web_qr.nodeX = -200
+    web_qr.nodeY = -200
+    web_qr.par.url.expr = "(parent().par.Prodhost.eval() if parent().par.Useprod.eval() else parent().par.Localhost.eval()) + '/qr.html?bypass=true'"
+    web_qr.par.active.expr = "parent().par.Active.eval()"
+    web_qr.par.reloadsrc.expr = "parent().par.Reload"
+
+    spout_qr = kiosks_base.create(spoutoutTOP, 'spout_qr')
+    spout_qr.par.sendername = 'QR Code'
+    spout_qr.nodeX = 0
+    spout_qr.nodeY = -200
+    spout_qr.inputConnectors[0].connect(web_qr)
+    
+    web_admin = kiosks_base.create(webrenderTOP, 'webrender_admin')
+    web_admin.par.resolutionw = 1280
+    web_admin.par.resolutionh = 720
+    web_admin.nodeX = -200
+    web_admin.nodeY = -400
+    web_admin.par.url.expr = "(parent().par.Prodhost.eval() if parent().par.Useprod.eval() else parent().par.Localhost.eval()) + '/admin-console.html?password=czech&bypass=true'"
+    web_admin.par.active.expr = "parent().par.Active.eval()"
+    web_admin.par.reloadsrc.expr = "parent().par.Reload"
+
+    spout_admin = kiosks_base.create(spoutoutTOP, 'spout_admin')
+    spout_admin.par.sendername = 'Admin Console'
+    spout_admin.nodeX = 0
+    spout_admin.nodeY = -400
+    spout_admin.inputConnectors[0].connect(web_admin)
     
     # --- 4. Build API Execution DAT ---
     parexec = kiosks_base.create(parameterexecuteDAT, 'api_requests')

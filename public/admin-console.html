@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1280,initial-scale=1" />
+    <title>Concert App Admin Console</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg);
+            color: var(--text);
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            grid-template-rows: 1fr;
+            gap: 20px;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .panel {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .metrics-board {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .metric-block {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .metric-block h3 {
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .state-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-top: 5px;
+            line-height: 1.2;
+        }
+
+        .track-value {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 5px;
+            line-height: 1.2;
+            word-wrap: break-word;
+        }
+
+        .live-feed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .live-feed-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .pulse-indicator {
+            width: 12px;
+            height: 12px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #00ff00;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .event-log {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .log-entries {
+            padding: 15px;
+            list-style: none;
+            margin: 0;
+            flex: 1;
+            overflow-y: hidden; /* we control scroll manually to keep new items visible */
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .log-entry {
+            display: flex;
+            font-size: 0.95rem;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .log-time {
+            color: var(--text-muted);
+            width: 85px;
+            flex-shrink: 0;
+            font-family: monospace;
+        }
+
+        .log-cat {
+            width: 90px;
+            flex-shrink: 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            align-self: center;
+        }
+        
+        .cat-mood { color: #6495ED; }
+        .cat-color { color: #FF69B4; }
+        .cat-reaction { color: #32CD32; }
+        .cat-note { color: #FFD700; }
+        .cat-system { color: #FF4500; }
+
+        .log-user {
+            width: 150px;
+            flex-shrink: 0;
+            color: #aaa;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 15px;
+        }
+
+        .log-val {
+            flex: 1;
+            font-weight: bold;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Left Panel: Metrics & State -->
+    <div class="panel metrics-board">
+        <div style="text-align: center; margin-bottom: 10px;">
+            <h1 style="margin: 0; font-size: 1.8rem; background: linear-gradient(90deg, #ff8a00, #e52e71); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Concert Console</h1>
+            <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">SYS_STATUS: NOMINAL</div>
+        </div>
+
+        <div class="metric-block">
+            <h3>Connected Devices</h3>
+            <div class="metric-value" id="userCount">0</div>
+        </div>
+
+        <div class="metric-block">
+            <h3>Show State</h3>
+            <div class="state-value" id="showState">UNKNOWN</div>
+        </div>
+
+        <div class="metric-block" style="flex: 1; display:flex; flex-direction: column; justify-content: center;">
+            <h3>Active Track</h3>
+            <div class="track-value" id="activeTrack">None</div>
+            <div style="font-size: 0.9rem; color: #888; margin-top: 10px;" id="activeTrackId">TRK_--</div>
+        </div>
+    </div>
+
+    <!-- Right Panel: Live Feed -->
+    <div class="panel">
+        <div class="live-feed-header">
+            <h2>Live Data Stream</h2>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: #00ff00; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px;">RECEIVING</span>
+                <div class="pulse-indicator" id="pulseInd"></div>
+            </div>
+        </div>
+        
+        <div class="event-log">
+            <ul class="log-entries" id="logList">
+                <!-- Log items injected via JS -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const userCountEl = document.getElementById('userCount');
+        const showStateEl = document.getElementById('showState');
+        const activeTrackEl = document.getElementById('activeTrack');
+        const activeTrackIdEl = document.getElementById('activeTrackId');
+        const logList = document.getElementById('logList');
+        const pulseInd = document.getElementById('pulseInd');
+        
+        const MAX_LOG_ENTRIES = 25;
+        let lastEventId = null;
+        let recentEventsList = [];
+
+        async function fetchSystemState() {
+            try {
+                const res = await fetch('/api/state');
+                const data = await res.json();
+                
+                userCountEl.innerText = data.connectedUsers || 0;
+                
+                // Format show state text and color
+                let stateText = data.showState;
+                let stateColor = "var(--primary)";
+                if (stateText === "PRE_SHOW") { stateText = "LOBBY"; stateColor = "#00bcd4"; }
+                else if (stateText === "ACTIVE") { stateText = "ACTIVE SHOW"; stateColor = "#00ff00"; }
+                else if (stateText === "POST_SHOW") { stateText = "ENDED"; stateColor = "#ff4500"; }
+                
+                showStateEl.innerText = stateText;
+                showStateEl.style.color = stateColor;
+
+            } catch(e) { console.error('Error fetching state', e); }
+        }
+
+        function createLogDOM(evt) {
+            const li = document.createElement('li');
+            li.className = 'log-entry';
+            
+            const time = new Date(evt.timestamp).toLocaleTimeString([], {hour12: false, hour: '2-digit', minute:'2-digit', second:'2-digit'});
+            
+            let catColorClass = 'cat-system';
+            if(evt.category === 'mood') catColorClass = 'cat-mood';
+            else if(evt.category === 'color') catColorClass = 'cat-color';
+            else if(evt.category === 'reaction') catColorClass = 'cat-reaction';
+            else if(evt.category === 'note') catColorClass = 'cat-note';
+            
+            let valDisplay = evt.value;
+            if(evt.category === 'system' && evt.value === 'track_start') {
+                valDisplay = `[START] ${evt.trackTitle}`;
+            } else if (evt.category === 'system' && evt.value === 'track_end') {
+                valDisplay = `[END] ${evt.trackTitle || evt.trackId}`;
+            }
+
+            li.innerHTML = `
+                <div class="log-time">${time}</div>
+                <div class="log-cat ${catColorClass}">${evt.category}</div>
+                <div class="log-user">${evt.userName || evt.userId || 'SYSTEM'}</div>
+                <div class="log-val" title="${valDisplay}">${valDisplay}</div>
+            `;
+            return li;
+        }
+
+        async function fetchRecentEvents() {
+            try {
+                const res = await fetch('/api/events');
+                const allEvents = await res.json();
+                
+                // Sort by timestamp desc to find newest
+                allEvents.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
+                
+                // Extract latest track info by scanning newest events
+                let foundTrack = false;
+                for (let e of allEvents) {
+                    if (e.category === 'system' && (e.value === 'track_start' || e.value === 'track_end')) {
+                        if (e.value === 'track_start') {
+                            activeTrackEl.innerText = e.trackTitle || e.trackId;
+                            activeTrackIdEl.innerText = `ID: ${e.trackId}`;
+                            activeTrackEl.style.color = "#fff";
+                        } else {
+                            activeTrackEl.innerText = "Intermission";
+                            activeTrackIdEl.innerText = "NO_TRACK";
+                            activeTrackEl.style.color = "#888";
+                        }
+                        foundTrack = true;
+                        break;
+                    }
+                }
+                if (!foundTrack) {
+                    activeTrackEl.innerText = "None";
+                    activeTrackIdEl.innerText = "NO_TRACK";
+                }
+
+                // Process strictly NEW events for the log to trigger animations properly
+                const topEvents = allEvents.slice(0, MAX_LOG_ENTRIES).reverse(); // oldest first out of the newest 25 batch
+                
+                // If it's the first load, just render everything
+                if (recentEventsList.length === 0) {
+                    logList.innerHTML = '';
+                    topEvents.forEach(evt => {
+                        logList.appendChild(createLogDOM(evt));
+                    });
+                    if (topEvents.length > 0) lastEventId = topEvents[topEvents.length-1].id;
+                } else {
+                    // Find genuinely new events
+                    const lastKnownIdx = topEvents.findIndex(e => e.id === lastEventId);
+                    let newEvents = [];
+                    if (lastKnownIdx === -1) {
+                        newEvents = topEvents; // All are new
+                    } else if (lastKnownIdx < topEvents.length - 1) {
+                        newEvents = topEvents.slice(lastKnownIdx + 1);
+                    }
+
+                    if (newEvents.length > 0) {
+                        // Flash the receiver indicator
+                        pulseInd.style.backgroundColor = "#fff";
+                        pulseInd.style.boxShadow = "0 0 15px #fff";
+                        setTimeout(() => {
+                           pulseInd.style.backgroundColor = "#00ff00"; 
+                           pulseInd.style.boxShadow = "0 0 10px #00ff00";
+                        }, 200);
+
+                        newEvents.forEach(evt => {
+                            logList.appendChild(createLogDOM(evt));
+                        });
+                        lastEventId = newEvents[newEvents.length-1].id;
+                        
+                        // Prune excess items off the top
+                        while (logList.children.length > MAX_LOG_ENTRIES) {
+                            logList.removeChild(logList.firstChild);
+                        }
+                    }
+                }
+                
+                recentEventsList = topEvents;
+
+            } catch(e) { console.error('Error fetching logs', e); }
+        }
+
+        // Init loops
+        fetchSystemState();
+        fetchRecentEvents();
+
+        setInterval(fetchSystemState, 1000);
+        setInterval(fetchRecentEvents, 1000);
+
+    </script>
+</body>
+
+</html>

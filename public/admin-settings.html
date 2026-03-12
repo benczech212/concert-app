@@ -254,7 +254,7 @@
                 } catch (e) {
                     console.error("Failed to fetch config.yaml", e);
                     setMsg("Could not load config due to CORS. Using hardcoded fallback format.", true);
-                    yamlText = `event:\n  artist: "Fallback"\nmoods:\n  - name: "Happy"\n    glow: "rgba(255, 230, 150, .25)"`;
+                    yamlText = `event:\n  artist: "Fallback"\nmoods:\n  - name: "Anticipation"\n    glow: "rgba(255, 230, 150, .25)"\n  - name: "Joy"\n    glow: "rgba(255, 215, 0, .25)"\n  - name: "Chaos"\n    glow: "rgba(255, 140, 0, .25)"\ncolors:\n  - name: "Red"\n    hex: "#ff0000"`;
                 }
             }
             editor.value = yamlText;

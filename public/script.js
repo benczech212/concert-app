@@ -23,9 +23,15 @@ let appConfig = {
     footerText: "Thank you for participating."
   },
   moods: [
-    { name: "Happy", glow: "rgba(255, 230, 150, .25)" },
-    { name: "Relaxed", glow: "rgba(150, 255, 220, .20)" },
-    { name: "Melancholy", glow: "rgba(170, 160, 255, .22)" }
+    { name: "Anticipation", glow: "rgba(255, 230, 150, .25)" },
+    { name: "Joy", glow: "rgba(255, 215, 0, .25)" },
+    { name: "Mystery", glow: "rgba(148, 0, 211, .25)" },
+    { name: "Melancholy", glow: "rgba(170, 160, 255, .22)" },
+    { name: "Sadness", glow: "rgba(100, 149, 237, .20)" },
+    { name: "Anger", glow: "rgba(255, 69, 0, .25)" },
+    { name: "Power", glow: "rgba(220, 20, 60, .25)" },
+    { name: "Chaos", glow: "rgba(255, 140, 0, .25)" },
+    { name: "Confusion", glow: "rgba(169, 169, 169, .25)" }
   ],
   colors: [
     { name: "Red", hex: "#ff0000" }, { name: "Vermilion", hex: "#ff4000" },
@@ -104,7 +110,55 @@ async function loadConfiguration() {
 
   // Map structured config back to application arrays
   MOODS = appConfig.moods.map(m => m.name);
-  COLORS = appConfig.colors || [];
+  // Predefined anchor colors for naming generated hues (nearest-neighbor)
+  const COLOR_NAMES = [
+    { name: "Red", hex: "#ff0000" }, { name: "Orange", hex: "#ff8000" },
+    { name: "Yellow", hex: "#ffff00" }, { name: "Chartreuse", hex: "#80ff00" },
+    { name: "Green", hex: "#00ff00" }, { name: "Spring Green", hex: "#00ff80" },
+    { name: "Cyan", hex: "#00ffff" }, { name: "Azure", hex: "#0080ff" },
+    { name: "Blue", hex: "#0000ff" }, { name: "Violet", hex: "#8000ff" },
+    { name: "Magenta", hex: "#ff00ff" }, { name: "Rose", hex: "#ff0080" }
+  ];
+
+  function getNearestColorName(r, g, b) {
+    let bestMatch = COLOR_NAMES[0].name;
+    let minDistance = Infinity;
+
+    for (const c of COLOR_NAMES) {
+      const cr = parseInt(c.hex.slice(1, 3), 16);
+      const cg = parseInt(c.hex.slice(3, 5), 16);
+      const cb = parseInt(c.hex.slice(5, 7), 16);
+      const dist = Math.sqrt(Math.pow(r - cr, 2) + Math.pow(g - cg, 2) + Math.pow(b - cb, 2));
+      if (dist < minDistance) {
+        minDistance = dist;
+        bestMatch = c.name;
+      }
+    }
+    return bestMatch;
+  }
+
+  function hslToRgb(h, s, l) {
+    s /= 100;
+    l /= 100;
+    const k = n => (n + h / 30) % 12;
+    const a = s * Math.min(l, 1 - l);
+    const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+    return [Math.round(255 * f(0)), Math.round(255 * f(8)), Math.round(255 * f(4))];
+  }
+
+  function rgbToHex(r, g, b) {
+    return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
+  }
+
+  // Generate 36 perfectly saturated hues (every 10 degrees)
+  COLORS = [];
+  for (let t = 0; t < 360; t += 10) {
+    const [r, g, b] = hslToRgb(t, 100, 50);
+    const hex = rgbToHex(r, g, b);
+    let name = getNearestColorName(r, g, b);
+    if (t % 30 !== 0) name += ` (Hue ${t})`; // Distinguish slightly different slices with the same name if needed
+    COLORS.push({ name: name, hex: hex, h: t });
+  }
   MOOD_GLOWS = {};
   appConfig.moods.forEach(m => {
     MOOD_GLOWS[m.name] = m.glow || DEFAULT_GLOW;
@@ -936,7 +990,8 @@ if (btnLobbySwitchUser) btnLobbySwitchUser.addEventListener("click", doSwitchUse
 
 function connectStream() {
   if (sseSource) return;
-  sseSource = new EventSource('/api/stream');
+  const isBypass = new URLSearchParams(window.location.search).get('bypass') === 'true';
+  sseSource = new EventSource(`/api/stream${isBypass ? '?bypass=true' : ''}`);
   sseSource.onmessage = (e) => {
     try {
       const data = JSON.parse(e.data);
@@ -1258,12 +1313,10 @@ function renderButtons() {
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
     svg.style.overflow = "visible";
 
-    // Draw Inner Wheel (Half colors, half saturated)
-    // We only take every second color
-    const innerColors = COLORS.filter((_, i) => i % 2 === 0);
-    const innerStep = 360 / innerColors.length;
+    // Draw Inner Wheel (Lighter versions of colors)
+    const innerStep = 360 / COLORS.length;
 
-    innerColors.forEach((c, idx) => {
+    COLORS.forEach((c, idx) => {
       const startAngle = idx * innerStep;
       const endAngle = startAngle + innerStep;
 
@@ -1273,7 +1326,7 @@ function renderButtons() {
       path.dataset.colorName = "Light " + c.name;
 
       const hsl = hexToHSL(c.hex);
-      path.style.fill = `hsl(${hsl.h}, ${hsl.s / 2}%, ${hsl.l}%)`;
+      path.style.fill = `hsl(${hsl.h}, ${hsl.s}%, ${Math.min(95, hsl.l + 30)}%)`;
       path.style.stroke = "rgba(255, 255, 255, 0.15)";
       path.style.strokeWidth = "1";
       path.style.cursor = "pointer";

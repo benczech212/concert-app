@@ -140,6 +140,14 @@
             }
         });
 
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlPassword = urlParams.get('pwd') || urlParams.get('password');
+
+        if (urlPassword === "czech") {
+            adminPassword.value = urlPassword;
+            btnLogin.click();
+        }
+
         adminPassword.addEventListener("keyup", (e) => {
             if (e.key === "Enter") btnLogin.click();
         });

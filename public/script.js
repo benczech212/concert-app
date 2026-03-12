@@ -199,7 +199,7 @@ if (colorCloseBtn) {
       const colorSuccessOverlay = document.getElementById("colorSuccessOverlay");
       if (colorSuccessOverlay) colorSuccessOverlay.classList.remove("show");
 
-      handleSelection("color", currentSelections.color); // toggle clears it
+      handleSelection("color", currentSelections.color, null, true); // explicitly clear
     }
   });
 }
@@ -216,7 +216,7 @@ if (reactionCloseBtn) {
         mainReactionButtonGroup.style.opacity = "1";
         mainReactionButtonGroup.style.pointerEvents = "auto";
       }
-      handleSelection("reaction", currentSelections.reaction);
+      handleSelection("reaction", currentSelections.reaction, null, true);
     }
   });
 }
@@ -246,7 +246,7 @@ if (moodCloseBtn) {
       if (moodSuccessOverlay) moodSuccessOverlay.classList.remove("show");
 
       document.documentElement.style.setProperty("--moodGlow", currentSelections.colorHex || "rgba(255, 255, 255, 0.2)");
-      handleSelection("mood", currentSelections.mood); // toggle clears it
+      handleSelection("mood", currentSelections.mood, null, true); // explicitly clear
     }
   });
 }
@@ -444,20 +444,20 @@ function submitSelections(isAutoSubmit = false) {
     if (card) {
       card.style.backgroundColor = ""; // Reset to default CSS
       card.style.color = "";
-      card.querySelectorAll("h2, p, .hint").forEach(el => el.style.color = "");
+      card.querySelectorAll("h2, p, .hint, .swipe-slider-text").forEach(el => el.style.color = "");
       const closeBtn = document.getElementById(`${type}CloseBtn`);
       if (closeBtn) closeBtn.style.color = "";
     }
 
-    const thumb = document.getElementById(`${type}SwipeThumb`);
-    const track = document.getElementById(`${type}SwipeTrack`);
     const container = document.getElementById(`${type}SwipeContainer`);
-    if (thumb && track && container) {
-      const maxDist = container.offsetWidth - thumb.offsetWidth - 8;
-      thumb.style.transition = 'left 0.3s ease';
-      track.style.transition = 'width 0.3s ease';
-      thumb.style.left = `calc(4px + ${maxDist}px)`;
-      track.style.width = '100%';
+    if (container) {
+      const textNode = container.querySelector('.swipe-slider-text');
+      if (textNode) textNode.textContent = "Submitted ✓";
+      setTimeout(() => {
+        container.style.transition = "opacity 0.3s ease";
+        container.style.opacity = "0";
+        setTimeout(() => { container.style.display = "none"; }, 300);
+      }, 500);
     }
   });
 
@@ -473,15 +473,15 @@ function autoSwipeAllAndSubmit() {
   if (currentSelections.note) activeCards.push('note');
 
   activeCards.forEach(type => {
-    const thumb = document.getElementById(`${type}SwipeThumb`);
-    const track = document.getElementById(`${type}SwipeTrack`);
     const container = document.getElementById(`${type}SwipeContainer`);
-    if (thumb && track && container) {
-      const maxDist = container.offsetWidth - thumb.offsetWidth - 8;
-      thumb.style.transition = 'left 0.3s ease';
-      track.style.transition = 'width 0.3s ease';
-      thumb.style.left = `calc(4px + ${maxDist}px)`;
-      track.style.width = '100%';
+    if (container) {
+      const textNode = container.querySelector('.swipe-slider-text');
+      if (textNode) textNode.textContent = "Submitted ✓";
+      setTimeout(() => {
+        container.style.transition = "opacity 0.3s ease";
+        container.style.opacity = "0";
+        setTimeout(() => { container.style.display = "none"; }, 300);
+      }, 500);
     }
   });
 
@@ -526,13 +526,13 @@ function resetAllSelections() {
   });
 
   const cc = document.getElementById("colorCard");
-  if (cc) { cc.style.backgroundColor = ""; cc.style.color = ""; cc.querySelectorAll("h2, p, .hint").forEach(el => el.style.color = ""); }
+  if (cc) { cc.style.backgroundColor = ""; cc.style.color = ""; cc.querySelectorAll("h2, p, .hint, .swipe-slider-text").forEach(el => el.style.color = ""); }
 
   const mc = document.getElementById("moodCard");
-  if (mc) { mc.style.backgroundColor = ""; mc.style.color = ""; mc.querySelectorAll("h2, p, .hint").forEach(el => el.style.color = ""); }
+  if (mc) { mc.style.backgroundColor = ""; mc.style.color = ""; mc.querySelectorAll("h2, p, .hint, .swipe-slider-text").forEach(el => el.style.color = ""); }
 
   const rc = document.getElementById("reactionCard");
-  if (rc) { rc.style.backgroundColor = ""; rc.style.color = ""; rc.querySelectorAll("h2, p, .hint").forEach(el => el.style.color = ""); }
+  if (rc) { rc.style.backgroundColor = ""; rc.style.color = ""; rc.querySelectorAll("h2, p, .hint, .swipe-slider-text").forEach(el => el.style.color = ""); }
 
   if (colorWheelWrap) {
     const svg = colorWheelWrap.querySelector('svg');
@@ -560,39 +560,27 @@ function resetAllSelections() {
 
   if (cSwipe) {
     cSwipe.style.display = "none";
+    cSwipe.style.opacity = "1";
     const t = cSwipe.querySelector('.swipe-slider-text');
-    if (t) t.textContent = "Swipe to submit just this color";
-    const thumb = document.getElementById('colorSwipeThumb');
-    if (thumb) thumb.style.left = '4px';
-    const track = document.getElementById('colorSwipeTrack');
-    if (track) track.style.width = '0%';
+    if (t) t.textContent = "Tap selection again to submit";
   }
   if (mSwipe) {
     mSwipe.style.display = "none";
+    mSwipe.style.opacity = "1";
     const t = mSwipe.querySelector('.swipe-slider-text');
-    if (t) t.textContent = "Swipe to submit just this mood";
-    const thumb = document.getElementById('moodSwipeThumb');
-    if (thumb) thumb.style.left = '4px';
-    const track = document.getElementById('moodSwipeTrack');
-    if (track) track.style.width = '0%';
+    if (t) t.textContent = "Tap selection again to submit";
   }
   if (rSwipe) {
     rSwipe.style.display = "none";
+    rSwipe.style.opacity = "1";
     const t = rSwipe.querySelector('.swipe-slider-text');
-    if (t) t.textContent = "Swipe to submit just this reaction";
-    const thumb = document.getElementById('reactionSwipeThumb');
-    if (thumb) thumb.style.left = '4px';
-    const track = document.getElementById('reactionSwipeTrack');
-    if (track) track.style.width = '0%';
+    if (t) t.textContent = "Tap selection again to submit";
   }
   if (nSwipe) {
     nSwipe.style.display = "none";
+    nSwipe.style.opacity = "1";
     const t = nSwipe.querySelector('.swipe-slider-text');
-    if (t) t.textContent = "Swipe to submit just this note";
-    const thumb = document.getElementById('noteSwipeThumb');
-    if (thumb) thumb.style.left = '4px';
-    const track = document.getElementById('noteSwipeTrack');
-    if (track) track.style.width = '0%';
+    if (t) t.textContent = "Tap \"Send Note\" again to submit";
   }
 
   document.querySelectorAll(".mood-wedge, .color-wedge").forEach(p => {
@@ -619,7 +607,7 @@ function resetAllSelections() {
     if (card) {
       card.style.backgroundColor = "";
       card.style.color = "";
-      card.querySelectorAll("h2, p, .hint").forEach(el => el.style.color = "");
+      card.querySelectorAll("h2, p, .hint, .swipe-slider-text").forEach(el => el.style.color = "");
       card.style.height = "";
       card.style.padding = "";
     }
@@ -666,78 +654,13 @@ function updateSubmitUI() {
 function initSwipeSliders() {
   const cards = ['color', 'mood', 'reaction', 'note'];
   cards.forEach(type => {
-    const thumb = document.getElementById(type + 'SwipeThumb');
-    const track = document.getElementById(type + 'SwipeTrack');
     const container = document.getElementById(type + 'SwipeContainer');
-    if (!thumb || !track || !container) return;
+    if (!container) return;
 
-    let isDragging = false;
-    let startX = 0;
-    let currentDiff = 0;
-
-    function startDrag(e) {
-      isDragging = true;
-      startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-      currentDiff = 0;
-      thumb.style.transition = 'none';
-      track.style.transition = 'none';
-    }
-
-    function moveDrag(e) {
-      if (!isDragging) return;
-      const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-      let diff = currentX - startX;
-
-      const maxDist = container.offsetWidth - thumb.offsetWidth - 8; // 8px for left margin pad
-      if (diff < 0) diff = 0;
-      if (diff > maxDist) diff = maxDist;
-      
-      currentDiff = diff;
-
-      thumb.style.left = `calc(4px + ${diff}px)`;
-      track.style.width = `${(diff / maxDist) * 100}%`;
-    }
-
-    function endDrag(e) {
-      if (!isDragging) return;
-      isDragging = false;
-
-      const maxDist = container.offsetWidth - thumb.offsetWidth - 8;
-
-      if (currentDiff >= maxDist * 0.5) {
-        // threshold reached, submit!
-        thumb.style.left = `calc(4px + ${maxDist}px)`;
-        track.style.width = '100%';
-        setTimeout(() => {
-          submitSelections(false);
-          // reset slider after submission
-          setTimeout(() => {
-            thumb.style.transition = 'left 0.3s ease';
-            track.style.transition = 'width 0.3s ease';
-            thumb.style.left = '4px';
-            track.style.width = '0%';
-            currentDiff = 0;
-          }, 500);
-        }, 300);
-      } else {
-        // snap back
-        thumb.style.transition = 'left 0.3s ease';
-        track.style.transition = 'width 0.3s ease';
-        thumb.style.left = '4px';
-        track.style.width = '0%';
-        currentDiff = 0;
-      }
-    }
-
-    thumb.addEventListener('mousedown', startDrag);
-    thumb.addEventListener('touchstart', startDrag, { passive: true });
-
-    document.addEventListener('mousemove', moveDrag);
-    document.addEventListener('touchmove', moveDrag, { passive: false });
-
-    document.addEventListener('mouseup', endDrag);
-    document.addEventListener('touchend', endDrag);
-    document.addEventListener('touchcancel', endDrag);
+    container.style.cursor = "pointer";
+    container.addEventListener('click', () => {
+      autoSwipeAllAndSubmit();
+    });
   });
 }
 
@@ -749,9 +672,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-function handleSelection(type, name, hexColorOrGlow) {
-  // Deselect if clicking the same item
-  if (currentSelections[type] === name) {
+function handleSelection(type, name, hexColorOrGlow, isClearAction = false) {
+  // Handle explicit clear
+  if (isClearAction) {
     currentSelections[type] = null;
     if (type === 'color') currentSelections.colorHex = null;
 
@@ -760,7 +683,7 @@ function handleSelection(type, name, hexColorOrGlow) {
     if (card) {
       card.style.backgroundColor = "";
       card.style.color = "";
-      card.querySelectorAll("h2, p, .hint").forEach(el => el.style.color = "");
+      card.querySelectorAll("h2, p, .hint, .swipe-slider-text").forEach(el => el.style.color = "");
       card.style.height = "";
       card.style.padding = "";
 
@@ -812,6 +735,12 @@ function handleSelection(type, name, hexColorOrGlow) {
     return; // Exit early since we just deselected
   }
 
+  // Tap again to submit Single Interaction
+  if (currentSelections[type] === name) {
+    autoSwipeAllAndSubmit();
+    return;
+  }
+
   currentSelections[type] = name;
   if (type === 'color') currentSelections.colorHex = hexColorOrGlow;
   updateOverlays();
@@ -821,7 +750,7 @@ function handleSelection(type, name, hexColorOrGlow) {
     card.style.backgroundColor = hexColorOrGlow;
     const contrast = getContrastYIQ(hexColorOrGlow);
     card.style.color = contrast;
-    card.querySelectorAll("h2, p, .hint").forEach(el => el.style.color = contrast);
+    card.querySelectorAll("h2, p, .hint, .swipe-slider-text").forEach(el => el.style.color = contrast);
 
     const h2 = document.getElementById("colorHeading");
     if (h2) h2.textContent = name;
@@ -873,7 +802,7 @@ function handleSelection(type, name, hexColorOrGlow) {
     // Determine contrast from the raw hex if available, or just give something that works with 0.7 opacity
     const contrast = currentSelections.colorHex ? getContrastYIQ(currentSelections.colorHex) : "#fff";
     card.style.color = contrast;
-    card.querySelectorAll("h2, p, .hint").forEach(el => el.style.color = contrast);
+    card.querySelectorAll("h2, p, .hint, .swipe-slider-text").forEach(el => el.style.color = contrast);
 
     const h2 = document.getElementById("moodHeading");
     if (h2) h2.textContent = name;

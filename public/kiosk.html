@@ -23,6 +23,25 @@
             padding: 5px;
             background: rgba(0, 0, 0, 0.2);
             flex-shrink: 0;
+            position: relative;
+        }
+
+        #viewSelect {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 12px;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 100;
+        }
+        
+        #viewSelect option {
+            background: #222;
         }
 
         h1 {
@@ -73,6 +92,7 @@
     <div class="header">
         <h1>Concert Live Data</h1>
         <h2 id="viewTitle">Loading...</h2>
+        <select id="viewSelect"></select>
     </div>
     <div class="canvas-wrapper">
         <canvas id="kioskChart"></canvas>
@@ -126,6 +146,25 @@
                 { id: 'words', title: 'Word Cloud', category: 'note', type: 'cloud' }
             ];
         }
+
+        const viewSelect = document.getElementById('viewSelect');
+        views.forEach((v, index) => {
+            const opt = document.createElement('option');
+            opt.value = index;
+            opt.textContent = v.title;
+            viewSelect.appendChild(opt);
+        });
+
+        let autoCycleTimer = null;
+        let dataRefreshTimer = null;
+        let isManualOverride = false;
+
+        viewSelect.addEventListener('change', (e) => {
+            currentViewIndex = parseInt(e.target.value);
+            isManualOverride = true; 
+            if (autoCycleTimer) clearInterval(autoCycleTimer); // Pause rotation when manually picked
+            renderCurrentView();
+        });
 
         let displayData = {
             mood: { totals: {}, timeline: {}, engCount: 0 },
@@ -332,6 +371,7 @@
                 titleText += ` (${currentTimelineSeries})`;
             }
             document.getElementById('viewTitle').innerText = titleText;
+            viewSelect.value = currentViewIndex;
             
             const chartCanvas = document.getElementById('kioskChart');
             const wordCanvas = document.getElementById('wordCloud');
@@ -409,8 +449,18 @@
             let labels = Object.keys(totalsMap);
 
             if (viewMode === 'timeline') {
-                const times = Object.keys(timelineMap).sort((a, b) => parseInt(a) - parseInt(b));
-                const dataData = times.map(t => parseInt(t));
+                const timesRaw = Object.keys(timelineMap).map(t => parseInt(t));
+                if (timesRaw.length === 0) return;
+                
+                const minTime = Math.min(...timesRaw);
+                const maxTime = Math.max(...timesRaw);
+                const ONE_MINUTE = 60000;
+                
+                const fullTimes = [];
+                for (let t = minTime; t <= maxTime; t += ONE_MINUTE) {
+                    fullTimes.push(t);
+                }
+                const dataData = fullTimes;
 
                 let labelsToShow = labels;
                 if (currentTimelineSeries && labels.includes(currentTimelineSeries)) {
@@ -418,7 +468,7 @@
                 }
 
                 const datasets = labelsToShow.map((labelValue, i) => {
-                    const pointData = times.map(t => (timelineMap[t] && timelineMap[t][labelValue]) || 0);
+                    const pointData = fullTimes.map(t => (timelineMap[t] && timelineMap[t][labelValue]) || 0);
                     
                     // For finding original palette index
                     const originalIndex = labels.indexOf(labelValue);
@@ -479,15 +529,26 @@
                             },
                             plugins: { 
                                 annotation: { annotations: annotations },
-                                legend: { labels: { color: 'white' } }
+                                legend: { labels: { color: 'white', font: { size: 20 } } }
                             }
                         }
                     });
                 }
             } else if (viewMode === 'timeline_total') {
-                const times = Object.keys(timelineMap).sort((a, b) => parseInt(a) - parseInt(b));
-                const dataData = times.map(t => parseInt(t));
-                const pointData = times.map(t => timelineMap[t] || 0);
+                const timesRaw = Object.keys(timelineMap).map(t => parseInt(t));
+                if (timesRaw.length === 0) return;
+                
+                const minTime = Math.min(...timesRaw);
+                const maxTime = Math.max(...timesRaw);
+                const ONE_MINUTE = 60000;
+                
+                const fullTimes = [];
+                for (let t = minTime; t <= maxTime; t += ONE_MINUTE) {
+                    fullTimes.push(t);
+                }
+                
+                const dataData = fullTimes;
+                const pointData = fullTimes.map(t => timelineMap[t] || 0);
 
                 const dataset = {
                     label: 'Total Engagement',
@@ -522,15 +583,26 @@
                             },
                             plugins: { 
                                 annotation: { annotations: annotations },
-                                legend: { labels: { color: 'white' } }
+                                legend: { labels: { color: 'white', font: { size: 20 } } }
                             }
                         }
                     });
                 }
             } else if (viewMode === 'timeline_users') {
-                const times = Object.keys(timelineMap).sort((a, b) => parseInt(a) - parseInt(b));
-                const dataData = times.map(t => parseInt(t));
-                const pointData = times.map(t => timelineMap[t] || 0);
+                const timesRaw = Object.keys(timelineMap).map(t => parseInt(t));
+                if (timesRaw.length === 0) return;
+                
+                const minTime = Math.min(...timesRaw);
+                const maxTime = Math.max(...timesRaw);
+                const ONE_MINUTE = 60000;
+                
+                const fullTimes = [];
+                for (let t = minTime; t <= maxTime; t += ONE_MINUTE) {
+                    fullTimes.push(t);
+                }
+                
+                const dataData = fullTimes;
+                const pointData = fullTimes.map(t => timelineMap[t] || 0);
 
                 const dataset = {
                     label: 'Connected Audience',
@@ -565,7 +637,7 @@
                             },
                             plugins: { 
                                 annotation: { annotations: annotations },
-                                legend: { labels: { color: 'white' } }
+                                legend: { labels: { color: 'white', font: { size: 20 } } }
                             }
                         }
                     });
@@ -740,7 +812,7 @@
                                 x: { grid: { color: 'rgba(255,255,255,0.1)' } },
                                 y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' } } 
                             } : {},
-                            plugins: { legend: { labels: { color: 'white' } } } 
+                            plugins: { legend: { display: viewMode !== 'bar', labels: { color: 'white', font: { size: 20 } } } } 
                         }
                     });
                 }

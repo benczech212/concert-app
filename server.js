@@ -188,6 +188,7 @@ app.post('/api/track/end', (req, res) => {
     
     // Start track end watcher for automated generation
     const activeClientsCount = connectedClients.filter(c => !c.bypass).length;
+    console.log(`[Watcher] Track End! Active Users: ${activeClientsCount} (Total Connected: ${connectedClients.length})`);
     const endedTrackId = currentTrack.id;
     
     // Auto-trigger immediately if no one is connected, otherwise wait.

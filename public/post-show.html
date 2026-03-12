@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Concert Post-Show Summary</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            flex-shrink: 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 { margin: 0; font-size: 2.5rem; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+        h2 { margin: 5px 0 0 0; font-size: 1.5rem; color: #a8b2d1; }
+        
+        .content-wrapper {
+            flex-grow: 1;
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            box-sizing: border-box;
+            height: calc(100vh - 85px); /* approximate header deduction */
+        }
+
+        .content-wrapper.fade-out { opacity: 0; }
+
+        .left-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: rgba(25, 25, 35, 0.6);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+            gap: 20px;
+        }
+
+        .right-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .story-img-container {
+            width: 100%;
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+            text-align: justify;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            max-height: 35%;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+        }
+
+        .metrics-card, .cloud-card, .chart-card {
+            background: rgba(25, 25, 35, 0.6);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .cloud-card { flex: 1; display: flex; flex-direction: column; }
+        .chart-card { flex: 1; display: flex; flex-direction: column;}
+        
+        .card-title {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        #wordCloudCanvas {
+            width: 100%;
+            flex: 1;
+            display: block;
+        }
+        
+        #timelineCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        .top-metrics-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .metric-badge {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .metric-val { font-size: 1.8rem; font-weight: bold; color: #fff; }
+        .metric-lbl { font-size: 0.9rem; color: #8892b0; text-transform: capitalize; margin-top: 5px; }
+
+        #noDataMsg {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: rgba(255,255,255,0.5);
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 id="trackTitleDisplay">Post-Show Summary</h1>
+        <h2 id="trackSubDisplay">Loading Data...</h2>
+    </div>
+    
+    <div id="noDataMsg">No track history recorded yet.</div>
+
+    <div class="content-wrapper" id="contentGrid">
+        <div class="left-col">
+            <h3 class="card-title">AI Interpretation</h3>
+            <div class="story-img-container" id="aiImageDisplay"></div>
+            <div class="story-text" id="aiStoryDisplay">Generating story synopsis...</div>
+        </div>
+        <div class="right-col">
+            <div class="metrics-card">
+                <h3 class="card-title">Top 5 Audience Engagements</h3>
+                <div class="top-metrics-row" id="topMetricsContainer">
+                    <!-- Badges injected here -->
+                </div>
+            </div>
+            <div class="chart-card">
+                 <h3 class="card-title">Engagement Timeline</h3>
+                 <div style="flex: 1; position: relative;">
+                    <canvas id="timelineCanvas"></canvas>
+                 </div>
+            </div>
+            <div class="cloud-card" style="padding-bottom: 5px;">
+                 <h3 class="card-title">Audience Word Cloud</h3>
+                 <canvas id="wordCloudCanvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.2/wordcloud2.min.js"></script>
+
+    <script>
+        const CYCLE_INTERVAL_MS = 10000;
+        
+        let allTracks = [];
+        let trackImages = {};
+        let trackStories = {};
+        let trackEventsMap = {}; // trackId -> events array
+        
+        let currentTrackIndex = 0;
+        let chartInstance = null;
+        let rotationTimer = null;
+        let isFetching = false;
+
+        async function fetchAllData() {
+            if(isFetching) return;
+            isFetching = true;
+            try {
+                const logsRes = await fetch('/api/export/logs');
+                if (!logsRes.ok) throw new Error("Failed to load logs");
+                const logsText = await logsRes.text();
+                
+                const events = logsText.trim().split('\n')
+                    .filter(line => line)
+                    .map(line => {
+                        try { return JSON.parse(line); } catch(e){ return null; }
+                    }).filter(e => e);
+                
+                // Build tracks array and group events by track
+                const tracksMap = new Map();
+                trackEventsMap = {};
+                
+                let activeTrackId = null;
+                events.forEach(e => {
+                    if (e.category === 'system' && e.value === 'track_start') {
+                        activeTrackId = e.trackId;
+                        if (!tracksMap.has(activeTrackId)) {
+                            tracksMap.set(activeTrackId, { id: activeTrackId, title: e.trackTitle, start: e.timestamp, end: null });
+                            trackEventsMap[activeTrackId] = [];
+                        }
+                    } else if (e.category === 'system' && e.value === 'track_end') {
+                        if (tracksMap.has(e.trackId)) {
+                             tracksMap.get(e.trackId).end = e.timestamp;
+                        }
+                        activeTrackId = null;
+                    } else if (e.trackId && trackEventsMap[e.trackId]) {
+                        // Regular user event tied to a track
+                        trackEventsMap[e.trackId].push(e);
+                    }
+                });
+                
+                allTracks = Array.from(tracksMap.values()).filter(t => t.end !== null); // Only show finished tracks
+                
+                try {
+                    const storiesRes = await fetch('/api/stories');
+                    if (storiesRes.ok) {
+                        const sData = await storiesRes.json();
+                        trackStories = {};
+                        sData.forEach(s => trackStories[s.trackId] = s);
+                    }
+                } catch(e){}
+
+                try {
+                    const imgRes = await fetch('/api/images');
+                    if (imgRes.ok) {
+                        const iData = await imgRes.json();
+                        trackImages = {};
+                        iData.forEach(img => trackImages[img.trackId] = img);
+                    }
+                } catch(e){}
+
+                if (allTracks.length === 0) {
+                    document.getElementById('contentGrid').style.opacity = 0;
+                    document.getElementById('noDataMsg').style.display = 'block';
+                    document.getElementById('trackTitleDisplay').innerText = "Waiting for Concert Data...";
+                    document.getElementById('trackSubDisplay').innerText = "";
+                } else {
+                    document.getElementById('noDataMsg').style.display = 'none';
+                    if(!rotationTimer) cycleNextTrack();
+                }
+
+            } catch (err) {
+                console.error("Data fetch error", err);
+            } finally {
+                isFetching = false;
+            }
+        }
+
+        function hslToHex(h, s, l) {
+            l /= 100;
+            const a = s * Math.min(l, 1 - l) / 100;
+            const f = n => {
+                const k = (n + h / 30) % 12;
+                const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+                return Math.round(255 * color).toString(16).padStart(2, '0');
+            };
+            return `#${f(0)}${f(8)}${f(4)}`;
+        }
+
+        const exactHueMap = {
+            "Red": "#ff0000", "Vermilion": "#ff4000", "Orange": "#ff8000", "Amber": "#ffbf00", "Yellow": "#ffff00", 
+            "Chartreuse": "#bfff00", "Harlequin": "#80ff00", "Malachite": "#40ff00", "Green": "#00ff00", 
+            "Erin": "#00ff40", "Spring Green": "#00ff80", "Aquamarine": "#00ffbf", "Cyan": "#00ffff", 
+            "Turquoise": "#00bfff", "Cerulean": "#0080ff", "Sapphire": "#0040ff", "Blue": "#0000ff", 
+            "Indigo": "#4000ff", "Purple": "#8000ff", "Violet": "#bf00ff", "Magenta": "#ff00ff", 
+            "Fuchsia": "#ff00bf", "Pink": "#ff0080", "Carmine": "#ff0040", "Pastel Red": "#ff9999", 
+            "Pastel Orange": "#ffcc99", "Pastel Yellow": "#ffff99", "Pastel Green": "#99ff99", 
+            "Pastel Cyan": "#99ffff", "Pastel Blue": "#9999ff", "Pastel Purple": "#cc99ff", "Pastel Pink": "#ff99ff",
+            "White": "#ffffff", "Gray": "#808080", "Black": "#000000", "Transparent": "transparent"
+        };
+
+        function cycleNextTrack() {
+            if(allTracks.length === 0) return;
+            
+            const track = allTracks[currentViewIndex];
+            const tEvents = trackEventsMap[track.id] || [];
+            
+            // FADE OUT
+            const wrapper = document.getElementById('contentGrid');
+            wrapper.classList.add('fade-out');
+            
+            setTimeout(() => {
+                renderTrackData(track, tEvents);
+                currentViewIndex = (currentViewIndex + 1) % allTracks.length;
+                
+                // FADE IN
+                wrapper.classList.remove('fade-out');
+                
+                // Re-fetch data in background during the next interval hold
+                setTimeout(fetchAllData, 2000);
+            }, 500);
+
+            if(rotationTimer) clearTimeout(rotationTimer);
+            rotationTimer = setTimeout(cycleNextTrack, CYCLE_INTERVAL_MS);
+        }
+
+        function renderTrackData(track, events) {
+            // Titles
+            const tStoryObj = trackStories[track.id];
+            let displayTitle = track.title;
+            if (tStoryObj && tStoryObj.generatedName && !tStoryObj.generatedName.includes("Untitled")) {
+                displayTitle = tStoryObj.generatedName.replace(/\*|\#/g, '').trim(); 
+            }
+            document.getElementById('trackTitleDisplay').innerText = displayTitle;
+            
+            const startStr = new Date(track.start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const endStr = new Date(track.end).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            document.getElementById('trackSubDisplay').innerText = `Track Played: ${startStr} - ${endStr} • ${events.length} Total Engagements`;
+
+            // Story & Image
+            document.getElementById('aiStoryDisplay').innerText = tStoryObj && tStoryObj.story ? tStoryObj.story.replace(/\*|\#/g, '').trim() : "AI synopsis not available for this track yet.";
+            
+            const imgEl = document.getElementById('aiImageDisplay');
+            const imgObj = trackImages[track.id];
+            if (imgObj && imgObj.imagePath) {
+                imgEl.style.backgroundImage = `url('${imgObj.imagePath}')`;
+            } else {
+                imgEl.style.backgroundImage = `linear-gradient(45deg, #111, #333)`;
+            }
+
+            // Top 5 Engagements & Timeline Buckets & Word Cloud Generation
+            const valCounts = {};
+            const timelineBuckets = {};
+            const wordsMap = {};
+            
+            events.forEach(e => {
+                if (e.category === 'note_skip') return;
+                
+                // Time bucket
+                const bd = new Date(e.timestamp);
+                bd.setSeconds(0); bd.setMilliseconds(0);
+                const ms = bd.getTime();
+                timelineBuckets[ms] = (timelineBuckets[ms] || 0) + 1;
+
+                // Value tally
+                if (e.category !== 'note' && e.value) {
+                    valCounts[e.value] = (valCounts[e.value] || 0) + 1;
+                }
+                
+                // Word Cloud Map
+                if (e.category === 'note' && e.value) {
+                    const words = e.value.toLowerCase().match(/\w+/g);
+                    if (words) {
+                        words.forEach(w => { if (w.length > 3) wordsMap[w] = (wordsMap[w] || 0) + 1; });
+                    }
+                }
+            });
+
+            // Bind Top 5 Row
+            const sortedVals = Object.entries(valCounts).sort((a,b)=>b[1]-a[1]).slice(0,5);
+            const tmContainer = document.getElementById('topMetricsContainer');
+            tmContainer.innerHTML = '';
+            sortedVals.forEach(([val, count]) => {
+                const b = document.createElement('div');
+                b.className = 'metric-badge';
+                
+                let renderVal = val;
+                if (exactHueMap[val]) {
+                    renderVal = '<div style="display:inline-block; width:16px; height:16px; border-radius:50%; margin-right:5px; background:' + exactHueMap[val] + ';"></div>' + val;
+                } else if (val === 'applause') renderVal = '👏 ' + val;
+                else if (val === 'like') renderVal = '👍 ' + val;
+                else if (val === 'meh') renderVal = '😐 ' + val;
+
+                b.innerHTML = `<div class="metric-val">${count}</div><div class="metric-lbl">${renderVal}</div>`;
+                tmContainer.appendChild(b);
+            });
+            if(sortedVals.length === 0) tmContainer.innerHTML = '<div style="color:#666;">No mood, color, or reaction attributes captured.</div>';
+
+            // Chart Rendering + Zero Filling empty buckets
+            const canvasEl = document.getElementById('timelineCanvas');
+            const timesRaw = Object.keys(timelineBuckets).map(t => parseInt(t));
+            let dataData = [];
+            let pointData = [];
+            
+            if (timesRaw.length > 0) {
+                const minTime = Math.min(...timesRaw);
+                const maxTime = Math.max(...timesRaw);
+                for (let t = minTime; t <= maxTime; t += 60000) {
+                    dataData.push(t);
+                    pointData.push(timelineBuckets[t] || 0);
+                }
+            }
+
+            if (chartInstance) chartInstance.destroy();
+            const ctx = canvasEl.getContext('2d');
+            Chart.defaults.color = '#fff';
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dataData,
+                    datasets: [{
+                        label: 'Total Engagements',
+                        data: pointData,
+                        borderColor: 'rgba(50, 255, 150, 1)',
+                        backgroundColor: 'rgba(50, 255, 150, 0.2)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    animation: { duration: 0 },
+                    scales: { 
+                        x: { type: 'time', time: { unit: 'minute' }, grid: { color: 'rgba(255,255,255,0.05)' } }, 
+                        y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' }, max: Math.max(5, ...pointData) + 2 } 
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // Render Word Cloud
+            const wordCanvas = document.getElementById('wordCloudCanvas');
+            const sortedWords = Object.entries(wordsMap).sort((a, b) => b[1] - a[1]).slice(0, 50);
+            const maxWCount = sortedWords.length ? sortedWords[0][1] : 1;
+            const list = sortedWords.map(([w, c]) => [w, 14 + (c / maxWCount) * 40]);
+            
+            const rect = wordCanvas.parentElement.getBoundingClientRect();
+            // Subtract approximate title and padding height
+            let wth = rect.width - 40;
+            let ht = rect.height - 60;
+            if(wth > 0 && ht > 0) {
+                wordCanvas.width = wth;
+                wordCanvas.height = ht;
+            }
+
+            if (list.length > 0) {
+                WordCloud(wordCanvas, {
+                    list,
+                    color: 'random-light',
+                    backgroundColor: 'transparent',
+                    shape: 'circle',
+                    fontFamily: 'system-ui, sans-serif',
+                    rotateRatio: 0,
+                    shrinkToFit: true,
+                    drawOutOfBound: false
+                });
+            } else {
+                const wCtx = wordCanvas.getContext('2d');
+                wCtx.clearRect(0,0, wordCanvas.width, wordCanvas.height);
+                wCtx.fillStyle = 'rgba(255,255,255,0.3)';
+                wCtx.textAlign = 'center';
+                wCtx.font = '20px sans-serif';
+                wCtx.fillText('No words collected', wordCanvas.width/2, wordCanvas.height/2);
+            }
+        }
+
+        // Start loop
+        fetchAllData();
+
+    </script>
+</body>
+</html>

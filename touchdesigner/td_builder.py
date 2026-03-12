@@ -206,7 +206,8 @@ def onPulse(par):
         {'name': 'kiosk1', 'path': '/kiosk.html?kiosk=1&bypass=true'},
         {'name': 'kiosk2', 'path': '/kiosk.html?kiosk=2&bypass=true'},
         {'name': 'qr', 'path': '/qr.html?bypass=true'},
-        {'name': 'admin', 'path': '/admin-console.html?password=czech&bypass=true'}
+        {'name': 'admin', 'path': '/admin-console.html?password=czech&bypass=true'},
+        {'name': 'post_show', 'path': '/post-show.html?bypass=true'}
     ]
     
     for i, r in enumerate(renders):

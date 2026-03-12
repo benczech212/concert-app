@@ -201,28 +201,28 @@ def onPulse(par):
     left_col.par.align = 1 # Top to Bottom
     left_col.par.hmode = 1
     left_col.par.vmode = 1
-    left_col.outputConnectors[0].connect(viewers.inputConnectors[0])
+    left_col.par.alignorder = 0
     
     # Row 1 Container (Kiosks)
-    row_1 = viewers.create(containerCOMP, 'row_1')
+    row_1 = left_col.create(containerCOMP, 'row_1')
     row_1.par.align = 0 # Left to Right
     row_1.par.hmode = 1
     row_1.par.vmode = 1
-    row_1.outputConnectors[0].connect(left_col.inputConnectors[0])
+    row_1.par.alignorder = 0
     
     # Row 2 Container (QR & Post-Show)
-    row_2 = viewers.create(containerCOMP, 'row_2')
+    row_2 = left_col.create(containerCOMP, 'row_2')
     row_2.par.align = 0 # Left to Right
     row_2.par.hmode = 1
     row_2.par.vmode = 1
-    row_2.outputConnectors[0].connect(left_col.inputConnectors[0])
+    row_2.par.alignorder = 1
     
     renders = [
-        {'name': 'kiosk1', 'path': '/kiosk.html?kiosk=1&bypass=true', 'target': row_1},
-        {'name': 'kiosk2', 'path': '/kiosk.html?kiosk=2&bypass=true', 'target': row_1},
-        {'name': 'qr', 'path': '/qr.html?bypass=true', 'target': row_2},
-        {'name': 'post_show', 'path': '/post-show.html?bypass=true', 'target': row_2},
-        {'name': 'admin', 'path': '/admin-console.html?password=czech&bypass=true', 'target': viewers}
+        {'name': 'kiosk1', 'path': '/kiosk.html?kiosk=1&bypass=true', 'target': row_1, 'order': 0},
+        {'name': 'kiosk2', 'path': '/kiosk.html?kiosk=2&bypass=true', 'target': row_1, 'order': 1},
+        {'name': 'qr', 'path': '/qr.html?bypass=true', 'target': row_2, 'order': 0},
+        {'name': 'post_show', 'path': '/post-show.html?bypass=true', 'target': row_2, 'order': 1},
+        {'name': 'admin', 'path': '/admin-console.html?password=czech&bypass=true', 'target': viewers, 'order': 1}
     ]
     
     for i, r in enumerate(renders):
@@ -244,14 +244,12 @@ def onPulse(par):
             spout.nodeY = 200 - (i * 200)
             spout.inputConnectors[0].connect(web)
         
-        # OP Viewer created inside viewers base
-        opview = viewers.create(opviewerCOMP, f"opviewer_{r['name']}")
+        # OP Viewer created inside its specific parent container
+        opview = r['target'].create(opviewerCOMP, f"opviewer_{r['name']}")
         opview.par.opviewer = web.path
         opview.par.hmode = 1 
         opview.par.vmode = 1 
-        
-        # Wire the GUI panels
-        opview.outputConnectors[0].connect(r['target'].inputConnectors[0])
+        opview.par.alignorder = r['order']
 
     ui_master.par.clone = viewers.path
     ui_master.par.enablecloning = True

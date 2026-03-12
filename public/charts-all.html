@@ -365,7 +365,7 @@
 
                 const sortedWords = Object.entries(wordCounts).sort((a, b) => b[1] - a[1]).slice(0, 150);
                 const maxCount = sortedWords.length ? sortedWords[0][1] : 1;
-                const list = sortedWords.map(([w, c]) => [w, 14 + (c / maxCount) * 46]);
+                const list = sortedWords.map(([w, c]) => [w, 24 + (c / maxCount) * 100]);
                 const listStr = JSON.stringify(list);
                 
                 const wcEl = document.getElementById('wordCloud');

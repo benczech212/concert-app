@@ -438,7 +438,7 @@
             const wordCanvas = document.getElementById('wordCloudCanvas');
             const sortedWords = Object.entries(wordsMap).sort((a, b) => b[1] - a[1]).slice(0, 50);
             const maxWCount = sortedWords.length ? sortedWords[0][1] : 1;
-            const list = sortedWords.map(([w, c]) => [w, 14 + (c / maxWCount) * 40]);
+            const list = sortedWords.map(([w, c]) => [w, 24 + (c / maxWCount) * 80]);
             
             const rect = wordCanvas.parentElement.getBoundingClientRect();
             // Subtract approximate title and padding height

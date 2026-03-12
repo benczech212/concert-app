@@ -326,7 +326,13 @@
                     }
                 });
 
+                const currentViewId = views[currentViewIndex].id;
                 sortViewsByEngagement();
+                const newIndex = views.findIndex(v => v.id === currentViewId);
+                if (newIndex !== -1) {
+                    currentViewIndex = newIndex;
+                }
+                
                 renderCurrentView();
 
             } catch (err) { console.error("Error fetching data:", err); }
@@ -383,7 +389,7 @@
                 
                 const sortedWords = Object.entries(displayData.words).sort((a, b) => b[1] - a[1]).slice(0, 150);
                 const maxCount = sortedWords.length ? sortedWords[0][1] : 1;
-                const list = sortedWords.map(([w, c]) => [w, 14 + (c / maxCount) * 46]);
+                const list = sortedWords.map(([w, c]) => [w, 24 + (c / maxCount) * 100]);
                 
                 // Skip re-rendering if this view is already active (don't live-update)
                 if (lastRenderedCloudIndex === currentViewIndex) return; 

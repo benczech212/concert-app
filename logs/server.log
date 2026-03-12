@@ -24444,3 +24444,6046 @@ Recorded event: {
   id: 'evt_1773312177726',
   timestamp: '2026-03-12T10:42:57.726Z'
 }
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312339227',
+  timestamp: '2026-03-12T10:45:39.227Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312341730',
+  timestamp: '2026-03-12T10:45:41.730Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312341732',
+  timestamp: '2026-03-12T10:45:41.732Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312341733',
+  timestamp: '2026-03-12T10:45:41.733Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312344230',
+  timestamp: '2026-03-12T10:45:44.230Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312346741',
+  timestamp: '2026-03-12T10:45:46.741Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312346743',
+  timestamp: '2026-03-12T10:45:46.743Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312349235',
+  timestamp: '2026-03-12T10:45:49.235Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312351738',
+  timestamp: '2026-03-12T10:45:51.738Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312351739',
+  timestamp: '2026-03-12T10:45:51.740Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312351741',
+  timestamp: '2026-03-12T10:45:51.741Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312354241',
+  timestamp: '2026-03-12T10:45:54.241Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312354242',
+  timestamp: '2026-03-12T10:45:54.242Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312356744',
+  timestamp: '2026-03-12T10:45:56.744Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312356746',
+  timestamp: '2026-03-12T10:45:56.746Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312359246',
+  timestamp: '2026-03-12T10:45:59.246Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312361748',
+  timestamp: '2026-03-12T10:46:01.748Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312364251',
+  timestamp: '2026-03-12T10:46:04.251Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312364253',
+  timestamp: '2026-03-12T10:46:04.253Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312364254',
+  timestamp: '2026-03-12T10:46:04.254Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312366753',
+  timestamp: '2026-03-12T10:46:06.753Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312366754',
+  timestamp: '2026-03-12T10:46:06.754Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312369256',
+  timestamp: '2026-03-12T10:46:09.256Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312369258',
+  timestamp: '2026-03-12T10:46:09.258Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312369259',
+  timestamp: '2026-03-12T10:46:09.259Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312371758',
+  timestamp: '2026-03-12T10:46:11.758Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312374260',
+  timestamp: '2026-03-12T10:46:14.260Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312374261',
+  timestamp: '2026-03-12T10:46:14.261Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312374262',
+  timestamp: '2026-03-12T10:46:14.262Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312376762',
+  timestamp: '2026-03-12T10:46:16.762Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312379265',
+  timestamp: '2026-03-12T10:46:19.265Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312379267',
+  timestamp: '2026-03-12T10:46:19.267Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312379268',
+  timestamp: '2026-03-12T10:46:19.268Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312381768',
+  timestamp: '2026-03-12T10:46:21.768Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312381769',
+  timestamp: '2026-03-12T10:46:21.769Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312381770',
+  timestamp: '2026-03-12T10:46:21.770Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312384267',
+  timestamp: '2026-03-12T10:46:24.267Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312386774',
+  timestamp: '2026-03-12T10:46:26.774Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312386776',
+  timestamp: '2026-03-12T10:46:26.776Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312386778',
+  timestamp: '2026-03-12T10:46:26.778Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312389273',
+  timestamp: '2026-03-12T10:46:29.273Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312391775',
+  timestamp: '2026-03-12T10:46:31.775Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312391776',
+  timestamp: '2026-03-12T10:46:31.776Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312391777',
+  timestamp: '2026-03-12T10:46:31.777Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312394276',
+  timestamp: '2026-03-12T10:46:34.276Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312396778',
+  timestamp: '2026-03-12T10:46:36.778Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312396779',
+  timestamp: '2026-03-12T10:46:36.779Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312399281',
+  timestamp: '2026-03-12T10:46:39.281Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312399283',
+  timestamp: '2026-03-12T10:46:39.283Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312399283',
+  timestamp: '2026-03-12T10:46:39.283Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312401783',
+  timestamp: '2026-03-12T10:46:41.783Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312404284',
+  timestamp: '2026-03-12T10:46:44.284Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312404285',
+  timestamp: '2026-03-12T10:46:44.285Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312406786',
+  timestamp: '2026-03-12T10:46:46.786Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312406787',
+  timestamp: '2026-03-12T10:46:46.787Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312409287',
+  timestamp: '2026-03-12T10:46:49.287Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312409288',
+  timestamp: '2026-03-12T10:46:49.288Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312409289',
+  timestamp: '2026-03-12T10:46:49.289Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312411790',
+  timestamp: '2026-03-12T10:46:51.790Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312411792',
+  timestamp: '2026-03-12T10:46:51.792Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312414292',
+  timestamp: '2026-03-12T10:46:54.292Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312414293',
+  timestamp: '2026-03-12T10:46:54.293Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312416796',
+  timestamp: '2026-03-12T10:46:56.796Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312416797',
+  timestamp: '2026-03-12T10:46:56.797Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312416799',
+  timestamp: '2026-03-12T10:46:56.799Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312419298',
+  timestamp: '2026-03-12T10:46:59.298Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312421796',
+  timestamp: '2026-03-12T10:47:01.796Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312421797',
+  timestamp: '2026-03-12T10:47:01.797Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312421798',
+  timestamp: '2026-03-12T10:47:01.798Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312424299',
+  timestamp: '2026-03-12T10:47:04.299Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312426803',
+  timestamp: '2026-03-12T10:47:06.803Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312429306',
+  timestamp: '2026-03-12T10:47:09.306Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312429307',
+  timestamp: '2026-03-12T10:47:09.307Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312431807',
+  timestamp: '2026-03-12T10:47:11.807Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312431808',
+  timestamp: '2026-03-12T10:47:11.808Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312431808',
+  timestamp: '2026-03-12T10:47:11.808Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312434308',
+  timestamp: '2026-03-12T10:47:14.308Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312436809',
+  timestamp: '2026-03-12T10:47:16.809Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312436810',
+  timestamp: '2026-03-12T10:47:16.810Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312439311',
+  timestamp: '2026-03-12T10:47:19.311Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312439312',
+  timestamp: '2026-03-12T10:47:19.312Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312439312',
+  timestamp: '2026-03-12T10:47:19.312Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312441815',
+  timestamp: '2026-03-12T10:47:21.815Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312441817',
+  timestamp: '2026-03-12T10:47:21.817Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312441818',
+  timestamp: '2026-03-12T10:47:21.818Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312444315',
+  timestamp: '2026-03-12T10:47:24.315Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312446819',
+  timestamp: '2026-03-12T10:47:26.819Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312446820',
+  timestamp: '2026-03-12T10:47:26.820Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312446821',
+  timestamp: '2026-03-12T10:47:26.821Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312449320',
+  timestamp: '2026-03-12T10:47:29.320Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312449321',
+  timestamp: '2026-03-12T10:47:29.321Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312449321',
+  timestamp: '2026-03-12T10:47:29.321Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312451820',
+  timestamp: '2026-03-12T10:47:31.820Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312451821',
+  timestamp: '2026-03-12T10:47:31.821Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312454323',
+  timestamp: '2026-03-12T10:47:34.323Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312456827',
+  timestamp: '2026-03-12T10:47:36.827Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312456828',
+  timestamp: '2026-03-12T10:47:36.828Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312456829',
+  timestamp: '2026-03-12T10:47:36.829Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312459329',
+  timestamp: '2026-03-12T10:47:39.329Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312461831',
+  timestamp: '2026-03-12T10:47:41.831Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312461833',
+  timestamp: '2026-03-12T10:47:41.833Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312461834',
+  timestamp: '2026-03-12T10:47:41.834Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312464333',
+  timestamp: '2026-03-12T10:47:44.333Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312464334',
+  timestamp: '2026-03-12T10:47:44.334Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312464335',
+  timestamp: '2026-03-12T10:47:44.335Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312466836',
+  timestamp: '2026-03-12T10:47:46.836Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312466837',
+  timestamp: '2026-03-12T10:47:46.837Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312466839',
+  timestamp: '2026-03-12T10:47:46.839Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312469339',
+  timestamp: '2026-03-12T10:47:49.339Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312469340',
+  timestamp: '2026-03-12T10:47:49.340Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312469340',
+  timestamp: '2026-03-12T10:47:49.340Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312471841',
+  timestamp: '2026-03-12T10:47:51.841Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312471842',
+  timestamp: '2026-03-12T10:47:51.842Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312471843',
+  timestamp: '2026-03-12T10:47:51.843Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312474342',
+  timestamp: '2026-03-12T10:47:54.342Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312474343',
+  timestamp: '2026-03-12T10:47:54.343Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312474344',
+  timestamp: '2026-03-12T10:47:54.344Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312476844',
+  timestamp: '2026-03-12T10:47:56.844Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312476845',
+  timestamp: '2026-03-12T10:47:56.845Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312476845',
+  timestamp: '2026-03-12T10:47:56.845Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312479345',
+  timestamp: '2026-03-12T10:47:59.345Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312479346',
+  timestamp: '2026-03-12T10:47:59.346Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312479347',
+  timestamp: '2026-03-12T10:47:59.347Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312481848',
+  timestamp: '2026-03-12T10:48:01.848Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312484353',
+  timestamp: '2026-03-12T10:48:04.353Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312484354',
+  timestamp: '2026-03-12T10:48:04.354Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312486855',
+  timestamp: '2026-03-12T10:48:06.855Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312489357',
+  timestamp: '2026-03-12T10:48:09.357Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312489359',
+  timestamp: '2026-03-12T10:48:09.359Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312491860',
+  timestamp: '2026-03-12T10:48:11.860Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312491861',
+  timestamp: '2026-03-12T10:48:11.861Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312491861',
+  timestamp: '2026-03-12T10:48:11.861Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312494361',
+  timestamp: '2026-03-12T10:48:14.361Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312496864',
+  timestamp: '2026-03-12T10:48:16.864Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312496865',
+  timestamp: '2026-03-12T10:48:16.865Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312499366',
+  timestamp: '2026-03-12T10:48:19.366Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312499367',
+  timestamp: '2026-03-12T10:48:19.367Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312501868',
+  timestamp: '2026-03-12T10:48:21.868Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312504372',
+  timestamp: '2026-03-12T10:48:24.372Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312504373',
+  timestamp: '2026-03-12T10:48:24.373Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312504374',
+  timestamp: '2026-03-12T10:48:24.374Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312506872',
+  timestamp: '2026-03-12T10:48:26.872Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312506873',
+  timestamp: '2026-03-12T10:48:26.873Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312509375',
+  timestamp: '2026-03-12T10:48:29.375Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312509375',
+  timestamp: '2026-03-12T10:48:29.375Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312511875',
+  timestamp: '2026-03-12T10:48:31.875Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312511876',
+  timestamp: '2026-03-12T10:48:31.876Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312511876',
+  timestamp: '2026-03-12T10:48:31.876Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312514377',
+  timestamp: '2026-03-12T10:48:34.377Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312516880',
+  timestamp: '2026-03-12T10:48:36.880Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312519384',
+  timestamp: '2026-03-12T10:48:39.384Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312519386',
+  timestamp: '2026-03-12T10:48:39.386Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312519387',
+  timestamp: '2026-03-12T10:48:39.387Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312521885',
+  timestamp: '2026-03-12T10:48:41.886Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312521887',
+  timestamp: '2026-03-12T10:48:41.887Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312524386',
+  timestamp: '2026-03-12T10:48:44.386Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312524387',
+  timestamp: '2026-03-12T10:48:44.388Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312526890',
+  timestamp: '2026-03-12T10:48:46.890Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312526891',
+  timestamp: '2026-03-12T10:48:46.891Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312526892',
+  timestamp: '2026-03-12T10:48:46.892Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312529394',
+  timestamp: '2026-03-12T10:48:49.394Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312529395',
+  timestamp: '2026-03-12T10:48:49.395Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312529396',
+  timestamp: '2026-03-12T10:48:49.396Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312531895',
+  timestamp: '2026-03-12T10:48:51.895Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312531896',
+  timestamp: '2026-03-12T10:48:51.896Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312531896',
+  timestamp: '2026-03-12T10:48:51.896Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312534398',
+  timestamp: '2026-03-12T10:48:54.398Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312534408',
+  timestamp: '2026-03-12T10:48:54.408Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312534409',
+  timestamp: '2026-03-12T10:48:54.409Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312536899',
+  timestamp: '2026-03-12T10:48:56.899Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312536900',
+  timestamp: '2026-03-12T10:48:56.900Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312539401',
+  timestamp: '2026-03-12T10:48:59.401Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312539403',
+  timestamp: '2026-03-12T10:48:59.403Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312541903',
+  timestamp: '2026-03-12T10:49:01.903Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312544407',
+  timestamp: '2026-03-12T10:49:04.407Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312544408',
+  timestamp: '2026-03-12T10:49:04.408Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312544409',
+  timestamp: '2026-03-12T10:49:04.409Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312546910',
+  timestamp: '2026-03-12T10:49:06.910Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312546912',
+  timestamp: '2026-03-12T10:49:06.912Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312549411',
+  timestamp: '2026-03-12T10:49:09.411Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312551915',
+  timestamp: '2026-03-12T10:49:11.915Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312551917',
+  timestamp: '2026-03-12T10:49:11.917Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312554416',
+  timestamp: '2026-03-12T10:49:14.416Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312554417',
+  timestamp: '2026-03-12T10:49:14.417Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312556919',
+  timestamp: '2026-03-12T10:49:16.919Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312559419',
+  timestamp: '2026-03-12T10:49:19.419Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312559421',
+  timestamp: '2026-03-12T10:49:19.421Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312561924',
+  timestamp: '2026-03-12T10:49:21.924Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312561924',
+  timestamp: '2026-03-12T10:49:21.924Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312561925',
+  timestamp: '2026-03-12T10:49:21.925Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312564426',
+  timestamp: '2026-03-12T10:49:24.426Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312564427',
+  timestamp: '2026-03-12T10:49:24.427Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312566928',
+  timestamp: '2026-03-12T10:49:26.928Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312566928',
+  timestamp: '2026-03-12T10:49:26.928Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312569430',
+  timestamp: '2026-03-12T10:49:29.430Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312569431',
+  timestamp: '2026-03-12T10:49:29.431Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312569432',
+  timestamp: '2026-03-12T10:49:29.432Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312571933',
+  timestamp: '2026-03-12T10:49:31.933Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312571933',
+  timestamp: '2026-03-12T10:49:31.933Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312574435',
+  timestamp: '2026-03-12T10:49:34.435Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312574436',
+  timestamp: '2026-03-12T10:49:34.436Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312574437',
+  timestamp: '2026-03-12T10:49:34.437Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312576938',
+  timestamp: '2026-03-12T10:49:36.938Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312576939',
+  timestamp: '2026-03-12T10:49:36.939Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312576940',
+  timestamp: '2026-03-12T10:49:36.940Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312579441',
+  timestamp: '2026-03-12T10:49:39.441Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312579442',
+  timestamp: '2026-03-12T10:49:39.442Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312579443',
+  timestamp: '2026-03-12T10:49:39.443Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312581944',
+  timestamp: '2026-03-12T10:49:41.944Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312581944',
+  timestamp: '2026-03-12T10:49:41.944Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312581945',
+  timestamp: '2026-03-12T10:49:41.945Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312584445',
+  timestamp: '2026-03-12T10:49:44.445Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312584447',
+  timestamp: '2026-03-12T10:49:44.447Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312586946',
+  timestamp: '2026-03-12T10:49:46.946Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312589451',
+  timestamp: '2026-03-12T10:49:49.451Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312589452',
+  timestamp: '2026-03-12T10:49:49.452Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312591951',
+  timestamp: '2026-03-12T10:49:51.951Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312594455',
+  timestamp: '2026-03-12T10:49:54.455Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312594457',
+  timestamp: '2026-03-12T10:49:54.457Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312596956',
+  timestamp: '2026-03-12T10:49:56.956Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312599458',
+  timestamp: '2026-03-12T10:49:59.458Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312599459',
+  timestamp: '2026-03-12T10:49:59.459Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312601959',
+  timestamp: '2026-03-12T10:50:01.959Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312601960',
+  timestamp: '2026-03-12T10:50:01.960Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312601962',
+  timestamp: '2026-03-12T10:50:01.962Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312604462',
+  timestamp: '2026-03-12T10:50:04.462Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312604464',
+  timestamp: '2026-03-12T10:50:04.464Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312604465',
+  timestamp: '2026-03-12T10:50:04.465Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312606965',
+  timestamp: '2026-03-12T10:50:06.965Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312606966',
+  timestamp: '2026-03-12T10:50:06.966Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312609466',
+  timestamp: '2026-03-12T10:50:09.466Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312609466',
+  timestamp: '2026-03-12T10:50:09.466Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312611966',
+  timestamp: '2026-03-12T10:50:11.966Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312611967',
+  timestamp: '2026-03-12T10:50:11.967Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312614468',
+  timestamp: '2026-03-12T10:50:14.468Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312614469',
+  timestamp: '2026-03-12T10:50:14.469Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312616972',
+  timestamp: '2026-03-12T10:50:16.972Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312616973',
+  timestamp: '2026-03-12T10:50:16.973Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312336722',
+  trackTitle: '"Track 3"',
+  id: 'evt_1773312619473',
+  timestamp: '2026-03-12T10:50:19.473Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312622611',
+  timestamp: '2026-03-12T10:50:22.611Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312622612',
+  timestamp: '2026-03-12T10:50:22.612Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312622613',
+  timestamp: '2026-03-12T10:50:22.613Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312625112',
+  timestamp: '2026-03-12T10:50:25.112Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312625113',
+  timestamp: '2026-03-12T10:50:25.113Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312627615',
+  timestamp: '2026-03-12T10:50:27.615Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312630118',
+  timestamp: '2026-03-12T10:50:30.118Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312630119',
+  timestamp: '2026-03-12T10:50:30.119Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312630121',
+  timestamp: '2026-03-12T10:50:30.121Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312632619',
+  timestamp: '2026-03-12T10:50:32.619Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312632620',
+  timestamp: '2026-03-12T10:50:32.620Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312635122',
+  timestamp: '2026-03-12T10:50:35.122Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312637624',
+  timestamp: '2026-03-12T10:50:37.624Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312640127',
+  timestamp: '2026-03-12T10:50:40.127Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312642631',
+  timestamp: '2026-03-12T10:50:42.631Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312642633',
+  timestamp: '2026-03-12T10:50:42.633Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312645134',
+  timestamp: '2026-03-12T10:50:45.134Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312645135',
+  timestamp: '2026-03-12T10:50:45.135Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312647636',
+  timestamp: '2026-03-12T10:50:47.636Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312650139',
+  timestamp: '2026-03-12T10:50:50.139Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312652639',
+  timestamp: '2026-03-12T10:50:52.639Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312652641',
+  timestamp: '2026-03-12T10:50:52.641Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312652642',
+  timestamp: '2026-03-12T10:50:52.642Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312655142',
+  timestamp: '2026-03-12T10:50:55.142Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312655143',
+  timestamp: '2026-03-12T10:50:55.143Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312655144',
+  timestamp: '2026-03-12T10:50:55.144Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312657643',
+  timestamp: '2026-03-12T10:50:57.643Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312657644',
+  timestamp: '2026-03-12T10:50:57.644Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312660145',
+  timestamp: '2026-03-12T10:51:00.145Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312662647',
+  timestamp: '2026-03-12T10:51:02.647Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312665150',
+  timestamp: '2026-03-12T10:51:05.150Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312665151',
+  timestamp: '2026-03-12T10:51:05.151Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312667654',
+  timestamp: '2026-03-12T10:51:07.654Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312670157',
+  timestamp: '2026-03-12T10:51:10.157Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312670158',
+  timestamp: '2026-03-12T10:51:10.158Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312672657',
+  timestamp: '2026-03-12T10:51:12.657Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312672658',
+  timestamp: '2026-03-12T10:51:12.658Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312672659',
+  timestamp: '2026-03-12T10:51:12.659Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312675159',
+  timestamp: '2026-03-12T10:51:15.159Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312675160',
+  timestamp: '2026-03-12T10:51:15.160Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312675160',
+  timestamp: '2026-03-12T10:51:15.160Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312677662',
+  timestamp: '2026-03-12T10:51:17.662Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312677663',
+  timestamp: '2026-03-12T10:51:17.663Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312680164',
+  timestamp: '2026-03-12T10:51:20.164Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312680165',
+  timestamp: '2026-03-12T10:51:20.165Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312682666',
+  timestamp: '2026-03-12T10:51:22.666Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312682668',
+  timestamp: '2026-03-12T10:51:22.668Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312682669',
+  timestamp: '2026-03-12T10:51:22.669Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312685168',
+  timestamp: '2026-03-12T10:51:25.168Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312687668',
+  timestamp: '2026-03-12T10:51:27.668Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312690171',
+  timestamp: '2026-03-12T10:51:30.171Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312690172',
+  timestamp: '2026-03-12T10:51:30.172Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312690174',
+  timestamp: '2026-03-12T10:51:30.174Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312692674',
+  timestamp: '2026-03-12T10:51:32.674Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312692675',
+  timestamp: '2026-03-12T10:51:32.675Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312692676',
+  timestamp: '2026-03-12T10:51:32.676Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312695176',
+  timestamp: '2026-03-12T10:51:35.176Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312695177',
+  timestamp: '2026-03-12T10:51:35.177Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312697679',
+  timestamp: '2026-03-12T10:51:37.679Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312700182',
+  timestamp: '2026-03-12T10:51:40.182Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312700184',
+  timestamp: '2026-03-12T10:51:40.184Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312700186',
+  timestamp: '2026-03-12T10:51:40.186Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312702682',
+  timestamp: '2026-03-12T10:51:42.682Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312702683',
+  timestamp: '2026-03-12T10:51:42.683Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312702685',
+  timestamp: '2026-03-12T10:51:42.685Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312705183',
+  timestamp: '2026-03-12T10:51:45.183Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312705183',
+  timestamp: '2026-03-12T10:51:45.183Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312707685',
+  timestamp: '2026-03-12T10:51:47.685Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312707687',
+  timestamp: '2026-03-12T10:51:47.687Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312710190',
+  timestamp: '2026-03-12T10:51:50.190Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312710191',
+  timestamp: '2026-03-12T10:51:50.191Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312710192',
+  timestamp: '2026-03-12T10:51:50.192Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312712689',
+  timestamp: '2026-03-12T10:51:52.689Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312715190',
+  timestamp: '2026-03-12T10:51:55.190Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312715191',
+  timestamp: '2026-03-12T10:51:55.191Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312717690',
+  timestamp: '2026-03-12T10:51:57.690Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312720192',
+  timestamp: '2026-03-12T10:52:00.192Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312722694',
+  timestamp: '2026-03-12T10:52:02.694Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312722694',
+  timestamp: '2026-03-12T10:52:02.694Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312725196',
+  timestamp: '2026-03-12T10:52:05.196Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312727700',
+  timestamp: '2026-03-12T10:52:07.700Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312727702',
+  timestamp: '2026-03-12T10:52:07.702Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312727703',
+  timestamp: '2026-03-12T10:52:07.703Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312730202',
+  timestamp: '2026-03-12T10:52:10.202Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312730204',
+  timestamp: '2026-03-12T10:52:10.204Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312730205',
+  timestamp: '2026-03-12T10:52:10.205Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312732703',
+  timestamp: '2026-03-12T10:52:12.703Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312732704',
+  timestamp: '2026-03-12T10:52:12.704Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312735205',
+  timestamp: '2026-03-12T10:52:15.205Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312737708',
+  timestamp: '2026-03-12T10:52:17.708Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312737709',
+  timestamp: '2026-03-12T10:52:17.709Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312740210',
+  timestamp: '2026-03-12T10:52:20.210Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312742712',
+  timestamp: '2026-03-12T10:52:22.712Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312742713',
+  timestamp: '2026-03-12T10:52:22.713Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312742714',
+  timestamp: '2026-03-12T10:52:22.714Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312745213',
+  timestamp: '2026-03-12T10:52:25.213Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312745214',
+  timestamp: '2026-03-12T10:52:25.214Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312745215',
+  timestamp: '2026-03-12T10:52:25.215Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312747713',
+  timestamp: '2026-03-12T10:52:27.713Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312747714',
+  timestamp: '2026-03-12T10:52:27.714Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312750215',
+  timestamp: '2026-03-12T10:52:30.215Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312750216',
+  timestamp: '2026-03-12T10:52:30.216Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312750217',
+  timestamp: '2026-03-12T10:52:30.217Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312752715',
+  timestamp: '2026-03-12T10:52:32.715Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312755220',
+  timestamp: '2026-03-12T10:52:35.220Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312757722',
+  timestamp: '2026-03-12T10:52:37.722Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312757723',
+  timestamp: '2026-03-12T10:52:37.723Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312757723',
+  timestamp: '2026-03-12T10:52:37.723Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312760224',
+  timestamp: '2026-03-12T10:52:40.224Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312760225',
+  timestamp: '2026-03-12T10:52:40.225Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312760226',
+  timestamp: '2026-03-12T10:52:40.226Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312762723',
+  timestamp: '2026-03-12T10:52:42.723Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312765225',
+  timestamp: '2026-03-12T10:52:45.225Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312767727',
+  timestamp: '2026-03-12T10:52:47.727Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312770230',
+  timestamp: '2026-03-12T10:52:50.230Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312770232',
+  timestamp: '2026-03-12T10:52:50.232Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312772730',
+  timestamp: '2026-03-12T10:52:52.730Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312775233',
+  timestamp: '2026-03-12T10:52:55.233Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312775235',
+  timestamp: '2026-03-12T10:52:55.235Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312777733',
+  timestamp: '2026-03-12T10:52:57.733Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312777734',
+  timestamp: '2026-03-12T10:52:57.734Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312777736',
+  timestamp: '2026-03-12T10:52:57.736Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312780235',
+  timestamp: '2026-03-12T10:53:00.235Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312782739',
+  timestamp: '2026-03-12T10:53:02.739Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312785240',
+  timestamp: '2026-03-12T10:53:05.240Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312787744',
+  timestamp: '2026-03-12T10:53:07.744Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312787745',
+  timestamp: '2026-03-12T10:53:07.745Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312790247',
+  timestamp: '2026-03-12T10:53:10.247Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312790249',
+  timestamp: '2026-03-12T10:53:10.249Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312792749',
+  timestamp: '2026-03-12T10:53:12.749Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312792750',
+  timestamp: '2026-03-12T10:53:12.750Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312792751',
+  timestamp: '2026-03-12T10:53:12.751Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312795249',
+  timestamp: '2026-03-12T10:53:15.249Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312795250',
+  timestamp: '2026-03-12T10:53:15.250Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312795251',
+  timestamp: '2026-03-12T10:53:15.251Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312797750',
+  timestamp: '2026-03-12T10:53:17.750Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312800253',
+  timestamp: '2026-03-12T10:53:20.253Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312800254',
+  timestamp: '2026-03-12T10:53:20.254Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312802755',
+  timestamp: '2026-03-12T10:53:22.755Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312802756',
+  timestamp: '2026-03-12T10:53:22.756Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312805259',
+  timestamp: '2026-03-12T10:53:25.259Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312805260',
+  timestamp: '2026-03-12T10:53:25.260Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312805261',
+  timestamp: '2026-03-12T10:53:25.261Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312807759',
+  timestamp: '2026-03-12T10:53:27.759Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312807760',
+  timestamp: '2026-03-12T10:53:27.760Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312810261',
+  timestamp: '2026-03-12T10:53:30.261Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312810263',
+  timestamp: '2026-03-12T10:53:30.263Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312810263',
+  timestamp: '2026-03-12T10:53:30.263Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312812764',
+  timestamp: '2026-03-12T10:53:32.764Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312812765',
+  timestamp: '2026-03-12T10:53:32.765Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312812766',
+  timestamp: '2026-03-12T10:53:32.766Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312815267',
+  timestamp: '2026-03-12T10:53:35.267Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312817767',
+  timestamp: '2026-03-12T10:53:37.767Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312820271',
+  timestamp: '2026-03-12T10:53:40.271Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312822770',
+  timestamp: '2026-03-12T10:53:42.771Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312822773',
+  timestamp: '2026-03-12T10:53:42.773Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312822774',
+  timestamp: '2026-03-12T10:53:42.774Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312825272',
+  timestamp: '2026-03-12T10:53:45.272Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312825273',
+  timestamp: '2026-03-12T10:53:45.273Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312825274',
+  timestamp: '2026-03-12T10:53:45.274Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312827774',
+  timestamp: '2026-03-12T10:53:47.774Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312827775',
+  timestamp: '2026-03-12T10:53:47.775Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312827775',
+  timestamp: '2026-03-12T10:53:47.775Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312830277',
+  timestamp: '2026-03-12T10:53:50.277Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312830278',
+  timestamp: '2026-03-12T10:53:50.278Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312832779',
+  timestamp: '2026-03-12T10:53:52.779Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312832781',
+  timestamp: '2026-03-12T10:53:52.781Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312835287',
+  timestamp: '2026-03-12T10:53:55.287Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312835288',
+  timestamp: '2026-03-12T10:53:55.288Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312835289',
+  timestamp: '2026-03-12T10:53:55.289Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312837784',
+  timestamp: '2026-03-12T10:53:57.784Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312837786',
+  timestamp: '2026-03-12T10:53:57.786Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312837786',
+  timestamp: '2026-03-12T10:53:57.786Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312840285',
+  timestamp: '2026-03-12T10:54:00.285Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312842787',
+  timestamp: '2026-03-12T10:54:02.787Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312842788',
+  timestamp: '2026-03-12T10:54:02.788Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312845291',
+  timestamp: '2026-03-12T10:54:05.291Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312845292',
+  timestamp: '2026-03-12T10:54:05.292Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312847791',
+  timestamp: '2026-03-12T10:54:07.791Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312850295',
+  timestamp: '2026-03-12T10:54:10.295Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312852795',
+  timestamp: '2026-03-12T10:54:12.795Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312852797',
+  timestamp: '2026-03-12T10:54:12.797Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312855297',
+  timestamp: '2026-03-12T10:54:15.297Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312857800',
+  timestamp: '2026-03-12T10:54:17.800Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312860303',
+  timestamp: '2026-03-12T10:54:20.303Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312862804',
+  timestamp: '2026-03-12T10:54:22.804Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312862805',
+  timestamp: '2026-03-12T10:54:22.805Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312865305',
+  timestamp: '2026-03-12T10:54:25.305Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312865306',
+  timestamp: '2026-03-12T10:54:25.306Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312865307',
+  timestamp: '2026-03-12T10:54:25.307Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312867805',
+  timestamp: '2026-03-12T10:54:27.805Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312867807',
+  timestamp: '2026-03-12T10:54:27.807Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312867808',
+  timestamp: '2026-03-12T10:54:27.808Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312870309',
+  timestamp: '2026-03-12T10:54:30.309Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312870310',
+  timestamp: '2026-03-12T10:54:30.310Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312870311',
+  timestamp: '2026-03-12T10:54:30.311Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312872809',
+  timestamp: '2026-03-12T10:54:32.809Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312875312',
+  timestamp: '2026-03-12T10:54:35.312Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312877813',
+  timestamp: '2026-03-12T10:54:37.813Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312877815',
+  timestamp: '2026-03-12T10:54:37.815Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312880315',
+  timestamp: '2026-03-12T10:54:40.315Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312882815',
+  timestamp: '2026-03-12T10:54:42.815Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312882815',
+  timestamp: '2026-03-12T10:54:42.816Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312882816',
+  timestamp: '2026-03-12T10:54:42.816Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312885317',
+  timestamp: '2026-03-12T10:54:45.317Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312885318',
+  timestamp: '2026-03-12T10:54:45.318Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312887817',
+  timestamp: '2026-03-12T10:54:47.817Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312890320',
+  timestamp: '2026-03-12T10:54:50.320Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312890320',
+  timestamp: '2026-03-12T10:54:50.320Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312892822',
+  timestamp: '2026-03-12T10:54:52.822Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312895326',
+  timestamp: '2026-03-12T10:54:55.326Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312897832',
+  timestamp: '2026-03-12T10:54:57.832Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312897834',
+  timestamp: '2026-03-12T10:54:57.834Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312897835',
+  timestamp: '2026-03-12T10:54:57.835Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312900329',
+  timestamp: '2026-03-12T10:55:00.329Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312900330',
+  timestamp: '2026-03-12T10:55:00.330Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312900332',
+  timestamp: '2026-03-12T10:55:00.332Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312902832',
+  timestamp: '2026-03-12T10:55:02.832Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312902835',
+  timestamp: '2026-03-12T10:55:02.835Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312902837',
+  timestamp: '2026-03-12T10:55:02.837Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312905333',
+  timestamp: '2026-03-12T10:55:05.333Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312907836',
+  timestamp: '2026-03-12T10:55:07.836Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312910340',
+  timestamp: '2026-03-12T10:55:10.340Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312910341',
+  timestamp: '2026-03-12T10:55:10.341Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312912842',
+  timestamp: '2026-03-12T10:55:12.842Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312912843',
+  timestamp: '2026-03-12T10:55:12.843Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312912844',
+  timestamp: '2026-03-12T10:55:12.844Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312915340',
+  timestamp: '2026-03-12T10:55:15.340Z'
+}
+Recorded event: {
+  userId: 'liveuser3@sim.com',
+  userName: 'Live Sim User 3',
+  sessionId: 3,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312915341',
+  timestamp: '2026-03-12T10:55:15.341Z'
+}
+Recorded event: {
+  userId: 'liveuser12@sim.com',
+  userName: 'Live Sim User 12',
+  sessionId: 12,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312915341',
+  timestamp: '2026-03-12T10:55:15.341Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312917841',
+  timestamp: '2026-03-12T10:55:17.841Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312920342',
+  timestamp: '2026-03-12T10:55:20.342Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312922842',
+  timestamp: '2026-03-12T10:55:22.843Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312925345',
+  timestamp: '2026-03-12T10:55:25.345Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312925346',
+  timestamp: '2026-03-12T10:55:25.346Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312925347',
+  timestamp: '2026-03-12T10:55:25.347Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312927845',
+  timestamp: '2026-03-12T10:55:27.845Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312927847',
+  timestamp: '2026-03-12T10:55:27.847Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'mood',
+  value: 'Sad',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312927849',
+  timestamp: '2026-03-12T10:55:27.849Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312930350',
+  timestamp: '2026-03-12T10:55:30.350Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312930351',
+  timestamp: '2026-03-12T10:55:30.351Z'
+}
+Recorded event: {
+  userId: 'liveuser7@sim.com',
+  userName: 'Live Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312930352',
+  timestamp: '2026-03-12T10:55:30.352Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312932849',
+  timestamp: '2026-03-12T10:55:32.849Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312935358',
+  timestamp: '2026-03-12T10:55:35.358Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312935359',
+  timestamp: '2026-03-12T10:55:35.359Z'
+}
+Recorded event: {
+  userId: 'liveuser16@sim.com',
+  userName: 'Live Sim User 16',
+  sessionId: 16,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312937856',
+  timestamp: '2026-03-12T10:55:37.856Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312940359',
+  timestamp: '2026-03-12T10:55:40.359Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312942862',
+  timestamp: '2026-03-12T10:55:42.862Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312942864',
+  timestamp: '2026-03-12T10:55:42.865Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312942867',
+  timestamp: '2026-03-12T10:55:42.867Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312945365',
+  timestamp: '2026-03-12T10:55:45.365Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312945368',
+  timestamp: '2026-03-12T10:55:45.368Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312947865',
+  timestamp: '2026-03-12T10:55:47.865Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312947867',
+  timestamp: '2026-03-12T10:55:47.867Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312947868',
+  timestamp: '2026-03-12T10:55:47.868Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312950367',
+  timestamp: '2026-03-12T10:55:50.367Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312950369',
+  timestamp: '2026-03-12T10:55:50.369Z'
+}
+Recorded event: {
+  userId: 'liveuser17@sim.com',
+  userName: 'Live Sim User 17',
+  sessionId: 17,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312950370',
+  timestamp: '2026-03-12T10:55:50.370Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312952871',
+  timestamp: '2026-03-12T10:55:52.871Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312955372',
+  timestamp: '2026-03-12T10:55:55.372Z'
+}
+Recorded event: {
+  userId: 'liveuser9@sim.com',
+  userName: 'Live Sim User 9',
+  sessionId: 9,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312955374',
+  timestamp: '2026-03-12T10:55:55.374Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312957872',
+  timestamp: '2026-03-12T10:55:57.872Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312960376',
+  timestamp: '2026-03-12T10:56:00.376Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312960377',
+  timestamp: '2026-03-12T10:56:00.377Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312960379',
+  timestamp: '2026-03-12T10:56:00.379Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312962877',
+  timestamp: '2026-03-12T10:56:02.877Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312962878',
+  timestamp: '2026-03-12T10:56:02.878Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312965379',
+  timestamp: '2026-03-12T10:56:05.379Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312965380',
+  timestamp: '2026-03-12T10:56:05.380Z'
+}
+Recorded event: {
+  userId: 'liveuser5@sim.com',
+  userName: 'Live Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312965382',
+  timestamp: '2026-03-12T10:56:05.382Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312967882',
+  timestamp: '2026-03-12T10:56:07.882Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312967884',
+  timestamp: '2026-03-12T10:56:07.884Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312970381',
+  timestamp: '2026-03-12T10:56:10.381Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312972883',
+  timestamp: '2026-03-12T10:56:12.883Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312972885',
+  timestamp: '2026-03-12T10:56:12.885Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312975384',
+  timestamp: '2026-03-12T10:56:15.384Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312975385',
+  timestamp: '2026-03-12T10:56:15.385Z'
+}
+Recorded event: {
+  userId: 'liveuser19@sim.com',
+  userName: 'Live Sim User 19',
+  sessionId: 19,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312975386',
+  timestamp: '2026-03-12T10:56:15.386Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312977888',
+  timestamp: '2026-03-12T10:56:17.888Z'
+}
+Recorded event: {
+  userId: 'liveuser2@sim.com',
+  userName: 'Live Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312977889',
+  timestamp: '2026-03-12T10:56:17.889Z'
+}
+Recorded event: {
+  userId: 'liveuser11@sim.com',
+  userName: 'Live Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312977890',
+  timestamp: '2026-03-12T10:56:17.890Z'
+}
+Recorded event: {
+  userId: 'liveuser8@sim.com',
+  userName: 'Live Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312980391',
+  timestamp: '2026-03-12T10:56:20.391Z'
+}
+Recorded event: {
+  userId: 'liveuser13@sim.com',
+  userName: 'Live Sim User 13',
+  sessionId: 13,
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312980392',
+  timestamp: '2026-03-12T10:56:20.392Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312980393',
+  timestamp: '2026-03-12T10:56:20.393Z'
+}
+Recorded event: {
+  userId: 'liveuser20@sim.com',
+  userName: 'Live Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312982893',
+  timestamp: '2026-03-12T10:56:22.893Z'
+}
+Recorded event: {
+  userId: 'liveuser15@sim.com',
+  userName: 'Live Sim User 15',
+  sessionId: 15,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312982894',
+  timestamp: '2026-03-12T10:56:22.894Z'
+}
+Recorded event: {
+  userId: 'liveuser6@sim.com',
+  userName: 'Live Sim User 6',
+  sessionId: 6,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312982894',
+  timestamp: '2026-03-12T10:56:22.894Z'
+}
+Recorded event: {
+  userId: 'liveuser4@sim.com',
+  userName: 'Live Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312985395',
+  timestamp: '2026-03-12T10:56:25.395Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312987896',
+  timestamp: '2026-03-12T10:56:27.896Z'
+}
+Recorded event: {
+  userId: 'liveuser10@sim.com',
+  userName: 'Live Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312987896',
+  timestamp: '2026-03-12T10:56:27.896Z'
+}
+Recorded event: {
+  userId: 'liveuser18@sim.com',
+  userName: 'Live Sim User 18',
+  sessionId: 18,
+  category: 'color',
+  value: 'Red',
+  colorRgba: '#ff0000',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312987897',
+  timestamp: '2026-03-12T10:56:27.897Z'
+}
+Recorded event: {
+  userId: 'liveuser14@sim.com',
+  userName: 'Live Sim User 14',
+  sessionId: 14,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312990399',
+  timestamp: '2026-03-12T10:56:30.399Z'
+}
+Recorded event: {
+  userId: 'liveuser1@sim.com',
+  userName: 'Live Sim User 1',
+  sessionId: 1,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773312620108',
+  trackTitle: '"Track 1"',
+  id: 'evt_1773312990399',
+  timestamp: '2026-03-12T10:56:30.399Z'
+}

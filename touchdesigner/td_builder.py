@@ -188,39 +188,41 @@ def onPulse(par):
     ui_master.par.w = 1280
     ui_master.par.h = 720
 
-    # Enable Left-to-Right layout on master UI container
-    ui_master.par.align = 0 # Left to Right
-    
-    # Left Column Container (inside master)
-    left_col = ui_master.create(containerCOMP, 'left_col')
+    # Viewers Base Container (inside the master UI container)
+    viewers = ui_master.create(containerCOMP, 'web_viewers')
+    viewers.nodeX = 0
+    viewers.nodeY = 0
+    viewers.par.align = 0 # Left to Right (Left Col vs Admin)
+    viewers.par.hmode = 1
+    viewers.par.vmode = 1
+
+    # Left Column Container
+    left_col = viewers.create(containerCOMP, 'left_col')
     left_col.par.align = 1 # Top to Bottom
-    left_col.par.w = 1280
-    left_col.par.h = 720
-    left_col.par.hmode = 1 # Fill
-    left_col.par.vmode = 1 # Fill
+    left_col.par.hmode = 1
+    left_col.par.vmode = 1
+    left_col.outputConnectors[0].connect(viewers.inputConnectors[0])
     
-    # Row 1 Container (inside left_col)
-    row_1 = left_col.create(containerCOMP, 'row_1')
+    # Row 1 Container (Kiosks)
+    row_1 = viewers.create(containerCOMP, 'row_1')
     row_1.par.align = 0 # Left to Right
-    row_1.par.w = 1280
-    row_1.par.h = 360
-    row_1.par.hmode = 1 # Fill
-    row_1.par.vmode = 1 # Fill
+    row_1.par.hmode = 1
+    row_1.par.vmode = 1
+    row_1.outputConnectors[0].connect(left_col.inputConnectors[0])
     
-    # Row 2 Container (inside left_col)
-    row_2 = left_col.create(containerCOMP, 'row_2')
+    # Row 2 Container (QR & Post-Show)
+    row_2 = viewers.create(containerCOMP, 'row_2')
     row_2.par.align = 0 # Left to Right
-    row_2.par.w = 1280
-    row_2.par.h = 360
-    row_2.par.hmode = 1 # Fill
-    row_2.par.vmode = 1 # Fill
+    row_2.par.hmode = 1
+    row_2.par.vmode = 1
+    row_2.outputConnectors[0].connect(left_col.inputConnectors[0])
     
     renders = [
-        {'name': 'kiosk1', 'path': '/kiosk.html?kiosk=1&bypass=true', 'parent': row_1},
-        {'name': 'kiosk2', 'path': '/kiosk.html?kiosk=2&bypass=true', 'parent': row_1},
-        {'name': 'qr', 'path': '/qr.html?bypass=true', 'parent': row_2},
-        {'name': 'post_show', 'path': '/post-show.html?bypass=true', 'parent': row_2},
-        {'name': 'admin', 'path': '/admin-console.html?password=czech&bypass=true', 'parent': ui_master}
+        {'name': 'kiosk1', 'path': '/kiosk.html?kiosk=1&bypass=true', 'target': row_1},
+        {'name': 'kiosk2', 'path': '/kiosk.html?kiosk=2&bypass=true', 'target': row_1},
+        {'name': 'qr', 'path': '/qr.html?bypass=true', 'target': row_2},
+        {'name': 'post_show', 'path': '/post-show.html?bypass=true', 'target': row_2},
+        {'name': 'admin', 'path': '/admin-console.html?password=czech&bypass=true', 'target': viewers}
     ]
     
     for i, r in enumerate(renders):
@@ -242,16 +244,17 @@ def onPulse(par):
             spout.nodeY = 200 - (i * 200)
             spout.inputConnectors[0].connect(web)
         
-        # OP Viewer explicitly inside its designated parent container
-        opview = r['parent'].create(opviewerCOMP, f"opviewer_{r['name']}")
+        # OP Viewer created inside viewers base
+        opview = viewers.create(opviewerCOMP, f"opviewer_{r['name']}")
         opview.par.opviewer = web.path
-        
-        opview.par.w = 640
-        opview.par.h = 360
-        # Allow them to scale and fill their respective row or column
         opview.par.hmode = 1 
         opview.par.vmode = 1 
-        opview.par.alignorder = i
+        
+        # Wire the GUI panels
+        opview.outputConnectors[0].connect(r['target'].inputConnectors[0])
+
+    ui_master.par.clone = viewers.path
+    ui_master.par.enablecloning = True
 
     print("Successfully built Master Companion App inside /project1/concert_app_companion")
 

@@ -613,8 +613,10 @@ function resetAllSelections() {
     }
   });
 
-  if (continuousCommentEl) continuousCommentEl.value = "";
-  if (continuousCharHintEl) continuousCharHintEl.textContent = "0 / 140";
+  if (currentSelections.note) {
+    if (continuousCommentEl) continuousCommentEl.value = "";
+    if (continuousCharHintEl) continuousCharHintEl.textContent = "0 / 140";
+  }
   if (noteCardBody) { noteCardBody.style.opacity = "1"; noteCardBody.style.display = "block"; }
 
 
@@ -658,8 +660,16 @@ function initSwipeSliders() {
     if (!container) return;
 
     container.style.cursor = "pointer";
-    container.addEventListener('click', () => {
+    container.style.pointerEvents = "auto";
+    const textNode = container.querySelector('.swipe-slider-text');
+    if (textNode) {
+        textNode.style.pointerEvents = "auto";
+        textNode.style.cursor = "pointer";
+    }
+
+    container.addEventListener('click', (e) => {
       autoSwipeAllAndSubmit();
+      e.stopPropagation();
     });
   });
 }

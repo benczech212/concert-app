@@ -118,6 +118,11 @@ def onReceiveOSC(dat, rowIndex, message, bytes, timeStamp, source, sendPort, rec
                 header={'Content-Type': 'application/json'},
                 data=json.dumps(payload)
             )
+            
+    elif address == "/track/stop":
+        print(f"OSC Track Stop Received")
+        webclient.request(base_url + "/api/track/end", 'POST')
+        
     return
 """
     osc_callbacks.text = callback_script

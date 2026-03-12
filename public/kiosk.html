@@ -86,7 +86,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.2/wordcloud2.min.js"></script>
 
     <script>
-        const CYCLE_INTERVAL_MS = 20000; // 20 seconds per view
+        const CYCLE_INTERVAL_MS = 10000; // 10 seconds per view per user request
         const DATA_REFRESH_MS = 5000;    // 5 seconds data fetch
 
         let rawEventsData = [];
@@ -104,7 +104,6 @@
         let views = [];
         if (kioskNum === 2) {
             views = [
-                { id: 'color_heatmap', title: 'Color Heatmap Timeline', category: 'color', type: 'bubble' },
                 { id: 'words', title: 'Word Cloud', category: 'note', type: 'cloud' },
                 { id: 'color_time', title: 'Color Timeline', category: 'color', type: 'timeline' },
                 { id: 'total_time', title: 'Total Engagement Over Time', category: 'overall', type: 'timeline_total' },
@@ -118,7 +117,6 @@
         } else {
             views = [
                 { id: 'mood_bar', title: 'Mood Distribution', category: 'mood', type: 'bar' },
-                { id: 'color_heatmap', title: 'Color Heatmap Timeline', category: 'color', type: 'bubble' },
                 { id: 'total_time', title: 'Total Engagement Over Time', category: 'overall', type: 'timeline_total' },
                 { id: 'color_bar', title: 'Color Distribution', category: 'color', type: 'bar' },
                 { id: 'reaction_pie', title: 'Reaction Distribution', category: 'reaction', type: 'pie' },
@@ -294,7 +292,40 @@
         }
 
         function renderCurrentView() {
-            const view = views[currentViewIndex];
+            let view = views[currentViewIndex];
+            
+            // --- SKIP EMPTY CHARTS LOGIC ---
+            // If the view has no data, skip to the next one recursively
+            let hasData = false;
+            if (view.category === 'overall') {
+                hasData = Object.keys(displayData.overall.timeline).length > 0;
+            } else if (view.category === 'note') {
+                hasData = Object.keys(displayData.words).length > 0;
+            } else if (view.category === 'users') {
+                hasData = Object.keys(displayData.users.timeline).length > 0;
+            } else if (displayData[view.category]) {
+                hasData = Object.keys(displayData[view.category].totals).length > 0;
+            }
+
+            // If we have verified data, or if we somehow looped all 10 views without data, render it.
+            // If no data, increment and try the next one.
+            let attemptLimit = views.length;
+            while (!hasData && attemptLimit > 0) {
+                currentViewIndex = (currentViewIndex + 1) % views.length;
+                view = views[currentViewIndex];
+                if (view.category === 'overall') hasData = Object.keys(displayData.overall.timeline).length > 0;
+                else if (view.category === 'note') hasData = Object.keys(displayData.words).length > 0;
+                else if (view.category === 'users') hasData = Object.keys(displayData.users.timeline).length > 0;
+                else if (displayData[view.category]) hasData = Object.keys(displayData[view.category].totals).length > 0;
+                attemptLimit--;
+            }
+
+            // If we checked every single view and NONE of them had data, we'll just default to the first one (blank state fallback)
+            if (attemptLimit === 0) {
+                view = views[0];
+            }
+            // -------------------------------
+
             let titleText = view.title;
             if (view.type === 'timeline' && currentTimelineSeries) {
                 titleText += ` (${currentTimelineSeries})`;

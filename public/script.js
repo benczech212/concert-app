@@ -1052,6 +1052,7 @@ function connectStream() {
 
 if (btnSkipWordCloud) {
   btnSkipWordCloud.addEventListener("click", () => {
+    recordEvent("note_skip", "skipped");
     wordCloudModal.style.display = "none";
   });
 }
@@ -1067,7 +1068,8 @@ if (btnCloseWordCloud) {
         wordCloudModal.style.display = "none";
       }, 1000); // short delay to show 'saved' before closing
     } else {
-      // If empty, just close it
+      // If empty, treat as skip
+      recordEvent("note_skip", "skipped");
       wordCloudModal.style.display = "none";
     }
   });

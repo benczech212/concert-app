@@ -58,6 +58,7 @@ let users = {}; // Map of email -> user object
 let currentTrack = null;
 let connectedClients = [];
 let showState = 'PRE_SHOW';
+let trackEndWatchers = {}; // { trackId: { expected: number, received: Set(sessionIds), timeout: NodeJS.Timeout } }
 
 // Prometheus metrics setup
 const collectDefaultMetrics = client.collectDefaultMetrics;
@@ -184,6 +185,26 @@ app.post('/api/track/end', (req, res) => {
     };
     events.push(systemEvent);
     fs.appendFile(path.join(__dirname, 'logs', 'events_log.jsonl'), JSON.stringify(systemEvent) + '\n', () => { });
+    
+    // Start track end watcher for automated generation
+    const activeClientsCount = connectedClients.filter(c => !c.bypass).length;
+    const endedTrackId = currentTrack.id;
+    
+    // Auto-trigger immediately if no one is connected, otherwise wait.
+    if (activeClientsCount === 0) {
+      triggerAutomaticStoryGeneration(endedTrackId);
+    } else {
+      trackEndWatchers[endedTrackId] = {
+        expected: activeClientsCount,
+        received: new Set(),
+        timeout: setTimeout(() => {
+          console.log(`[Watcher] Timeout reached for ${endedTrackId}, triggering generation early.`);
+          triggerAutomaticStoryGeneration(endedTrackId);
+          delete trackEndWatchers[endedTrackId];
+        }, 30000) // 30 seconds wait
+      };
+      console.log(`[Watcher] Started waiting on ${activeClientsCount} users for ${endedTrackId}.`);
+    }
   }
 
   currentTrack = null;
@@ -219,6 +240,23 @@ app.post('/api/events', (req, res) => {
 
   events.push(event);
   console.log("Recorded event:", event);
+  
+  // Track End Watcher Check
+  if ((event.category === 'note' || event.category === 'note_skip') && event.trackId && trackEndWatchers[event.trackId]) {
+      const watcher = trackEndWatchers[event.trackId];
+      // Use sessionId or email to avoid double counting same user
+      const uniqueSourceId = event.sessionId || event.userId || event.id; 
+      watcher.received.add(uniqueSourceId);
+      
+      console.log(`[Watcher] Progress for ${event.trackId}: ${watcher.received.size} / ${watcher.expected}`);
+      
+      if (watcher.received.size >= watcher.expected) {
+          console.log(`[Watcher] Target completions reached for ${event.trackId}. Triggering generation.`);
+          clearTimeout(watcher.timeout);
+          triggerAutomaticStoryGeneration(event.trackId);
+          delete trackEndWatchers[event.trackId];
+      }
+  }
 
   // Append to persistent log file
   fs.appendFile(path.join(__dirname, 'logs', 'events_log.jsonl'), JSON.stringify(event) + '\n', (err) => {
@@ -342,14 +380,14 @@ app.get('/api/stories', (req, res) => {
 });
 
 // Generate stories using Gemini
-async function generateShowStories() {
+async function generateShowStories(specificTrackId = null) {
   if (!geminiApiKey) {
     console.log("No GEMINI_API_KEY found, skipping story generation.");
-    return;
+    return null;
   }
   
   try {
-    console.log("Generating stories for all tracks...");
+    console.log(specificTrackId ? `Generating story specifically for track ${specificTrackId}...` : "Generating stories for all tracks...");
   
   // Group events by track
   const trackData = {};
@@ -427,6 +465,8 @@ async function generateShowStories() {
   console.log(`Aggregated trackData keys: ${Object.keys(trackData).length}`);
 
   for (const trackId of Object.keys(trackData)) {
+    if (specificTrackId && trackId !== specificTrackId) continue;
+    
     const data = trackData[trackId];
     
     // Only process tracks with at least some interaction
@@ -544,20 +584,43 @@ Output format should be JSON exactly like this, no markdown formatting:
         story: parsed.story || "No story available."
       });
       console.log(`Generated story for ${data.title}`);
+      
+      if (specificTrackId) {
+          // Keep existing stories and just update/append this one
+          let existingStories = [];
+          const storiesPath = path.join(__dirname, 'logs', 'track_stories.json');
+          if (fs.existsSync(storiesPath)) {
+              try { existingStories = JSON.parse(fs.readFileSync(storiesPath, 'utf8')); } catch(e) {}
+          }
+          existingStories = existingStories.filter(s => s.trackId !== trackId);
+          existingStories.push(stories[stories.length - 1]);
+          fs.writeFileSync(storiesPath, JSON.stringify(existingStories, null, 2));
+          
+          // Return early for single runs to chain to image generation
+          return {
+              storyData: stories[stories.length - 1],
+              topWords: topWords,
+              topColors: topColors
+          };
+      }
     } catch (e) {
       console.error(`Failed to generate story for ${data.title}:`, e);
     }
   }
   
-  // Save to file
-  fs.writeFileSync(path.join(__dirname, 'logs', 'track_stories.json'), JSON.stringify(stories, null, 2));
-  console.log("Track stories saved to logs/track_stories.json");
+  if (!specificTrackId) {
+      // Save full generation to file
+      fs.writeFileSync(path.join(__dirname, 'logs', 'track_stories.json'), JSON.stringify(stories, null, 2));
+      console.log("Track stories saved to logs/track_stories.json");
+      
+      // Broadcast to let clients know stories are available
+      broadcast({ type: 'stories_ready' });
+  }
   
-  // Broadcast to let clients know stories are available
-  broadcast({ type: 'stories_ready' });
   } catch(fatalErr) {
     console.error("FATAL ERROR IN generateShowStories:", fatalErr);
   }
+  return null;
 }
 
 // Generate image prompts for admin review
@@ -641,6 +704,98 @@ app.get('/api/images/preview', (req, res) => {
 
   res.json({ success: true, prompts });
 });
+
+async function generateImageForTrack(trackId, title, aiName, aiStory, topWords, topColors) {
+    if (!geminiApiKey) {
+        console.log('GEMINI_API_KEY not found, skipping automated image generation');
+        return;
+    }
+
+    const promptText = `Create a highly abstract, atmospheric, wide 16:9 concert visual background based on a song titled "${aiName}". \nStory meaning: ${aiStory}. \nThe dominant colors should be: ${topColors || 'vibrant shifting hues'}. \nThe visual mood and themes should reflect these words: ${topWords || 'ambient, energetic, musical'}. Do not include any text or UI elements in the image.`;
+
+    try {
+        console.log(`Generating automated Imagen image for ${trackId}...`);
+        const responseText = await new Promise((resolve, reject) => {
+            const payload = JSON.stringify({
+                instances: [{ prompt: promptText }],
+                parameters: { sampleCount: 1 }
+            });
+            
+            const reqPost = https.request({
+                hostname: 'generativelanguage.googleapis.com',
+                path: `/v1beta/models/${IMAGE_MODEL}:predict?key=${geminiApiKey}`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Content-Length': Buffer.byteLength(payload)
+                }
+            }, (resPost) => {
+                let body = '';
+                resPost.on('data', d => body += d);
+                resPost.on('end', () => {
+                    if (resPost.statusCode >= 200 && resPost.statusCode < 300) {
+                        resolve(body);
+                    } else {
+                        reject(new Error(`Imagen API returned ${resPost.statusCode}: ${body}`));
+                    }
+                });
+            });
+            reqPost.on('error', reject);
+            reqPost.write(payload);
+            reqPost.end();
+        });
+
+        const data = JSON.parse(responseText);
+        
+        try {
+            const logPayload = { timestamp: new Date().toISOString(), model: IMAGE_MODEL, trackId: trackId, prompt: promptText, response: data };
+            fs.appendFileSync('/home/benczech/dev/concert-app/logs/ai_prompts.jsonl', JSON.stringify(logPayload) + '\\n');
+        } catch (logErr) {}
+
+        const b64 = data.predictions && data.predictions[0] && data.predictions[0].bytesBase64Encoded ? data.predictions[0].bytesBase64Encoded : null;
+        if (b64) {
+            let existingImages = [];
+            const imgPath = path.join(__dirname, 'logs', 'track_images.json');
+            if (fs.existsSync(imgPath)) {
+                try { existingImages = JSON.parse(fs.readFileSync(imgPath, 'utf8')); } catch(e) {}
+            }
+            existingImages = existingImages.filter(i => i.trackId !== trackId);
+            existingImages.push({
+                trackId: trackId,
+                trackTitle: title,
+                imageBase64: b64
+            });
+            fs.writeFileSync(imgPath, JSON.stringify(existingImages, null, 2));
+            console.log(`Saved new automated abstract image for ${trackId}.`);
+            broadcast({ type: 'images_ready' });
+        }
+    } catch (e) {
+        console.error(`Failed to generate automated image for track ${trackId}:`, e);
+    }
+}
+
+async function triggerAutomaticStoryGeneration(trackId) {
+    if (!trackId) return;
+    console.log(`Triggering automated story + image generation cycle for ${trackId}`);
+    
+    try {
+        const result = await generateShowStories(trackId);
+        if (result && result.storyData) {
+            broadcast({ type: 'stories_ready' });
+            // Chain the image generation immediately
+            await generateImageForTrack(
+                trackId, 
+                result.storyData.title, 
+                result.storyData.newName, 
+                result.storyData.story, 
+                result.topWords, 
+                result.topColors
+            );
+        }
+    } catch (err) {
+        console.error(`Auto generation cycle failed for ${trackId}`, err);
+    }
+}
 
 app.post('/api/images/generate', async (req, res) => {
   if (!geminiApiKey) {
@@ -771,10 +926,12 @@ app.post('/api/metrics/reset', (req, res) => {
   const eventsLog = path.join(__dirname, 'logs', 'events_log.jsonl');
   const storiesLog = path.join(__dirname, 'logs', 'track_stories.json');
   const imagesLog = path.join(__dirname, 'logs', 'track_images.json');
+  const aiPromptsLog = path.join(__dirname, 'logs', 'ai_prompts.jsonl');
 
   if (fs.existsSync(eventsLog)) fs.writeFileSync(eventsLog, '');
   if (fs.existsSync(storiesLog)) fs.writeFileSync(storiesLog, '[]');
   if (fs.existsSync(imagesLog)) fs.writeFileSync(imagesLog, '[]');
+  if (fs.existsSync(aiPromptsLog)) fs.writeFileSync(aiPromptsLog, '');
 
   console.log("Prometheus metrics, events array, track history, and log files reset via API");
   res.json({ success: true, message: "Metrics, events, and track history reset successfully" });

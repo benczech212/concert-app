@@ -143,3 +143,472 @@ Recorded event: {
   trackId: 'trk_1773275876123',
   trackTitle: '"Track 1"'
 }
+Recorded event: {
+  id: '9c8e7cda-1f79-4aab-abca-1d585485c259',
+  sessionId: '43f137bc-9fa2-46b9-ad8f-af87b97ebc86',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:14:59.194Z',
+  category: 'color',
+  value: 'Green',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '986f2eb2-c8c3-4d0a-811d-f948d1697cdc',
+  sessionId: '43f137bc-9fa2-46b9-ad8f-af87b97ebc86',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:15:00.039Z',
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'c3411f30-d3cb-4515-801e-1699fecc5840',
+  sessionId: '43f137bc-9fa2-46b9-ad8f-af87b97ebc86',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:15:00.839Z',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '4c83a0fd-bfb8-4af9-90be-6031718a996c',
+  sessionId: '43f137bc-9fa2-46b9-ad8f-af87b97ebc86',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:15:00.840Z',
+  category: 'combined_reaction',
+  value: 2,
+  colorName: 'Green',
+  mood: 'Mystery',
+  colorRgba: '#2bff00',
+  reactionLabel: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '1b5fd017-7dd8-4078-8803-d689dec394f8',
+  sessionId: '8370f365-30ad-4bf6-8d5e-98ab1db630fb',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:18:04.919Z',
+  category: 'mood',
+  value: 'Confusion',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'fb83d03d-2006-4699-b85b-cab6baa7555b',
+  sessionId: '8370f365-30ad-4bf6-8d5e-98ab1db630fb',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:18:10.946Z',
+  category: 'color',
+  value: 'Chartreuse',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '984c54ae-003e-4274-a831-6c0116fb3628',
+  sessionId: '8370f365-30ad-4bf6-8d5e-98ab1db630fb',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:18:14.929Z',
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'cd8c3569-29ac-4323-9d42-21fe0f9d9c7c',
+  sessionId: '8370f365-30ad-4bf6-8d5e-98ab1db630fb',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:18:18.276Z',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'd1316923-734f-4a29-8bd0-50fdb16c0282',
+  sessionId: '8370f365-30ad-4bf6-8d5e-98ab1db630fb',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:18:18.276Z',
+  category: 'combined_reaction',
+  value: 2,
+  colorName: 'Chartreuse',
+  mood: 'Mystery',
+  colorRgba: '#80ff00',
+  reactionLabel: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '6814c3ef-4336-4826-885d-316f7cab3089',
+  sessionId: 'f7980eb8-1d12-4bd6-9bb7-ed9a36ef2c34',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:19:21.793Z',
+  category: 'mood',
+  value: 'Power',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '7b59564a-abe0-4bee-98ce-d768f30fec12',
+  sessionId: 'f7980eb8-1d12-4bd6-9bb7-ed9a36ef2c34',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:19:23.570Z',
+  category: 'color',
+  value: 'Chartreuse',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '811d5e74-714a-4331-bc63-bb66b54d45d7',
+  sessionId: 'f7980eb8-1d12-4bd6-9bb7-ed9a36ef2c34',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:19:26.340Z',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'b4d16921-6063-4fd8-b2bc-8a2e266d9813',
+  sessionId: 'f7980eb8-1d12-4bd6-9bb7-ed9a36ef2c34',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:19:26.340Z',
+  category: 'combined_reaction',
+  value: 2,
+  colorName: 'Chartreuse',
+  mood: 'Power',
+  colorRgba: '#80ff00',
+  reactionLabel: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '5d8fc3c6-b253-4884-a142-d17d130ef79f',
+  sessionId: '2cc9afdf-1cbb-43e7-b8fd-44fb9641ae91',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:20:52.675Z',
+  category: 'color',
+  value: 'Violet',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'c5dc3f87-a48d-43c4-bcd7-6179e47cc0a1',
+  sessionId: '2cc9afdf-1cbb-43e7-b8fd-44fb9641ae91',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:20:54.070Z',
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'faae9663-13cc-4561-a494-205928ca0ceb',
+  sessionId: '2cc9afdf-1cbb-43e7-b8fd-44fb9641ae91',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:20:56.173Z',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '26472384-2bec-46ba-9d36-ed9538c49489',
+  sessionId: '2cc9afdf-1cbb-43e7-b8fd-44fb9641ae91',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:20:56.174Z',
+  category: 'combined_reaction',
+  value: 2,
+  colorName: 'Violet',
+  mood: 'Mystery',
+  colorRgba: '#aa00ff',
+  reactionLabel: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'f332bb45-2a87-4b25-9078-11f418c06daa',
+  sessionId: '2cc9afdf-1cbb-43e7-b8fd-44fb9641ae91',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:21:05.278Z',
+  category: 'color',
+  value: 'Chartreuse',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '998cc0e7-b114-4d74-875a-0799a64f8ee6',
+  sessionId: '2cc9afdf-1cbb-43e7-b8fd-44fb9641ae91',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:21:06.426Z',
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '05c37b17-bb64-4739-9afc-93e1f826a65b',
+  sessionId: '2cc9afdf-1cbb-43e7-b8fd-44fb9641ae91',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:21:07.889Z',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '423a9fce-1f74-45da-8988-8cc4d0c7a2ec',
+  sessionId: '2cc9afdf-1cbb-43e7-b8fd-44fb9641ae91',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:21:07.889Z',
+  category: 'combined_reaction',
+  value: 2,
+  colorName: 'Chartreuse',
+  mood: 'Mystery',
+  colorRgba: '#55ff00',
+  reactionLabel: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Prometheus metrics, events array, and log file reset via API
+Recorded event: {
+  id: 'a4748487-4959-4f9a-b5ce-561fc8ef14ae',
+  sessionId: '339dcf51-694a-45d9-ace0-611fa761b1bd',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:22:53.748Z',
+  category: 'color',
+  value: 'Chartreuse',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '480c8ded-8ef6-4476-be6b-f98240dfe56a',
+  sessionId: '339dcf51-694a-45d9-ace0-611fa761b1bd',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:22:54.329Z',
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '4e81aa53-b89f-4521-999a-7c34a137faef',
+  sessionId: '339dcf51-694a-45d9-ace0-611fa761b1bd',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:22:55.126Z',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '9fa3fce4-1f2f-458c-9827-c68365e908cd',
+  sessionId: '339dcf51-694a-45d9-ace0-611fa761b1bd',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:22:55.127Z',
+  category: 'combined_reaction',
+  value: 2,
+  colorName: 'Chartreuse',
+  mood: 'Joy',
+  colorRgba: '#80ff00',
+  reactionLabel: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'a5087ec9-82dd-42dc-aaec-8c0f81214c26',
+  sessionId: 'ee39ed6b-210a-4693-972c-358435da1ce1',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:23:03.298Z',
+  category: 'color',
+  value: 'Light Yellow',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '4239257c-1a04-48b4-8d11-6ff7df687b1d',
+  sessionId: 'ee39ed6b-210a-4693-972c-358435da1ce1',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:23:03.925Z',
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'd292b4be-b195-4005-affd-fc187e470006',
+  sessionId: 'ee39ed6b-210a-4693-972c-358435da1ce1',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:23:04.965Z',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'd4e4ab06-e3b3-4c41-bf1e-1003279dec75',
+  sessionId: 'ee39ed6b-210a-4693-972c-358435da1ce1',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:23:04.965Z',
+  category: 'combined_reaction',
+  value: 2,
+  colorName: 'Yellow',
+  mood: 'Joy',
+  colorRgba: 'rgb(238, 255, 153)',
+  reactionLabel: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '548c8e92-26cf-46eb-bbaa-ed331666ec17',
+  sessionId: 'cfffbbc0-5730-431c-8609-c3a2641b7b40',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:26:02.558Z',
+  category: 'color',
+  value: 'Spring Green',
+  colorRgba: '#00ff80',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '129432f0-e038-4dc7-937f-9557bb9bef66',
+  sessionId: 'cfffbbc0-5730-431c-8609-c3a2641b7b40',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:26:03.184Z',
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '1d3d9792-13f8-4d75-9091-5d549110b2dd',
+  sessionId: '831fe5af-f773-4760-91a3-ef67d3aa2532',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:26:52.613Z',
+  category: 'color',
+  value: 'Chartreuse',
+  colorRgba: '#80ff00',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '750fc142-772f-440e-b65d-f9c63b6fd110',
+  sessionId: '831fe5af-f773-4760-91a3-ef67d3aa2532',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:26:53.207Z',
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '38fca220-f92c-4c49-94ae-1784032006bb',
+  sessionId: '831fe5af-f773-4760-91a3-ef67d3aa2532',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:26:53.996Z',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: '81fb3a4b-80b1-4ce6-baee-02a29e20bc48',
+  sessionId: '831fe5af-f773-4760-91a3-ef67d3aa2532',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:26:53.997Z',
+  category: 'combined_reaction',
+  value: 2,
+  colorName: 'Chartreuse',
+  mood: 'Chaos',
+  colorRgba: '#80ff00',
+  reactionLabel: 'like',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Recorded event: {
+  id: 'cd328c77-0f58-4258-b475-e0338ace4754',
+  sessionId: 'f9704dad-7584-42bf-8630-94db4f6000b5',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T04:29:44.560Z',
+  category: 'color',
+  value: 'Transparent',
+  colorRgba: 'transparent',
+  trackId: 'trk_1773279957672',
+  trackTitle: '"Track 2"'
+}
+Prometheus metrics, events array, and log file reset via API

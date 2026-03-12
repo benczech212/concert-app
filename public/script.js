@@ -111,31 +111,15 @@ async function loadConfiguration() {
   // Map structured config back to application arrays
   MOODS = appConfig.moods.map(m => m.name);
   // Predefined anchor colors for naming generated hues (nearest-neighbor)
-  const COLOR_NAMES = [
-    { name: "Red", hex: "#ff0000" }, { name: "Orange", hex: "#ff8000" },
-    { name: "Yellow", hex: "#ffff00" }, { name: "Chartreuse", hex: "#80ff00" },
-    { name: "Green", hex: "#00ff00" }, { name: "Spring Green", hex: "#00ff80" },
-    { name: "Cyan", hex: "#00ffff" }, { name: "Azure", hex: "#0080ff" },
-    { name: "Blue", hex: "#0000ff" }, { name: "Violet", hex: "#8000ff" },
-    { name: "Magenta", hex: "#ff00ff" }, { name: "Rose", hex: "#ff0080" }
+  // 36 uniquely assigned color names representing hues 0 to 350
+  const HUE_NAMES = [
+    "Red", "Candy Apple", "Vermilion", "Deep Orange", "Orange", "Amber", 
+    "Yellow", "Lemon", "Chartreuse", "Spring Bud", "Bright Green", "Harlequin", 
+    "Green", "Emerald", "Malachite", "Spring Green", "Mint", "Turquoise", 
+    "Cyan", "Cerulean", "Capri", "Azure", "Sapphire", "Cobalt", 
+    "Blue", "Ultramarine", "Indigo", "Violet", "Purple", "Amethyst", 
+    "Magenta", "Hot Pink", "Cerise", "Rose", "Raspberry", "Crimson"
   ];
-
-  function getNearestColorName(r, g, b) {
-    let bestMatch = COLOR_NAMES[0].name;
-    let minDistance = Infinity;
-
-    for (const c of COLOR_NAMES) {
-      const cr = parseInt(c.hex.slice(1, 3), 16);
-      const cg = parseInt(c.hex.slice(3, 5), 16);
-      const cb = parseInt(c.hex.slice(5, 7), 16);
-      const dist = Math.sqrt(Math.pow(r - cr, 2) + Math.pow(g - cg, 2) + Math.pow(b - cb, 2));
-      if (dist < minDistance) {
-        minDistance = dist;
-        bestMatch = c.name;
-      }
-    }
-    return bestMatch;
-  }
 
   function hslToRgb(h, s, l) {
     s /= 100;
@@ -155,7 +139,7 @@ async function loadConfiguration() {
   for (let t = 0; t < 360; t += 10) {
     const [r, g, b] = hslToRgb(t, 100, 50);
     const hex = rgbToHex(r, g, b);
-    let name = getNearestColorName(r, g, b);
+    let name = HUE_NAMES[t / 10] || ("Color " + t);
     COLORS.push({ name: name, hex: hex, h: t });
   }
   MOOD_GLOWS = {};
@@ -706,6 +690,17 @@ function handleSelection(type, name, hexColorOrGlow) {
 
 
 // ---------- Helpers ----------
+function hslToHex(h, s, l) {
+  l /= 100;
+  const a = s * Math.min(l, 1 - l) / 100;
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, '0');
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
+
 function hexToHSL(H) {
   let r = 0, g = 0, b = 0;
   if (H.length == 4) {
@@ -1301,98 +1296,13 @@ function renderButtons() {
 
     // Outer Wheel Specs
     const outerROut = 140;
-    const outerRIn = 80;
-    // Inner Wheel Specs
-    const innerROut = 80;
-    const innerRIn = 30;
+    const outerRIn = 30;
 
     const svg = document.createElementNS(svgNS, "svg");
     svg.setAttribute("width", width);
     svg.setAttribute("height", height);
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
     svg.style.overflow = "visible";
-
-    // Draw Inner Wheel (Lighter versions of colors)
-    const innerStep = 360 / COLORS.length;
-
-    COLORS.forEach((c, idx) => {
-      const startAngle = idx * innerStep;
-      const endAngle = startAngle + innerStep;
-
-      const path = document.createElementNS(svgNS, "path");
-      path.setAttribute("d", getWedgePath(cx, cy, innerRIn, innerROut, startAngle, endAngle));
-      path.classList.add("color-wedge");
-      path.dataset.colorName = "Light " + c.name;
-
-      const hsl = hexToHSL(c.hex);
-      path.style.fill = `hsl(${hsl.h}, ${hsl.s}%, ${Math.min(95, hsl.l + 30)}%)`;
-      path.style.stroke = "rgba(255, 255, 255, 0.15)";
-      path.style.strokeWidth = "1";
-      path.style.cursor = "pointer";
-      path.style.transition = "transform 0.1s, stroke 0.3s ease";
-
-      const g = document.createElementNS(svgNS, "g");
-      g.appendChild(path);
-
-      g.addEventListener("mouseenter", () => {
-        path.style.stroke = "#fff";
-        path.style.strokeWidth = "2";
-        const disp = document.getElementById("colorNameDisplay");
-        updateColorDisplay(disp, path.dataset.colorName, path.style.fill);
-      });
-      g.addEventListener("mouseleave", () => {
-        if (!path.classList.contains("active")) {
-          path.style.stroke = "rgba(255, 255, 255, 0.15)";
-          path.style.strokeWidth = "1";
-        }
-        const disp = document.getElementById("colorNameDisplay");
-        if (selectedColor && path.classList.contains("active")) {
-          // do nothing, active handles it
-        } else if (selectedColor) {
-          updateColorDisplay(disp, "", "");
-        } else {
-          updateColorDisplay(disp, "", "");
-        }
-      });
-
-      g.addEventListener("click", () => {
-        const isActive = path.classList.contains("active");
-
-        const allPaths = document.querySelectorAll(".color-wedge, .grayscale-swatch");
-        allPaths.forEach(p => {
-          p.classList.remove("active");
-          if (p.classList.contains("color-wedge")) {
-            p.style.stroke = "rgba(255, 255, 255, 0.15)";
-            p.style.strokeWidth = "1";
-          } else {
-            p.style.transform = "scale(1)";
-            p.style.boxShadow = "none";
-          }
-        });
-
-        const disp = document.getElementById("colorNameDisplay");
-
-        if (isActive) {
-          selectedColor = null;
-          updateColorDisplay(disp, "", ""); // clear if unselected
-        } else {
-          path.classList.add("active");
-          path.style.stroke = "#fff";
-          path.style.strokeWidth = "3";
-          svg.appendChild(g); // bring front
-
-          const cName = path.dataset.colorName;
-          selectedColor = cName;
-          // Hide preview when officially selected
-          updateColorDisplay(disp, "", "");
-        }
-
-        recordEvent("color", path.dataset.colorName);
-        handleSelection("color", path.dataset.colorName, path.style.fill);
-      });
-
-      svg.appendChild(g);
-    });
 
     // Draw Outer Wheel (Fully saturated)
     const outerStep = 360 / COLORS.length;
@@ -1467,7 +1377,7 @@ function renderButtons() {
           updateColorDisplay(disp, "", "");
         }
 
-        recordEvent("color", path.dataset.colorName);
+        recordEvent("color", path.dataset.colorName, { colorRgba: c.hex });
         handleSelection("color", path.dataset.colorName, c.hex);
       });
 

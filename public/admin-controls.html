@@ -70,13 +70,13 @@
 
             <section class="card" style="text-align: center;">
                 <h2>Data Exports & Stories</h2>
-                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:15px;align-items:center;">
-                    <button id="btnPreviewImages" class="primary" type="button" style="padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px; background-image: linear-gradient(90deg, #ff8a00, #e52e71); border: none;">Preview Image Generation</button>
-                    <a href="stories.html" target="_blank" class="primary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px; background-image: linear-gradient(90deg, #ff8a00, #e52e71); border: none;">View Track Stories</a>
-                    <a href="/api/users/export" download="participants.csv" class="primary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Participants CSV</a>
-                    <a href="/api/export/events" download="events_log.jsonl" class="secondary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Events JSONL</a>
-                    <a href="/api/export/metrics" download="prometheus_metrics.txt" class="secondary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Metrics TXT</a>
-                    <a href="/api/export/logs" download="server.log" class="secondary" style="text-decoration: none; padding: 10px 20px; border-radius: 8px; flex: 1; min-width: 150px;">Server Log</a>
+                <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:15px;align-items:center;">
+                    <button id="btnPreviewImages" class="primary" type="button" style="padding: 12px 24px; border-radius: 8px; flex: 1; min-width: 180px; background-image: linear-gradient(90deg, #ff8a00, #e52e71); border: none; font-weight: bold;">Preview Image Generation</button>
+                    <a href="stories.html" target="_blank" class="primary" style="text-decoration: none; padding: 12px 24px; border-radius: 8px; flex: 1; min-width: 180px; background-image: linear-gradient(90deg, #ff8a00, #e52e71); border: none; font-weight: bold; text-align: center; display: inline-block;">View Track Stories</a>
+                    <a href="/api/users/export" download="participants.csv" class="primary" style="text-decoration: none; padding: 12px 24px; border-radius: 8px; flex: 1; min-width: 180px; text-align: center; display: inline-block;">Participants CSV</a>
+                    <a href="/api/export/events" download="events_log.jsonl" class="secondary" style="text-decoration: none; padding: 12px 24px; border-radius: 8px; flex: 1; min-width: 180px; text-align: center; display: inline-block;">Events JSONL</a>
+                    <a href="/api/export/metrics" download="prometheus_metrics.txt" class="secondary" style="text-decoration: none; padding: 12px 24px; border-radius: 8px; flex: 1; min-width: 180px; text-align: center; display: inline-block;">Metrics TXT</a>
+                    <a href="/api/export/logs" download="server.log" class="secondary" style="text-decoration: none; padding: 12px 24px; border-radius: 8px; flex: 1; min-width: 180px; text-align: center; display: inline-block;">Server Log</a>
                 </div>
                 
                 <div id="imagePreviewArea" style="display:none; margin-top: 20px; text-align: left; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
@@ -90,8 +90,8 @@
                     </div>
                 </div>
 
-                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:15px;">
-                    <button id="resetMetricsBtn" class="error" type="button" style="max-width: 250px;">Clear All Data & Metrics</button>
+                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                    <button id="resetMetricsBtn" class="error" type="button" style="padding: 12px 24px; border-radius: 8px; min-width: 250px; font-weight: bold; background-color: rgba(220, 53, 69, 0.8); color: white; border: 1px solid rgba(220, 53, 69, 1);">Clear All Data & Metrics</button>
                 </div>
                 <div id="statusMsg" role="status" aria-live="polite" style="margin-top: 15px;"></div>
             </section>

@@ -14,11 +14,12 @@
             color: var(--text);
             width: 1280px;
             height: 720px;
-            overflow: hidden;
+            max-height: 720px; /* strictly enforce bounds */
+            overflow: hidden; /* stop body scroll */
             box-sizing: border-box;
             display: grid;
             grid-template-columns: 350px 1fr;
-            grid-template-rows: 1fr;
+            grid-template-rows: 100%;
             gap: 20px;
             font-family: 'Inter', system-ui, sans-serif;
         }
@@ -110,13 +111,13 @@
         }
 
         .event-log {
-            flex: 1;
+            flex: 1; /* take up remaining height inside panel */
             background: rgba(0, 0, 0, 0.4);
             border-radius: 8px;
-            overflow-y: hidden;
             display: flex;
             flex-direction: column;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden; /* constrain height */
         }
 
         .log-entries {
@@ -124,7 +125,7 @@
             list-style: none;
             margin: 0;
             flex: 1;
-            overflow-y: hidden; /* we control scroll manually to keep new items visible */
+            overflow-y: auto; /* this is the only element that should scroll */
             display: flex;
             flex-direction: column;
             gap: 8px;

@@ -251,6 +251,8 @@ footer {
   margin: 4px 0 8px;
   font-size: 1.1rem;
   text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 p {

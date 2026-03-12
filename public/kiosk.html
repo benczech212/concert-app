@@ -148,9 +148,9 @@
         }
 
         const viewSelect = document.getElementById('viewSelect');
-        views.forEach((v, index) => {
+        views.forEach((v) => {
             const opt = document.createElement('option');
-            opt.value = index;
+            opt.value = v.id;
             opt.textContent = v.title;
             viewSelect.appendChild(opt);
         });
@@ -160,7 +160,8 @@
         let isManualOverride = false;
 
         viewSelect.addEventListener('change', (e) => {
-            currentViewIndex = parseInt(e.target.value);
+            currentViewIndex = views.findIndex(v => v.id === e.target.value);
+            if (currentViewIndex === -1) currentViewIndex = 0;
             isManualOverride = true; 
             if (autoCycleTimer) clearInterval(autoCycleTimer); // Pause rotation when manually picked
             renderCurrentView();
@@ -371,7 +372,7 @@
                 titleText += ` (${currentTimelineSeries})`;
             }
             document.getElementById('viewTitle').innerText = titleText;
-            viewSelect.value = currentViewIndex;
+            viewSelect.value = view.id;
             
             const chartCanvas = document.getElementById('kioskChart');
             const wordCanvas = document.getElementById('wordCloud');
@@ -823,7 +824,13 @@
         let lastCycleIndex = -1;
 
         function updateCycleFromTime() {
-            const cycleIndex = Math.floor(Date.now() / CYCLE_INTERVAL_MS);
+            if (isManualOverride) return;
+
+            let now = Date.now();
+            if (kioskNum === 2) {
+                now += 5000;
+            }
+            const cycleIndex = Math.floor(now / CYCLE_INTERVAL_MS);
             
             if (cycleIndex !== lastCycleIndex) {
                 const isFirstRun = (lastCycleIndex === -1);
@@ -859,8 +866,8 @@
         // Initialize loops
         fetchAndProcessData().then(() => {
             updateCycleFromTime();
-            setInterval(updateCycleFromTime, 1000); // Check every second
-            setInterval(fetchAndProcessData, DATA_REFRESH_MS);
+            autoCycleTimer = setInterval(updateCycleFromTime, 1000); // Check every second
+            dataRefreshTimer = setInterval(fetchAndProcessData, DATA_REFRESH_MS);
         });
 
     </script>

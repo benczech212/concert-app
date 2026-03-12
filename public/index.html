@@ -88,10 +88,12 @@
       <!-- Color selection -->
       <section id="colorCard" class="card" aria-label="Choose the Color"
         style="position: relative; transition: background-color 0.5s ease, color 0.5s ease, padding 0.5s ease, height 0.5s ease; overflow: hidden;">
+        <div class="cooldown-progress-bg"></div>
         <div id="colorCloseBtn"
-          style="display:none; position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s;">
+          style="display:none; position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; z-index: 10;">
           ✕</div>
-        <h2 id="colorHeading">1) What color does this feel like?</h2>
+        <h2 id="colorHeading" style="position: relative; z-index: 10;">What color does this feel like?</h2>
+
         <div id="colorCardBody"
           style="transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;">
           <!-- Grayscale Column -->
@@ -110,7 +112,10 @@
               data-color-name="Black" data-color="#000000" aria-label="Black" title="Black"></button>
           </div>
           <div id="colorWheelWrap" style="position:relative;">
-            <div id="colorSuccessOverlay" class="success-overlay" style="z-index: 100;">✓</div>
+            <div id="colorSuccessOverlay" class="success-overlay" style="z-index: 100; flex-direction: column;">
+              <div style="font-size: 3rem;">✓</div>
+              <div style="font-size: 0.8rem; text-align: center; line-height: 1.2; width: 150px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Your input was collected, feel free to continue to add more feedback as you feel it!</div>
+            </div>
             <div id="colorWheel" class="wheel-container" role="group" aria-label="Color options">
               <div id="colorNameDisplay" class="selected-color-name"></div>
               <!-- JS renders color swatches here -->
@@ -118,30 +123,53 @@
           </div>
         </div>
         <p id="colorHint" class="hint" style="text-align:center;">Pick an intuitive color from the wheel.</p>
+        <div class="swipe-slider-container" id="colorSwipeContainer">
+          <div class="swipe-slider-text">Swipe to submit just this color</div>
+          <div class="swipe-slider-track" id="colorSwipeTrack"></div>
+          <div class="swipe-slider-thumb" id="colorSwipeThumb"></div>
+        </div>
       </section>
 
       <!-- Mood selection -->
       <section id="moodCard" class="card" aria-label="Set the Mood"
         style="position: relative; transition: background-color 0.5s ease, color 0.5s ease, padding 0.5s ease, height 0.5s ease; overflow: hidden;">
+        <div class="cooldown-progress-bg"></div>
         <div id="moodCloseBtn"
           style="display:none; position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s;">
           ✕</div>
-        <h2 id="moodHeading">2) How does this make you feel right now?</h2>
+        <h2 id="moodHeading">How does this make you feel right now?</h2>
+
         <div id="moodCardBody" style="transition: opacity 0.3s ease;">
           <div id="emotionButtons" class="wheel-container" role="group" aria-label="Mood options">
             <!-- JS renders wheel items here -->
-            <div id="moodSuccessOverlay" class="success-overlay" style="z-index: 100;">✓</div>
+            <div id="moodSuccessOverlay" class="success-overlay" style="z-index: 100; flex-direction: column;">
+              <div style="font-size: 3rem;">✓</div>
+              <div style="font-size: 0.8rem; text-align: center; line-height: 1.2; width: 150px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Your input was collected, feel free to continue to add more feedback as you feel it!</div>
+            </div>
           </div>
         </div>
         <p id="moodHint" class="hint" style="text-align:center;">Tap the mood that best matches what you feel.</p>
+        <div class="swipe-slider-container" id="moodSwipeContainer">
+          <div class="swipe-slider-text">Swipe to submit just this mood</div>
+          <div class="swipe-slider-track" id="moodSwipeTrack"></div>
+          <div class="swipe-slider-thumb" id="moodSwipeThumb"></div>
+        </div>
       </section>
 
       <!-- Interaction Slider (now Buttons) -->
       <section id="reactionCard" class="card" aria-label="Moment Reaction"
-        style="transition: background-color 0.5s ease, color 0.5s ease;">
-        <h2 id="reactionHeading">3) How do you respond?</h2>
+        style="position: relative; transition: background-color 0.5s ease, color 0.5s ease; overflow: hidden;">
+        <div class="cooldown-progress-bg"></div>
+        <div id="reactionCloseBtn"
+          style="display:none; position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; z-index: 10;">
+          ✕</div>
+        <h2 id="reactionHeading">How do you respond?</h2>
+
         <div id="reactionButtonsWrap" style="margin-top:15px; position:relative;">
-          <div id="reactionSuccessOverlay" class="success-overlay" style="margin-top:-10px;">✓</div>
+          <div id="reactionSuccessOverlay" class="success-overlay" style="margin-top:-10px; flex-direction: column;">
+            <div style="font-size: 3rem;">✓</div>
+            <div style="font-size: 0.8rem; text-align: center; line-height: 1.2; width: 180px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Your input was collected, feel free to continue to add more feedback as you feel it!</div>
+          </div>
           <div
             style="display:flex; justify-content:space-around; margin-top:5px; font-size: 1rem; color: var(--text-muted); transition: opacity 0.3s ease;"
             id="mainReactionButtonGroup">
@@ -159,11 +187,18 @@
             </button>
           </div>
         </div>
+        <div class="swipe-slider-container" id="reactionSwipeContainer" style="margin-top: 15px;">
+          <div class="swipe-slider-text">Swipe to submit just this reaction</div>
+          <div class="swipe-slider-track" id="reactionSwipeTrack"></div>
+          <div class="swipe-slider-thumb" id="reactionSwipeThumb"></div>
+        </div>
       </section>
 
       <!-- Continuous Note Input -->
       <section id="noteCard" class="card" aria-label="Drop a Note" style="position: relative; transition: background-color 0.5s ease, color 0.5s ease; overflow: hidden;">
-        <h2 id="noteHeading">4) Any thoughts or feelings?</h2>
+        <div class="cooldown-progress-bg"></div>
+        <h2 id="noteHeading">Any thoughts or feelings?</h2>
+
         <div id="noteCardBody" style="transition: opacity 0.3s ease; margin-top: 10px;">
           <p class="note" style="margin-top: 5px;">Listen and drop a keyword or note anytime.</p>
           <textarea id="continuousComment" maxlength="140" placeholder="A short image, feeling, or idea..." style="width: 100%; box-sizing: border-box; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px; margin-bottom: 5px; resize: vertical; min-height: 50px; outline: none;"></textarea>
@@ -172,7 +207,15 @@
             <button id="btnSubmitContinuousNote" class="primary" type="button" style="padding: 6px 16px; min-width: 80px;">Send Note</button>
           </div>
         </div>
-        <div id="noteSuccessOverlay" class="success-overlay" style="z-index: 100; font-size: 2rem; display: flex; align-items: center; justify-content: center;">✓ Delivered</div>
+        <div id="noteSuccessOverlay" class="success-overlay" style="z-index: 100; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="font-size: 3rem;">✓</div>
+            <div style="font-size: 0.9rem; text-align: center; line-height: 1.2; width: 220px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Your input was collected!</div>
+        </div>
+        <div class="swipe-slider-container" id="noteSwipeContainer">
+          <div class="swipe-slider-text">Swipe to submit just this note</div>
+          <div class="swipe-slider-track" id="noteSwipeTrack"></div>
+          <div class="swipe-slider-thumb" id="noteSwipeThumb"></div>
+        </div>
       </section>
 
       <!-- Visualizations Navigation -->
@@ -192,6 +235,10 @@
             style="flex:1; text-align:center; text-decoration:none; padding: 10px;">Word Cloud</a>
         </div>
       </section>
+      
+      <div id="btnSubmitAllContainer">
+        <button id="btnSubmitAll" class="primary" type="button">Submit All</button>
+      </div>
     </main>
 
     <footer>
@@ -235,9 +282,11 @@
         <div id="successMsg" class="success" role="status" aria-live="polite"></div>
       </div>
 
-      <div style="display:flex; justify-content:space-between; gap:10px; margin-top:15px;">
-        <button id="btnSkipWordCloud" class="secondary" type="button" style="flex:1;">Skip</button>
-        <button id="btnCloseWordCloud" class="primary" type="button" style="flex:1;">Save & Close</button>
+      <div id="wordCloudTimer" style="text-align: center; margin-top: 15px; font-size: 1.8rem; font-weight: bold; color: var(--primary); letter-spacing: 2px;">00:30</div>
+
+      <div style="display:flex; justify-content:space-between; gap:10px; margin-top:10px;">
+        <button id="btnSkipWordCloud" class="secondary" type="button" style="flex:1;">Finished / Skip</button>
+        <button id="btnCloseWordCloud" class="primary" type="button" style="flex:1;">Save Note</button>
       </div>
     </div>
   </div>
@@ -273,6 +322,8 @@
       <button id="btnCloseStrength" class="primary" type="button" style="margin-top:20px; width: 100%;">Done</button>
     </div>
   </div>
+
+
 
   <script src="script.js"></script>
 <script src="nav.js"></script>

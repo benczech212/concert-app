@@ -113,11 +113,11 @@ async function loadConfiguration() {
   // Predefined anchor colors for naming generated hues (nearest-neighbor)
   // 36 uniquely assigned color names representing hues 0 to 350
   const HUE_NAMES = [
-    "Red", "Candy Apple", "Vermilion", "Deep Orange", "Orange", "Amber", 
-    "Yellow", "Lemon", "Chartreuse", "Spring Bud", "Bright Green", "Harlequin", 
-    "Green", "Emerald", "Malachite", "Spring Green", "Mint", "Turquoise", 
-    "Cyan", "Cerulean", "Capri", "Azure", "Sapphire", "Cobalt", 
-    "Blue", "Ultramarine", "Indigo", "Violet", "Purple", "Amethyst", 
+    "Red", "Candy Apple", "Vermilion", "Deep Orange", "Orange", "Amber",
+    "Yellow", "Lemon", "Chartreuse", "Spring Bud", "Bright Green", "Harlequin",
+    "Green", "Emerald", "Malachite", "Spring Green", "Mint", "Turquoise",
+    "Cyan", "Cerulean", "Capri", "Azure", "Sapphire", "Cobalt",
+    "Blue", "Ultramarine", "Indigo", "Violet", "Purple", "Amethyst",
     "Magenta", "Hot Pink", "Cerise", "Rose", "Raspberry", "Crimson"
   ];
 
@@ -178,6 +178,7 @@ let currentSessionId = "";
 
 const colorCloseBtn = document.getElementById("colorCloseBtn");
 const moodCloseBtn = document.getElementById("moodCloseBtn");
+const reactionCloseBtn = document.getElementById("reactionCloseBtn");
 const colorCardBody = document.getElementById("colorCardBody");
 const grayscaleSwatches = document.getElementById("grayscaleSwatches");
 const moodCardBody = document.getElementById("moodCardBody");
@@ -202,6 +203,24 @@ if (colorCloseBtn) {
     }
   });
 }
+
+if (reactionCloseBtn) {
+  reactionCloseBtn.addEventListener("click", () => {
+    if (currentSelections.reaction) {
+      document.querySelectorAll(".reaction-snap-btn").forEach(btn => btn.classList.remove("active"));
+      const reactionSuccessOverlay = document.getElementById("reactionSuccessOverlay");
+      const popupSuccessOverlay = document.getElementById("popupSuccessOverlay");
+      if (reactionSuccessOverlay) reactionSuccessOverlay.classList.remove("show");
+      if (popupSuccessOverlay) popupSuccessOverlay.classList.remove("show");
+      if (mainReactionButtonGroup) {
+        mainReactionButtonGroup.style.opacity = "1";
+        mainReactionButtonGroup.style.pointerEvents = "auto";
+      }
+      handleSelection("reaction", currentSelections.reaction);
+    }
+  });
+}
+
 if (moodCloseBtn) {
   moodCloseBtn.addEventListener("click", () => {
     if (currentSelections.mood) {
@@ -355,52 +374,17 @@ if (typeof Chart === "undefined") {
 
 let currentSelections = { color: null, mood: null, reaction: null, note: null };
 let masterTimeout = null;
-let inactivityTimer = null;
 let isResetPending = false;
-let activeInteractions = 0;
 
-function handleInteractionStart() {
-  activeInteractions++;
-  if (isResetPending) {
-    clearTimeout(masterTimeout);
-  } else {
-    resetInactivityTimer();
-  }
+function getActiveSelectionCount() {
+  let count = 0;
+  if (currentSelections.color) count++;
+  if (currentSelections.mood) count++;
+  if (currentSelections.reaction) count++;
+  if (currentSelections.note) count++;
+  return count;
 }
 
-function handleInteractionEnd() {
-  activeInteractions = Math.max(0, activeInteractions - 1);
-  if (activeInteractions === 0) {
-    if (isResetPending) {
-      clearTimeout(masterTimeout);
-      masterTimeout = setTimeout(resetAllSelections, 2000);
-    } else {
-      resetInactivityTimer();
-    }
-  }
-}
-
-["colorCard", "moodCard", "reactionCard", "noteCard"].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) {
-    el.addEventListener("mouseenter", handleInteractionStart);
-    el.addEventListener("mouseleave", handleInteractionEnd);
-    el.addEventListener("focusin", handleInteractionStart);
-    el.addEventListener("focusout", handleInteractionEnd);
-  }
-});
-
-function resetInactivityTimer() {
-  clearTimeout(inactivityTimer);
-  // Do not reset inactivity if a success overlap is visible
-  if (masterTimeout) return;
-  inactivityTimer = setTimeout(() => {
-    // If not complete after 10 seconds, auto submit
-    if (!currentSelections.color || !currentSelections.mood || !currentSelections.reaction || !currentSelections.note) {
-      submitSelections(true);
-    }
-  }, 10000);
-}
 
 function submitSelections(isAutoSubmit = false) {
   let reactionVal = 1; // meh
@@ -419,16 +403,92 @@ function submitSelections(isAutoSubmit = false) {
   // Lock out resetting once submitted
   const colorCloseBtn = document.getElementById("colorCloseBtn");
   const moodCloseBtn = document.getElementById("moodCloseBtn");
+  const reactionCloseBtn = document.getElementById("reactionCloseBtn");
   if (colorCloseBtn) colorCloseBtn.style.display = "none";
   if (moodCloseBtn) moodCloseBtn.style.display = "none";
+  if (reactionCloseBtn) reactionCloseBtn.style.display = "none";
 
   clearTimeout(masterTimeout);
-  clearTimeout(inactivityTimer);
-  
-  isResetPending = true;
-  if (activeInteractions === 0) {
-    masterTimeout = setTimeout(resetAllSelections, isAutoSubmit ? 6500 : 10000);
+
+  document.querySelectorAll('.cooldown-progress-bg').forEach(bg => {
+    bg.style.width = '100%';
+    bg.classList.remove('draining');
+    requestAnimationFrame(() => {
+      bg.classList.add('draining');
+      bg.style.width = '0%';
+    });
+  });
+
+  if (!localStorage.getItem('hasSeenSubmitTip')) {
+    const tipModal = document.getElementById('firstTimeTipModal');
+    if (tipModal) tipModal.style.display = "flex";
+    localStorage.setItem('hasSeenSubmitTip', 'true');
+
+    const btnGotItTip = document.getElementById('btnGotItTip');
+    if (btnGotItTip) {
+      btnGotItTip.addEventListener('click', () => {
+        tipModal.style.display = "none";
+      }, { once: true });
+    }
   }
+
+  // Visual feedback: Unhighlight backgrounds and force sliders to 100%
+  const activeCards = [];
+  if (currentSelections.color) activeCards.push('color');
+  if (currentSelections.mood) activeCards.push('mood');
+  if (currentSelections.reaction) activeCards.push('reaction');
+  if (currentSelections.note) activeCards.push('note');
+
+  activeCards.forEach(type => {
+    const card = document.getElementById(`${type}Card`);
+    if (card) {
+      card.style.backgroundColor = ""; // Reset to default CSS
+      card.style.color = "";
+      card.querySelectorAll("h2, p, .hint").forEach(el => el.style.color = "");
+      const closeBtn = document.getElementById(`${type}CloseBtn`);
+      if (closeBtn) closeBtn.style.color = "";
+    }
+
+    const thumb = document.getElementById(`${type}SwipeThumb`);
+    const track = document.getElementById(`${type}SwipeTrack`);
+    const container = document.getElementById(`${type}SwipeContainer`);
+    if (thumb && track && container) {
+      const maxDist = container.offsetWidth - thumb.offsetWidth - 8;
+      thumb.style.transition = 'left 0.3s ease';
+      track.style.transition = 'width 0.3s ease';
+      thumb.style.left = `calc(4px + ${maxDist}px)`;
+      track.style.width = '100%';
+    }
+  });
+
+  isResetPending = true;
+  masterTimeout = setTimeout(resetAllSelections, 4000);
+}
+
+function autoSwipeAllAndSubmit() {
+  const activeCards = [];
+  if (currentSelections.color) activeCards.push('color');
+  if (currentSelections.mood) activeCards.push('mood');
+  if (currentSelections.reaction) activeCards.push('reaction');
+  if (currentSelections.note) activeCards.push('note');
+
+  activeCards.forEach(type => {
+    const thumb = document.getElementById(`${type}SwipeThumb`);
+    const track = document.getElementById(`${type}SwipeTrack`);
+    const container = document.getElementById(`${type}SwipeContainer`);
+    if (thumb && track && container) {
+      const maxDist = container.offsetWidth - thumb.offsetWidth - 8;
+      thumb.style.transition = 'left 0.3s ease';
+      track.style.transition = 'width 0.3s ease';
+      thumb.style.left = `calc(4px + ${maxDist}px)`;
+      track.style.width = '100%';
+    }
+  });
+
+  document.getElementById("btnSubmitAllContainer").style.display = "none";
+  setTimeout(() => {
+    submitSelections(false);
+  }, 300);
 }
 
 function getCombinedText() {
@@ -447,25 +507,24 @@ function getCombinedText() {
 }
 
 function updateOverlays() {
-  const text = getCombinedText();
-  const fontSize = text.length > 5 ? "1.6rem" : "3rem";
-
-  const cOverlay = document.getElementById("colorSuccessOverlay");
-  const mOverlay = document.getElementById("moodSuccessOverlay");
-  const rOverlay = document.getElementById("reactionSuccessOverlay");
-  const pOverlay = document.getElementById("popupSuccessOverlay");
-
-  [cOverlay, mOverlay, rOverlay, pOverlay].forEach(ov => {
-    if (ov) {
-      ov.textContent = text;
-      ov.style.fontSize = fontSize;
-      ov.style.textAlign = "center";
-      ov.style.width = "100%";
-    }
-  });
+  // Disabling to prevent overwriting static HTML checkboxes
 }
 
 function resetAllSelections() {
+  const cHeading = document.getElementById("colorHeading");
+  if (cHeading) cHeading.textContent = "What color does this feel like?";
+  const mHeading = document.getElementById("moodHeading");
+  if (mHeading) mHeading.textContent = "How does this make you feel right now?";
+  const rHeading = document.getElementById("reactionHeading");
+  if (rHeading) rHeading.textContent = "How do you respond?";
+  const nHeading = document.getElementById("noteHeading");
+  if (nHeading) nHeading.textContent = "Any thoughts or feelings?";
+
+  document.querySelectorAll('.cooldown-progress-bg').forEach(bg => {
+    bg.classList.remove('draining');
+    bg.style.width = '100%';
+  });
+
   const cc = document.getElementById("colorCard");
   if (cc) { cc.style.backgroundColor = ""; cc.style.color = ""; cc.querySelectorAll("h2, p, .hint").forEach(el => el.style.color = ""); }
 
@@ -494,13 +553,31 @@ function resetAllSelections() {
 
   const cOverlay = document.getElementById("colorSuccessOverlay");
   const mOverlay = document.getElementById("moodSuccessOverlay");
-  const rOverlay = document.getElementById("reactionSuccessOverlay");
-  const pOverlay = document.getElementById("popupSuccessOverlay");
+  const cSwipe = document.getElementById("colorSwipeContainer");
+  const mSwipe = document.getElementById("moodSwipeContainer");
+  const rSwipe = document.getElementById("reactionSwipeContainer");
+  const nSwipe = document.getElementById("noteSwipeContainer");
 
-  if (cOverlay) cOverlay.classList.remove("show");
-  if (mOverlay) mOverlay.classList.remove("show");
-  if (rOverlay) rOverlay.classList.remove("show");
-  if (pOverlay) pOverlay.classList.remove("show");
+  if (cSwipe) {
+    cSwipe.style.display = "none";
+    const t = cSwipe.querySelector('.swipe-slider-text');
+    if (t) t.textContent = "Swipe to submit just this color";
+  }
+  if (mSwipe) {
+    mSwipe.style.display = "none";
+    const t = mSwipe.querySelector('.swipe-slider-text');
+    if (t) t.textContent = "Swipe to submit just this mood";
+  }
+  if (rSwipe) {
+    rSwipe.style.display = "none";
+    const t = rSwipe.querySelector('.swipe-slider-text');
+    if (t) t.textContent = "Swipe to submit just this reaction";
+  }
+  if (nSwipe) {
+    nSwipe.style.display = "none";
+    const t = nSwipe.querySelector('.swipe-slider-text');
+    if (t) t.textContent = "Swipe to submit just this note";
+  }
 
   document.querySelectorAll(".mood-wedge, .color-wedge").forEach(p => {
     p.classList.remove('active');
@@ -534,27 +611,127 @@ function resetAllSelections() {
 
   if (continuousCommentEl) continuousCommentEl.value = "";
   if (continuousCharHintEl) continuousCharHintEl.textContent = "0 / 140";
-  if (noteCardBody) noteCardBody.style.opacity = "1";
-  const noteSuccessOverlay = document.getElementById("noteSuccessOverlay");
-  if (noteSuccessOverlay) noteSuccessOverlay.classList.remove("show");
+  if (noteCardBody) { noteCardBody.style.opacity = "1"; noteCardBody.style.display = "block"; }
+
 
   if (colorCloseBtn) colorCloseBtn.style.display = "none";
-  if (colorCardBody) colorCardBody.style.opacity = "1";
+  if (colorCardBody) { colorCardBody.style.opacity = "1"; colorCardBody.style.display = "flex"; }
   if (grayscaleSwatches) grayscaleSwatches.style.display = "flex";
   const hintC = document.getElementById("colorHint");
   if (hintC) hintC.style.display = "block";
 
   if (moodCloseBtn) moodCloseBtn.style.display = "none";
-  if (moodCardBody) moodCardBody.style.opacity = "1";
+  if (moodCardBody) { moodCardBody.style.opacity = "1"; moodCardBody.style.display = "block"; }
   const hintM = document.getElementById("moodHint");
   if (hintM) hintM.style.display = "block";
+  
+  const mReact = document.getElementById("mainReactionButtonGroup");
+  if (mReact) { mReact.style.opacity = "1"; mReact.style.display = "flex"; mReact.style.pointerEvents = "auto"; }
 
   const disp = document.getElementById("colorNameDisplay");
   if (disp) { disp.textContent = ""; disp.style.backgroundColor = "transparent"; disp.style.opacity = "0"; }
 
   currentSelections = { color: null, mood: null, reaction: null, note: null };
   updateOverlays();
+  updateSubmitUI();
 }
+
+function updateSubmitUI() {
+  const btnContainer = document.getElementById("btnSubmitAllContainer");
+  if (btnContainer) {
+    if (getActiveSelectionCount() > 1) {
+      btnContainer.style.display = "block";
+    } else {
+      btnContainer.style.display = "none";
+    }
+  }
+}
+
+function initSwipeSliders() {
+  const cards = ['color', 'mood', 'reaction', 'note'];
+  cards.forEach(type => {
+    const thumb = document.getElementById(type + 'SwipeThumb');
+    const track = document.getElementById(type + 'SwipeTrack');
+    const container = document.getElementById(type + 'SwipeContainer');
+    if (!thumb || !track || !container) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let currentDiff = 0;
+
+    function startDrag(e) {
+      isDragging = true;
+      startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+      currentDiff = 0;
+      thumb.style.transition = 'none';
+      track.style.transition = 'none';
+    }
+
+    function moveDrag(e) {
+      if (!isDragging) return;
+      const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+      let diff = currentX - startX;
+
+      const maxDist = container.offsetWidth - thumb.offsetWidth - 8; // 8px for left margin pad
+      if (diff < 0) diff = 0;
+      if (diff > maxDist) diff = maxDist;
+      
+      currentDiff = diff;
+
+      thumb.style.left = `calc(4px + ${diff}px)`;
+      track.style.width = `${(diff / maxDist) * 100}%`;
+    }
+
+    function endDrag(e) {
+      if (!isDragging) return;
+      isDragging = false;
+
+      const maxDist = container.offsetWidth - thumb.offsetWidth - 8;
+
+      if (currentDiff >= maxDist * 0.5) {
+        // threshold reached, submit!
+        thumb.style.left = `calc(4px + ${maxDist}px)`;
+        track.style.width = '100%';
+        setTimeout(() => {
+          submitSelections(false);
+          // reset slider after submission
+          setTimeout(() => {
+            thumb.style.transition = 'left 0.3s ease';
+            track.style.transition = 'width 0.3s ease';
+            thumb.style.left = '4px';
+            track.style.width = '0%';
+            currentDiff = 0;
+          }, 500);
+        }, 300);
+      } else {
+        // snap back
+        thumb.style.transition = 'left 0.3s ease';
+        track.style.transition = 'width 0.3s ease';
+        thumb.style.left = '4px';
+        track.style.width = '0%';
+        currentDiff = 0;
+      }
+    }
+
+    thumb.addEventListener('mousedown', startDrag);
+    thumb.addEventListener('touchstart', startDrag, { passive: true });
+
+    document.addEventListener('mousemove', moveDrag);
+    document.addEventListener('touchmove', moveDrag, { passive: false });
+
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+    document.addEventListener('touchcancel', endDrag);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initSwipeSliders();
+  const btnSubmitAll = document.getElementById("btnSubmitAll");
+  if (btnSubmitAll) {
+    btnSubmitAll.addEventListener('click', autoSwipeAllAndSubmit);
+  }
+});
 
 function handleSelection(type, name, hexColorOrGlow) {
   // Deselect if clicking the same item
@@ -573,15 +750,15 @@ function handleSelection(type, name, hexColorOrGlow) {
 
       const h2 = document.getElementById(`${type}Heading`);
       if (h2) {
-        if (type === 'color') h2.textContent = "1) What color does this feel like?";
-        if (type === 'mood') h2.textContent = "2) How does this make you feel right now?";
-        if (type === 'reaction') h2.textContent = "3) How do you respond?";
+        if (type === 'color') h2.textContent = "What color does this feel like?";
+        if (type === 'mood') h2.textContent = "How does this make you feel right now?";
+        if (type === 'reaction') h2.textContent = "How do you respond?";
       }
     }
 
     if (type === 'color') {
       if (colorCloseBtn) colorCloseBtn.style.display = "none";
-      if (colorCardBody) colorCardBody.style.opacity = "1";
+      if (colorCardBody) { colorCardBody.style.opacity = "1"; colorCardBody.style.display = "flex"; }
       if (grayscaleSwatches) grayscaleSwatches.style.display = "flex";
       const hint = document.getElementById("colorHint");
       if (hint) hint.style.display = "block";
@@ -593,7 +770,7 @@ function handleSelection(type, name, hexColorOrGlow) {
 
     if (type === 'mood') {
       if (moodCloseBtn) moodCloseBtn.style.display = "none";
-      if (moodCardBody) moodCardBody.style.opacity = "1";
+      if (moodCardBody) { moodCardBody.style.opacity = "1"; moodCardBody.style.display = "block"; }
       const hint = document.getElementById("moodHint");
       if (hint) hint.style.display = "block";
       if (moodButtonsWrap) {
@@ -615,6 +792,7 @@ function handleSelection(type, name, hexColorOrGlow) {
     }
 
     updateOverlays();
+    updateSubmitUI();
     return; // Exit early since we just deselected
   }
 
@@ -633,10 +811,9 @@ function handleSelection(type, name, hexColorOrGlow) {
     if (h2) h2.textContent = name;
 
     // Collapse card
-    card.style.height = "100px";
     card.style.padding = "20px";
     if (colorCloseBtn) { colorCloseBtn.style.display = "block"; colorCloseBtn.style.color = contrast; }
-    if (colorCardBody) colorCardBody.style.opacity = "0";
+    if (colorCardBody) { colorCardBody.style.display = "none"; }
     if (grayscaleSwatches) grayscaleSwatches.style.display = "none";
     const hint = document.getElementById("colorHint");
     if (hint) hint.style.display = "none";
@@ -669,9 +846,8 @@ function handleSelection(type, name, hexColorOrGlow) {
       const svg = colorWheelWrap.querySelector('svg');
       if (svg) { svg.style.opacity = "0"; svg.style.pointerEvents = "none"; }
     }
-    const colorSuccessOverlay = document.getElementById("colorSuccessOverlay");
-    colorSuccessOverlay.classList.add("show");
-    colorSuccessOverlay.style.color = contrast;
+    const colorSwipe = document.getElementById("colorSwipeContainer");
+    if (colorSwipe) colorSwipe.style.display = "block";
   }
   else if (type === 'mood') {
     const card = document.getElementById("moodCard");
@@ -687,10 +863,9 @@ function handleSelection(type, name, hexColorOrGlow) {
     if (h2) h2.textContent = name;
 
     // Collapse card
-    card.style.height = "100px";
     card.style.padding = "20px";
     if (moodCloseBtn) { moodCloseBtn.style.display = "block"; moodCloseBtn.style.color = contrast; }
-    if (moodCardBody) moodCardBody.style.opacity = "0";
+    if (moodCardBody) { moodCardBody.style.display = "none"; }
     const hint = document.getElementById("moodHint");
     if (hint) hint.style.display = "none";
 
@@ -698,24 +873,30 @@ function handleSelection(type, name, hexColorOrGlow) {
       const svg = moodButtonsWrap.querySelector('svg');
       if (svg) { svg.style.opacity = "0"; svg.style.pointerEvents = "none"; }
     }
-    const moodSuccessOverlay = document.getElementById("moodSuccessOverlay");
-    moodSuccessOverlay.classList.add("show");
-    moodSuccessOverlay.style.color = contrast;
+    const moodSwipe = document.getElementById("moodSwipeContainer");
+    if (moodSwipe) moodSwipe.style.display = "block";
   } else if (type === 'reaction') {
     const card = document.getElementById("reactionCard");
     // Just a slight highlight for the card since we don't have a specific color
     card.style.backgroundColor = "rgba(255,255,255,0.15)";
 
+    const h2 = document.getElementById("reactionHeading");
+    if (h2) {
+      if (name === 'like') h2.textContent = '👍 Like';
+      else if (name === 'applause') h2.textContent = '👏 Applause';
+      else h2.textContent = '😐 Meh';
+    }
+
+    if (reactionCloseBtn) { reactionCloseBtn.style.display = "block"; }
+
     // Collapse card
-    card.style.height = "100px";
     card.style.padding = "20px";
 
     if (mainReactionButtonGroup) {
-      mainReactionButtonGroup.style.opacity = "0";
-      mainReactionButtonGroup.style.pointerEvents = "none";
+      mainReactionButtonGroup.style.display = "none";
     }
-    const reactionSuccessOverlay = document.getElementById("reactionSuccessOverlay");
-    reactionSuccessOverlay.classList.add("show");
+    const reactionSwipe = document.getElementById("reactionSwipeContainer");
+    if (reactionSwipe) reactionSwipe.style.display = "block";
 
     if (popupReactionButtonGroup) {
       popupReactionButtonGroup.style.opacity = "0";
@@ -725,10 +906,9 @@ function handleSelection(type, name, hexColorOrGlow) {
     if (popupSuccessOverlay) popupSuccessOverlay.classList.add("show");
   }
 
+  updateSubmitUI();
   if (currentSelections.color && currentSelections.mood && currentSelections.reaction && currentSelections.note) {
-    submitSelections(false);
-  } else {
-    resetInactivityTimer();
+    autoSwipeAllAndSubmit();
   }
 }
 
@@ -875,7 +1055,7 @@ btnJoin.addEventListener("click", async () => {
     email = `anon_${Date.now()}_${Math.random().toString(16).slice(2)}@anonymous.local`;
   } else {
     if (!name) name = "Participant";
-    
+
     // Only require/validate email if they checked the consent box
     if (emailConsent) {
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -954,7 +1134,7 @@ function applyShowState(state) {
   const preShow = document.getElementById("preShowLobby");
   const appShell = document.getElementById("appShell");
   const postShow = document.getElementById("postShowRecap");
-  
+
   if (preShow) preShow.style.display = "none";
   if (appShell) appShell.style.display = "none";
   if (postShow) postShow.style.display = "none";
@@ -972,12 +1152,12 @@ function applyShowState(state) {
 async function generateRecap() {
   const recapEl = document.getElementById("recapContent");
   if (!recapEl || !currentUser) return;
-  
+
   try {
     const res = await fetch('/api/events');
     const allEvents = await res.json();
     const myEvents = allEvents.filter(e => e.userId === currentUser.email);
-    
+
     // Ignore system events
     const myUserEvents = myEvents.filter(e => e.category !== 'system');
     const allUserEvents = allEvents.filter(e => e.category !== 'system');
@@ -986,7 +1166,7 @@ async function generateRecap() {
     const moods = myUserEvents.filter(e => e.category === 'mood').length;
     const notes = myUserEvents.filter(e => e.category === 'note').length;
     const total = myUserEvents.length;
-    
+
     recapEl.innerHTML = `
       <p>You contributed <strong style="color: var(--primary); font-size: 1.3em;">${total}</strong> interactions tonight.</p>
       <ul style="list-style: none; padding: 0; margin-top: 20px; color: var(--text-muted); text-align: left; display: inline-block;">
@@ -1008,7 +1188,7 @@ function doSwitchUser() {
   if (appShell) appShell.style.display = "none";
   const postShow = document.getElementById("postShowRecap");
   if (postShow) postShow.style.display = "none";
-  
+
   if (preShowLobby) preShowLobby.style.display = "flex";
   if (lobbyAuthForm) lobbyAuthForm.style.display = "block";
   if (lobbyWaitGroup) lobbyWaitGroup.style.display = "none";
@@ -1086,6 +1266,23 @@ function connectStream() {
           if (charHintEl) charHintEl.textContent = "0 / 140";
           if (successMsgEl) successMsgEl.textContent = "";
 
+          const timerEl = document.getElementById("wordCloudTimer");
+          if (timerEl) timerEl.textContent = "00:30";
+
+          if (window.wordCloudTimeoutInterval) clearInterval(window.wordCloudTimeoutInterval);
+          let timeLeft = 30;
+          window.wordCloudTimeoutInterval = setInterval(() => {
+            timeLeft--;
+            if (timerEl) timerEl.textContent = `00:${timeLeft.toString().padStart(2, '0')}`;
+            if (timeLeft <= 0) {
+              clearInterval(window.wordCloudTimeoutInterval);
+              if (wordCloudModal && wordCloudModal.style.display === "flex") {
+                const btnSkip = document.getElementById("btnSkipWordCloud");
+                if (btnSkip) btnSkip.click();
+              }
+            }
+          }, 1000);
+
           if (wordCloudModal) wordCloudModal.style.display = "flex";
         }
       }
@@ -1099,6 +1296,7 @@ let lastFinishedTrackId = null;
 
 if (btnSkipWordCloud) {
   btnSkipWordCloud.addEventListener("click", () => {
+    if (window.wordCloudTimeoutInterval) clearInterval(window.wordCloudTimeoutInterval);
     recordEvent("note_skip", "skipped", { trackId: lastFinishedTrackId });
     wordCloudModal.style.display = "none";
   });
@@ -1106,6 +1304,7 @@ if (btnSkipWordCloud) {
 
 if (btnCloseWordCloud) {
   btnCloseWordCloud.addEventListener("click", () => {
+    if (window.wordCloudTimeoutInterval) clearInterval(window.wordCloudTimeoutInterval);
     const note = commentEl.value.trim();
     if (note) {
       recordEvent("note", note, { trackId: lastFinishedTrackId });
@@ -1498,18 +1697,36 @@ if (btnSubmitContinuousNote && continuousCommentEl) {
     if (note) {
       recordEvent("note", note);
       currentSelections.note = note;
-      
-      if (noteCardBody) noteCardBody.style.opacity = "0";
-      if (noteSuccessOverlay) {
-        noteSuccessOverlay.classList.add("show");
+
+      if (noteCardBody) { noteCardBody.style.display = "none"; }
+      updateSubmitUI();
+      if (noteSwipeContainer) {
+        noteSwipeContainer.style.display = "block";
       }
-      
+
       if (currentSelections.color && currentSelections.mood && currentSelections.reaction && currentSelections.note) {
-        submitSelections(false);
-      } else {
-        resetInactivityTimer();
+        autoSwipeAllAndSubmit();
       }
     }
+  });
+}
+
+// ---------- 10s Idle Modal Actions ----------
+const btnKeepEditing = document.getElementById('btnKeepEditing');
+const btnSubmitNow = document.getElementById('btnSubmitNow');
+const idleSubmitModal = document.getElementById('idleSubmitModal');
+
+if (btnKeepEditing && idleSubmitModal) {
+  btnKeepEditing.addEventListener('click', () => {
+    idleSubmitModal.style.display = 'none';
+    handleInteractionStart(); // clears timers and sets active state
+  });
+}
+
+if (btnSubmitNow && idleSubmitModal) {
+  btnSubmitNow.addEventListener('click', () => {
+    idleSubmitModal.style.display = 'none';
+    submitSelections(true);
   });
 }
 

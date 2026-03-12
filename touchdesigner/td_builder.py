@@ -99,12 +99,17 @@ def onReceiveOSC(dat, rowIndex, message, bytes, timeStamp, source, sendPort, rec
     
     if address == show_update_path:
         print(f"OSC Show Update Received: {val}")
-        state_map = {'lobby': 'PRE_SHOW', 'active': 'ACTIVE', 'end': 'POST_SHOW'}
-        if val.lower() in state_map:
+        v = val.lower().strip()
+        state_map = {
+            'lobby': 'PRE_SHOW', 'pre_show': 'PRE_SHOW',
+            'active': 'ACTIVE', 
+            'end': 'POST_SHOW', 'post_show': 'POST_SHOW'
+        }
+        if v in state_map:
             webclient.request(
                 base_url + "/api/state", 'POST',
                 header={'Content-Type': 'application/json'},
-                data=json.dumps({"newState": state_map[val.lower()]})
+                data=json.dumps({"newState": state_map[v]})
             )
             
     elif address == track_update_path:

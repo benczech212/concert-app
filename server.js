@@ -139,17 +139,17 @@ setInterval(() => {
   }
 }, 60000); // Every 60 seconds
 
-app.post('/api/track', (req, res) => {
-  const { title } = req.body;
+function startTrack(title) {
   const safeTitle = title ? title.trim() : 'Unknown Track';
   
-  // Handle case where title is 'none' or empty (used as an end signal from some clients)
-  if (safeTitle.toLowerCase() === 'none' || safeTitle === '') {
-    req.url = '/api/track/end';
-    return app._router.handle(req, res); // Redirect to end track logic just in case
+  // If a track is already playing, end it automatically
+  if (currentTrack) {
+    console.log(`[Track] Auto-ending current track ${currentTrack.id} before starting new one.`);
+    endCurrentTrack();
   }
 
   // Generate unique ID just in case of duplicate names
+  // Use a slight delay or unique salt if multiple fired in same ms, but Date.now is usually fine for human clicks
   const uniqueId = `trk_${Date.now()}`;
   let trackDetails = { id: uniqueId, title: safeTitle };
 
@@ -167,12 +167,25 @@ app.post('/api/track', (req, res) => {
   };
   events.push(systemEvent);
   fs.appendFile(path.join(__dirname, 'logs', 'events_log.jsonl'), JSON.stringify(systemEvent) + '\n', () => { });
+  
+  return currentTrack;
+}
 
-  res.json({ success: true, track: currentTrack });
+app.post('/api/track', (req, res) => {
+  const { title } = req.body;
+  const safeTitle = title ? title.trim() : 'Unknown Track';
+  
+  // Handle case where title is 'none' or empty (used as an end signal from some clients)
+  if (safeTitle.toLowerCase() === 'none' || safeTitle === '') {
+    req.url = '/api/track/end';
+    return app._router.handle(req, res); // Redirect to end track logic just in case
+  }
+
+  const track = startTrack(safeTitle);
+  res.json({ success: true, track });
 });
 
-// Clear track
-app.post('/api/track/end', (req, res) => {
+function endCurrentTrack() {
   if (currentTrack) {
     // Record system event for timeline
     const systemEvent = {
@@ -199,7 +212,7 @@ app.post('/api/track/end', (req, res) => {
         expected: activeClientsCount,
         received: new Set(),
         timeout: setTimeout(() => {
-          console.log(`[Watcher] Timeout reached for ${endedTrackId}, triggering generation early.`);
+          console.log(`[Watcher] Timeout reached for ${endedTrackId}, triggering automated generation.`);
           triggerAutomaticStoryGeneration(endedTrackId);
           delete trackEndWatchers[endedTrackId];
         }, 30000) // 30 seconds wait
@@ -210,10 +223,14 @@ app.post('/api/track/end', (req, res) => {
 
   currentTrack = null;
   broadcast({ type: 'track_end', track: null });
+}
+
+// Clear track
+app.post('/api/track/end', (req, res) => {
+  endCurrentTrack();
   res.json({ success: true });
 });
 
-// Manual Story Generation Trigger
 app.post('/api/debug/generate', (req, res) => {
     const { trackId } = req.body;
     if (!trackId) {
@@ -222,6 +239,49 @@ app.post('/api/debug/generate', (req, res) => {
     console.log(`[Manual Override] Triggering automated generation for ${trackId}`);
     triggerAutomaticStoryGeneration(trackId);
     res.json({ success: true, message: `Story and Image generation triggered for ${trackId}` });
+});
+
+// Manual Test Track Inject
+app.post('/api/debug/test-track-inject', (req, res) => {
+    console.log(`[Test Inject] Generating a fake track and populating events...`);
+    const testId = `trk_test_${Date.now()}`;
+    const testTitle = "Injected Admin Test Track";
+    
+    // Add fake start event
+    events.push({
+        id: `evt_${testId}_start`, timestamp: new Date().toISOString(), category: 'system', value: 'track_start', trackId: testId, trackTitle: testTitle
+    });
+
+    // Add 80 fake audience events
+    const MOODS = ["Happy", "Sad", "Angry", "Calm", "Excited", "Anxious", "Bored", "Joy", "Melancholy", "Confusion", "Mystery", "Chaos"];
+    const COLORS = ["Red", "Blue", "Amber", "Green", "Purple", "Yellow", "Cyan", "White"];
+    const REACTIONS = [1, 2, 4]; // meh, like, applause
+    const PHRASES = ["I am feeling so", "This track is", "Wow", "Incredible performance", "Absolutely", "Just feeling the", "Loving the"];
+    const WORDS = ["energetic", "wild", "fun", "amazing", "deep", "emotional", "moving", "profound", "slow", "intense", "chaotic", "loud"];
+
+    for(let i=0; i<80; i++) {
+        const rand = Math.random();
+        if(rand < 0.25) {
+             events.push({ id: `evt_${testId}_m${i}`, timestamp: new Date().toISOString(), category: 'mood', value: MOODS[Math.floor(Math.random()*MOODS.length)], trackId: testId });
+        } else if(rand < 0.5) {
+             events.push({ id: `evt_${testId}_c${i}`, timestamp: new Date().toISOString(), category: 'color', value: COLORS[Math.floor(Math.random()*COLORS.length)], trackId: testId });
+        } else if(rand < 0.75) {
+             events.push({ id: `evt_${testId}_r${i}`, timestamp: new Date().toISOString(), category: 'combined_reaction', value: REACTIONS[Math.floor(Math.random()*REACTIONS.length)], trackId: testId });
+        } else {
+             const note = (Math.random() > 0.5 ? PHRASES[Math.floor(Math.random()*PHRASES.length)] + " " : "") + WORDS[Math.floor(Math.random()*WORDS.length)];
+             events.push({ id: `evt_${testId}_n${i}`, timestamp: new Date().toISOString(), category: 'note', value: note, trackId: testId });
+        }
+    }
+    
+    // Add fake end event
+    events.push({
+        id: `evt_${testId}_end`, timestamp: new Date().toISOString(), category: 'system', value: 'track_end', trackId: testId, trackTitle: testTitle
+    });
+
+    console.log(`[Test Inject] Triggering AI Generation natively for ${testId}`);
+    triggerAutomaticStoryGeneration(testId);
+    
+    res.json({ success: true, message: `Injected test track ${testId} with 80 random user events and initiated AI generation.` });
 });
 
 // Record event
@@ -240,10 +300,15 @@ app.post('/api/events', (req, res) => {
   }
 
   // Basic bad word filter
+  const BAD_WORDS = ['fuck', 'shit', 'bitch', 'asshole', 'cunt', 'dick', 'pussy', 'whore', 'slut', 'faggot', 'nigger', 'cock', 'bastard'];
+  const regex = new RegExp(`\\b(${BAD_WORDS.join('|')})\\b`, 'gi');
+
   if (event.category === 'note' && typeof event.value === 'string') {
-    const BAD_WORDS = ['fuck', 'shit', 'bitch', 'asshole', 'cunt', 'dick', 'pussy', 'whore', 'slut', 'faggot', 'nigger', 'cock', 'bastard'];
-    const regex = new RegExp(`\\b(${BAD_WORDS.join('|')})\\b`, 'gi');
-    event.value = event.value.replace(regex, '***');
+    event.value = event.value.replace(regex, '****');
+  }
+  
+  if (event.note && typeof event.note === 'string') {
+    event.note = event.note.replace(regex, '****');
   }
 
   // Ensure it has an ID and timestamp
@@ -263,9 +328,9 @@ app.post('/api/events', (req, res) => {
       console.log(`[Watcher] Progress for ${event.trackId}: ${watcher.received.size} / ${watcher.expected}`);
       
       if (watcher.received.size >= watcher.expected) {
-          console.log(`[Watcher] Target completions reached for ${event.trackId}. Triggering generation (Auto-gen paused).`);
+          console.log(`[Watcher] Target completions reached for ${event.trackId}. Triggering automated generation.`);
           clearTimeout(watcher.timeout);
-          // triggerAutomaticStoryGeneration(event.trackId);
+          triggerAutomaticStoryGeneration(event.trackId);
           delete trackEndWatchers[event.trackId];
       }
   }
@@ -488,13 +553,37 @@ async function generateShowStories(specificTrackId = null) {
     }
     
     console.log(`Preparing prompts for track ${trackId} - ${data.title}`);
-    const getAllWords = [...new Set(data.words)].join(', ');
+
+    // N-gram calculator
+    const getNGrams = (phrasesArr, n) => {
+        const counts = {};
+        phrasesArr.forEach(phrase => {
+            const tokens = phrase.trim().toLowerCase().replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 0);
+            for (let i = 0; i <= tokens.length - n; i++) {
+                const ngram = tokens.slice(i, i + n).join(' ');
+                counts[ngram] = (counts[ngram] || 0) + 1;
+            }
+        });
+        return Object.entries(counts).sort((a,b) => b[1] - a[1]);
+    };
+
+    const top1 = getNGrams(data.words, 1).slice(0, 50).map(x => `${x[0]} (${x[1]})`).join(', ');
+    const top2 = getNGrams(data.words, 2).slice(0, 25).map(x => `${x[0]} (${x[1]})`).join(', ');
+    const top3 = getNGrams(data.words, 3).slice(0, 10).map(x => `${x[0]} (${x[1]})`).join(', ');
+    const top4 = getNGrams(data.words, 4).slice(0, 5).map(x => `${x[0]} (${x[1]})`).join(', ');
+
+    let allWordsStr = [];
+    if (top1) allWordsStr.push(`Top 50 single words: ${top1}`);
+    if (top2) allWordsStr.push(`Top 25 2-word pairs: ${top2}`);
+    if (top3) allWordsStr.push(`Top 10 3-word pairs: ${top3}`);
+    if (top4) allWordsStr.push(`Top 5 4-or-more word pairs: ${top4}`);
+    const finalWordsStr = allWordsStr.join('\\n  ') || "none submitted";
 
     // Top 5 overall moods
-    const topMoods = Object.entries(data.moods).sort((a,b) => b[1] - a[1]).slice(0, 5).map(x => x[0]).join(', ');
+    const topMoods = Object.entries(data.moods).sort((a,b) => b[1] - a[1]).slice(0, 5).map(x => `${x[0]} (${x[1]})`).join(', ');
     
     // Top 2 overall colors
-    const topColors = Object.entries(data.colors).sort((a,b) => b[1] - a[1]).slice(0, 2).map(x => x[0]).join(', ');
+    const topColors = Object.entries(data.colors).sort((a,b) => b[1] - a[1]).slice(0, 2).map(x => `${x[0]} (${x[1]})`).join(', ');
 
     // Minute by minute summary
     const minuteKeys = Object.keys(data.minutes).map(Number).sort((a,b) => a - b);
@@ -512,8 +601,7 @@ async function generateShowStories(specificTrackId = null) {
     }
     const timelineStr = timelineOverview.join('\\n');
     
-    const prompt = `You are a creative storyteller. A live audience just listened to a musical track titled "${data.title}".
-During the performance, they interacted using an app. Here is their aggregated data:
+    const prompt = `You are a creative storyteller. A live audience just listened to a musical track titled "${data.title}".\\n We want your help coming up with a name for this track. During the performance, they interacted using an app. Here is their aggregated data:
 
 OVERALL TRACK SUMMARY:
 - Applause: ${data.reactions.applause}
@@ -521,7 +609,7 @@ OVERALL TRACK SUMMARY:
 - Meh/Neutral: ${data.reactions.meh}
 - Top 5 overall moods felt: ${topMoods || "none specified"}
 - Top 2 overall colors felt: ${topColors || "none specified"}
-- All words submitted to describe it: ${getAllWords || "none submitted"}
+- All words submitted to describe it: \\n  ${finalWordsStr}
 
 MINUTE-BY-MINUTE TRAJECTORY:
 ${timelineStr || "no timeline data"}
@@ -599,7 +687,9 @@ Output format should be JSON exactly like this, no markdown formatting:
         trackId: trackId,
         originalTitle: data.title,
         newName: parsed.newName || "Unnamed Track",
-        story: parsed.story || "No story available."
+        story: parsed.story || "No story available.",
+        geminiPrompt: prompt,
+        rawData: data
       });
       console.log(`Generated story for ${data.title}`);
       
@@ -975,6 +1065,11 @@ app.post('/api/state', (req, res) => {
   if (['PRE_SHOW', 'ACTIVE', 'POST_SHOW'].includes(newState)) {
     showState = newState;
     broadcast({ type: 'state_change', showState });
+    
+    if (newState === 'PRE_SHOW') {
+      console.log("[State] Transition to PRE_SHOW. Generating default Pre-Show track.");
+      startTrack("Pre-Show");
+    }
     
     if (newState === 'POST_SHOW') {
       generateShowStories().catch(console.error);

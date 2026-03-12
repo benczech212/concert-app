@@ -162,7 +162,7 @@
                 <div id="aiTrackDescDisplay" style="color: #a8b2d1; font-size: 0.9rem; margin-top: 5px;"></div>
             </div>
             <div class="story-text-container" style="flex: 1; overflow-y: auto; padding-right: 10px;">
-                <div class="story-text" id="aiStoryDisplay" style="display: block; max-height: none; -webkit-line-clamp: unset;">Generating story synopsis...</div>
+                <div class="story-text" id="aiStoryDisplay" style="display: block; max-height: none; -webkit-line-clamp: unset; line-clamp: unset;">Generating story synopsis...</div>
             </div>
         </div>
         <div class="right-col">
@@ -465,7 +465,7 @@
                     }]
                 },
                 options: {
-                    responsive: false, maintainAspectRatio: true,
+                    responsive: true, maintainAspectRatio: false,
                     animation: { duration: 0 },
                     scales: { 
                         x: { type: 'time', time: { unit: 'minute' }, grid: { color: 'rgba(255,255,255,0.05)' } }, 
@@ -529,6 +529,20 @@
 
         // Start loop
         fetchAllData();
+
+        // Listen for global state changes to automatically reload the dashboard
+        const evtSource = new EventSource('/api/stream');
+        evtSource.onmessage = function(event) {
+            try {
+                const data = JSON.parse(event.data);
+                if (data.type === 'state_change' && data.showState === 'POST_SHOW') {
+                    console.log("Show state changed to POST_SHOW. Reloading dashboard...");
+                    window.location.reload(true);
+                }
+            } catch (e) {
+                // Ignore parsing errors for empty keep-alive pings
+            }
+        };
 
     </script>
 </body>

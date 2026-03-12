@@ -116,7 +116,8 @@ async function runSimulation() {
   await sleep(1000);
 
   console.log(`\n=== STARTING Track 1 (Duration: 120s) ===`);
-  await post('/api/track', { id: `trk-1`, title: "Simulation Theme Song" });
+  const trackRes = await post('/api/track', { title: "Simulation Theme Song" });
+  const actualTrackId = trackRes.track.id;
   await sleep(2000); 
   
   const durationSecs = 15;
@@ -166,10 +167,10 @@ async function runSimulation() {
     const u = activeUsers[i];
     if (Math.random() > 0.25) { // 75% chance to submit a note
        let note = pickRandom(PHRASES) + " " + pickRandom(WORDS);
-       await u.sendEvent("note", note.trim(), { trackId: 'trk-1' }); 
+       await u.sendEvent("note", note.trim(), { trackId: actualTrackId }); 
        process.stdout.write('N');
     } else { // 25% chance to skip
-       await u.sendEvent("note_skip", "skipped", { trackId: 'trk-1' });
+       await u.sendEvent("note_skip", "skipped", { trackId: actualTrackId });
        process.stdout.write('S');
     }
   }

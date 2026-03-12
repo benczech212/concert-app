@@ -61,16 +61,25 @@
             <section class="card" aria-label="Playback Controls">
                 <h2>Live Playback Control</h2>
                 <p class="note">Manually push track start and end events (Fallback for OSC).</p>
-                <div style="display:flex;gap:10px;justify-content:center;margin-top:15px;align-items:center;">
-                    <input type="text" id="trackInput" placeholder="Enter Track Name..." style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-soft); background: rgba(255,255,255,0.06); color: var(--text); flex: 1; max-width: 300px;" />
-                    <button id="startTrackBtn" class="primary" type="button">Start Track</button>
-                    <button id="endTrackBtn" class="secondary" type="button">End Track</button>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:15px;">
+                    <button class="primary track-preset-btn" data-track="Pre-Show">Pre-Show</button>
+                    <button class="primary track-preset-btn" data-track="Track 1">Track 1</button>
+                    <button class="primary track-preset-btn" data-track="Track 1 Intermission">Track 1 Intermission</button>
+                    <button class="primary track-preset-btn" data-track="Track 2">Track 2</button>
+                    <button class="primary track-preset-btn" data-track="Track 2 Intermission">Track 2 Intermission</button>
+                    <button class="primary track-preset-btn" data-track="Track 3">Track 3</button>
+                    <button class="primary track-preset-btn" data-track="Track 3 Intermission">Track 3 Intermission</button>
+                    <button class="primary track-preset-btn" data-track="Track 4">Track 4</button>
+                </div>
+                <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                    <button id="endTrackBtn" class="error" type="button" style="width: 100%; font-weight: bold;">Force End Current Track</button>
                 </div>
             </section>
 
             <section class="card" style="text-align: center;">
                 <h2>Data Exports & Stories</h2>
                 <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:15px;align-items:center;">
+                    <button id="btnInjectTestTrack" class="primary" type="button" style="padding: 12px 24px; border-radius: 8px; flex: 1; min-width: 180px; background-image: linear-gradient(90deg, #10b981, #059669); border: none; font-weight: bold; color: white;">Inject Test Track</button>
                     <button id="btnPreviewImages" class="primary" type="button" style="padding: 12px 24px; border-radius: 8px; flex: 1; min-width: 180px; background-image: linear-gradient(90deg, #ff8a00, #e52e71); border: none; font-weight: bold;">Preview Image Generation</button>
                     <a href="stories.html" target="_blank" class="primary" style="text-decoration: none; padding: 12px 24px; border-radius: 8px; flex: 1; min-width: 180px; background-image: linear-gradient(90deg, #ff8a00, #e52e71); border: none; font-weight: bold; text-align: center; display: inline-block;">View Track Stories</a>
                     <a href="/api/users/export" download="participants.csv" class="primary" style="text-decoration: none; padding: 12px 24px; border-radius: 8px; flex: 1; min-width: 180px; text-align: center; display: inline-block;">Participants CSV</a>
@@ -241,26 +250,30 @@
             });
         }
 
-        document.getElementById("startTrackBtn").addEventListener("click", async () => {
-            const trackTitle = document.getElementById("trackInput").value.trim();
-            if (!trackTitle) {
-                setMsg("Please enter a track name first.", true);
-                return;
-            }
-            try {
-                const res = await fetch('/api/track', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ title: trackTitle })
-                });
-                if (res.ok) {
-                    setMsg(`Live track started: ${trackTitle}`, false);
-                } else {
-                    setMsg("Failed to start track.", true);
+        document.querySelectorAll('.track-preset-btn').forEach(btn => {
+            btn.addEventListener("click", async (e) => {
+                const trackTitle = e.target.getAttribute('data-track');
+                if (!trackTitle) return;
+                
+                // Visual feedback
+                document.querySelectorAll('.track-preset-btn').forEach(b => b.classList.replace('secondary', 'primary'));
+                e.target.classList.replace('primary', 'secondary');
+
+                try {
+                    const res = await fetch('/api/track', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ title: trackTitle })
+                    });
+                    if (res.ok) {
+                        setMsg(`Live track started: ${trackTitle}`, false);
+                    } else {
+                        setMsg("Failed to start track.", true);
+                    }
+                } catch (e) {
+                    setMsg("Error reaching server.", true);
                 }
-            } catch (e) {
-                setMsg("Error reaching server.", true);
-            }
+            });
         });
 
         document.getElementById("endTrackBtn").addEventListener("click", async () => {
@@ -270,6 +283,22 @@
                     setMsg("Live track ended.", false);
                 } else {
                     setMsg("Failed to end track.", true);
+                }
+            } catch (e) {
+                setMsg("Error reaching server.", true);
+            }
+        });
+
+        document.getElementById("btnInjectTestTrack").addEventListener("click", async () => {
+            setMsg("Injecting fake track and generating AI content...", false);
+            try {
+                const res = await fetch('/api/debug/test-track-inject', { method: 'POST' });
+                const data = await res.json();
+                if (data.success) {
+                    setMsg(data.message, false);
+                    refreshPreview();
+                } else {
+                    setMsg("Failed to inject test track.", true);
                 }
             } catch (e) {
                 setMsg("Error reaching server.", true);

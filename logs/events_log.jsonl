@@ -1,182 +1,456 @@
-{"id":"evt_users_1773319724193","timestamp":"2026-03-12T12:48:44.193Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773319784193","timestamp":"2026-03-12T12:49:44.193Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773319844194","timestamp":"2026-03-12T12:50:44.194Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773319904195","timestamp":"2026-03-12T12:51:44.195Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773319964196","timestamp":"2026-03-12T12:52:44.196Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320024195","timestamp":"2026-03-12T12:53:44.195Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320084196","timestamp":"2026-03-12T12:54:44.196Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320144195","timestamp":"2026-03-12T12:55:44.195Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320204195","timestamp":"2026-03-12T12:56:44.195Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320264196","timestamp":"2026-03-12T12:57:44.196Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320324196","timestamp":"2026-03-12T12:58:44.196Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320384196","timestamp":"2026-03-12T12:59:44.196Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320444197","timestamp":"2026-03-12T13:00:44.197Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320504196","timestamp":"2026-03-12T13:01:44.196Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320564197","timestamp":"2026-03-12T13:02:44.197Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320624197","timestamp":"2026-03-12T13:03:44.197Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320684197","timestamp":"2026-03-12T13:04:44.197Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320744198","timestamp":"2026-03-12T13:05:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320804197","timestamp":"2026-03-12T13:06:44.197Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320864198","timestamp":"2026-03-12T13:07:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320924197","timestamp":"2026-03-12T13:08:44.197Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773320984198","timestamp":"2026-03-12T13:09:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321044197","timestamp":"2026-03-12T13:10:44.197Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321104197","timestamp":"2026-03-12T13:11:44.197Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321164197","timestamp":"2026-03-12T13:12:44.197Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321224197","timestamp":"2026-03-12T13:13:44.197Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321284198","timestamp":"2026-03-12T13:14:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321344198","timestamp":"2026-03-12T13:15:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321404199","timestamp":"2026-03-12T13:16:44.199Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321464198","timestamp":"2026-03-12T13:17:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321524198","timestamp":"2026-03-12T13:18:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321584198","timestamp":"2026-03-12T13:19:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321644198","timestamp":"2026-03-12T13:20:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321704198","timestamp":"2026-03-12T13:21:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321764198","timestamp":"2026-03-12T13:22:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321824198","timestamp":"2026-03-12T13:23:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321884198","timestamp":"2026-03-12T13:24:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773321944198","timestamp":"2026-03-12T13:25:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322004198","timestamp":"2026-03-12T13:26:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322064198","timestamp":"2026-03-12T13:27:44.198Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322124199","timestamp":"2026-03-12T13:28:44.199Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322184200","timestamp":"2026-03-12T13:29:44.200Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322244201","timestamp":"2026-03-12T13:30:44.201Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322304200","timestamp":"2026-03-12T13:31:44.200Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322364201","timestamp":"2026-03-12T13:32:44.201Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322424201","timestamp":"2026-03-12T13:33:44.201Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322484201","timestamp":"2026-03-12T13:34:44.201Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322544201","timestamp":"2026-03-12T13:35:44.201Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322604202","timestamp":"2026-03-12T13:36:44.202Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322664202","timestamp":"2026-03-12T13:37:44.202Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322724202","timestamp":"2026-03-12T13:38:44.202Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322784203","timestamp":"2026-03-12T13:39:44.203Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322844203","timestamp":"2026-03-12T13:40:44.203Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322904203","timestamp":"2026-03-12T13:41:44.203Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773322964203","timestamp":"2026-03-12T13:42:44.203Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323024203","timestamp":"2026-03-12T13:43:44.203Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323084203","timestamp":"2026-03-12T13:44:44.203Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323144204","timestamp":"2026-03-12T13:45:44.204Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323204204","timestamp":"2026-03-12T13:46:44.204Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323264204","timestamp":"2026-03-12T13:47:44.204Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323324204","timestamp":"2026-03-12T13:48:44.204Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323384205","timestamp":"2026-03-12T13:49:44.205Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323444204","timestamp":"2026-03-12T13:50:44.204Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323504204","timestamp":"2026-03-12T13:51:44.204Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323564204","timestamp":"2026-03-12T13:52:44.204Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323624205","timestamp":"2026-03-12T13:53:44.205Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323684205","timestamp":"2026-03-12T13:54:44.205Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323744206","timestamp":"2026-03-12T13:55:44.206Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323804206","timestamp":"2026-03-12T13:56:44.206Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323864207","timestamp":"2026-03-12T13:57:44.207Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323924207","timestamp":"2026-03-12T13:58:44.207Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773323984206","timestamp":"2026-03-12T13:59:44.206Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324044206","timestamp":"2026-03-12T14:00:44.206Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324104207","timestamp":"2026-03-12T14:01:44.207Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324164207","timestamp":"2026-03-12T14:02:44.208Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324224207","timestamp":"2026-03-12T14:03:44.207Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324284207","timestamp":"2026-03-12T14:04:44.207Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324344207","timestamp":"2026-03-12T14:05:44.207Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324404207","timestamp":"2026-03-12T14:06:44.207Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324464208","timestamp":"2026-03-12T14:07:44.208Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324524207","timestamp":"2026-03-12T14:08:44.207Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324584208","timestamp":"2026-03-12T14:09:44.208Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324644207","timestamp":"2026-03-12T14:10:44.207Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324704208","timestamp":"2026-03-12T14:11:44.208Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324764208","timestamp":"2026-03-12T14:12:44.208Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324824208","timestamp":"2026-03-12T14:13:44.208Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324884208","timestamp":"2026-03-12T14:14:44.208Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773324944208","timestamp":"2026-03-12T14:15:44.208Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325004209","timestamp":"2026-03-12T14:16:44.209Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325064209","timestamp":"2026-03-12T14:17:44.209Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325124210","timestamp":"2026-03-12T14:18:44.210Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325184211","timestamp":"2026-03-12T14:19:44.211Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325244212","timestamp":"2026-03-12T14:20:44.212Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325304211","timestamp":"2026-03-12T14:21:44.211Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325364211","timestamp":"2026-03-12T14:22:44.211Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325424211","timestamp":"2026-03-12T14:23:44.211Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325484211","timestamp":"2026-03-12T14:24:44.211Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325544211","timestamp":"2026-03-12T14:25:44.211Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325604211","timestamp":"2026-03-12T14:26:44.211Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325664211","timestamp":"2026-03-12T14:27:44.211Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325724212","timestamp":"2026-03-12T14:28:44.212Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325784211","timestamp":"2026-03-12T14:29:44.211Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325844212","timestamp":"2026-03-12T14:30:44.212Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325904213","timestamp":"2026-03-12T14:31:44.213Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773325964213","timestamp":"2026-03-12T14:32:44.213Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326024214","timestamp":"2026-03-12T14:33:44.214Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326084213","timestamp":"2026-03-12T14:34:44.213Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326144214","timestamp":"2026-03-12T14:35:44.214Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326204214","timestamp":"2026-03-12T14:36:44.214Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326264214","timestamp":"2026-03-12T14:37:44.214Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326324215","timestamp":"2026-03-12T14:38:44.215Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326384215","timestamp":"2026-03-12T14:39:44.215Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326444215","timestamp":"2026-03-12T14:40:44.215Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326504215","timestamp":"2026-03-12T14:41:44.215Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326564216","timestamp":"2026-03-12T14:42:44.216Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326624217","timestamp":"2026-03-12T14:43:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326684217","timestamp":"2026-03-12T14:44:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326744218","timestamp":"2026-03-12T14:45:44.218Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326804217","timestamp":"2026-03-12T14:46:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326864217","timestamp":"2026-03-12T14:47:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326924217","timestamp":"2026-03-12T14:48:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773326984217","timestamp":"2026-03-12T14:49:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327044217","timestamp":"2026-03-12T14:50:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327104217","timestamp":"2026-03-12T14:51:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327164217","timestamp":"2026-03-12T14:52:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327224217","timestamp":"2026-03-12T14:53:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327284218","timestamp":"2026-03-12T14:54:44.218Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327344217","timestamp":"2026-03-12T14:55:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327404217","timestamp":"2026-03-12T14:56:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327464218","timestamp":"2026-03-12T14:57:44.218Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327524218","timestamp":"2026-03-12T14:58:44.218Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327584217","timestamp":"2026-03-12T14:59:44.218Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327644217","timestamp":"2026-03-12T15:00:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327704217","timestamp":"2026-03-12T15:01:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327764217","timestamp":"2026-03-12T15:02:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327824217","timestamp":"2026-03-12T15:03:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327884217","timestamp":"2026-03-12T15:04:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773327944218","timestamp":"2026-03-12T15:05:44.218Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328004217","timestamp":"2026-03-12T15:06:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328064217","timestamp":"2026-03-12T15:07:44.217Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328124218","timestamp":"2026-03-12T15:08:44.218Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328184219","timestamp":"2026-03-12T15:09:44.219Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328244218","timestamp":"2026-03-12T15:10:44.218Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328304218","timestamp":"2026-03-12T15:11:44.218Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328364218","timestamp":"2026-03-12T15:12:44.218Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328424219","timestamp":"2026-03-12T15:13:44.219Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328484220","timestamp":"2026-03-12T15:14:44.220Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328544219","timestamp":"2026-03-12T15:15:44.219Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328604219","timestamp":"2026-03-12T15:16:44.219Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328664220","timestamp":"2026-03-12T15:17:44.220Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328724220","timestamp":"2026-03-12T15:18:44.220Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328784220","timestamp":"2026-03-12T15:19:44.220Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328844220","timestamp":"2026-03-12T15:20:44.220Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328904220","timestamp":"2026-03-12T15:21:44.220Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773328964221","timestamp":"2026-03-12T15:22:44.221Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329024222","timestamp":"2026-03-12T15:23:44.222Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329084222","timestamp":"2026-03-12T15:24:44.222Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329144222","timestamp":"2026-03-12T15:25:44.222Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329204223","timestamp":"2026-03-12T15:26:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329264222","timestamp":"2026-03-12T15:27:44.222Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329324223","timestamp":"2026-03-12T15:28:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329384223","timestamp":"2026-03-12T15:29:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329444224","timestamp":"2026-03-12T15:30:44.224Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329504223","timestamp":"2026-03-12T15:31:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329564224","timestamp":"2026-03-12T15:32:44.224Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329624223","timestamp":"2026-03-12T15:33:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329684223","timestamp":"2026-03-12T15:34:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329744223","timestamp":"2026-03-12T15:35:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329804223","timestamp":"2026-03-12T15:36:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329864223","timestamp":"2026-03-12T15:37:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329924223","timestamp":"2026-03-12T15:38:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773329984223","timestamp":"2026-03-12T15:39:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773330044223","timestamp":"2026-03-12T15:40:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773330104223","timestamp":"2026-03-12T15:41:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773330164223","timestamp":"2026-03-12T15:42:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773330224223","timestamp":"2026-03-12T15:43:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773330284223","timestamp":"2026-03-12T15:44:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773330344223","timestamp":"2026-03-12T15:45:44.223Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773330404224","timestamp":"2026-03-12T15:46:44.224Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773330464225","timestamp":"2026-03-12T15:47:44.225Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773330524225","timestamp":"2026-03-12T15:48:44.225Z","category":"system","value":"connected_users","count":1}
-{"id":"evt_users_1773330584224","timestamp":"2026-03-12T15:49:44.224Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773332564229","timestamp":"2026-03-12T16:22:44.229Z","category":"system","value":"connected_users","count":21}
+{"id":"evt_1773332564738","timestamp":"2026-03-12T16:22:44.738Z","category":"system","value":"track_start","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song"}
+{"userId":"user1@sim.com","userName":"Sim User 1","sessionId":1,"category":"note","value":"Incredible performance rock rock","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332567795","timestamp":"2026-03-12T16:22:47.795Z"}
+{"userId":"user3@sim.com","userName":"Sim User 3","sessionId":3,"category":"mood","value":"Happy","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332567798","timestamp":"2026-03-12T16:22:47.798Z"}
+{"userId":"user7@sim.com","userName":"Sim User 7","sessionId":7,"category":"color","value":"Green","colorRgba":"#00ff00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332567800","timestamp":"2026-03-12T16:22:47.800Z"}
+{"userId":"user8@sim.com","userName":"Sim User 8","sessionId":8,"category":"reaction","value":"like","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332567801","timestamp":"2026-03-12T16:22:47.801Z"}
+{"userId":"user12@sim.com","userName":"Sim User 12","sessionId":12,"category":"note","value":"Cannot stop listening to this huge deep","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332567802","timestamp":"2026-03-12T16:22:47.802Z"}
+{"userId":"user15@sim.com","userName":"Sim User 15","sessionId":15,"category":"note","value":"cool","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332567803","timestamp":"2026-03-12T16:22:47.803Z"}
+{"userId":"user17@sim.com","userName":"Sim User 17","sessionId":17,"category":"note","value":"huge slow vibes","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332567806","timestamp":"2026-03-12T16:22:47.806Z"}
+{"userId":"user19@sim.com","userName":"Sim User 19","sessionId":19,"category":"color","value":"Purple","colorRgba":"#800080","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332567809","timestamp":"2026-03-12T16:22:47.809Z"}
+{"userId":"user5@sim.com","userName":"Sim User 5","sessionId":5,"category":"mood","value":"Sad","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332568747","timestamp":"2026-03-12T16:22:48.747Z"}
+{"userId":"user8@sim.com","userName":"Sim User 8","sessionId":8,"category":"mood","value":"Anxious","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332568748","timestamp":"2026-03-12T16:22:48.748Z"}
+{"userId":"user10@sim.com","userName":"Sim User 10","sessionId":10,"category":"color","value":"Yellow","colorRgba":"#ffff00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332568749","timestamp":"2026-03-12T16:22:48.749Z"}
+{"userId":"user11@sim.com","userName":"Sim User 11","sessionId":11,"category":"note","value":"Loving the epic boring profound","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332568750","timestamp":"2026-03-12T16:22:48.750Z"}
+{"userId":"user12@sim.com","userName":"Sim User 12","sessionId":12,"category":"color","value":"Cyan","colorRgba":"#00ffff","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332568752","timestamp":"2026-03-12T16:22:48.752Z"}
+{"userId":"user13@sim.com","userName":"Sim User 13","sessionId":13,"category":"color","value":"Purple","colorRgba":"#800080","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332568753","timestamp":"2026-03-12T16:22:48.753Z"}
+{"userId":"user15@sim.com","userName":"Sim User 15","sessionId":15,"category":"note","value":"chaotic","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332568754","timestamp":"2026-03-12T16:22:48.754Z"}
+{"userId":"user16@sim.com","userName":"Sim User 16","sessionId":16,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332568757","timestamp":"2026-03-12T16:22:48.757Z"}
+{"userId":"user19@sim.com","userName":"Sim User 19","sessionId":19,"category":"note","value":"Really getting into the energetic bass","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332568759","timestamp":"2026-03-12T16:22:48.759Z"}
+{"userId":"user2@sim.com","userName":"Sim User 2","sessionId":2,"category":"mood","value":"Anxious","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332569746","timestamp":"2026-03-12T16:22:49.746Z"}
+{"userId":"user3@sim.com","userName":"Sim User 3","sessionId":3,"category":"color","value":"Yellow","colorRgba":"#ffff00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332569747","timestamp":"2026-03-12T16:22:49.747Z"}
+{"userId":"user7@sim.com","userName":"Sim User 7","sessionId":7,"category":"note","value":"synth profound boring","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332569748","timestamp":"2026-03-12T16:22:49.748Z"}
+{"userId":"user8@sim.com","userName":"Sim User 8","sessionId":8,"category":"mood","value":"Chaos","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332569750","timestamp":"2026-03-12T16:22:49.750Z"}
+{"userId":"user10@sim.com","userName":"Sim User 10","sessionId":10,"category":"note","value":"Wow huge","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332569751","timestamp":"2026-03-12T16:22:49.751Z"}
+{"userId":"user12@sim.com","userName":"Sim User 12","sessionId":12,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332569752","timestamp":"2026-03-12T16:22:49.752Z"}
+{"userId":"user15@sim.com","userName":"Sim User 15","sessionId":15,"category":"mood","value":"Confusion","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332569754","timestamp":"2026-03-12T16:22:49.754Z"}
+{"userId":"user18@sim.com","userName":"Sim User 18","sessionId":18,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332569755","timestamp":"2026-03-12T16:22:49.755Z"}
+{"userId":"user3@sim.com","userName":"Sim User 3","sessionId":3,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332570748","timestamp":"2026-03-12T16:22:50.748Z"}
+{"userId":"user7@sim.com","userName":"Sim User 7","sessionId":7,"category":"mood","value":"Angry","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332570749","timestamp":"2026-03-12T16:22:50.749Z"}
+{"userId":"user11@sim.com","userName":"Sim User 11","sessionId":11,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332570750","timestamp":"2026-03-12T16:22:50.750Z"}
+{"userId":"user14@sim.com","userName":"Sim User 14","sessionId":14,"category":"mood","value":"Excited","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332570750","timestamp":"2026-03-12T16:22:50.750Z"}
+{"userId":"user15@sim.com","userName":"Sim User 15","sessionId":15,"category":"mood","value":"Mystery","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332570751","timestamp":"2026-03-12T16:22:50.751Z"}
+{"userId":"user17@sim.com","userName":"Sim User 17","sessionId":17,"category":"note","value":"fire slow huge","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332570752","timestamp":"2026-03-12T16:22:50.752Z"}
+{"userId":"user19@sim.com","userName":"Sim User 19","sessionId":19,"category":"color","value":"Amber","colorRgba":"#ffbf00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332570753","timestamp":"2026-03-12T16:22:50.753Z"}
+{"userId":"user4@sim.com","userName":"Sim User 4","sessionId":4,"category":"color","value":"Red","colorRgba":"#ff0000","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332571750","timestamp":"2026-03-12T16:22:51.750Z"}
+{"userId":"user13@sim.com","userName":"Sim User 13","sessionId":13,"category":"color","value":"Blue","colorRgba":"#0000ff","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332571752","timestamp":"2026-03-12T16:22:51.752Z"}
+{"userId":"user14@sim.com","userName":"Sim User 14","sessionId":14,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332571754","timestamp":"2026-03-12T16:22:51.754Z"}
+{"userId":"user15@sim.com","userName":"Sim User 15","sessionId":15,"category":"note","value":"deep moving fun","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332571755","timestamp":"2026-03-12T16:22:51.755Z"}
+{"userId":"user16@sim.com","userName":"Sim User 16","sessionId":16,"category":"mood","value":"Excited","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332571758","timestamp":"2026-03-12T16:22:51.758Z"}
+{"userId":"user17@sim.com","userName":"Sim User 17","sessionId":17,"category":"mood","value":"Calm","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332571761","timestamp":"2026-03-12T16:22:51.761Z"}
+{"userId":"user18@sim.com","userName":"Sim User 18","sessionId":18,"category":"note","value":"Cannot stop listening to this huge","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332571765","timestamp":"2026-03-12T16:22:51.765Z"}
+{"userId":"user1@sim.com","userName":"Sim User 1","sessionId":1,"category":"color","value":"Amber","colorRgba":"#ffbf00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332572751","timestamp":"2026-03-12T16:22:52.751Z"}
+{"userId":"user3@sim.com","userName":"Sim User 3","sessionId":3,"category":"mood","value":"Anxious","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332572753","timestamp":"2026-03-12T16:22:52.753Z"}
+{"userId":"user4@sim.com","userName":"Sim User 4","sessionId":4,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332572754","timestamp":"2026-03-12T16:22:52.754Z"}
+{"userId":"user9@sim.com","userName":"Sim User 9","sessionId":9,"category":"mood","value":"Confusion","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332572755","timestamp":"2026-03-12T16:22:52.755Z"}
+{"userId":"user12@sim.com","userName":"Sim User 12","sessionId":12,"category":"note","value":"Wow huge synth emotional","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332572755","timestamp":"2026-03-12T16:22:52.755Z"}
+{"userId":"user18@sim.com","userName":"Sim User 18","sessionId":18,"category":"reaction","value":"like","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332572757","timestamp":"2026-03-12T16:22:52.757Z"}
+{"userId":"user1@sim.com","userName":"Sim User 1","sessionId":1,"category":"mood","value":"Sad","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332573752","timestamp":"2026-03-12T16:22:53.752Z"}
+{"userId":"user5@sim.com","userName":"Sim User 5","sessionId":5,"category":"reaction","value":"like","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332573753","timestamp":"2026-03-12T16:22:53.753Z"}
+{"userId":"user14@sim.com","userName":"Sim User 14","sessionId":14,"category":"color","value":"Yellow","colorRgba":"#ffff00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332573754","timestamp":"2026-03-12T16:22:53.754Z"}
+{"userId":"user15@sim.com","userName":"Sim User 15","sessionId":15,"category":"color","value":"Blue","colorRgba":"#0000ff","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332573757","timestamp":"2026-03-12T16:22:53.757Z"}
+{"userId":"user4@sim.com","userName":"Sim User 4","sessionId":4,"category":"note","value":"I am feeling so fun","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332574754","timestamp":"2026-03-12T16:22:54.754Z"}
+{"userId":"user5@sim.com","userName":"Sim User 5","sessionId":5,"category":"color","value":"White","colorRgba":"#ffffff","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332574755","timestamp":"2026-03-12T16:22:54.755Z"}
+{"userId":"user7@sim.com","userName":"Sim User 7","sessionId":7,"category":"mood","value":"Excited","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332574755","timestamp":"2026-03-12T16:22:54.755Z"}
+{"userId":"user15@sim.com","userName":"Sim User 15","sessionId":15,"category":"note","value":"fire loud boring","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332574756","timestamp":"2026-03-12T16:22:54.756Z"}
+{"userId":"user18@sim.com","userName":"Sim User 18","sessionId":18,"category":"color","value":"Green","colorRgba":"#00ff00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332574758","timestamp":"2026-03-12T16:22:54.758Z"}
+{"userId":"user19@sim.com","userName":"Sim User 19","sessionId":19,"category":"reaction","value":"like","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332574760","timestamp":"2026-03-12T16:22:54.760Z"}
+{"userId":"user20@sim.com","userName":"Sim User 20","sessionId":20,"category":"reaction","value":"like","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332574761","timestamp":"2026-03-12T16:22:54.761Z"}
+{"userId":"user1@sim.com","userName":"Sim User 1","sessionId":1,"category":"reaction","value":"applause","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332575754","timestamp":"2026-03-12T16:22:55.754Z"}
+{"userId":"user2@sim.com","userName":"Sim User 2","sessionId":2,"category":"color","value":"Amber","colorRgba":"#ffbf00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332575755","timestamp":"2026-03-12T16:22:55.755Z"}
+{"userId":"user3@sim.com","userName":"Sim User 3","sessionId":3,"category":"reaction","value":"like","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332575755","timestamp":"2026-03-12T16:22:55.755Z"}
+{"userId":"user5@sim.com","userName":"Sim User 5","sessionId":5,"category":"color","value":"Yellow","colorRgba":"#ffff00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332575756","timestamp":"2026-03-12T16:22:55.756Z"}
+{"userId":"user6@sim.com","userName":"Sim User 6","sessionId":6,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332575757","timestamp":"2026-03-12T16:22:55.757Z"}
+{"userId":"user11@sim.com","userName":"Sim User 11","sessionId":11,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332575759","timestamp":"2026-03-12T16:22:55.759Z"}
+{"userId":"user15@sim.com","userName":"Sim User 15","sessionId":15,"category":"mood","value":"Confusion","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332575761","timestamp":"2026-03-12T16:22:55.761Z"}
+{"userId":"user16@sim.com","userName":"Sim User 16","sessionId":16,"category":"color","value":"Amber","colorRgba":"#ffbf00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332575762","timestamp":"2026-03-12T16:22:55.762Z"}
+{"userId":"user4@sim.com","userName":"Sim User 4","sessionId":4,"category":"mood","value":"Anxious","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332576755","timestamp":"2026-03-12T16:22:56.755Z"}
+{"userId":"user6@sim.com","userName":"Sim User 6","sessionId":6,"category":"color","value":"Cyan","colorRgba":"#00ffff","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332576756","timestamp":"2026-03-12T16:22:56.756Z"}
+{"userId":"user7@sim.com","userName":"Sim User 7","sessionId":7,"category":"color","value":"Green","colorRgba":"#00ff00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332576757","timestamp":"2026-03-12T16:22:56.757Z"}
+{"userId":"user8@sim.com","userName":"Sim User 8","sessionId":8,"category":"reaction","value":"like","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332576759","timestamp":"2026-03-12T16:22:56.759Z"}
+{"userId":"user11@sim.com","userName":"Sim User 11","sessionId":11,"category":"color","value":"Cyan","colorRgba":"#00ffff","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332576760","timestamp":"2026-03-12T16:22:56.760Z"}
+{"userId":"user5@sim.com","userName":"Sim User 5","sessionId":5,"category":"note","value":"Absolutely fun loud fire","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332577757","timestamp":"2026-03-12T16:22:57.757Z"}
+{"userId":"user6@sim.com","userName":"Sim User 6","sessionId":6,"category":"reaction","value":"applause","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332577760","timestamp":"2026-03-12T16:22:57.760Z"}
+{"userId":"user10@sim.com","userName":"Sim User 10","sessionId":10,"category":"reaction","value":"applause","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332577762","timestamp":"2026-03-12T16:22:57.762Z"}
+{"userId":"user11@sim.com","userName":"Sim User 11","sessionId":11,"category":"note","value":"huge sharp","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332577765","timestamp":"2026-03-12T16:22:57.765Z"}
+{"userId":"user13@sim.com","userName":"Sim User 13","sessionId":13,"category":"color","value":"Red","colorRgba":"#ff0000","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332577767","timestamp":"2026-03-12T16:22:57.767Z"}
+{"userId":"user14@sim.com","userName":"Sim User 14","sessionId":14,"category":"mood","value":"Anxious","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332577769","timestamp":"2026-03-12T16:22:57.769Z"}
+{"userId":"user20@sim.com","userName":"Sim User 20","sessionId":20,"category":"color","value":"Yellow","colorRgba":"#ffff00","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332577771","timestamp":"2026-03-12T16:22:57.771Z"}
+{"userId":"user1@sim.com","userName":"Sim User 1","sessionId":1,"category":"note","value":"What a epic crazy","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332578756","timestamp":"2026-03-12T16:22:58.756Z"}
+{"userId":"user7@sim.com","userName":"Sim User 7","sessionId":7,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332578757","timestamp":"2026-03-12T16:22:58.757Z"}
+{"userId":"user10@sim.com","userName":"Sim User 10","sessionId":10,"category":"reaction","value":"meh","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332578759","timestamp":"2026-03-12T16:22:58.759Z"}
+{"userId":"user12@sim.com","userName":"Sim User 12","sessionId":12,"category":"color","value":"Blue","colorRgba":"#0000ff","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332578760","timestamp":"2026-03-12T16:22:58.760Z"}
+{"userId":"user17@sim.com","userName":"Sim User 17","sessionId":17,"category":"note","value":"synth bass","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332578762","timestamp":"2026-03-12T16:22:58.762Z"}
+{"userId":"user19@sim.com","userName":"Sim User 19","sessionId":19,"category":"note","value":"vibes","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332578763","timestamp":"2026-03-12T16:22:58.763Z"}
+{"userId":"user5@sim.com","userName":"Sim User 5","sessionId":5,"category":"mood","value":"Excited","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332579759","timestamp":"2026-03-12T16:22:59.759Z"}
+{"userId":"user7@sim.com","userName":"Sim User 7","sessionId":7,"category":"mood","value":"Calm","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332579760","timestamp":"2026-03-12T16:22:59.760Z"}
+{"userId":"user11@sim.com","userName":"Sim User 11","sessionId":11,"category":"note","value":"Absolutely epic bass","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332579762","timestamp":"2026-03-12T16:22:59.762Z"}
+{"userId":"user13@sim.com","userName":"Sim User 13","sessionId":13,"category":"mood","value":"Calm","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332579763","timestamp":"2026-03-12T16:22:59.763Z"}
+{"userId":"user15@sim.com","userName":"Sim User 15","sessionId":15,"category":"reaction","value":"applause","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332579764","timestamp":"2026-03-12T16:22:59.764Z"}
+{"userId":"user1@sim.com","userName":"Sim User 1","sessionId":1,"category":"note","value":"Cannot stop listening to this huge slow","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332580759","timestamp":"2026-03-12T16:23:00.759Z"}
+{"userId":"user2@sim.com","userName":"Sim User 2","sessionId":2,"category":"note","value":"This track is bass","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332580763","timestamp":"2026-03-12T16:23:00.763Z"}
+{"userId":"user12@sim.com","userName":"Sim User 12","sessionId":12,"category":"reaction","value":"applause","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332580765","timestamp":"2026-03-12T16:23:00.765Z"}
+{"userId":"user13@sim.com","userName":"Sim User 13","sessionId":13,"category":"note","value":"emotional vibes epic","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332580766","timestamp":"2026-03-12T16:23:00.766Z"}
+{"userId":"user17@sim.com","userName":"Sim User 17","sessionId":17,"category":"color","value":"Cyan","colorRgba":"#00ffff","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song","id":"evt_1773332580768","timestamp":"2026-03-12T16:23:00.768Z"}
+{"id":"evt_1773332581746","timestamp":"2026-03-12T16:23:01.746Z","category":"system","value":"track_end","trackId":"trk_1773332564737","trackTitle":"Simulation Theme Song"}
+{"userId":"user1@sim.com","userName":"Sim User 1","sessionId":1,"category":"note","value":"Just feeling the fun","trackId":"trk_1773332564737","id":"evt_1773332583749","timestamp":"2026-03-12T16:23:03.749Z"}
+{"userId":"user2@sim.com","userName":"Sim User 2","sessionId":2,"category":"note","value":"Really getting into the loud","trackId":"trk_1773332564737","id":"evt_1773332583752","timestamp":"2026-03-12T16:23:03.752Z"}
+{"userId":"user3@sim.com","userName":"Sim User 3","sessionId":3,"category":"note","value":"Really getting into the huge","trackId":"trk_1773332564737","id":"evt_1773332583754","timestamp":"2026-03-12T16:23:03.754Z"}
+{"userId":"user4@sim.com","userName":"Sim User 4","sessionId":4,"category":"note","value":"Incredible performance intense","trackId":"trk_1773332564737","id":"evt_1773332583758","timestamp":"2026-03-12T16:23:03.758Z"}
+{"userId":"user5@sim.com","userName":"Sim User 5","sessionId":5,"category":"note_skip","value":"skipped","trackId":"trk_1773332564737","id":"evt_1773332583761","timestamp":"2026-03-12T16:23:03.761Z"}
+{"userId":"user6@sim.com","userName":"Sim User 6","sessionId":6,"category":"note","value":"Wow loud","trackId":"trk_1773332564737","id":"evt_1773332583764","timestamp":"2026-03-12T16:23:03.764Z"}
+{"userId":"user7@sim.com","userName":"Sim User 7","sessionId":7,"category":"note","value":"Incredible performance crazy","trackId":"trk_1773332564737","id":"evt_1773332583768","timestamp":"2026-03-12T16:23:03.768Z"}
+{"userId":"user8@sim.com","userName":"Sim User 8","sessionId":8,"category":"note","value":"Just feeling the energetic","trackId":"trk_1773332564737","id":"evt_1773332583771","timestamp":"2026-03-12T16:23:03.771Z"}
+{"userId":"user9@sim.com","userName":"Sim User 9","sessionId":9,"category":"note","value":"What a epic","trackId":"trk_1773332564737","id":"evt_1773332583775","timestamp":"2026-03-12T16:23:03.775Z"}
+{"userId":"user10@sim.com","userName":"Sim User 10","sessionId":10,"category":"note","value":"Incredible performance slow","trackId":"trk_1773332564737","id":"evt_1773332583779","timestamp":"2026-03-12T16:23:03.779Z"}
+{"userId":"user11@sim.com","userName":"Sim User 11","sessionId":11,"category":"note","value":"Incredible performance profound","trackId":"trk_1773332564737","id":"evt_1773332583783","timestamp":"2026-03-12T16:23:03.783Z"}
+{"userId":"user12@sim.com","userName":"Sim User 12","sessionId":12,"category":"note","value":"What a slow","trackId":"trk_1773332564737","id":"evt_1773332583789","timestamp":"2026-03-12T16:23:03.789Z"}
+{"userId":"user13@sim.com","userName":"Sim User 13","sessionId":13,"category":"note","value":"What a awesome","trackId":"trk_1773332564737","id":"evt_1773332583792","timestamp":"2026-03-12T16:23:03.792Z"}
+{"userId":"user14@sim.com","userName":"Sim User 14","sessionId":14,"category":"note","value":"Really getting into the awesome","trackId":"trk_1773332564737","id":"evt_1773332583796","timestamp":"2026-03-12T16:23:03.796Z"}
+{"userId":"user15@sim.com","userName":"Sim User 15","sessionId":15,"category":"note","value":"Loving the synth","trackId":"trk_1773332564737","id":"evt_1773332583800","timestamp":"2026-03-12T16:23:03.800Z"}
+{"userId":"user16@sim.com","userName":"Sim User 16","sessionId":16,"category":"note","value":"This track is boring","trackId":"trk_1773332564737","id":"evt_1773332583804","timestamp":"2026-03-12T16:23:03.804Z"}
+{"userId":"user17@sim.com","userName":"Sim User 17","sessionId":17,"category":"note_skip","value":"skipped","trackId":"trk_1773332564737","id":"evt_1773332583807","timestamp":"2026-03-12T16:23:03.807Z"}
+{"userId":"user18@sim.com","userName":"Sim User 18","sessionId":18,"category":"note","value":"Loving the sharp","trackId":"trk_1773332564737","id":"evt_1773332583809","timestamp":"2026-03-12T16:23:03.809Z"}
+{"userId":"user19@sim.com","userName":"Sim User 19","sessionId":19,"category":"note","value":"I am feeling so epic","trackId":"trk_1773332564737","id":"evt_1773332583815","timestamp":"2026-03-12T16:23:03.815Z"}
+{"userId":"user20@sim.com","userName":"Sim User 20","sessionId":20,"category":"note","value":"Just feeling the deep","trackId":"trk_1773332564737","id":"evt_1773332583818","timestamp":"2026-03-12T16:23:03.818Z"}
+{"id":"evt_users_1773332624228","timestamp":"2026-03-12T16:23:44.228Z","category":"system","value":"connected_users","count":21}
+{"id":"evt_users_1773332684228","timestamp":"2026-03-12T16:24:44.228Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773332744229","timestamp":"2026-03-12T16:25:44.229Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773332804229","timestamp":"2026-03-12T16:26:44.229Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773332864228","timestamp":"2026-03-12T16:27:44.228Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773332924229","timestamp":"2026-03-12T16:28:44.229Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773332984228","timestamp":"2026-03-12T16:29:44.228Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773333044228","timestamp":"2026-03-12T16:30:44.228Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773333104228","timestamp":"2026-03-12T16:31:44.228Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773333164228","timestamp":"2026-03-12T16:32:44.228Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773333224228","timestamp":"2026-03-12T16:33:44.228Z","category":"system","value":"connected_users","count":2}
+{"id":"b6179dcf-45e7-4271-bd25-1d588d25e8bf","sessionId":"124f7bd0-646b-47f9-aff0-a4bbc9718061","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T16:34:16.812Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"9851d6d7-d8d9-4c0f-a84d-e0f96f17569c","sessionId":"124f7bd0-646b-47f9-aff0-a4bbc9718061","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T16:34:18.082Z","category":"mood","value":"Mystery"}
+{"id":"1780cc93-8cd6-4dc4-bd7d-10a3dbbdd572","sessionId":"124f7bd0-646b-47f9-aff0-a4bbc9718061","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T16:34:19.565Z","category":"reaction","value":"like"}
+{"id":"94af1eec-2644-415f-b09f-852694033a0d","sessionId":"124f7bd0-646b-47f9-aff0-a4bbc9718061","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T16:34:39.704Z","category":"note","value":"sdageeaf"}
+{"id":"4710761d-660f-4622-a64f-a4f666f6da8b","sessionId":"124f7bd0-646b-47f9-aff0-a4bbc9718061","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T16:34:39.705Z","category":"combined_reaction","value":2,"colorName":"Chartreuse","mood":"Mystery","colorRgba":"#aaff00","reactionLabel":"like","note":"sdageeaf"}
+{"id":"evt_users_1773333284228","timestamp":"2026-03-12T16:34:44.228Z","category":"system","value":"connected_users","count":4}
+{"id":"evt_users_1773333344228","timestamp":"2026-03-12T16:35:44.228Z","category":"system","value":"connected_users","count":2}
+{"id":"b47b58ed-faf4-4073-9ddf-ea67e43fbf90","sessionId":"124f7bd0-646b-47f9-aff0-a4bbc9718061","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T16:36:02.551Z","category":"note","value":"Test"}
+{"id":"evt_users_1773333404228","timestamp":"2026-03-12T16:36:44.228Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773333464228","timestamp":"2026-03-12T16:37:44.228Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773333524228","timestamp":"2026-03-12T16:38:44.228Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773333584228","timestamp":"2026-03-12T16:39:44.228Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773333644228","timestamp":"2026-03-12T16:40:44.228Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773333704229","timestamp":"2026-03-12T16:41:44.229Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773333764230","timestamp":"2026-03-12T16:42:44.230Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773333824231","timestamp":"2026-03-12T16:43:44.231Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773333884230","timestamp":"2026-03-12T16:44:44.230Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773333944230","timestamp":"2026-03-12T16:45:44.230Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334004230","timestamp":"2026-03-12T16:46:44.230Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334064231","timestamp":"2026-03-12T16:47:44.231Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334124232","timestamp":"2026-03-12T16:48:44.232Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334184232","timestamp":"2026-03-12T16:49:44.232Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334244233","timestamp":"2026-03-12T16:50:44.233Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334304232","timestamp":"2026-03-12T16:51:44.232Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334364233","timestamp":"2026-03-12T16:52:44.233Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334424232","timestamp":"2026-03-12T16:53:44.232Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334484232","timestamp":"2026-03-12T16:54:44.232Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334544232","timestamp":"2026-03-12T16:55:44.232Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334604232","timestamp":"2026-03-12T16:56:44.232Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334664232","timestamp":"2026-03-12T16:57:44.233Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334724233","timestamp":"2026-03-12T16:58:44.233Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334784234","timestamp":"2026-03-12T16:59:44.234Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334844234","timestamp":"2026-03-12T17:00:44.234Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334904235","timestamp":"2026-03-12T17:01:44.235Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773334964251","timestamp":"2026-03-12T17:02:44.252Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335024252","timestamp":"2026-03-12T17:03:44.252Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335084252","timestamp":"2026-03-12T17:04:44.252Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335144253","timestamp":"2026-03-12T17:05:44.253Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335204252","timestamp":"2026-03-12T17:06:44.252Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335264252","timestamp":"2026-03-12T17:07:44.252Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335324252","timestamp":"2026-03-12T17:08:44.252Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335384252","timestamp":"2026-03-12T17:09:44.252Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335444252","timestamp":"2026-03-12T17:10:44.252Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335504253","timestamp":"2026-03-12T17:11:44.253Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335564253","timestamp":"2026-03-12T17:12:44.253Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335624252","timestamp":"2026-03-12T17:13:44.252Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773335684253","timestamp":"2026-03-12T17:14:44.253Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773335744252","timestamp":"2026-03-12T17:15:44.252Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773335804252","timestamp":"2026-03-12T17:16:44.252Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773335864253","timestamp":"2026-03-12T17:17:44.253Z","category":"system","value":"connected_users","count":4}
+{"id":"08df6c97-9c1d-4432-8118-b89473bf7d91","sessionId":"fdc2311e-ae0b-4b88-86cf-5696cde9bdc3","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:17:44.464Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"cf9606e4-9097-4f81-819d-4977e0f843af","sessionId":"fdc2311e-ae0b-4b88-86cf-5696cde9bdc3","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:17:45.470Z","category":"mood","value":"Mystery"}
+{"id":"629465c3-5756-47bc-902a-1d6f30e3832f","sessionId":"fdc2311e-ae0b-4b88-86cf-5696cde9bdc3","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:17:46.518Z","category":"reaction","value":"like"}
+{"id":"9444b8d4-3809-48af-a07b-df4a9cd719dd","sessionId":"fdc2311e-ae0b-4b88-86cf-5696cde9bdc3","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:17:51.418Z","category":"note","value":"Good!"}
+{"id":"9f074811-0836-4619-8df4-6a2be5731e1f","sessionId":"fdc2311e-ae0b-4b88-86cf-5696cde9bdc3","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:17:51.419Z","category":"combined_reaction","value":2,"colorName":"Chartreuse","mood":"Mystery","colorRgba":"#aaff00","reactionLabel":"like","note":"Good!"}
+{"id":"evt_users_1773335924254","timestamp":"2026-03-12T17:18:44.254Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773335984253","timestamp":"2026-03-12T17:19:44.253Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336044254","timestamp":"2026-03-12T17:20:44.254Z","category":"system","value":"connected_users","count":3}
+{"id":"c9559325-17c3-4567-b103-522c22f5dc6e","sessionId":"fdc2311e-ae0b-4b88-86cf-5696cde9bdc3","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:21:07.926Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"evt_users_1773336104254","timestamp":"2026-03-12T17:21:44.254Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336164254","timestamp":"2026-03-12T17:22:44.254Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336224254","timestamp":"2026-03-12T17:23:44.254Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336284254","timestamp":"2026-03-12T17:24:44.254Z","category":"system","value":"connected_users","count":3}
+{"id":"657e3e8f-0f00-412d-93b1-689b3629b84d","sessionId":"fdc2311e-ae0b-4b88-86cf-5696cde9bdc3","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:24:58.303Z","category":"color","value":"Transparent","colorRgba":"transparent"}
+{"id":"3ab78692-d3e5-4ca4-8e50-2df8748ec05c","sessionId":"fdc2311e-ae0b-4b88-86cf-5696cde9bdc3","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:00.829Z","category":"color","value":"White","colorRgba":"#ffffff"}
+{"id":"3b311603-b9cf-49a6-b312-fcf8cbcba33d","sessionId":"fdc2311e-ae0b-4b88-86cf-5696cde9bdc3","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:02.367Z","category":"color","value":"Gray","colorRgba":"#808080"}
+{"id":"69f3dc20-0641-4b0b-861a-493e1685331a","sessionId":"fdc2311e-ae0b-4b88-86cf-5696cde9bdc3","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:04.300Z","category":"mood","value":"Joy"}
+{"id":"b994200a-0e35-43e7-8017-5656ed001b3d","sessionId":"7807a577-92fb-4c50-8011-ababfcc8b769","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:10.531Z","category":"color","value":"Azure","colorRgba":"#0080ff"}
+{"id":"1f3149b0-5b40-408b-aff7-c5b17f2da6b3","sessionId":"7807a577-92fb-4c50-8011-ababfcc8b769","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:11.459Z","category":"mood","value":"Joy"}
+{"id":"ef7885c2-aa8e-403c-81fb-6ad4c1a48389","sessionId":"7807a577-92fb-4c50-8011-ababfcc8b769","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:12.508Z","category":"reaction","value":"like"}
+{"id":"16543ff5-a175-4949-89fc-291e2cfdbb0e","sessionId":"84b0942f-d7bc-4163-bec1-93681c9ac73c","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:23.250Z","category":"mood","value":"Power"}
+{"id":"26968bcd-56d1-4e2a-b236-7f8858d892a6","sessionId":"84b0942f-d7bc-4163-bec1-93681c9ac73c","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:24.198Z","category":"color","value":"Violet","colorRgba":"#8000ff"}
+{"id":"4e8c036c-5ed7-4056-91e2-489881fa217c","sessionId":"84b0942f-d7bc-4163-bec1-93681c9ac73c","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:25.528Z","category":"reaction","value":"like"}
+{"id":"198e9ecc-1daf-4f58-b1c2-420f20633867","sessionId":"84b0942f-d7bc-4163-bec1-93681c9ac73c","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:35.053Z","category":"note","value":"Wow!"}
+{"id":"b6f8c81d-c788-435b-958b-61fe9768f1e4","sessionId":"84b0942f-d7bc-4163-bec1-93681c9ac73c","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:25:35.054Z","category":"combined_reaction","value":2,"colorName":"Violet","mood":"Power","colorRgba":"#8000ff","reactionLabel":"like","note":"Wow!"}
+{"id":"evt_users_1773336344254","timestamp":"2026-03-12T17:25:44.254Z","category":"system","value":"connected_users","count":3}
+{"id":"d9a60019-5e0b-4aaf-a3ef-f4652a1c0232","sessionId":"84b0942f-d7bc-4163-bec1-93681c9ac73c","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:26:18.807Z","category":"color","value":"Ultramarine","colorRgba":"#2b00ff"}
+{"id":"evt_users_1773336404254","timestamp":"2026-03-12T17:26:44.254Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336464255","timestamp":"2026-03-12T17:27:44.255Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336524255","timestamp":"2026-03-12T17:28:44.255Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336584256","timestamp":"2026-03-12T17:29:44.256Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336644255","timestamp":"2026-03-12T17:30:44.255Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336704255","timestamp":"2026-03-12T17:31:44.255Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336764256","timestamp":"2026-03-12T17:32:44.256Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336824255","timestamp":"2026-03-12T17:33:44.255Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336884256","timestamp":"2026-03-12T17:34:44.256Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773336944255","timestamp":"2026-03-12T17:35:44.255Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337004255","timestamp":"2026-03-12T17:36:44.255Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337064256","timestamp":"2026-03-12T17:37:44.256Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337124255","timestamp":"2026-03-12T17:38:44.255Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337184255","timestamp":"2026-03-12T17:39:44.255Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337244256","timestamp":"2026-03-12T17:40:44.256Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337304256","timestamp":"2026-03-12T17:41:44.256Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337364255","timestamp":"2026-03-12T17:42:44.255Z","category":"system","value":"connected_users","count":4}
+{"id":"evt_users_1773337424255","timestamp":"2026-03-12T17:43:44.255Z","category":"system","value":"connected_users","count":4}
+{"id":"evt_users_1773337484255","timestamp":"2026-03-12T17:44:44.255Z","category":"system","value":"connected_users","count":4}
+{"id":"evt_users_1773337544255","timestamp":"2026-03-12T17:45:44.255Z","category":"system","value":"connected_users","count":4}
+{"id":"evt_users_1773337604256","timestamp":"2026-03-12T17:46:44.256Z","category":"system","value":"connected_users","count":4}
+{"id":"evt_users_1773337664257","timestamp":"2026-03-12T17:47:44.257Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337724257","timestamp":"2026-03-12T17:48:44.257Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337784257","timestamp":"2026-03-12T17:49:44.257Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337844258","timestamp":"2026-03-12T17:50:44.258Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773337904257","timestamp":"2026-03-12T17:51:44.257Z","category":"system","value":"connected_users","count":3}
+{"id":"e375eceb-c71e-4bbb-9599-16aaa7fbb393","sessionId":"124f7bd0-646b-47f9-aff0-a4bbc9718061","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:52:27.864Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"dd4101f3-2f06-4bce-9cb9-a75e2c321953","sessionId":"124f7bd0-646b-47f9-aff0-a4bbc9718061","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:52:28.528Z","category":"mood","value":"Mystery"}
+{"id":"c45050a4-c61d-40aa-bb8b-ee1bee500f30","sessionId":"124f7bd0-646b-47f9-aff0-a4bbc9718061","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:52:29.944Z","category":"reaction","value":"like"}
+{"id":"2762c79d-ed1d-4b15-bd1a-50f39d48c160","sessionId":"124f7bd0-646b-47f9-aff0-a4bbc9718061","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:52:29.944Z","category":"combined_reaction","value":2,"colorName":"Lemon","mood":"Mystery","colorRgba":"#d4ff00","reactionLabel":"like","note":"Test"}
+{"id":"1b871bbf-dedf-4dd0-b705-bbb8460b151c","sessionId":"e2e7297f-4355-4b71-9d05-a669b2774430","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:52:32.286Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"8c060782-b711-4f8e-b914-8fa36c1e0221","sessionId":"e2e7297f-4355-4b71-9d05-a669b2774430","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:52:32.867Z","category":"mood","value":"Mystery"}
+{"id":"2524a63f-2841-473c-aca9-0ee044349636","sessionId":"e2e7297f-4355-4b71-9d05-a669b2774430","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:52:34.042Z","category":"reaction","value":"like"}
+{"id":"3f15edaf-af56-4b12-aad2-5e15223c4913","sessionId":"e2e7297f-4355-4b71-9d05-a669b2774430","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:52:36.895Z","category":"reaction","value":"like"}
+{"id":"evt_users_1773337964258","timestamp":"2026-03-12T17:52:44.258Z","category":"system","value":"connected_users","count":3}
+{"id":"569ecca9-1165-4eb1-a3f0-5f33b095bbef","sessionId":"e2e7297f-4355-4b71-9d05-a669b2774430","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:52:46.580Z","category":"combined_reaction","value":2,"colorName":"Spring Bud","mood":"Mystery","colorRgba":"#80ff00","reactionLabel":"like","note":"None"}
+{"id":"evt_users_1773338024258","timestamp":"2026-03-12T17:53:44.258Z","category":"system","value":"connected_users","count":3}
+{"id":"ce774cda-41dd-4ace-b90f-44835ede66cd","sessionId":"e2e7297f-4355-4b71-9d05-a669b2774430","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:54:12.656Z","category":"mood","value":"Mystery"}
+{"id":"3923efa2-3273-45c6-a0fa-1c6be450ca8e","sessionId":"e2e7297f-4355-4b71-9d05-a669b2774430","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:54:33.003Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"4351067e-3a35-4fe9-8417-1664b8119808","sessionId":"e2e7297f-4355-4b71-9d05-a669b2774430","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:54:40.242Z","category":"reaction","value":"like"}
+{"id":"evt_users_1773338084258","timestamp":"2026-03-12T17:54:44.258Z","category":"system","value":"connected_users","count":3}
+{"id":"9b6d4658-6915-493a-9cca-1b1206e5d87b","sessionId":"e2e7297f-4355-4b71-9d05-a669b2774430","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:54:47.273Z","category":"note","value":"Test"}
+{"id":"95100d77-5ed2-4e3e-8a8d-8bb3d5edaadc","sessionId":"e2e7297f-4355-4b71-9d05-a669b2774430","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:54:47.273Z","category":"combined_reaction","value":2,"colorName":"Spring Bud","mood":"Mystery","colorRgba":"#80ff00","reactionLabel":"like","note":"Test"}
+{"id":"evt_users_1773338144258","timestamp":"2026-03-12T17:55:44.258Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773338204259","timestamp":"2026-03-12T17:56:44.259Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773338264259","timestamp":"2026-03-12T17:57:44.259Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773338324259","timestamp":"2026-03-12T17:58:44.259Z","category":"system","value":"connected_users","count":3}
+{"id":"04fabebf-d0df-44bb-be7d-31ef297003e3","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:59:26.635Z","category":"color","value":"Harlequin","colorRgba":"#2bff00"}
+{"id":"897da06a-382a-4863-832d-17a9224ea74b","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:59:36.388Z","category":"mood","value":"Mystery"}
+{"id":"68affd8b-015b-446b-92bd-ba5e7b17be82","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:59:41.967Z","category":"reaction","value":"meh"}
+{"id":"evt_users_1773338384259","timestamp":"2026-03-12T17:59:44.259Z","category":"system","value":"connected_users","count":3}
+{"id":"9c04a6fb-e46a-413a-b82e-d0c45287d61a","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:59:44.479Z","category":"note","value":"Test"}
+{"id":"eb7bdac6-2c17-4ab7-8250-2a57bd185512","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:59:44.480Z","category":"combined_reaction","value":1,"colorName":"Harlequin","mood":"Mystery","colorRgba":"#2bff00","reactionLabel":"meh","note":"Test"}
+{"id":"853ec745-711b-4bf0-a6c6-d56679b3602f","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T17:59:51.900Z","category":"color","value":"Emerald","colorRgba":"#00ff2a"}
+{"id":"evt_users_1773338444260","timestamp":"2026-03-12T18:00:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"767c257d-3945-4dbe-a77d-6418a2b80262","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:01:05.841Z","category":"mood","value":"Mystery"}
+{"id":"ee00cad1-0e6e-48b0-b3cf-7e2dbc61ee98","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:01:25.575Z","category":"mood","value":"Mystery"}
+{"id":"e8a72a68-89aa-4150-a2bf-a83a046e734c","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:01:27.238Z","category":"reaction","value":"like"}
+{"id":"evt_users_1773338504260","timestamp":"2026-03-12T18:01:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"c7a10595-3604-4cb3-8a5f-96516e5a9d31","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:01:45.108Z","category":"color","value":"Mint","colorRgba":"#00ffaa"}
+{"id":"831f03f9-e8fa-42e4-9d8d-8e1f2dbeeb5c","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:01:51.733Z","category":"note","value":"Some"}
+{"id":"b79d7d3a-bf1f-4302-9c27-840d31dfa3de","sessionId":"8982497b-7529-44c6-95a0-48313b428d58","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:01:51.733Z","category":"combined_reaction","value":2,"colorName":"Mint","mood":"Mystery","colorRgba":"#00ffaa","reactionLabel":"like","note":"Some"}
+{"id":"436dbf3f-cf10-496d-859a-9fbaf0f8e4f3","sessionId":"d7f2830e-57fe-4346-9ef4-50b17ebcc990","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:02:17.853Z","category":"color","value":"Orange","colorRgba":"#ffaa00"}
+{"id":"5afe9115-4d7c-47c8-b3c7-3f7fa0d2d581","sessionId":"d7f2830e-57fe-4346-9ef4-50b17ebcc990","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:02:18.408Z","category":"mood","value":"Melancholy"}
+{"id":"evt_users_1773338564261","timestamp":"2026-03-12T18:02:44.261Z","category":"system","value":"connected_users","count":3}
+{"id":"3eca4627-550f-4aec-81f8-7f72892e00a8","sessionId":"d7f2830e-57fe-4346-9ef4-50b17ebcc990","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:03:25.859Z","category":"color","value":"Bright Green","colorRgba":"#55ff00"}
+{"id":"0a8dd44f-afd0-465c-b172-b6c492a486dc","sessionId":"d7f2830e-57fe-4346-9ef4-50b17ebcc990","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:03:27.844Z","category":"mood","value":"Melancholy"}
+{"id":"evt_users_1773338624261","timestamp":"2026-03-12T18:03:44.261Z","category":"system","value":"connected_users","count":3}
+{"id":"29d29477-f77e-4f7f-ab80-a25c6c673a18","sessionId":"98ff2143-0ec5-4713-9881-42296e5f6561","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:04:04.548Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"8a7d3f9b-da6b-4ad8-9b7e-3dfce0fbb476","sessionId":"2b57477e-8d22-4a79-8e7a-12e5967dd0ff","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:04:06.623Z","category":"color","value":"Bright Green","colorRgba":"#55ff00"}
+{"id":"5588b22c-77ba-4c52-bf95-82d08cbbc076","sessionId":"ab6dae3c-7daf-4bf5-9585-e440c153d8d2","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:04:41.019Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"evt_users_1773338684260","timestamp":"2026-03-12T18:04:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"e8124a45-c7c2-4270-a1b0-5aca901c251a","sessionId":"ab6dae3c-7daf-4bf5-9585-e440c153d8d2","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:04:53.421Z","category":"mood","value":"Joy"}
+{"id":"3cf2de1c-aa28-4b26-91b5-a2a112605ff1","sessionId":"ab6dae3c-7daf-4bf5-9585-e440c153d8d2","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:04:59.604Z","category":"reaction","value":"meh"}
+{"id":"1bd489cb-fd8c-44d5-98de-62a60783b6af","sessionId":"ab6dae3c-7daf-4bf5-9585-e440c153d8d2","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:05:10.987Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"7cd42c10-90b5-41a0-b0be-70378fe2dc94","sessionId":"660f6b5b-ae3f-4beb-8149-a198d5ca89c6","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:05:27.246Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"4292fac5-a259-424d-bd3b-ee3507d6baba","sessionId":"660f6b5b-ae3f-4beb-8149-a198d5ca89c6","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:05:29.188Z","category":"mood","value":"Mystery"}
+{"id":"9d4f5938-ff63-46f3-be55-0f15119f12b8","sessionId":"660f6b5b-ae3f-4beb-8149-a198d5ca89c6","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:05:31.530Z","category":"reaction","value":"like"}
+{"id":"c5fc102b-652b-4514-a4f1-34b89c0fd356","sessionId":"2ead6fba-d354-4f2b-9f1a-5f3356a225cb","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:05:37.700Z","category":"color","value":"Bright Green","colorRgba":"#55ff00"}
+{"id":"evt_users_1773338744260","timestamp":"2026-03-12T18:05:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"8ab5774d-9c77-430b-9b17-af27af2184e8","sessionId":"2ead6fba-d354-4f2b-9f1a-5f3356a225cb","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:06:02.427Z","category":"mood","value":"Melancholy"}
+{"id":"f7ec651a-da5f-4d62-92e4-c986e5c2076f","sessionId":"2ead6fba-d354-4f2b-9f1a-5f3356a225cb","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:06:04.446Z","category":"reaction","value":"like"}
+{"id":"9b58538c-b2fb-493b-8ace-505b52442383","sessionId":"2ead6fba-d354-4f2b-9f1a-5f3356a225cb","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:06:07.839Z","category":"reaction","value":"like"}
+{"id":"b552cb96-964d-403a-ba50-cc955f685105","sessionId":"562ca987-0e1f-4d56-90ce-29078d24f472","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:06:16.631Z","category":"mood","value":"Anticipation"}
+{"id":"846ed462-cb35-4148-b2b5-7ecf70a6b712","sessionId":"562ca987-0e1f-4d56-90ce-29078d24f472","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:06:22.558Z","category":"color","value":"Bright Green","colorRgba":"#55ff00"}
+{"id":"54bf8748-15b6-4f36-a320-d43c38a23107","sessionId":"562ca987-0e1f-4d56-90ce-29078d24f472","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:06:35.095Z","category":"reaction","value":"like"}
+{"id":"65c4a865-1282-4fb9-a7b0-9a1e805daf5f","sessionId":"562ca987-0e1f-4d56-90ce-29078d24f472","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:06:41.910Z","category":"reaction","value":"like"}
+{"id":"evt_users_1773338804260","timestamp":"2026-03-12T18:06:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"4f2700c4-4e07-4f2f-af64-63e9edd2ba3a","sessionId":"562ca987-0e1f-4d56-90ce-29078d24f472","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:06:50.045Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"a7f87998-9917-4d52-b2f2-c8ea09cbd411","sessionId":"562ca987-0e1f-4d56-90ce-29078d24f472","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:06:55.605Z","category":"color","value":"Harlequin","colorRgba":"#2bff00"}
+{"id":"fdbdb846-538e-4dbe-b46a-43536f30e045","sessionId":"562ca987-0e1f-4d56-90ce-29078d24f472","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:06:59.105Z","category":"mood","value":"Joy"}
+{"id":"39d3d639-1533-4e20-b627-af1eec2202f0","sessionId":"562ca987-0e1f-4d56-90ce-29078d24f472","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:07:00.640Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"evt_users_1773338864260","timestamp":"2026-03-12T18:07:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773338924260","timestamp":"2026-03-12T18:08:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773338984260","timestamp":"2026-03-12T18:09:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773339044260","timestamp":"2026-03-12T18:10:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"478cf9c5-72dc-4303-b04e-07d505b03bc6","sessionId":"1c8f52d9-760f-4890-8045-816d6a9f8926","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:11:07.463Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"f41ef6cc-35d2-495c-83c5-84fa43fbe184","sessionId":"1c8f52d9-760f-4890-8045-816d6a9f8926","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:11:12.332Z","category":"mood","value":"Mystery"}
+{"id":"1e7cf1e8-ca3e-4da4-9683-91f0c608bd73","sessionId":"1c8f52d9-760f-4890-8045-816d6a9f8926","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:11:25.313Z","category":"reaction","value":"like"}
+{"id":"evt_users_1773339104261","timestamp":"2026-03-12T18:11:44.261Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773339164260","timestamp":"2026-03-12T18:12:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773339224260","timestamp":"2026-03-12T18:13:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"6939ecca-8c87-41c9-a626-ee43a62c0a01","sessionId":"a0e8ecaf-c1f9-4e27-9d85-83c8d568e752","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:14:41.095Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"evt_users_1773339284261","timestamp":"2026-03-12T18:14:44.261Z","category":"system","value":"connected_users","count":3}
+{"id":"d25e7cca-f1ef-4395-8a08-a3378d2eefb1","sessionId":"9872789d-a9a5-45d2-ba1a-2dde0cb4c504","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:14:50.118Z","category":"color","value":"Bright Green","colorRgba":"#55ff00"}
+{"id":"bc53c9f5-e30a-4ef1-a580-b192dad0b243","sessionId":"9872789d-a9a5-45d2-ba1a-2dde0cb4c504","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:14:51.610Z","category":"mood","value":"Mystery"}
+{"id":"f91848e8-ff9b-4ed7-8ec7-9dfde9607bd2","sessionId":"9872789d-a9a5-45d2-ba1a-2dde0cb4c504","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:15:01.074Z","category":"reaction","value":"like"}
+{"id":"6e257815-fb8b-4270-aded-82a9fb8bbdec","sessionId":"0994ff12-c55c-422c-a425-81990be85c24","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:15:05.743Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"a4c88345-94c4-4d67-9715-e4fe79410083","sessionId":"16282ebd-0ed9-4fd4-942a-a2d029c96ce1","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:15:43.136Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"evt_users_1773339344260","timestamp":"2026-03-12T18:15:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"56dab206-5755-47d0-b17f-309b537fb40e","sessionId":"16282ebd-0ed9-4fd4-942a-a2d029c96ce1","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:15:44.530Z","category":"mood","value":"Mystery"}
+{"id":"f9dfcd40-b0ef-470a-af8d-0966db3afed5","sessionId":"e81a9286-531b-42d1-a127-f3b66305c114","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:16:21.667Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"evt_users_1773339404260","timestamp":"2026-03-12T18:16:44.260Z","category":"system","value":"connected_users","count":3}
+{"id":"438ee021-b8a4-4820-a6c9-4dd1dede3e6a","sessionId":"37a1a1f1-e6ce-4d95-a4c4-f862d515efc7","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:17:01.507Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"e3f9c535-654f-4b54-aa89-796bbce9be50","sessionId":"8123572b-c53e-4095-bf62-70c7d688e60c","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:17:17.536Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"7b66da1e-652f-4d90-bc08-b5eb7dd19cbb","sessionId":"8123572b-c53e-4095-bf62-70c7d688e60c","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:17:18.533Z","category":"mood","value":"Mystery"}
+{"id":"b8cc8e0b-bcda-4500-9d0c-548b8a197fc2","sessionId":"000ec364-9800-4941-8880-6dc8e7afbf3c","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:17:24.411Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"64f25e31-6321-4135-a9fb-ce82be6591d0","sessionId":"000ec364-9800-4941-8880-6dc8e7afbf3c","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:17:25.006Z","category":"mood","value":"Mystery"}
+{"id":"91b288ec-eabb-4b1b-9e5b-ade66ded7a7c","sessionId":"37ccba94-7d5c-41d8-9151-b17920c3e7b4","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:17:38.370Z","category":"color","value":"Malachite","colorRgba":"#00ff55"}
+{"id":"1a692397-e12d-4ee1-969e-cac48f302b37","sessionId":"37ccba94-7d5c-41d8-9151-b17920c3e7b4","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:17:40.577Z","category":"mood","value":"Mystery"}
+{"id":"evt_users_1773339464261","timestamp":"2026-03-12T18:17:44.261Z","category":"system","value":"connected_users","count":3}
+{"id":"103c28c1-c1f6-4551-9284-204fdda27939","sessionId":"37ccba94-7d5c-41d8-9151-b17920c3e7b4","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:18:07.215Z","category":"reaction","value":"like"}
+{"id":"0d878677-416c-494d-9c0c-0b1fcf929cbf","sessionId":"37ccba94-7d5c-41d8-9151-b17920c3e7b4","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:18:11.270Z","category":"note","value":"Test"}
+{"id":"1f932fe1-20fd-4f70-90af-1fcd8d6e53a2","sessionId":"37ccba94-7d5c-41d8-9151-b17920c3e7b4","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:18:11.271Z","category":"combined_reaction","value":2,"colorName":"Malachite","mood":"Mystery","colorRgba":"#00ff55","reactionLabel":"like","note":"Test"}
+{"id":"81b214eb-062d-4cef-a0ab-fd4c1ef386b3","sessionId":"37ccba94-7d5c-41d8-9151-b17920c3e7b4","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:18:41.782Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"evt_users_1773339524261","timestamp":"2026-03-12T18:18:44.261Z","category":"system","value":"connected_users","count":3}
+{"id":"e533fdbc-b4ae-4d5f-8183-46d7a73f7ca6","sessionId":"db4e9ad2-56ab-4a74-b993-50a7a51ca4f1","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:19:05.253Z","category":"color","value":"Amber","colorRgba":"#ffd400"}
+{"id":"f55ab186-c6f3-4476-a5f9-660fa16254ab","sessionId":"eb7a4b75-fd83-4236-8d62-9608e6c6ccf9","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:19:26.534Z","category":"color","value":"Amber","colorRgba":"#ffd400"}
+{"id":"5f52138d-9fba-4660-be82-2a174e268242","sessionId":"eb7a4b75-fd83-4236-8d62-9608e6c6ccf9","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:19:27.311Z","category":"mood","value":"Joy"}
+{"id":"e472c53d-8e14-4521-b04e-92dcf4f5c8f5","sessionId":"eb7a4b75-fd83-4236-8d62-9608e6c6ccf9","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:19:28.669Z","category":"reaction","value":"like"}
+{"id":"7f9964a6-1531-421e-8907-4dd4aec32ac3","sessionId":"eb7a4b75-fd83-4236-8d62-9608e6c6ccf9","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:19:33.118Z","category":"combined_reaction","value":2,"colorName":"Amber","mood":"Joy","colorRgba":"#ffd400","reactionLabel":"like","note":"None"}
+{"id":"1d8e6148-568e-4341-a057-3f8940025d1f","sessionId":"eb7a4b75-fd83-4236-8d62-9608e6c6ccf9","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:19:42.796Z","category":"color","value":"Deep Orange","colorRgba":"#ff8000"}
+{"id":"evt_users_1773339584261","timestamp":"2026-03-12T18:19:44.261Z","category":"system","value":"connected_users","count":3}
+{"id":"dbeaddbd-eafb-4930-afad-840358bf4faa","sessionId":"eb7a4b75-fd83-4236-8d62-9608e6c6ccf9","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:19:44.656Z","category":"mood","value":"Joy"}
+{"id":"1c8f14b2-0329-4337-aa70-c155f89b07c3","sessionId":"55a9d8b7-5cce-48fd-bfd3-4727b267ceeb","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:19:53.550Z","category":"color","value":"Amber","colorRgba":"#ffd400"}
+{"id":"2fd4f44c-03d8-4845-b1ae-d9a052bd1d3b","sessionId":"a63b477a-d5ed-4d50-aed8-ad9a503dc000","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:20:43.433Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"evt_users_1773339644262","timestamp":"2026-03-12T18:20:44.262Z","category":"system","value":"connected_users","count":4}
+{"id":"1106d93f-6e99-4779-b5e5-28b457c38985","sessionId":"a63b477a-d5ed-4d50-aed8-ad9a503dc000","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:20:52.910Z","category":"mood","value":"Mystery"}
+{"id":"7cf0b81a-f7f2-4538-bff8-06cbc3091511","sessionId":"a63b477a-d5ed-4d50-aed8-ad9a503dc000","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:21:06.965Z","category":"combined_reaction","value":1,"colorName":"Lemon","mood":"Mystery","colorRgba":"#d4ff00","reactionLabel":"None","note":"None"}
+{"id":"cc7f295e-31f8-45dc-a1bb-d6f7fea5d0a7","sessionId":"a63b477a-d5ed-4d50-aed8-ad9a503dc000","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:21:39.043Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"7042cf54-a7f2-4cb0-a8cf-7627df4fc955","sessionId":"6963fcc0-375a-4af8-946b-40d8fa0f5276","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:21:41.810Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"evt_users_1773339704262","timestamp":"2026-03-12T18:21:44.262Z","category":"system","value":"connected_users","count":3}
+{"id":"3831d2fa-8bbb-4d3c-93c1-917598bc936a","sessionId":"6963fcc0-375a-4af8-946b-40d8fa0f5276","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:21:47.786Z","category":"mood","value":"Mystery"}
+{"id":"44813874-cede-47c9-8eaa-a2aee9c03ce9","sessionId":"6838db99-72f7-4a80-aca2-23e7f4fff8bf","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:22:29.844Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"54b02beb-2ff0-407d-9ad0-92b4fc1c8363","sessionId":"6838db99-72f7-4a80-aca2-23e7f4fff8bf","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:22:30.436Z","category":"mood","value":"Mystery"}
+{"id":"f8beaa20-14f0-4abe-b455-d7529677087e","sessionId":"6838db99-72f7-4a80-aca2-23e7f4fff8bf","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:22:31.743Z","category":"reaction","value":"meh"}
+{"id":"e311d111-10d4-4cbc-ae65-f0fac7257512","sessionId":"6838db99-72f7-4a80-aca2-23e7f4fff8bf","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:22:41.297Z","category":"note","value":"Woah!"}
+{"id":"1737bab6-11b0-431a-8159-9c435455e493","sessionId":"6838db99-72f7-4a80-aca2-23e7f4fff8bf","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:22:41.298Z","category":"combined_reaction","value":1,"colorName":"Spring Bud","mood":"Mystery","colorRgba":"#80ff00","reactionLabel":"meh","note":"Woah!"}
+{"id":"evt_users_1773339764263","timestamp":"2026-03-12T18:22:44.263Z","category":"system","value":"connected_users","count":3}
+{"id":"0224577a-5fb0-4257-b408-e07bfb4adbe8","sessionId":"b7dffde3-222b-4283-83d8-e8bf93bc6cfd","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:23:05.398Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"d8eb6420-5086-49f6-8190-a19e6710b364","sessionId":"b7dffde3-222b-4283-83d8-e8bf93bc6cfd","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:23:07.051Z","category":"combined_reaction","value":1,"colorName":"Spring Bud","mood":"None","colorRgba":"#80ff00","reactionLabel":"None","note":"None"}
+{"id":"029e0e68-6465-4f0f-8f9b-69d50ef25422","sessionId":"b7dffde3-222b-4283-83d8-e8bf93bc6cfd","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:23:40.867Z","category":"color","value":"Harlequin","colorRgba":"#2bff00"}
+{"id":"72ac8e94-ac8a-4787-b361-4381c6e3e4a5","sessionId":"b7dffde3-222b-4283-83d8-e8bf93bc6cfd","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:23:42.889Z","category":"combined_reaction","value":1,"colorName":"Harlequin","mood":"None","colorRgba":"#2bff00","reactionLabel":"None","note":"None"}
+{"id":"evt_users_1773339824262","timestamp":"2026-03-12T18:23:44.262Z","category":"system","value":"connected_users","count":3}
+{"id":"53e0b740-7a94-41d0-bb04-715f35efa167","sessionId":"b7dffde3-222b-4283-83d8-e8bf93bc6cfd","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:24:07.373Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"c070f3d1-3358-46ee-a80b-b97100adc473","sessionId":"b7dffde3-222b-4283-83d8-e8bf93bc6cfd","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:24:08.885Z","category":"combined_reaction","value":1,"colorName":"Chartreuse","mood":"None","colorRgba":"#aaff00","reactionLabel":"None","note":"None"}
+{"id":"45c0d93e-b807-4973-b321-b7c38ef64ae0","sessionId":"b7dffde3-222b-4283-83d8-e8bf93bc6cfd","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:24:11.036Z","category":"mood","value":"Mystery"}
+{"id":"evt_users_1773339884262","timestamp":"2026-03-12T18:24:44.262Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773339944263","timestamp":"2026-03-12T18:25:44.263Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773340004262","timestamp":"2026-03-12T18:26:44.262Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773340064262","timestamp":"2026-03-12T18:27:44.262Z","category":"system","value":"connected_users","count":3}
+{"id":"7339ef69-7263-44cf-b18b-8b9786875ae9","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:27:45.139Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"28a14809-b573-4249-a1cc-19a18176d586","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:27:47.336Z","category":"combined_reaction","value":1,"colorName":"Spring Bud","mood":"None","colorRgba":"#80ff00","reactionLabel":"None","note":"None"}
+{"id":"3730159a-2aee-461f-a872-aca180fbb419","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:27:53.662Z","category":"mood","value":"Joy"}
+{"id":"20b598be-9426-4ac0-9bd3-64315081c15b","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:27:55.834Z","category":"combined_reaction","value":1,"colorName":"None","mood":"Joy","colorRgba":"transparent","reactionLabel":"None","note":"None"}
+{"id":"a67aa8f4-5c88-4079-aa5a-c7cee95b12d5","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:28:01.295Z","category":"reaction","value":"like"}
+{"id":"a541f31e-e64b-440f-9006-0555256d90dc","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:28:03.894Z","category":"combined_reaction","value":2,"colorName":"None","mood":"None","colorRgba":"transparent","reactionLabel":"like","note":"None"}
+{"id":"de6256b9-e0f7-40c7-a93f-e9aa7d0cc4f5","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:28:13.577Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"2fb3af3d-cddd-4757-980f-67c555875ced","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:28:14.165Z","category":"mood","value":"Mystery"}
+{"id":"fe31478e-71eb-49ee-976b-153b704e8967","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:28:14.895Z","category":"reaction","value":"like"}
+{"id":"3e526e91-78dd-4916-9ee5-8bd25f56d223","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:28:16.873Z","category":"combined_reaction","value":2,"colorName":"Lemon","mood":"Mystery","colorRgba":"#d4ff00","reactionLabel":"like","note":"None"}
+{"id":"evt_users_1773340124263","timestamp":"2026-03-12T18:28:44.263Z","category":"system","value":"connected_users","count":3}
+{"id":"6d4f3035-5c98-40ad-9c71-f8cf54b1edd9","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:28:45.294Z","category":"color","value":"Bright Green","colorRgba":"#55ff00"}
+{"id":"b5263003-3617-4d3b-8c3d-dbb20687e2bc","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:28:45.864Z","category":"mood","value":"Mystery"}
+{"id":"c8f8fe69-f09b-4586-bc5f-dee0ceed0094","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:28:57.744Z","category":"combined_reaction","value":1,"colorName":"Bright Green","mood":"Mystery","colorRgba":"#55ff00","reactionLabel":"None","note":"None"}
+{"id":"31186fc4-ca4d-4669-9f46-641a4b3c8750","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:29:03.052Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"424f428b-0dc9-415a-bbb5-8f2bb61d8c77","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:29:03.828Z","category":"mood","value":"Mystery"}
+{"id":"evt_users_1773340184263","timestamp":"2026-03-12T18:29:44.263Z","category":"system","value":"connected_users","count":3}
+{"id":"e51f7416-799d-456a-854c-efc2add71dc0","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:30:21.208Z","category":"mood","value":"Mystery"}
+{"id":"1809322c-dcd7-4523-9607-404415ab7477","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:30:25.051Z","category":"reaction","value":"applause"}
+{"id":"f0915326-53e0-4a51-87af-877604e64a3f","sessionId":"05703d98-8957-49a8-8926-072c59f5e8ba","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:30:31.079Z","category":"combined_reaction","value":1,"colorName":"Spring Bud","mood":"Mystery","colorRgba":"#80ff00","reactionLabel":"None","note":"None"}
+{"id":"evt_users_1773340244263","timestamp":"2026-03-12T18:30:44.263Z","category":"system","value":"connected_users","count":3}
+{"id":"cc4f2bb4-8a82-4354-9abd-fa104d056516","sessionId":"7ef1f5ec-4934-413d-a097-00e8fd48ef38","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:31:40.141Z","category":"color","value":"Amber","colorRgba":"#ffd400"}
+{"id":"evt_users_1773340304264","timestamp":"2026-03-12T18:31:44.264Z","category":"system","value":"connected_users","count":3}
+{"id":"65da7f00-86c7-4132-b685-3595f93ad637","sessionId":"7ef1f5ec-4934-413d-a097-00e8fd48ef38","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:32:22.404Z","category":"combined_reaction","value":1,"colorName":"Amber","mood":"None","colorRgba":"#ffd400","reactionLabel":"None","note":"None"}
+{"id":"evt_users_1773340364265","timestamp":"2026-03-12T18:32:44.265Z","category":"system","value":"connected_users","count":3}
+{"id":"c943a288-b37a-4599-9d89-d269c97c0879","sessionId":"7ef1f5ec-4934-413d-a097-00e8fd48ef38","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:32:47.281Z","category":"mood","value":"Joy"}
+{"id":"a000f5dd-8486-4688-ba60-3a3bdd30aedb","sessionId":"7ef1f5ec-4934-413d-a097-00e8fd48ef38","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:32:49.609Z","category":"combined_reaction","value":1,"colorName":"None","mood":"Joy","colorRgba":"transparent","reactionLabel":"None","note":"None"}
+{"id":"69c84861-116b-4e77-b8c2-55a57e0ff437","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:33:41.240Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"d55f3a67-3a05-43b7-86e1-ace19e99ae23","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:33:43.414Z","category":"combined_reaction","value":1,"colorName":"Lemon","mood":"None","colorRgba":"#d4ff00","reactionLabel":"None","note":"None"}
+{"id":"evt_users_1773340424265","timestamp":"2026-03-12T18:33:44.265Z","category":"system","value":"connected_users","count":3}
+{"id":"db569aa6-8f36-48a3-aac4-31bc2151cc5d","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:33:53.762Z","category":"mood","value":"Joy"}
+{"id":"34d29dbf-9a42-4c6b-af1d-852207e6b6e1","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:33:55.333Z","category":"combined_reaction","value":1,"colorName":"None","mood":"Joy","colorRgba":"transparent","reactionLabel":"None","note":"None"}
+{"id":"f1150ea7-c4ac-458f-8387-fb2ac4821ee9","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:34:06.494Z","category":"reaction","value":"like"}
+{"id":"611b17a6-8e71-4199-a9b2-e1f52d76ff03","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:34:08.010Z","category":"combined_reaction","value":2,"colorName":"None","mood":"None","colorRgba":"transparent","reactionLabel":"like","note":"None"}
+{"id":"cb004935-5ff4-4f28-8e61-417885dc3854","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:34:27.981Z","category":"color","value":"Harlequin","colorRgba":"#2bff00"}
+{"id":"61762d49-dda3-42c7-8ef7-42720c41bb81","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:34:28.656Z","category":"mood","value":"Mystery"}
+{"id":"8619bc45-08f2-43b4-942d-f5c5864102a6","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:34:30.037Z","category":"reaction","value":"meh"}
+{"id":"caf83609-9d36-4416-ba0f-543f162a0a8f","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:34:34.667Z","category":"note","value":"Send"}
+{"id":"67c04523-87fb-4522-be90-05195b5fd181","sessionId":"b5c14941-bb05-439f-804c-07e6dde88552","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:34:34.970Z","category":"combined_reaction","value":1,"colorName":"Harlequin","mood":"Mystery","colorRgba":"#2bff00","reactionLabel":"meh","note":"Send"}
+{"id":"evt_users_1773340484266","timestamp":"2026-03-12T18:34:44.266Z","category":"system","value":"connected_users","count":3}
+{"id":"581de4a3-98a5-4682-8eed-010b46b34295","sessionId":"f5122ded-56f9-417f-8a04-b4d0da0dc402","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:34:46.211Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"a8cda372-0a8f-41b6-b8ab-96c7e25eaa66","sessionId":"f5122ded-56f9-417f-8a04-b4d0da0dc402","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:34:53.367Z","category":"color","value":"Yellow","colorRgba":"#ffff00"}
+{"id":"bfae6c6f-912b-4903-90a6-ce0db8e56e27","sessionId":"3be7f5a0-1485-4d17-9439-23e1612b64f9","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:35:12.082Z","category":"color","value":"Red","colorRgba":"#ff0000"}
+{"id":"746761bc-2741-4810-9651-3d18d50c9525","sessionId":"3be7f5a0-1485-4d17-9439-23e1612b64f9","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:35:13.962Z","category":"mood","value":"Mystery"}
+{"id":"d510ca48-8e96-4fda-99f2-3aa57e766670","sessionId":"3be7f5a0-1485-4d17-9439-23e1612b64f9","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:35:21.984Z","category":"reaction","value":"like"}
+{"id":"ad791021-b1e9-458a-8726-d750875746f9","sessionId":"3be7f5a0-1485-4d17-9439-23e1612b64f9","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:35:32.735Z","category":"combined_reaction","value":2,"colorName":"Red","mood":"Mystery","colorRgba":"#ff0000","reactionLabel":"like","note":"None"}
+{"id":"evt_users_1773340544266","timestamp":"2026-03-12T18:35:44.266Z","category":"system","value":"connected_users","count":3}
+{"id":"8ff2cebc-d708-494f-b89b-f43dd89fe252","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:36:32.707Z","category":"color","value":"Bright Green","colorRgba":"#55ff00"}
+{"id":"b846269a-407c-4875-a604-4ad2e0582be6","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:36:34.148Z","category":"combined_reaction","value":1,"colorName":"Bright Green","mood":"None","colorRgba":"#55ff00","reactionLabel":"None","note":"None"}
+{"id":"bdb1296a-547a-4546-8511-7e367e0bec02","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:36:42.671Z","category":"color","value":"Harlequin","colorRgba":"#2bff00"}
+{"id":"e49a0d9d-589f-404e-b07a-2868c194ddc6","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:36:43.278Z","category":"mood","value":"Mystery"}
+{"id":"evt_users_1773340604266","timestamp":"2026-03-12T18:36:44.266Z","category":"system","value":"connected_users","count":3}
+{"id":"31b61947-ef71-4e39-90f3-a5c505947844","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:36:44.749Z","category":"combined_reaction","value":1,"colorName":"Harlequin","mood":"Mystery","colorRgba":"#2bff00","reactionLabel":"None","note":"None"}
+{"id":"12181d17-31bf-4676-a88a-31177d249e84","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:36:51.376Z","category":"color","value":"Lemon","colorRgba":"#d4ff00"}
+{"id":"fa0dfe32-87a3-47ed-b1e0-96f6b97d7ef1","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:36:52.192Z","category":"mood","value":"Mystery"}
+{"id":"7bccd674-4e68-46ad-a1a1-587682feb059","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:36:53.252Z","category":"reaction","value":"like"}
+{"id":"ea6e6a5f-a76c-45c0-9165-07b1e1c35366","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:00.086Z","category":"combined_reaction","value":2,"colorName":"Lemon","mood":"Mystery","colorRgba":"#d4ff00","reactionLabel":"like","note":"None"}
+{"id":"cfbeb087-63ac-42e9-bf11-ac475ea703aa","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:05.887Z","category":"color","value":"Cerulean","colorRgba":"#00d5ff"}
+{"id":"04bdc70c-3fe9-4aff-9a71-ad19792304ce","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:06.509Z","category":"mood","value":"Chaos"}
+{"id":"c4d10551-ab39-415c-bf33-d6caaa389c15","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:07.391Z","category":"reaction","value":"like"}
+{"id":"8aeac8b1-7b7f-449c-8a62-8f1f1d2de47b","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:12.306Z","category":"note","value":"Words"}
+{"id":"7a1307ee-64b9-49d2-a253-841f615f8ba1","sessionId":"7475079b-9b96-4709-bd69-0ccfa07a973a","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:12.608Z","category":"combined_reaction","value":2,"colorName":"Cerulean","mood":"Chaos","colorRgba":"#00d5ff","reactionLabel":"like","note":"Words"}
+{"id":"9adcec2c-1631-4606-b694-5a461b67b10f","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:23.793Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"ebf7b74e-bfcd-437c-b327-dc9b909e3a91","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:25.384Z","category":"combined_reaction","value":1,"colorName":"Chartreuse","mood":"None","colorRgba":"#aaff00","reactionLabel":"None","note":"None"}
+{"id":"e4bf7e45-bea4-42bb-aa6e-048fa1f2fd31","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:26.709Z","category":"mood","value":"Mystery"}
+{"id":"938827cb-6f36-4de7-b8dd-65cc9270dafd","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:28.955Z","category":"combined_reaction","value":1,"colorName":"Chartreuse","mood":"Mystery","colorRgba":"#aaff00","reactionLabel":"None","note":"None"}
+{"id":"04f8f59d-3853-4fef-98a5-ecf8dbeb3478","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:30.003Z","category":"reaction","value":"like"}
+{"id":"e792284e-43ab-4d74-8e66-4ef94480ef44","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:31.399Z","category":"combined_reaction","value":2,"colorName":"Chartreuse","mood":"Mystery","colorRgba":"#aaff00","reactionLabel":"like","note":"None"}
+{"id":"1c049493-802c-4456-8c25-33d14e97bcad","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:43.295Z","category":"reaction","value":"like"}
+{"id":"evt_users_1773340664266","timestamp":"2026-03-12T18:37:44.266Z","category":"system","value":"connected_users","count":3}
+{"id":"769fa5ba-11e4-49eb-80af-5ea83376de8c","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:44.344Z","category":"combined_reaction","value":2,"colorName":"None","mood":"None","colorRgba":"transparent","reactionLabel":"like","note":"None"}
+{"id":"a95aea33-6715-41ba-bea4-f757828b58f9","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:53.536Z","category":"reaction","value":"like"}
+{"id":"457a751a-0f4b-4f17-89f0-d4d058508c81","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:37:54.801Z","category":"combined_reaction","value":2,"colorName":"None","mood":"None","colorRgba":"transparent","reactionLabel":"like","note":"None"}
+{"id":"8166f1db-7e90-450f-8d28-bd6fe9a0936d","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:38:31.507Z","category":"color","value":"Spring Bud","colorRgba":"#80ff00"}
+{"id":"88c8736a-347a-4c8f-a479-78f2c61c8383","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:38:33.332Z","category":"combined_reaction","value":1,"colorName":"Spring Bud","mood":"None","colorRgba":"#80ff00","reactionLabel":"None","note":"None"}
+{"id":"5e19b52a-2f18-4159-92a0-36444d317434","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:38:38.432Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"7e370471-907a-4560-9f67-3020f35e8db8","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:38:39.051Z","category":"mood","value":"Mystery"}
+{"id":"evt_users_1773340724266","timestamp":"2026-03-12T18:38:44.266Z","category":"system","value":"connected_users","count":3}
+{"id":"d411d9a5-e07e-4e15-9c44-593686d74205","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:38:49.037Z","category":"combined_reaction","value":1,"colorName":"Chartreuse","mood":"Mystery","colorRgba":"#aaff00","reactionLabel":"None","note":"None"}
+{"id":"61e59702-e90b-4a2b-a543-7d8060ffdab8","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:38:58.691Z","category":"color","value":"Chartreuse","colorRgba":"#aaff00"}
+{"id":"7e2a6388-7acf-4ea5-82c1-f1fc6c1fd9f6","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:38:59.437Z","category":"mood","value":"Mystery"}
+{"id":"07ed18ff-5877-4dc7-b021-2f95d2e09b52","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:02.205Z","category":"reaction","value":"meh"}
+{"id":"c20e6a9f-3f64-414a-9c97-72ede3f7ceef","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:08.011Z","category":"combined_reaction","value":1,"colorName":"Chartreuse","mood":"Mystery","colorRgba":"#aaff00","reactionLabel":"meh","note":"None"}
+{"id":"2d357b66-2b7f-4cca-a595-421f8193c2aa","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:17.019Z","category":"mood","value":"Mystery"}
+{"id":"30ba5c38-e17b-41af-a9cf-903be21f36e0","sessionId":"c09b0485-69df-4a51-958c-443db4d18b93","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:20.043Z","category":"combined_reaction","value":1,"colorName":"None","mood":"Mystery","colorRgba":"transparent","reactionLabel":"None","note":"None"}
+{"id":"b7f147a2-bb53-473b-a627-653d015c5b2c","sessionId":"95dde0b4-b66f-4148-ad48-01b11112c6db","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:26.804Z","category":"mood","value":"Joy"}
+{"id":"27da0e21-2bfe-4f99-9ebb-4b081c37d39b","sessionId":"95dde0b4-b66f-4148-ad48-01b11112c6db","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:30.434Z","category":"combined_reaction","value":1,"colorName":"None","mood":"Joy","colorRgba":"transparent","reactionLabel":"None","note":"None"}
+{"id":"86eda80c-6f13-4acc-8acf-24910bbc8ba6","sessionId":"95dde0b4-b66f-4148-ad48-01b11112c6db","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:39.495Z","category":"mood","value":"Joy"}
+{"id":"evt_users_1773340784266","timestamp":"2026-03-12T18:39:44.266Z","category":"system","value":"connected_users","count":3}
+{"id":"fc68f354-00d9-4cbb-b129-55f15eb01227","sessionId":"95dde0b4-b66f-4148-ad48-01b11112c6db","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:49.643Z","category":"combined_reaction","value":1,"colorName":"None","mood":"Joy","colorRgba":"transparent","reactionLabel":"None","note":"None"}
+{"id":"c5350428-580d-4627-bdc0-56f0249a0956","sessionId":"45cdd0f3-3e68-4eb5-b260-be81ec5a2c08","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:55.740Z","category":"mood","value":"Joy"}
+{"id":"ede97fe6-9dfb-4bd5-8c65-77865203b78c","sessionId":"45cdd0f3-3e68-4eb5-b260-be81ec5a2c08","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:58.370Z","category":"combined_reaction","value":1,"colorName":"None","mood":"Joy","colorRgba":"transparent","reactionLabel":"None","note":"None"}

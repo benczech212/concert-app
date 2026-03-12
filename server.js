@@ -765,9 +765,19 @@ app.get('/metrics', async (req, res) => {
 app.post('/api/metrics/reset', (req, res) => {
   client.register.resetMetrics();
   events = []; // Clear in-memory datastore so charts reset
-  fs.writeFileSync(path.join(__dirname, 'events_log.jsonl'), ''); // Clear the persistent log
-  console.log("Prometheus metrics, events array, and log file reset via API");
-  res.json({ success: true, message: "Metrics, events, and log reset successfully" });
+  currentTrack = null; // Clear active track
+  broadcast({ type: 'track_end', track: null });
+  
+  const eventsLog = path.join(__dirname, 'logs', 'events_log.jsonl');
+  const storiesLog = path.join(__dirname, 'logs', 'track_stories.json');
+  const imagesLog = path.join(__dirname, 'logs', 'track_images.json');
+
+  if (fs.existsSync(eventsLog)) fs.writeFileSync(eventsLog, '');
+  if (fs.existsSync(storiesLog)) fs.writeFileSync(storiesLog, '[]');
+  if (fs.existsSync(imagesLog)) fs.writeFileSync(imagesLog, '[]');
+
+  console.log("Prometheus metrics, events array, track history, and log files reset via API");
+  res.json({ success: true, message: "Metrics, events, and track history reset successfully" });
 });
 
 // Fallback to index.html for SPA routing if needed

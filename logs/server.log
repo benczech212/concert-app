@@ -91,3 +91,55 @@ Recorded event: {
   trackId: 'trk_1773275876123',
   trackTitle: '"Track 1"'
 }
+Recorded event: {
+  id: 'fa604180-361f-4a42-841c-376ab93c9710',
+  sessionId: 'c3fa9519-16b7-4b1e-bd02-978459ccaaf7',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:39:16.731Z',
+  category: 'color',
+  value: 'Light Chartreuse',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}
+Recorded event: {
+  id: '17a77052-5cd8-481d-a0cd-d56e071c4e84',
+  sessionId: 'c3fa9519-16b7-4b1e-bd02-978459ccaaf7',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:39:17.311Z',
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}
+Recorded event: {
+  id: 'a612bb4d-0d1d-4a97-8cfc-37f39c57351c',
+  sessionId: 'c3fa9519-16b7-4b1e-bd02-978459ccaaf7',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:39:18.352Z',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}
+Recorded event: {
+  id: 'de1670bb-fd07-46aa-a45c-eb5147a899c1',
+  sessionId: 'c3fa9519-16b7-4b1e-bd02-978459ccaaf7',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:39:18.353Z',
+  category: 'combined_reaction',
+  value: 2,
+  colorName: 'Chartreuse',
+  mood: 'Mystery',
+  colorRgba: 'rgb(221, 255, 153)',
+  reactionLabel: 'like',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}

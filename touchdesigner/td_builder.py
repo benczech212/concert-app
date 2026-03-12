@@ -34,7 +34,7 @@ def build_osc_to_rest_bridge():
     
     local_host.val = 'http://localhost:8000'
     prod_host.val = 'https://concert-app-r52d.onrender.com'
-    osc_port.val = 9001
+    osc_port.val = 7001
     osc_show_update_path.val = '/show/update'
     osc_track_update_path.val = '/track/update'
 

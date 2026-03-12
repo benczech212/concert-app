@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <li><a href="chart-words.html">Word Cloud</a></li>
       <li><a href="stories.html">Track Stories</a></li>
       <li><a href="admin-controls.html">Admin Controls</a></li>
+      <li><a href="admin-console.html">Admin Console</a></li>
       <li><a href="admin-settings.html">Admin Settings</a></li>
       <li><a href="kiosk.html?kiosk=1">Kiosk 1</a></li>
       <li><a href="kiosk.html?kiosk=2">Kiosk 2</a></li>

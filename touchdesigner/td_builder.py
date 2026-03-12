@@ -188,26 +188,39 @@ def onPulse(par):
     ui_master.par.w = 1280
     ui_master.par.h = 720
 
-    # Viewers Grid Container (inside the master UI container)
-    viewers = ui_master.create(containerCOMP, 'web_viewers')
-    viewers.nodeX = 0
-    viewers.nodeY = 0
-    # Enable grid layout on viewers container
-    viewers.par.align = 3 # Grid Rows
-    # Re-adding max per line but using string to avoid integer property parsing errors
-    viewers.par.alignmax = 2 
-    viewers.par.w = 1280
-    viewers.par.h = 720
-    # Allow the grid children to scale to fit
-    viewers.par.hmode = 1
-    viewers.par.vmode = 1
+    # Enable Left-to-Right layout on master UI container
+    ui_master.par.align = 0 # Left to Right
+    
+    # Left Column Container (inside master)
+    left_col = ui_master.create(containerCOMP, 'left_col')
+    left_col.par.align = 1 # Top to Bottom
+    left_col.par.w = 1280
+    left_col.par.h = 720
+    left_col.par.hmode = 1 # Fill
+    left_col.par.vmode = 1 # Fill
+    
+    # Row 1 Container (inside left_col)
+    row_1 = left_col.create(containerCOMP, 'row_1')
+    row_1.par.align = 0 # Left to Right
+    row_1.par.w = 1280
+    row_1.par.h = 360
+    row_1.par.hmode = 1 # Fill
+    row_1.par.vmode = 1 # Fill
+    
+    # Row 2 Container (inside left_col)
+    row_2 = left_col.create(containerCOMP, 'row_2')
+    row_2.par.align = 0 # Left to Right
+    row_2.par.w = 1280
+    row_2.par.h = 360
+    row_2.par.hmode = 1 # Fill
+    row_2.par.vmode = 1 # Fill
     
     renders = [
-        {'name': 'kiosk1', 'path': '/kiosk.html?kiosk=1&bypass=true'},
-        {'name': 'kiosk2', 'path': '/kiosk.html?kiosk=2&bypass=true'},
-        {'name': 'qr', 'path': '/qr.html?bypass=true'},
-        {'name': 'admin', 'path': '/admin-console.html?password=czech&bypass=true'},
-        {'name': 'post_show', 'path': '/post-show.html?bypass=true'}
+        {'name': 'kiosk1', 'path': '/kiosk.html?kiosk=1&bypass=true', 'parent': row_1},
+        {'name': 'kiosk2', 'path': '/kiosk.html?kiosk=2&bypass=true', 'parent': row_1},
+        {'name': 'qr', 'path': '/qr.html?bypass=true', 'parent': row_2},
+        {'name': 'post_show', 'path': '/post-show.html?bypass=true', 'parent': row_2},
+        {'name': 'admin', 'path': '/admin-console.html?password=czech&bypass=true', 'parent': ui_master}
     ]
     
     for i, r in enumerate(renders):
@@ -229,18 +242,16 @@ def onPulse(par):
             spout.nodeY = 200 - (i * 200)
             spout.inputConnectors[0].connect(web)
         
-        # OP Viewer explicitly inside the viewers Grid Container
-        opview = viewers.create(opviewerCOMP, f"opviewer_{r['name']}")
+        # OP Viewer explicitly inside its designated parent container
+        opview = r['parent'].create(opviewerCOMP, f"opviewer_{r['name']}")
         opview.par.opviewer = web.path
         
-        # Give them standard dimensions so the grid layout scales them nicely
         opview.par.w = 640
         opview.par.h = 360
-        # Give an explicit alignment order so the Grid knows how to stack them
+        # Allow them to scale and fill their respective row or column
+        opview.par.hmode = 1 
+        opview.par.vmode = 1 
         opview.par.alignorder = i
-
-    ui_master.par.clone = viewers.path
-    ui_master.par.enablecloning = True
 
     print("Successfully built Master Companion App inside /project1/concert_app_companion")
 

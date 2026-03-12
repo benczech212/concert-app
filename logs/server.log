@@ -613,3 +613,977 @@ Recorded event: {
 }
 Prometheus metrics, events array, and log file reset via API
 Prometheus metrics, events array, and log file reset via API
+Prometheus metrics, events array, and log file reset via API
+Registered user: {
+  email: 'user1@sim.com',
+  name: 'Sim User 1',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.448Z'
+}
+Registered user: {
+  email: 'user2@sim.com',
+  name: 'Sim User 2',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.457Z'
+}
+Registered user: {
+  email: 'user3@sim.com',
+  name: 'Sim User 3',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.467Z'
+}
+Registered user: {
+  email: 'user4@sim.com',
+  name: 'Sim User 4',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.489Z'
+}
+Registered user: {
+  email: 'user5@sim.com',
+  name: 'Sim User 5',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.494Z'
+}
+Registered user: {
+  email: 'user6@sim.com',
+  name: 'Sim User 6',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.500Z'
+}
+Registered user: {
+  email: 'user7@sim.com',
+  name: 'Sim User 7',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.508Z'
+}
+Registered user: {
+  email: 'user8@sim.com',
+  name: 'Sim User 8',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.513Z'
+}
+Registered user: {
+  email: 'user9@sim.com',
+  name: 'Sim User 9',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.521Z'
+}
+Registered user: {
+  email: 'user10@sim.com',
+  name: 'Sim User 10',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.526Z'
+}
+Registered user: {
+  email: 'user11@sim.com',
+  name: 'Sim User 11',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.532Z'
+}
+Registered user: {
+  email: 'user12@sim.com',
+  name: 'Sim User 12',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.593Z'
+}
+Registered user: {
+  email: 'user13@sim.com',
+  name: 'Sim User 13',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.599Z'
+}
+Registered user: {
+  email: 'user14@sim.com',
+  name: 'Sim User 14',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.608Z'
+}
+Registered user: {
+  email: 'user15@sim.com',
+  name: 'Sim User 15',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.634Z'
+}
+Registered user: {
+  email: 'user16@sim.com',
+  name: 'Sim User 16',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.640Z'
+}
+Registered user: {
+  email: 'user17@sim.com',
+  name: 'Sim User 17',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.645Z'
+}
+Registered user: {
+  email: 'user18@sim.com',
+  name: 'Sim User 18',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.655Z'
+}
+Registered user: {
+  email: 'user19@sim.com',
+  name: 'Sim User 19',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.661Z'
+}
+Registered user: {
+  email: 'user20@sim.com',
+  name: 'Sim User 20',
+  emailConsent: true,
+  lastSeen: '2026-03-12T06:20:45.666Z'
+}
+Recorded event: {
+  userId: 'user4@sim.com',
+  userName: 'Sim User 4',
+  sessionId: 4,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296451798',
+  timestamp: '2026-03-12T06:20:51.798Z'
+}
+Recorded event: {
+  userId: 'user7@sim.com',
+  userName: 'Sim User 7',
+  sessionId: 7,
+  category: 'note',
+  value: 'What a huge moving',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296451865',
+  timestamp: '2026-03-12T06:20:51.865Z'
+}
+Recorded event: {
+  userId: 'user15@sim.com',
+  userName: 'Sim User 15',
+  sessionId: 15,
+  category: 'note',
+  value: 'This track is crazy boring',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296451866',
+  timestamp: '2026-03-12T06:20:51.866Z'
+}
+Recorded event: {
+  userId: 'user20@sim.com',
+  userName: 'Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296451867',
+  timestamp: '2026-03-12T06:20:51.867Z'
+}
+Recorded event: {
+  userId: 'user1@sim.com',
+  userName: 'Sim User 1',
+  sessionId: 1,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296452799',
+  timestamp: '2026-03-12T06:20:52.799Z'
+}
+Recorded event: {
+  userId: 'user2@sim.com',
+  userName: 'Sim User 2',
+  sessionId: 2,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296452800',
+  timestamp: '2026-03-12T06:20:52.800Z'
+}
+Recorded event: {
+  userId: 'user3@sim.com',
+  userName: 'Sim User 3',
+  sessionId: 3,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296452801',
+  timestamp: '2026-03-12T06:20:52.801Z'
+}
+Recorded event: {
+  userId: 'user6@sim.com',
+  userName: 'Sim User 6',
+  sessionId: 6,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296452802',
+  timestamp: '2026-03-12T06:20:52.802Z'
+}
+Recorded event: {
+  userId: 'user8@sim.com',
+  userName: 'Sim User 8',
+  sessionId: 8,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296452803',
+  timestamp: '2026-03-12T06:20:52.803Z'
+}
+Recorded event: {
+  userId: 'user10@sim.com',
+  userName: 'Sim User 10',
+  sessionId: 10,
+  category: 'note',
+  value: 'boring',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296452804',
+  timestamp: '2026-03-12T06:20:52.804Z'
+}
+Recorded event: {
+  userId: 'user15@sim.com',
+  userName: 'Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296452805',
+  timestamp: '2026-03-12T06:20:52.805Z'
+}
+Recorded event: {
+  userId: 'user6@sim.com',
+  userName: 'Sim User 6',
+  sessionId: 6,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296453801',
+  timestamp: '2026-03-12T06:20:53.801Z'
+}
+Recorded event: {
+  userId: 'user8@sim.com',
+  userName: 'Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296453802',
+  timestamp: '2026-03-12T06:20:53.802Z'
+}
+Recorded event: {
+  userId: 'user11@sim.com',
+  userName: 'Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296453803',
+  timestamp: '2026-03-12T06:20:53.803Z'
+}
+Recorded event: {
+  userId: 'user12@sim.com',
+  userName: 'Sim User 12',
+  sessionId: 12,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454062',
+  timestamp: '2026-03-12T06:20:54.062Z'
+}
+Recorded event: {
+  userId: 'user15@sim.com',
+  userName: 'Sim User 15',
+  sessionId: 15,
+  category: 'note',
+  value: 'Absolutely moving rock sharp',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454064',
+  timestamp: '2026-03-12T06:20:54.064Z'
+}
+Recorded event: {
+  userId: 'user16@sim.com',
+  userName: 'Sim User 16',
+  sessionId: 16,
+  category: 'note',
+  value: 'slow epic energetic',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454271',
+  timestamp: '2026-03-12T06:20:54.271Z'
+}
+Recorded event: {
+  userId: 'user18@sim.com',
+  userName: 'Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454272',
+  timestamp: '2026-03-12T06:20:54.272Z'
+}
+Recorded event: {
+  userId: 'user20@sim.com',
+  userName: 'Sim User 20',
+  sessionId: 20,
+  category: 'note',
+  value: 'amazing',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454273',
+  timestamp: '2026-03-12T06:20:54.273Z'
+}
+Recorded event: {
+  userId: 'user3@sim.com',
+  userName: 'Sim User 3',
+  sessionId: 3,
+  category: 'note',
+  value: 'Absolutely deep fire rock',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454808',
+  timestamp: '2026-03-12T06:20:54.808Z'
+}
+Recorded event: {
+  userId: 'user7@sim.com',
+  userName: 'Sim User 7',
+  sessionId: 7,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454809',
+  timestamp: '2026-03-12T06:20:54.809Z'
+}
+Recorded event: {
+  userId: 'user10@sim.com',
+  userName: 'Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454811',
+  timestamp: '2026-03-12T06:20:54.811Z'
+}
+Recorded event: {
+  userId: 'user12@sim.com',
+  userName: 'Sim User 12',
+  sessionId: 12,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454839',
+  timestamp: '2026-03-12T06:20:54.839Z'
+}
+Recorded event: {
+  userId: 'user13@sim.com',
+  userName: 'Sim User 13',
+  sessionId: 13,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454841',
+  timestamp: '2026-03-12T06:20:54.841Z'
+}
+Recorded event: {
+  userId: 'user15@sim.com',
+  userName: 'Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296454842',
+  timestamp: '2026-03-12T06:20:54.842Z'
+}
+Recorded event: {
+  userId: 'user2@sim.com',
+  userName: 'Sim User 2',
+  sessionId: 2,
+  category: 'note',
+  value: 'Wow bass profound slow',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296455808',
+  timestamp: '2026-03-12T06:20:55.808Z'
+}
+Recorded event: {
+  userId: 'user5@sim.com',
+  userName: 'Sim User 5',
+  sessionId: 5,
+  category: 'mood',
+  value: 'Melancholy',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296455810',
+  timestamp: '2026-03-12T06:20:55.810Z'
+}
+Recorded event: {
+  userId: 'user9@sim.com',
+  userName: 'Sim User 9',
+  sessionId: 9,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296455811',
+  timestamp: '2026-03-12T06:20:55.811Z'
+}
+Recorded event: {
+  userId: 'user11@sim.com',
+  userName: 'Sim User 11',
+  sessionId: 11,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296455812',
+  timestamp: '2026-03-12T06:20:55.812Z'
+}
+Recorded event: {
+  userId: 'user15@sim.com',
+  userName: 'Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296455813',
+  timestamp: '2026-03-12T06:20:55.813Z'
+}
+Recorded event: {
+  userId: 'user17@sim.com',
+  userName: 'Sim User 17',
+  sessionId: 17,
+  category: 'note',
+  value: 'Just feeling the intense',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296455814',
+  timestamp: '2026-03-12T06:20:55.814Z'
+}
+Recorded event: {
+  userId: 'user19@sim.com',
+  userName: 'Sim User 19',
+  sessionId: 19,
+  category: 'mood',
+  value: 'Angry',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296455816',
+  timestamp: '2026-03-12T06:20:55.816Z'
+}
+Recorded event: {
+  userId: 'user20@sim.com',
+  userName: 'Sim User 20',
+  sessionId: 20,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296455817',
+  timestamp: '2026-03-12T06:20:55.817Z'
+}
+Recorded event: {
+  userId: 'user5@sim.com',
+  userName: 'Sim User 5',
+  sessionId: 5,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296456807',
+  timestamp: '2026-03-12T06:20:56.807Z'
+}
+Recorded event: {
+  userId: 'user12@sim.com',
+  userName: 'Sim User 12',
+  sessionId: 12,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296456808',
+  timestamp: '2026-03-12T06:20:56.808Z'
+}
+Recorded event: {
+  userId: 'user16@sim.com',
+  userName: 'Sim User 16',
+  sessionId: 16,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296456810',
+  timestamp: '2026-03-12T06:20:56.810Z'
+}
+Recorded event: {
+  userId: 'user2@sim.com',
+  userName: 'Sim User 2',
+  sessionId: 2,
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296457811',
+  timestamp: '2026-03-12T06:20:57.811Z'
+}
+Recorded event: {
+  userId: 'user4@sim.com',
+  userName: 'Sim User 4',
+  sessionId: 4,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296457813',
+  timestamp: '2026-03-12T06:20:57.813Z'
+}
+Recorded event: {
+  userId: 'user5@sim.com',
+  userName: 'Sim User 5',
+  sessionId: 5,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296457817',
+  timestamp: '2026-03-12T06:20:57.817Z'
+}
+Recorded event: {
+  userId: 'user11@sim.com',
+  userName: 'Sim User 11',
+  sessionId: 11,
+  category: 'note',
+  value: 'This track is wild cool',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296457818',
+  timestamp: '2026-03-12T06:20:57.818Z'
+}
+Recorded event: {
+  userId: 'user12@sim.com',
+  userName: 'Sim User 12',
+  sessionId: 12,
+  category: 'mood',
+  value: 'Anxious',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296457820',
+  timestamp: '2026-03-12T06:20:57.820Z'
+}
+Recorded event: {
+  userId: 'user17@sim.com',
+  userName: 'Sim User 17',
+  sessionId: 17,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296457845',
+  timestamp: '2026-03-12T06:20:57.845Z'
+}
+Recorded event: {
+  userId: 'user18@sim.com',
+  userName: 'Sim User 18',
+  sessionId: 18,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296457846',
+  timestamp: '2026-03-12T06:20:57.846Z'
+}
+Recorded event: {
+  userId: 'user19@sim.com',
+  userName: 'Sim User 19',
+  sessionId: 19,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296457847',
+  timestamp: '2026-03-12T06:20:57.847Z'
+}
+Recorded event: {
+  userId: 'user20@sim.com',
+  userName: 'Sim User 20',
+  sessionId: 20,
+  category: 'note',
+  value: 'sharp',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296457849',
+  timestamp: '2026-03-12T06:20:57.849Z'
+}
+Recorded event: {
+  userId: 'user1@sim.com',
+  userName: 'Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'Blue',
+  colorRgba: '#0000ff',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296458811',
+  timestamp: '2026-03-12T06:20:58.811Z'
+}
+Recorded event: {
+  userId: 'user2@sim.com',
+  userName: 'Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296458813',
+  timestamp: '2026-03-12T06:20:58.813Z'
+}
+Recorded event: {
+  userId: 'user9@sim.com',
+  userName: 'Sim User 9',
+  sessionId: 9,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296458814',
+  timestamp: '2026-03-12T06:20:58.814Z'
+}
+Recorded event: {
+  userId: 'user10@sim.com',
+  userName: 'Sim User 10',
+  sessionId: 10,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296458815',
+  timestamp: '2026-03-12T06:20:58.815Z'
+}
+Recorded event: {
+  userId: 'user19@sim.com',
+  userName: 'Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296458816',
+  timestamp: '2026-03-12T06:20:58.816Z'
+}
+Recorded event: {
+  userId: 'user20@sim.com',
+  userName: 'Sim User 20',
+  sessionId: 20,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296458816',
+  timestamp: '2026-03-12T06:20:58.816Z'
+}
+Recorded event: {
+  userId: 'user1@sim.com',
+  userName: 'Sim User 1',
+  sessionId: 1,
+  category: 'color',
+  value: 'Amber',
+  colorRgba: '#ffbf00',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296459836',
+  timestamp: '2026-03-12T06:20:59.836Z'
+}
+Recorded event: {
+  userId: 'user2@sim.com',
+  userName: 'Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296459837',
+  timestamp: '2026-03-12T06:20:59.837Z'
+}
+Recorded event: {
+  userId: 'user9@sim.com',
+  userName: 'Sim User 9',
+  sessionId: 9,
+  category: 'color',
+  value: 'Yellow',
+  colorRgba: '#ffff00',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296459838',
+  timestamp: '2026-03-12T06:20:59.838Z'
+}
+Recorded event: {
+  userId: 'user13@sim.com',
+  userName: 'Sim User 13',
+  sessionId: 13,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296459839',
+  timestamp: '2026-03-12T06:20:59.839Z'
+}
+Recorded event: {
+  userId: 'user15@sim.com',
+  userName: 'Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296459854',
+  timestamp: '2026-03-12T06:20:59.854Z'
+}
+Recorded event: {
+  userId: 'user6@sim.com',
+  userName: 'Sim User 6',
+  sessionId: 6,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296460836',
+  timestamp: '2026-03-12T06:21:00.836Z'
+}
+Recorded event: {
+  userId: 'user11@sim.com',
+  userName: 'Sim User 11',
+  sessionId: 11,
+  category: 'color',
+  value: 'Green',
+  colorRgba: '#00ff00',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296460838',
+  timestamp: '2026-03-12T06:21:00.838Z'
+}
+Recorded event: {
+  userId: 'user19@sim.com',
+  userName: 'Sim User 19',
+  sessionId: 19,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296460840',
+  timestamp: '2026-03-12T06:21:00.840Z'
+}
+Recorded event: {
+  userId: 'user2@sim.com',
+  userName: 'Sim User 2',
+  sessionId: 2,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296461880',
+  timestamp: '2026-03-12T06:21:01.880Z'
+}
+Recorded event: {
+  userId: 'user3@sim.com',
+  userName: 'Sim User 3',
+  sessionId: 3,
+  category: 'mood',
+  value: 'Joy',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296461881',
+  timestamp: '2026-03-12T06:21:01.881Z'
+}
+Recorded event: {
+  userId: 'user4@sim.com',
+  userName: 'Sim User 4',
+  sessionId: 4,
+  category: 'color',
+  value: 'Cyan',
+  colorRgba: '#00ffff',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296461883',
+  timestamp: '2026-03-12T06:21:01.883Z'
+}
+Recorded event: {
+  userId: 'user5@sim.com',
+  userName: 'Sim User 5',
+  sessionId: 5,
+  category: 'color',
+  value: 'Purple',
+  colorRgba: '#800080',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296461884',
+  timestamp: '2026-03-12T06:21:01.884Z'
+}
+Recorded event: {
+  userId: 'user8@sim.com',
+  userName: 'Sim User 8',
+  sessionId: 8,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296461885',
+  timestamp: '2026-03-12T06:21:01.885Z'
+}
+Recorded event: {
+  userId: 'user9@sim.com',
+  userName: 'Sim User 9',
+  sessionId: 9,
+  category: 'mood',
+  value: 'Calm',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296461887',
+  timestamp: '2026-03-12T06:21:01.887Z'
+}
+Recorded event: {
+  userId: 'user14@sim.com',
+  userName: 'Sim User 14',
+  sessionId: 14,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296461897',
+  timestamp: '2026-03-12T06:21:01.897Z'
+}
+Recorded event: {
+  userId: 'user15@sim.com',
+  userName: 'Sim User 15',
+  sessionId: 15,
+  category: 'mood',
+  value: 'Bored',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296461898',
+  timestamp: '2026-03-12T06:21:01.898Z'
+}
+Recorded event: {
+  userId: 'user16@sim.com',
+  userName: 'Sim User 16',
+  sessionId: 16,
+  category: 'color',
+  value: 'White',
+  colorRgba: '#ffffff',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296461900',
+  timestamp: '2026-03-12T06:21:01.900Z'
+}
+Recorded event: {
+  userId: 'user19@sim.com',
+  userName: 'Sim User 19',
+  sessionId: 19,
+  category: 'mood',
+  value: 'Happy',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296461901',
+  timestamp: '2026-03-12T06:21:01.901Z'
+}
+Recorded event: {
+  userId: 'user3@sim.com',
+  userName: 'Sim User 3',
+  sessionId: 3,
+  category: 'note',
+  value: 'Really getting into the amazing deep crazy',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296462836',
+  timestamp: '2026-03-12T06:21:02.836Z'
+}
+Recorded event: {
+  userId: 'user5@sim.com',
+  userName: 'Sim User 5',
+  sessionId: 5,
+  category: 'reaction',
+  value: 'applause',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296462838',
+  timestamp: '2026-03-12T06:21:02.838Z'
+}
+Recorded event: {
+  userId: 'user7@sim.com',
+  userName: 'Sim User 7',
+  sessionId: 7,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296462839',
+  timestamp: '2026-03-12T06:21:02.839Z'
+}
+Recorded event: {
+  userId: 'user11@sim.com',
+  userName: 'Sim User 11',
+  sessionId: 11,
+  category: 'reaction',
+  value: 'meh',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296462840',
+  timestamp: '2026-03-12T06:21:02.840Z'
+}
+Recorded event: {
+  userId: 'user13@sim.com',
+  userName: 'Sim User 13',
+  sessionId: 13,
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296462840',
+  timestamp: '2026-03-12T06:21:02.840Z'
+}
+Recorded event: {
+  userId: 'user15@sim.com',
+  userName: 'Sim User 15',
+  sessionId: 15,
+  category: 'note',
+  value: 'Wow bass',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296462858',
+  timestamp: '2026-03-12T06:21:02.858Z'
+}
+Recorded event: {
+  userId: 'user16@sim.com',
+  userName: 'Sim User 16',
+  sessionId: 16,
+  category: 'mood',
+  value: 'Excited',
+  trackId: 'trk_1773296448680',
+  trackTitle: 'Simulation Theme Song',
+  id: 'evt_1773296462860',
+  timestamp: '2026-03-12T06:21:02.860Z'
+}

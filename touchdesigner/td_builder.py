@@ -198,31 +198,39 @@ def onPulse(par):
 
     # Left Column Container
     left_col = viewers.create(containerCOMP, 'left_col')
-    left_col.par.align = 1 # Top to Bottom
+    left_col.par.align = 1 # vertbt
     left_col.par.hmode = 1
     left_col.par.vmode = 1
-    left_col.par.alignorder = 0
     
     # Row 1 Container (Kiosks)
-    row_1 = left_col.create(containerCOMP, 'row_1')
-    row_1.par.align = 0 # Left to Right
+    row_1 = viewers.create(containerCOMP, 'row_1')
+    row_1.par.align = 4 # gridrows
     row_1.par.hmode = 1
     row_1.par.vmode = 1
-    row_1.par.alignorder = 0
     
     # Row 2 Container (QR & Post-Show)
-    row_2 = left_col.create(containerCOMP, 'row_2')
-    row_2.par.align = 0 # Left to Right
+    row_2 = viewers.create(containerCOMP, 'row_2')
+    row_2.par.align = 4 # gridrows
     row_2.par.hmode = 1
     row_2.par.vmode = 1
-    row_2.par.alignorder = 1
+    
+    # Root Layout Anchor (Top to Bottom)
+    out1 = viewers.create(containerCOMP, 'out1')
+    out1.par.align = 1 # vertbt
+    out1.par.w = 400
+    out1.par.h = 300
+    
+    # Wire the skeleton bounds
+    out1.outputCOMPConnectors[0].connect(left_col)
+    left_col.outputCOMPConnectors[0].connect(row_1)
+    left_col.outputCOMPConnectors[0].connect(row_2)
     
     renders = [
-        {'name': 'kiosk1', 'path': '/kiosk.html?kiosk=1&bypass=true', 'target': row_1, 'order': 0},
-        {'name': 'kiosk2', 'path': '/kiosk.html?kiosk=2&bypass=true', 'target': row_1, 'order': 1},
-        {'name': 'qr', 'path': '/qr.html?bypass=true', 'target': row_2, 'order': 0},
-        {'name': 'post_show', 'path': '/post-show.html?bypass=true', 'target': row_2, 'order': 1},
-        {'name': 'admin', 'path': '/admin-console.html?password=czech&bypass=true', 'target': viewers, 'order': 1}
+        {'name': 'kiosk1', 'path': '/kiosk.html?kiosk=1&bypass=true', 'target': row_1},
+        {'name': 'kiosk2', 'path': '/kiosk.html?kiosk=2&bypass=true', 'target': row_1},
+        {'name': 'qr', 'path': '/qr.html?bypass=true', 'target': row_2},
+        {'name': 'post_show', 'path': '/post-show.html?bypass=true', 'target': row_2},
+        {'name': 'admin', 'path': '/admin-console.html?password=czech&bypass=true', 'target': out1}
     ]
     
     for i, r in enumerate(renders):
@@ -244,12 +252,14 @@ def onPulse(par):
             spout.nodeY = 200 - (i * 200)
             spout.inputConnectors[0].connect(web)
         
-        # OP Viewer created inside its specific parent container
-        opview = r['target'].create(opviewerCOMP, f"opviewer_{r['name']}")
+        # OP Viewer created flated in web_viewers base
+        opview = viewers.create(opviewerCOMP, f"opviewer_{r['name']}")
         opview.par.opviewer = web.path
         opview.par.hmode = 1 
-        opview.par.vmode = 1 
-        opview.par.alignorder = r['order']
+        opview.par.vmode = 1
+        
+        # Wire it into the dynamic Layout graph
+        r['target'].outputCOMPConnectors[0].connect(opview)
 
     ui_master.par.clone = viewers.path
     ui_master.par.enablecloning = True

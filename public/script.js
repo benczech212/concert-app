@@ -562,21 +562,37 @@ function resetAllSelections() {
     cSwipe.style.display = "none";
     const t = cSwipe.querySelector('.swipe-slider-text');
     if (t) t.textContent = "Swipe to submit just this color";
+    const thumb = document.getElementById('colorSwipeThumb');
+    if (thumb) thumb.style.left = '4px';
+    const track = document.getElementById('colorSwipeTrack');
+    if (track) track.style.width = '0%';
   }
   if (mSwipe) {
     mSwipe.style.display = "none";
     const t = mSwipe.querySelector('.swipe-slider-text');
     if (t) t.textContent = "Swipe to submit just this mood";
+    const thumb = document.getElementById('moodSwipeThumb');
+    if (thumb) thumb.style.left = '4px';
+    const track = document.getElementById('moodSwipeTrack');
+    if (track) track.style.width = '0%';
   }
   if (rSwipe) {
     rSwipe.style.display = "none";
     const t = rSwipe.querySelector('.swipe-slider-text');
     if (t) t.textContent = "Swipe to submit just this reaction";
+    const thumb = document.getElementById('reactionSwipeThumb');
+    if (thumb) thumb.style.left = '4px';
+    const track = document.getElementById('reactionSwipeTrack');
+    if (track) track.style.width = '0%';
   }
   if (nSwipe) {
     nSwipe.style.display = "none";
     const t = nSwipe.querySelector('.swipe-slider-text');
     if (t) t.textContent = "Swipe to submit just this note";
+    const thumb = document.getElementById('noteSwipeThumb');
+    if (thumb) thumb.style.left = '4px';
+    const track = document.getElementById('noteSwipeTrack');
+    if (track) track.style.width = '0%';
   }
 
   document.querySelectorAll(".mood-wedge, .color-wedge").forEach(p => {

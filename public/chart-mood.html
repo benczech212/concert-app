@@ -173,7 +173,8 @@ try {
         function createAnnotations(trackEvents) {
             let annotations = {};
             trackEvents.forEach((evt, i) => {
-                const labelText = evt.value === 'track_start' ? `Start Track ${evt.id || ''}` : `End Track ${evt.id || ''}`;
+                const cleanId = String(evt.id || '').replace('trk_', '');
+                const labelText = evt.value === 'track_start' ? `Track ${cleanId} Start` : `Track ${cleanId} End`;
                 annotations[`line${i}`] = {
                     type: 'line',
                     xMin: evt.time,
@@ -394,6 +395,12 @@ try {
             } else { // bar or pie
                 let labels = Object.keys(totalsMap);
                 let data = Object.values(totalsMap);
+
+                if (label === 'Mood') {
+                    const sortedIndices = labels.map((l, i) => i).sort((a, b) => data[b] - data[a]);
+                    labels = sortedIndices.map(i => labels[i]);
+                    data = sortedIndices.map(i => data[i]);
+                }
 
                 let renderBgColors = bgColorBar;
                 if (label === 'Color') {

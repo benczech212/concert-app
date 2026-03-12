@@ -209,7 +209,10 @@
         <div class="metric-block" style="flex: 1; display:flex; flex-direction: column; justify-content: center;">
             <h3>Active Track</h3>
             <div class="track-value" id="activeTrack">None</div>
-            <div style="font-size: 0.9rem; color: #888; margin-top: 10px;" id="activeTrackId">TRK_--</div>
+            <div style="font-size: 0.9rem; color: #888; margin-top: 10px; display: flex; justify-content: center; gap: 15px; align-items: center;">
+                <span id="activeTrackId">TRK_--</span>
+                <span id="trackTimer" style="font-family: monospace; font-size: 1.2rem; color: #00ff00; font-weight: bold;">00:00</span>
+            </div>
         </div>
     </div>
 
@@ -237,10 +240,12 @@
         const activeTrackIdEl = document.getElementById('activeTrackId');
         const logList = document.getElementById('logList');
         const pulseInd = document.getElementById('pulseInd');
+        const trackTimerEl = document.getElementById('trackTimer');
         
         const MAX_LOG_ENTRIES = 25;
         let lastEventId = null;
         let recentEventsList = [];
+        let activeTrackStartTime = null;
 
         async function fetchSystemState() {
             try {
@@ -303,13 +308,17 @@
                 for (let e of allEvents) {
                     if (e.category === 'system' && (e.value === 'track_start' || e.value === 'track_end')) {
                         if (e.value === 'track_start') {
-                            activeTrackEl.innerText = e.trackTitle || e.trackId;
+                            const cleanTitle = String(e.trackTitle || e.trackId).replace('trk_', 'Track ');
+                            activeTrackEl.innerText = cleanTitle;
                             activeTrackIdEl.innerText = `ID: ${e.trackId}`;
                             activeTrackEl.style.color = "#fff";
+                            activeTrackStartTime = new Date(e.timestamp).getTime();
                         } else {
                             activeTrackEl.innerText = "Intermission";
                             activeTrackIdEl.innerText = "NO_TRACK";
                             activeTrackEl.style.color = "#888";
+                            activeTrackStartTime = null;
+                            trackTimerEl.innerText = "00:00";
                         }
                         foundTrack = true;
                         break;
@@ -318,6 +327,8 @@
                 if (!foundTrack) {
                     activeTrackEl.innerText = "None";
                     activeTrackIdEl.innerText = "NO_TRACK";
+                    activeTrackStartTime = null;
+                    trackTimerEl.innerText = "00:00";
                 }
 
                 // Process strictly NEW events for the log to trigger animations properly
@@ -372,6 +383,15 @@
 
         setInterval(fetchSystemState, 1000);
         setInterval(fetchRecentEvents, 1000);
+        
+        setInterval(() => {
+            if (activeTrackStartTime) {
+                const diff = Math.max(0, Math.floor((Date.now() - activeTrackStartTime) / 1000));
+                const m = Math.floor(diff / 60).toString().padStart(2, '0');
+                const s = (diff % 60).toString().padStart(2, '0');
+                trackTimerEl.innerText = `${m}:${s}`;
+            }
+        }, 1000);
 
     </script>
 </body>

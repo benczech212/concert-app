@@ -156,7 +156,6 @@ async function loadConfiguration() {
     const [r, g, b] = hslToRgb(t, 100, 50);
     const hex = rgbToHex(r, g, b);
     let name = getNearestColorName(r, g, b);
-    if (t % 30 !== 0) name += ` (Hue ${t})`; // Distinguish slightly different slices with the same name if needed
     COLORS.push({ name: name, hex: hex, h: t });
   }
   MOOD_GLOWS = {};

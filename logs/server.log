@@ -3,3 +3,91 @@ Loaded 34764 prior events from jsonl log into memory.
 Node.js Admin & API Server running on port 8000
 No GEMINI_API_KEY found, skipping story generation.
 Prometheus metrics, events array, and log file reset via API
+Recorded event: {
+  id: '9c95461b-449b-47c5-9826-d2a942f82e1b',
+  sessionId: 'a3360233-b829-4e5d-9d57-ebf0b33ee3d9',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:11:13.192Z',
+  category: 'color',
+  value: 'Yellow',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}
+Recorded event: {
+  id: '319afa9e-f857-4f17-9792-d08a06a7debc',
+  sessionId: 'a3360233-b829-4e5d-9d57-ebf0b33ee3d9',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:11:15.224Z',
+  category: 'mood',
+  value: 'Mystery',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}
+Recorded event: {
+  id: 'ef49cf2f-e087-4ca1-b5f0-51ef7fcd9480',
+  sessionId: 'ddb05ab5-f572-49f7-a908-9276e5c85481',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:12:26.009Z',
+  category: 'color',
+  value: 'Light Blue',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}
+Recorded event: {
+  id: '1ec64b41-275e-45f7-b395-bc166d2da7d8',
+  sessionId: 'ddb05ab5-f572-49f7-a908-9276e5c85481',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:12:26.709Z',
+  category: 'mood',
+  value: 'Chaos',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}
+Recorded event: {
+  id: '33d7efc1-1da7-4c08-978d-fc847062b402',
+  sessionId: 'ddb05ab5-f572-49f7-a908-9276e5c85481',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:12:27.625Z',
+  category: 'reaction',
+  value: 'like',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}
+Recorded event: {
+  id: 'd1e26e0b-252c-42eb-880a-a86d1c46489f',
+  sessionId: 'ddb05ab5-f572-49f7-a908-9276e5c85481',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:12:27.626Z',
+  category: 'combined_reaction',
+  value: 2,
+  colorName: 'Blue',
+  mood: 'Chaos',
+  colorRgba: 'rgb(170, 153, 255)',
+  reactionLabel: 'like',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}
+Recorded event: {
+  id: '6b15bdc4-34dc-4af6-92e0-9f05a947de5d',
+  sessionId: 'ddb05ab5-f572-49f7-a908-9276e5c85481',
+  userId: 'benczech212@gmail.com',
+  userName: 'Ben',
+  mockIp: '18.164.104.94',
+  timestamp: '2026-03-12T01:12:37.330Z',
+  category: 'mood',
+  value: 'Anticipation',
+  trackId: 'trk_1773275876123',
+  trackTitle: '"Track 1"'
+}

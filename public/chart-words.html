@@ -137,8 +137,9 @@
     <script>
         let moodChartInstance = null;
         let colorChartInstance = null;
-        let reactionChartInstance = null;
         let timelineChartInstance = null;
+        let wordCloudChartInstance = null;
+        let lastWordCountStr = null;
 
         let chartViews = {
             mood: 'bar',
@@ -146,7 +147,6 @@
             reaction: 'pie'
         };
         let wordView = 'cloud';
-        let wordCloudChartInstance = null;
         let wordBarChartInstance = null;
 
         // Track filtering state
@@ -215,7 +215,8 @@ try {
         function createAnnotations(trackEvents) {
             let annotations = {};
             trackEvents.forEach((evt, i) => {
-                const labelText = evt.value === 'track_start' ? `Start Track ${evt.id || ''}` : `End Track ${evt.id || ''}`;
+                const cleanId = String(evt.id || '').replace('trk_', '');
+                const labelText = evt.value === 'track_start' ? `Track ${cleanId} Start` : `Track ${cleanId} End`;
                 annotations[`line${i}`] = {
                     type: 'line',
                     xMin: evt.time,
@@ -395,8 +396,8 @@ try {
                     
                     const wcEl = document.getElementById('wordCloud');
                     const listStr = JSON.stringify(list);
-                    if (list.length && wcEl && window.lastWordCountStr !== listStr) {
-                        window.lastWordCountStr = listStr;
+                    if (list.length && wcEl && lastWordCountStr !== listStr) {
+                        lastWordCountStr = listStr;
                         const dpr = window.devicePixelRatio || 1;
                         const rect = wcEl.parentElement.getBoundingClientRect();
                         if (rect.width > 0 && rect.height > 0) {

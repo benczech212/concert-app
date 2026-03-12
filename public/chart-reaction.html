@@ -182,7 +182,8 @@ try {
         function createAnnotations(trackEvents) {
             let annotations = {};
             trackEvents.forEach((evt, i) => {
-                const labelText = evt.value === 'track_start' ? `Start Track ${evt.id || ''}` : `End Track ${evt.id || ''}`;
+                const cleanId = String(evt.id || '').replace('trk_', '');
+                const labelText = evt.value === 'track_start' ? `Track ${cleanId} Start` : `Track ${cleanId} End`;
                 annotations[`line${i}`] = {
                     type: 'line',
                     xMin: evt.time,

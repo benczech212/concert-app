@@ -86,7 +86,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.2/wordcloud2.min.js"></script>
 
     <script>
-        const CYCLE_INTERVAL_MS = 10000; // 10 seconds per view
+        const CYCLE_INTERVAL_MS = 20000; // 20 seconds per view
         const DATA_REFRESH_MS = 5000;    // 5 seconds data fetch
 
         let rawEventsData = [];
@@ -170,7 +170,8 @@
         function createAnnotations() {
             let annotations = {};
             displayData.trackEvents.forEach((evt, i) => {
-                const labelText = evt.value === 'track_start' ? `Start Track ${evt.id || ''}` : `End Track ${evt.id || ''}`;
+                const cleanId = String(evt.id || '').replace('trk_', '');
+                const labelText = evt.value === 'track_start' ? `Track ${cleanId} Start` : `Track ${cleanId} End`;
                 annotations[`line${i}`] = {
                     type: 'line',
                     xMin: evt.time,
@@ -204,7 +205,8 @@
                     users: { timeline: {}, engCount: 0 },
                     words: {},
                     trackEvents: [],
-                    colorHexMap: {}
+                    colorHexMap: {},
+                    hexColorNameMap: {}
                 };
 
                 rawEventsData.forEach(e => {
@@ -235,11 +237,13 @@
                             bd.setMilliseconds(0);
                             const bucketTime = bd.getTime();
 
-                            const catData = displayData[e.category];
-                            const val = e.value;
+                            let val = e.value;
                             
                             if (e.category === 'color') {
-                                displayData.colorHexMap[val] = e.colorRgba || val;
+                                const hex = e.colorRgba || val;
+                                displayData.colorHexMap[val] = hex;
+                                displayData.hexColorNameMap[hex] = val;
+                                val = hex; // Group by the exact hex value in the timeline and totals
                             }
                             
                             // Timeline
@@ -307,11 +311,10 @@
                 const sortedWords = Object.entries(displayData.words).sort((a, b) => b[1] - a[1]).slice(0, 150);
                 const maxCount = sortedWords.length ? sortedWords[0][1] : 1;
                 const list = sortedWords.map(([w, c]) => [w, 14 + (c / maxCount) * 46]);
-                const listStr = JSON.stringify(list);
                 
-                if (lastRenderedCloudIndex === currentViewIndex && window.lastWordCountStr === listStr) return; // Skip re-rendering if already showing precisely the same words
+                // Skip re-rendering if this view is already active (don't live-update)
+                if (lastRenderedCloudIndex === currentViewIndex) return; 
                 lastRenderedCloudIndex = currentViewIndex;
-                window.lastWordCountStr = listStr;
 
                 if (list.length) {
                     const dpr = window.devicePixelRatio || 1;
@@ -380,21 +383,26 @@
 
                     let borderColor = color;
                     let borderDash = [];
-
-                    if (categoryLabel === 'color') {
-                        const hex = displayData.colorHexMap[labelValue] || labelValue;
-                        color = hex;
-                        borderColor = hex === 'transparent' ? '#ffffff' : hex;
-                        borderDash = hex === 'transparent' ? [5, 5] : [];
-                    } else if (categoryLabel === 'reaction') {
-                        if (labelValue === 'applause') { labelValue = 'Applause 👏'; color = '#006400'; }
-                        else if (labelValue === 'like') { labelValue = 'Like 👍'; color = '#90ee90'; }
-                        else { labelValue = 'Meh 😐'; color = '#808080'; }
+                    let readableLabel = labelValue;
+                    
+                    if (categoryLabel === 'reaction') {
+                        if (labelValue === 'applause') { readableLabel = 'Applause 👏'; color = '#006400'; }
+                        else if (labelValue === 'like') { readableLabel = 'Like 👍'; color = '#90ee90'; }
+                        else { readableLabel = 'Meh 😐'; color = '#808080'; }
                         borderColor = color;
                     }
 
+                    if (categoryLabel === 'color') {
+                        // labelValue IS the exact hex group now
+                        const hex = labelValue;
+                        readableLabel = displayData.hexColorNameMap[hex] || hex;
+                        color = hex;
+                        borderColor = hex === 'transparent' ? '#ffffff' : hex;
+                        borderDash = hex === 'transparent' ? [5, 5] : [];
+                    }
+
                     return {
-                        label: labelValue,
+                        label: readableLabel,
                         data: pointData,
                         borderColor: borderColor,
                         backgroundColor: color,
@@ -520,10 +528,6 @@
                     });
                 }
             } else if (viewMode === 'bubble') {
-                // Time-based Smooth Gradient (Dominant Color per Minute)
-                const times = Object.keys(timelineMap).sort((a, b) => parseInt(a) - parseInt(b));
-                if (times.length === 0) return;
-
                 if (chartInstance) {
                     chartInstance.destroy();
                     chartInstance = null;
@@ -535,110 +539,112 @@
 
                 ctx.clearRect(0, 0, width, height);
 
-                let colorStops = [];
-                const startTime = parseInt(times[0]);
-                const endTime = parseInt(times[times.length - 1]);
-                let timeRange = endTime - startTime;
-                if (timeRange === 0) timeRange = 1; // Prevent division by zero
-
-                times.forEach(tStr => {
-                    const t = parseInt(tStr);
-                    let maxCount = 0;
-                    let dominantColor = 'transparent';
-                    
-                    Object.keys(timelineMap[tStr]).forEach(c => {
-                        const count = timelineMap[tStr][c];
-                        if (count > maxCount) {
-                            maxCount = count;
-                            dominantColor = c;
+                // Build track ranges dynamically from rawEventsData
+                let trackRanges = [];
+                let currentTrack = null;
+                rawEventsData.forEach(e => {
+                    if (e.category === 'system') {
+                        if (e.value === 'track_start') {
+                            currentTrack = { id: e.trackId, title: e.trackTitle, start: new Date(e.timestamp).getTime(), end: Date.now() };
+                            trackRanges.push(currentTrack);
+                        } else if (e.value === 'track_end' && currentTrack && currentTrack.id === e.trackId) {
+                            currentTrack.end = new Date(e.timestamp).getTime();
+                            currentTrack = null;
                         }
-                    });
-                    
-                    if (maxCount > 0) {
-                        const position = (t - startTime) / timeRange;
-                        colorStops.push({
-                            pos: position,
-                            color: displayData.colorHexMap[dominantColor] || dominantColor
-                        });
                     }
                 });
 
-                // Fill in gaps with previous color faded by 50%
-                let finalColorStops = [];
-                for (let minute = startTime; minute <= endTime; minute += 60000) {
-                    const position = (minute - startTime) / timeRange;
-                    const existingStop = colorStops.find(s => Math.abs(s.pos - position) < 0.01);
-                    if (existingStop) {
-                        finalColorStops.push(existingStop);
-                    } else if (finalColorStops.length > 0) {
-                        // Take previous color and cut opacity in half
-                         let prevColor = finalColorStops[finalColorStops.length - 1].color;
-                         
-                         // Simple hex-to-rgba converter for the fade if it's hex
-                         if (prevColor.startsWith('#')) {
-                            let r = parseInt(prevColor.substring(1,3), 16);
-                            let g = parseInt(prevColor.substring(3,5), 16);
-                            let b = parseInt(prevColor.substring(5,7), 16);
-                            prevColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
-                         } else if (prevColor.startsWith('rgba')) {
-                            let parts = prevColor.match(/[\d.]+/g);
-                            if (parts && parts.length === 4) {
-                                prevColor = `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, ${parseFloat(parts[3]) * 0.5})`;
-                            }
-                         }
+                if (trackRanges.length === 0) return;
 
-                         finalColorStops.push({
-                            pos: position,
-                            color: prevColor
-                         });
-                    } else {
-                        // No previous color
-                        finalColorStops.push({
-                            pos: position,
-                            color: 'transparent'
-                        });
-                    }
-                }
+                const rowHeight = height / trackRanges.length;
+                
+                trackRanges.forEach((track, index) => {
+                    const trackEvents = rawEventsData.filter(e => 
+                        e.category === 'color' && 
+                        e.timestamp && 
+                        new Date(e.timestamp).getTime() >= track.start && 
+                        new Date(e.timestamp).getTime() <= track.end
+                    );
 
-                if (finalColorStops.length > 0) {
-                    const gradient = ctx.createLinearGradient(0, 0, width, 0);
-                    finalColorStops.forEach(stop => {
-                        gradient.addColorStop(stop.pos, stop.color);
-                    });
+                    const yOffset = index * rowHeight;
+                    const ribbonHeight = rowHeight * 0.8; // Leave a little gap between rows
+                    const y = yOffset + (rowHeight - ribbonHeight) / 2;
 
-                    ctx.fillStyle = gradient;
-                    // Draw a centered ribbon
-                    const ribbonHeight = height * 0.6;
-                    const yOffset = (height - ribbonHeight) / 2;
-                    ctx.fillRect(0, yOffset, width, ribbonHeight);
+                    // Background bar for the track
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+                    ctx.fillRect(0, y, width, ribbonHeight);
 
-                    // Draw time labels at start and end
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                    // Track Title
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
                     ctx.font = '12px system-ui, sans-serif';
                     ctx.textAlign = 'left';
-                    const startLabel = new Date(startTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                    ctx.fillText(startLabel, 10, height - 10);
-                    
-                    if (colorStops.length > 1) {
-                        ctx.textAlign = 'right';
-                        const endLabel = new Date(endTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                        ctx.fillText(endLabel, width - 10, height - 10);
+                    const cleanId = String(track.id).replace('trk_', '');
+                    ctx.fillText(`Track ${cleanId} ${track.title ? '- ' + track.title : ''}`, 10, y + 16);
+
+                    if (trackEvents.length > 0) {
+                        const timeRange = Math.max(1000, track.end - track.start);
+                        
+                        const posMap = new Map();
+                        trackEvents.forEach(e => {
+                            const t = new Date(e.timestamp).getTime();
+                            const pos = Math.max(0, Math.min(1, (t - track.start) / timeRange));
+                            const hex = e.colorRgba || e.value;
+                            posMap.set(pos.toFixed(4), hex);
+                        });
+
+                        const sortedPositions = Array.from(posMap.keys()).map(parseFloat).sort((a, b) => a - b);
+                        
+                        if (sortedPositions.length > 0) {
+                            const gradient = ctx.createLinearGradient(0, 0, width, 0);
+                            
+                            // Ensure 0 and 1 exist so the gradient covers the whole bar gracefully
+                            if (sortedPositions[0] > 0) {
+                                gradient.addColorStop(0, 'rgba(0,0,0,0)');
+                            }
+                            
+                            sortedPositions.forEach(pos => {
+                                gradient.addColorStop(pos, posMap.get(pos.toFixed(4)));
+                            });
+                            
+                            if (sortedPositions[sortedPositions.length - 1] < 1) {
+                                gradient.addColorStop(1, posMap.get(sortedPositions[sortedPositions.length - 1].toFixed(4)));
+                            }
+                            
+                            ctx.fillStyle = gradient;
+                            ctx.fillRect(0, y, width, ribbonHeight);
+                        }
                     }
-                }
+                    
+                    // Time Labels
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                    ctx.textAlign = 'left';
+                    ctx.fillText(new Date(track.start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), 10, y + ribbonHeight - 4);
+                    
+                    ctx.textAlign = 'right';
+                    ctx.fillText(new Date(track.end).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), width - 10, y + ribbonHeight - 4);
+                });
             } else { // bar or pie
                 let data = Object.values(totalsMap);
                 let renderBgColors = bgColorBar;
+                
+                if (categoryLabel === 'mood') {
+                    const sortedIndices = labels.map((l, i) => i).sort((a, b) => data[b] - data[a]);
+                    labels = sortedIndices.map(i => labels[i]);
+                    data = sortedIndices.map(i => data[i]);
+                }
                 
                 if (categoryLabel === 'color') {
                     function getHueMapValue(colorName) {
                         const hueMap = { "Red": 0, "Amber": 45, "Yellow": 60, "Green": 120, "Cyan": 180, "Blue": 240, "Purple": 300, "Transparent": 1000, "White": 1001, "Gray": 1002, "Black": 1003 };
                         return hueMap[colorName] !== undefined ? hueMap[colorName] : 999;
                     }
-                    const sortedIndices = labels.map((l, i) => i).sort((a, b) => getHueMapValue(labels[a]) - getHueMapValue(labels[b]));
-                    labels = sortedIndices.map(i => labels[i]);
+                    const sortedIndices = labels.map((l, i) => i).sort((a, b) => getHueMapValue(displayData.hexColorNameMap[labels[a]] || labels[a]) - getHueMapValue(displayData.hexColorNameMap[labels[b]] || labels[b]));
+                    let sortedLabels = sortedIndices.map(i => labels[i]);
                     data = sortedIndices.map(i => data[i]);
                     
-                    renderBgColors = labels.map(l => displayData.colorHexMap[l] || l);
+                    renderBgColors = sortedLabels.map(l => l); // The label itself is the accurate hex
+                    // Swap back to string names for the axis
+                    labels = sortedLabels.map(l => displayData.hexColorNameMap[l] || l);
                 } else if (categoryLabel === 'reaction') {
                     labels = labels.map(l => {
                         if (l === 'applause') return 'Applause 👏';

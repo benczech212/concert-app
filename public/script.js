@@ -353,9 +353,42 @@ if (typeof Chart === "undefined") {
   console.warn("Chart.js is not loaded. Charts will not render.");
 }
 
-let currentSelections = { color: null, mood: null, reaction: null };
+let currentSelections = { color: null, mood: null, reaction: null, note: null };
 let masterTimeout = null;
 let inactivityTimer = null;
+let isResetPending = false;
+let activeInteractions = 0;
+
+function handleInteractionStart() {
+  activeInteractions++;
+  if (isResetPending) {
+    clearTimeout(masterTimeout);
+  } else {
+    resetInactivityTimer();
+  }
+}
+
+function handleInteractionEnd() {
+  activeInteractions = Math.max(0, activeInteractions - 1);
+  if (activeInteractions === 0) {
+    if (isResetPending) {
+      clearTimeout(masterTimeout);
+      masterTimeout = setTimeout(resetAllSelections, 2000);
+    } else {
+      resetInactivityTimer();
+    }
+  }
+}
+
+["colorCard", "moodCard", "reactionCard", "noteCard"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener("mouseenter", handleInteractionStart);
+    el.addEventListener("mouseleave", handleInteractionEnd);
+    el.addEventListener("focusin", handleInteractionStart);
+    el.addEventListener("focusout", handleInteractionEnd);
+  }
+});
 
 function resetInactivityTimer() {
   clearTimeout(inactivityTimer);
@@ -363,7 +396,7 @@ function resetInactivityTimer() {
   if (masterTimeout) return;
   inactivityTimer = setTimeout(() => {
     // If not complete after 10 seconds, auto submit
-    if (!currentSelections.color || !currentSelections.mood || !currentSelections.reaction) {
+    if (!currentSelections.color || !currentSelections.mood || !currentSelections.reaction || !currentSelections.note) {
       submitSelections(true);
     }
   }, 10000);
@@ -379,7 +412,8 @@ function submitSelections(isAutoSubmit = false) {
     colorName: currentSelections.color ? currentSelections.color.replace('Light ', '') : "None",
     mood: currentSelections.mood || "None",
     colorRgba: currentSelections.colorHex || "transparent",
-    reactionLabel: currentSelections.reaction || "None"
+    reactionLabel: currentSelections.reaction || "None",
+    note: currentSelections.note || "None"
   });
 
   // Lock out resetting once submitted
@@ -390,8 +424,11 @@ function submitSelections(isAutoSubmit = false) {
 
   clearTimeout(masterTimeout);
   clearTimeout(inactivityTimer);
-  // Auto-submissions reset faster (1.5s vs 5s) because user isn't actively looking at the success screen
-  masterTimeout = setTimeout(resetAllSelections, isAutoSubmit ? 1500 : 5000);
+  
+  isResetPending = true;
+  if (activeInteractions === 0) {
+    masterTimeout = setTimeout(resetAllSelections, isAutoSubmit ? 6500 : 10000);
+  }
 }
 
 function getCombinedText() {
@@ -482,7 +519,8 @@ function resetAllSelections() {
     p.style.boxShadow = "none";
   });
 
-  const cards = ["colorCard", "moodCard", "reactionCard"];
+  isResetPending = false;
+  const cards = ["colorCard", "moodCard", "reactionCard", "noteCard"];
   cards.forEach(id => {
     const card = document.getElementById(id);
     if (card) {
@@ -493,6 +531,12 @@ function resetAllSelections() {
       card.style.padding = "";
     }
   });
+
+  if (continuousCommentEl) continuousCommentEl.value = "";
+  if (continuousCharHintEl) continuousCharHintEl.textContent = "0 / 140";
+  if (noteCardBody) noteCardBody.style.opacity = "1";
+  const noteSuccessOverlay = document.getElementById("noteSuccessOverlay");
+  if (noteSuccessOverlay) noteSuccessOverlay.classList.remove("show");
 
   if (colorCloseBtn) colorCloseBtn.style.display = "none";
   if (colorCardBody) colorCardBody.style.opacity = "1";
@@ -508,7 +552,7 @@ function resetAllSelections() {
   const disp = document.getElementById("colorNameDisplay");
   if (disp) { disp.textContent = ""; disp.style.backgroundColor = "transparent"; disp.style.opacity = "0"; }
 
-  currentSelections = { color: null, mood: null, reaction: null };
+  currentSelections = { color: null, mood: null, reaction: null, note: null };
   updateOverlays();
 }
 
@@ -681,7 +725,7 @@ function handleSelection(type, name, hexColorOrGlow) {
     if (popupSuccessOverlay) popupSuccessOverlay.classList.add("show");
   }
 
-  if (currentSelections.color && currentSelections.mood && currentSelections.reaction) {
+  if (currentSelections.color && currentSelections.mood && currentSelections.reaction && currentSelections.note) {
     submitSelections(false);
   } else {
     resetInactivityTimer();
@@ -1453,19 +1497,17 @@ if (btnSubmitContinuousNote && continuousCommentEl) {
     const note = continuousCommentEl.value.trim();
     if (note) {
       recordEvent("note", note);
+      currentSelections.note = note;
       
       if (noteCardBody) noteCardBody.style.opacity = "0";
       if (noteSuccessOverlay) {
         noteSuccessOverlay.classList.add("show");
-        setTimeout(() => {
-          noteSuccessOverlay.classList.remove("show");
-          if (noteCardBody) noteCardBody.style.opacity = "1";
-          continuousCommentEl.value = "";
-          if (continuousCharHintEl) continuousCharHintEl.textContent = "0 / 140";
-        }, 1500);
+      }
+      
+      if (currentSelections.color && currentSelections.mood && currentSelections.reaction && currentSelections.note) {
+        submitSelections(false);
       } else {
-        continuousCommentEl.value = "";
-        continuousCharHintEl.textContent = "0 / 140";
+        resetInactivityTimer();
       }
     }
   });

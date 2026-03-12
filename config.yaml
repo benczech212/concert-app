@@ -10,8 +10,9 @@ copy:
   footerText: "Thank you for participating — enjoy the performance."
 
 ai_models:
-  story_model: "gemini-2.5-flash"
-  image_model: "imagen-3.0-generate-002"
+  story_model: "gemini-3.1-pro-preview"
+  image_model: "gemini-3.1-pro-preview"
+  # image_model: "gemini-3-pro-image-preview"
 
 moods:
   - name: "Anticipation"

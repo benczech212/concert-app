@@ -82,6 +82,7 @@
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 6;
+            line-clamp: 6;
             -webkit-box-orient: vertical;
         }
 
@@ -159,7 +160,13 @@
         <div class="left-col">
             <h3 class="card-title">AI Interpretation</h3>
             <div class="story-img-container" id="aiImageDisplay"></div>
-            <div class="story-text" id="aiStoryDisplay">Generating story synopsis...</div>
+            <div class="track-details-display" style="text-align: center; margin-top: -10px; margin-bottom: 5px;">
+                <h4 id="aiTrackNameDisplay" style="margin: 0; color: #fff; font-size: 1.2rem;"></h4>
+                <div id="aiTrackDescDisplay" style="color: #a8b2d1; font-size: 0.9rem; margin-top: 5px;"></div>
+            </div>
+            <div class="story-text-container" style="flex: 1; overflow-y: auto; padding-right: 10px;">
+                <div class="story-text" id="aiStoryDisplay" style="display: block; max-height: none; -webkit-line-clamp: unset;">Generating story synopsis...</div>
+            </div>
         </div>
         <div class="right-col">
             <div class="metrics-card">
@@ -193,7 +200,7 @@
         let trackStories = {};
         let trackEventsMap = {}; // trackId -> events array
         
-        let currentTrackIndex = 0;
+        let currentViewIndex = 0;
         let chartInstance = null;
         let rotationTimer = null;
         let isFetching = false;
@@ -202,8 +209,8 @@
             if(isFetching) return;
             isFetching = true;
             try {
-                const logsRes = await fetch('/api/export/logs');
-                if (!logsRes.ok) throw new Error("Failed to load logs");
+                const logsRes = await fetch('/api/export/events');
+                if (!logsRes.ok) throw new Error("Failed to load export/events");
                 const logsText = await logsRes.text();
                 
                 const events = logsText.trim().split('\n')
@@ -324,24 +331,66 @@
             // Titles
             const tStoryObj = trackStories[track.id];
             let displayTitle = track.title;
-            if (tStoryObj && tStoryObj.generatedName && !tStoryObj.generatedName.includes("Untitled")) {
-                displayTitle = tStoryObj.generatedName.replace(/\*|\#/g, '').trim(); 
+            if (tStoryObj && tStoryObj.newName && !tStoryObj.newName.includes("Untitled")) {
+        function updateView() {
+            if (allTracks.length === 0) {
+                document.getElementById('noDataMsg').style.display = 'block';
+                document.getElementById('contentGrid').style.display = 'none';
+                return;
             }
-            document.getElementById('trackTitleDisplay').innerText = displayTitle;
-            
-            const startStr = new Date(track.start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            const endStr = new Date(track.end).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            document.getElementById('trackSubDisplay').innerText = `Track Played: ${startStr} - ${endStr} • ${events.length} Total Engagements`;
 
-            // Story & Image
-            document.getElementById('aiStoryDisplay').innerText = tStoryObj && tStoryObj.story ? tStoryObj.story.replace(/\*|\#/g, '').trim() : "AI synopsis not available for this track yet.";
+            document.getElementById('noDataMsg').style.display = 'none';
+            document.getElementById('contentGrid').style.display = 'flex';
+
+            const track = allTracks[currentViewIndex];
             
+            // Format time header
+            const st = new Date(track.start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const et = new Date(track.end).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            let totalEng = 0;
+            const events = trackEventsMap[track.id] || [];
+            totalEng = events.length;
+
+            document.getElementById('trackTitleDisplay').textContent = track.title || 'Unknown Track';
+            document.getElementById('trackSubDisplay').textContent = `Track Played: ${st} - ${et} • ${totalEng} Total Engagements`;
+
+            // Setup AI Story & Image
+            const storyData = trackStories[track.id];
+            const imgData = trackImages[track.id];
+            
+            const storyEl = document.getElementById('aiStoryDisplay');
             const imgEl = document.getElementById('aiImageDisplay');
-            const imgObj = trackImages[track.id];
-            if (imgObj && imgObj.imagePath) {
-                imgEl.style.backgroundImage = `url('${imgObj.imagePath}')`;
+            const nameEl = document.getElementById('aiTrackNameDisplay');
+            const descEl = document.getElementById('aiTrackDescDisplay');
+
+            if (storyData) {
+                // Determine names
+                const newN = storyData.newName ? storyData.newName.replace(/\*|\#/g, '').trim() : 'Renamed Track';
+                const origN = storyData.originalTitle || track.title || 'Original Track';
+                nameEl.textContent = `${newN} - ${origN}`;
+                descEl.textContent = storyData.description ? storyData.description.replace(/\*|\#/g, '').trim() : "AI track description"; // You can map a specific description here if the API provides one
+                storyEl.textContent = storyData.story ? storyData.story.replace(/\*|\#/g, '').trim() : "No story text.";
             } else {
-                imgEl.style.backgroundImage = `linear-gradient(45deg, #111, #333)`;
+                nameEl.textContent = track.title || 'Unknown Track';
+                descEl.textContent = '';
+                storyEl.textContent = "AI synopsis not available for this track yet.";
+            }
+
+            // Clear previous "No Image Generated" message if it exists
+            if(imgEl.querySelector('.no-image-msg')) {
+                imgEl.querySelector('.no-image-msg').remove();
+            }
+
+            if (imgData && imgData.imageBase64) {
+                imgEl.style.backgroundImage = `url(data:image/jpeg;base64,${imgData.imageBase64})`;
+            } else {
+                imgEl.style.backgroundImage = 'none';
+                const noImgDiv = document.createElement('div');
+                noImgDiv.className = 'no-image-msg';
+                noImgDiv.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;text-align:center;';
+                noImgDiv.innerHTML = 'No Image<br>Generated';
+                imgEl.appendChild(noImgDiv);
             }
 
             // Top 5 Engagements & Timeline Buckets & Word Cloud Generation

@@ -21,8 +21,8 @@ try {
 }
 
 const geminiApiKey = process.env.GEMINI_API_KEY;
-const STORY_MODEL = (config.ai_models && config.ai_models.story_model) ? config.ai_models.story_model : 'gemini-2.5-flash';
-const IMAGE_MODEL = (config.ai_models && config.ai_models.image_model) ? config.ai_models.image_model : 'imagen-3.0-generate-002';
+const STORY_MODEL = (config.ai_models && config.ai_models.story_model) ? config.ai_models.story_model : 'gemini-3.1-pro-preview';
+const IMAGE_MODEL = (config.ai_models && config.ai_models.image_model) ? config.ai_models.image_model : 'gemini-3.1-flash-image-preview';
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -213,6 +213,17 @@ app.post('/api/track/end', (req, res) => {
   res.json({ success: true });
 });
 
+// Manual Story Generation Trigger
+app.post('/api/debug/generate', (req, res) => {
+    const { trackId } = req.body;
+    if (!trackId) {
+        return res.status(400).json({ error: 'Missing trackId' });
+    }
+    console.log(`[Manual Override] Triggering automated generation for ${trackId}`);
+    triggerAutomaticStoryGeneration(trackId);
+    res.json({ success: true, message: `Story and Image generation triggered for ${trackId}` });
+});
+
 // Record event
 app.post('/api/events', (req, res) => {
   const event = req.body;
@@ -252,9 +263,9 @@ app.post('/api/events', (req, res) => {
       console.log(`[Watcher] Progress for ${event.trackId}: ${watcher.received.size} / ${watcher.expected}`);
       
       if (watcher.received.size >= watcher.expected) {
-          console.log(`[Watcher] Target completions reached for ${event.trackId}. Triggering generation.`);
+          console.log(`[Watcher] Target completions reached for ${event.trackId}. Triggering generation (Auto-gen paused).`);
           clearTimeout(watcher.timeout);
-          triggerAutomaticStoryGeneration(event.trackId);
+          // triggerAutomaticStoryGeneration(event.trackId);
           delete trackEndWatchers[event.trackId];
       }
   }
@@ -526,26 +537,32 @@ Output format should be JSON exactly like this, no markdown formatting:
 }`;
 
     try {
-      // Use child_process to invoke curl, avoiding node version https/fetch incompatibilities or silent exits
-      const payloadFile = path.join(__dirname, 'logs', `gemini_payload_${trackId}.json`);
-      fs.writeFileSync(payloadFile, JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }]
-      }));
-      
       const responseText = await new Promise((resolve, reject) => {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${STORY_MODEL}:generateContent?key=${geminiApiKey}`;
-        const cmd = `curl -s -X POST -H 'Content-Type: application/json' -d @${payloadFile} "${url}"`;
-        
-        const { exec } = require('child_process');
-        exec(cmd, (error, stdout, stderr) => {
-           if (fs.existsSync(payloadFile)) fs.unlinkSync(payloadFile);
-           if (error) {
-              console.error(`Curl error execution: ${error}`);
-              resolve(JSON.stringify({ error: true, msg: error.message }));
-           } else {
-              resolve(stdout);
-           }
+        const payload = JSON.stringify({
+           contents: [{ parts: [{ text: prompt }] }]
         });
+        const reqPost = https.request({
+            hostname: 'generativelanguage.googleapis.com',
+            path: `/v1beta/models/${STORY_MODEL}:generateContent?key=${geminiApiKey}`,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(payload)
+            }
+        }, (resPost) => {
+            let body = '';
+            resPost.on('data', d => body += d);
+            resPost.on('end', () => {
+                if (resPost.statusCode >= 200 && resPost.statusCode < 300) {
+                    resolve(body);
+                } else {
+                    reject(new Error(`Story API returned ${resPost.statusCode}: ${body}`));
+                }
+            });
+        });
+        reqPost.on('error', reject);
+        reqPost.write(payload);
+        reqPost.end();
       });
       
       const geminiData = JSON.parse(responseText);
@@ -600,7 +617,7 @@ Output format should be JSON exactly like this, no markdown formatting:
           // Return early for single runs to chain to image generation
           return {
               storyData: stories[stories.length - 1],
-              topWords: topWords,
+              topWords: getAllWords,
               topColors: topColors
           };
       }
@@ -718,13 +735,20 @@ async function generateImageForTrack(trackId, title, aiName, aiStory, topWords, 
         console.log(`Generating automated Imagen image for ${trackId}...`);
         const responseText = await new Promise((resolve, reject) => {
             const payload = JSON.stringify({
-                instances: [{ prompt: promptText }],
-                parameters: { sampleCount: 1 }
+                contents: [{
+                    parts: [{ text: promptText }]
+                }],
+                generationConfig: {
+                    responseModalities: ["Image"],
+                    imageConfig: {
+                        aspectRatio: "16:9"
+                    }
+                }
             });
             
             const reqPost = https.request({
                 hostname: 'generativelanguage.googleapis.com',
-                path: `/v1beta/models/${IMAGE_MODEL}:predict?key=${geminiApiKey}`,
+                path: `/v1beta/models/${IMAGE_MODEL}:generateContent?key=${geminiApiKey}`,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -753,12 +777,25 @@ async function generateImageForTrack(trackId, title, aiName, aiStory, topWords, 
             fs.appendFileSync('/home/benczech/dev/concert-app/logs/ai_prompts.jsonl', JSON.stringify(logPayload) + '\\n');
         } catch (logErr) {}
 
-        const b64 = data.predictions && data.predictions[0] && data.predictions[0].bytesBase64Encoded ? data.predictions[0].bytesBase64Encoded : null;
+        let b64 = null;
+        if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
+            for (const p of data.candidates[0].content.parts) {
+                if (p.inlineData && p.inlineData.data) {
+                    b64 = p.inlineData.data;
+                }
+            }
+        } else if (data.predictions && data.predictions[0] && data.predictions[0].bytesBase64Encoded) {
+            b64 = data.predictions[0].bytesBase64Encoded;
+        }
+
         if (b64) {
             let existingImages = [];
             const imgPath = path.join(__dirname, 'logs', 'track_images.json');
             if (fs.existsSync(imgPath)) {
-                try { existingImages = JSON.parse(fs.readFileSync(imgPath, 'utf8')); } catch(e) {}
+                try { 
+                    const parsedData = JSON.parse(fs.readFileSync(imgPath, 'utf8')); 
+                    if (Array.isArray(parsedData)) existingImages = parsedData;
+                } catch(e) {}
             }
             existingImages = existingImages.filter(i => i.trackId !== trackId);
             existingImages.push({
@@ -767,7 +804,18 @@ async function generateImageForTrack(trackId, title, aiName, aiStory, topWords, 
                 imageBase64: b64
             });
             fs.writeFileSync(imgPath, JSON.stringify(existingImages, null, 2));
-            console.log(`Saved new automated abstract image for ${trackId}.`);
+            console.log(`Saved new automated abstract image for ${trackId} in json.`);
+            
+            try {
+                const outDir = path.join(__dirname, 'logs', 'images');
+                if (!fs.existsSync(outDir)) { fs.mkdirSync(outDir, { recursive: true }); }
+                const fileName = `image_${trackId}_${Date.now()}.jpg`;
+                fs.writeFileSync(path.join(outDir, fileName), b64, 'base64');
+                console.log(`Saved image file to logs/images/${fileName}`);
+            } catch (err) {
+                console.error("Failed to write image file", err);
+            }
+            
             broadcast({ type: 'images_ready' });
         }
     } catch (e) {
@@ -814,13 +862,20 @@ app.post('/api/images/generate', async (req, res) => {
     try {
       const responseText = await new Promise((resolve, reject) => {
         const payload = JSON.stringify({
-          instances: [{ prompt: p.prompt }],
-          parameters: { sampleCount: 1 }
+            contents: [{
+                parts: [{ text: p.prompt }]
+            }],
+            generationConfig: {
+                responseModalities: ["Image"],
+                imageConfig: {
+                    aspectRatio: "16:9"
+                }
+            }
         });
         
         const reqPost = https.request({
           hostname: 'generativelanguage.googleapis.com',
-          path: `/v1beta/models/${IMAGE_MODEL}:predict?key=${geminiApiKey}`,
+          path: `/v1beta/models/${IMAGE_MODEL}:generateContent?key=${geminiApiKey}`,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -851,13 +906,33 @@ app.post('/api/images/generate', async (req, res) => {
           console.error("Failed to append to ai_prompts.jsonl", logErr);
       }
 
-      const b64 = data.predictions && data.predictions[0] && data.predictions[0].bytesBase64Encoded ? data.predictions[0].bytesBase64Encoded : null;
+      let b64 = null;
+      if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
+          for (const part of data.candidates[0].content.parts) {
+              if (part.inlineData && part.inlineData.data) {
+                  b64 = part.inlineData.data;
+              }
+          }
+      } else if (data.predictions && data.predictions[0] && data.predictions[0].bytesBase64Encoded) {
+          b64 = data.predictions[0].bytesBase64Encoded;
+      }
+
       if (b64) {
         images.push({
           trackId: p.trackId,
           trackTitle: p.trackTitle,
           imageBase64: b64
         });
+        
+        try {
+            const outDir = path.join(__dirname, 'logs', 'images');
+            if (!fs.existsSync(outDir)) { fs.mkdirSync(outDir, { recursive: true }); }
+            const fileName = `image_${p.trackId}_${Date.now()}.jpg`;
+            fs.writeFileSync(path.join(outDir, fileName), b64, 'base64');
+            console.log(`Saved image file to logs/images/${fileName}`);
+        } catch (err) {
+            console.error("Failed to write image file", err);
+        }
       }
     } catch (e) {
       console.error(`Failed to generate image for track ${p.trackId}:`);
@@ -917,25 +992,46 @@ app.get('/metrics', async (req, res) => {
   res.send(await client.register.metrics());
 });
 
-// Reset Prometheus metrics
+// Reset Prometheus metrics and Archive Session
 app.post('/api/metrics/reset', (req, res) => {
-  client.register.resetMetrics();
-  events = []; // Clear in-memory datastore so charts reset
-  currentTrack = null; // Clear active track
-  broadcast({ type: 'track_end', track: null });
+  const timestamp = Date.now();
+  const archivesDir = path.join(__dirname, 'archives');
+  if (!fs.existsSync(archivesDir)) fs.mkdirSync(archivesDir, { recursive: true });
   
-  const eventsLog = path.join(__dirname, 'logs', 'events_log.jsonl');
-  const storiesLog = path.join(__dirname, 'logs', 'track_stories.json');
-  const imagesLog = path.join(__dirname, 'logs', 'track_images.json');
-  const aiPromptsLog = path.join(__dirname, 'logs', 'ai_prompts.jsonl');
+  const archiveName = `archive_${timestamp}.tar.gz`;
+  const archivePath = path.join(archivesDir, archiveName);
+  
+  const { exec } = require('child_process');
+  
+  // Package the existing logs and images into a tar bundle before resetting
+  exec(`tar -czf ${archivePath} -C ${__dirname} logs/`, (error) => {
+      if (error) console.error("Failed to archive logs:", error);
+      else console.log(`Archived previous session to ${archivePath}`);
 
-  if (fs.existsSync(eventsLog)) fs.writeFileSync(eventsLog, '');
-  if (fs.existsSync(storiesLog)) fs.writeFileSync(storiesLog, '[]');
-  if (fs.existsSync(imagesLog)) fs.writeFileSync(imagesLog, '[]');
-  if (fs.existsSync(aiPromptsLog)) fs.writeFileSync(aiPromptsLog, '');
+      client.register.resetMetrics();
+      events = []; // Clear in-memory datastore so charts reset
+      currentTrack = null; // Clear active track
+      broadcast({ type: 'track_end', track: null });
+      
+      const eventsLog = path.join(__dirname, 'logs', 'events_log.jsonl');
+      const storiesLog = path.join(__dirname, 'logs', 'track_stories.json');
+      const imagesLog = path.join(__dirname, 'logs', 'track_images.json');
+      const aiPromptsLog = path.join(__dirname, 'logs', 'ai_prompts.jsonl');
 
-  console.log("Prometheus metrics, events array, track history, and log files reset via API");
-  res.json({ success: true, message: "Metrics, events, and track history reset successfully" });
+      if (fs.existsSync(eventsLog)) fs.writeFileSync(eventsLog, '');
+      if (fs.existsSync(storiesLog)) fs.writeFileSync(storiesLog, '[]');
+      if (fs.existsSync(imagesLog)) fs.writeFileSync(imagesLog, '[]');
+      if (fs.existsSync(aiPromptsLog)) fs.writeFileSync(aiPromptsLog, '');
+      
+      // Clear physical images but KEEP the directory
+      const imgDir = path.join(__dirname, 'logs', 'images');
+      if (fs.existsSync(imgDir)) {
+          fs.readdirSync(imgDir).forEach(file => fs.unlinkSync(path.join(imgDir, file)));
+      }
+
+      console.log("Prometheus metrics, events array, track history, and log files archived and reset via API");
+      res.json({ success: true, message: `Archived to ${archiveName} and reset successfully` });
+  });
 });
 
 // Fallback to index.html for SPA routing if needed

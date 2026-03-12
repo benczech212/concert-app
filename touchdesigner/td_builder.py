@@ -216,7 +216,9 @@ def onPulse(par):
     
     # Root Layout Anchor (Top to Bottom)
     out1 = viewers.create(containerCOMP, 'out1')
-    out1.par.align = 1 # vertbt
+    out1.par.align = 4 # gridrows
+    out1.par.vmode = 2 
+    out1.par.bottomanchor = 0.35
     out1.par.w = 400
     out1.par.h = 300
     

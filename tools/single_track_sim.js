@@ -119,7 +119,7 @@ async function runSimulation() {
   await post('/api/track', { id: `trk-1`, title: "Simulation Theme Song" });
   await sleep(2000); 
   
-  const durationSecs = 120;
+  const durationSecs = 15;
   let elapsed = 0;
   
   // Start random engagements loop

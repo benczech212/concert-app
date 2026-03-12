@@ -12,6 +12,7 @@
             background: var(--bg);
             color: var(--text);
             height: 100vh;
+            width: 100vw;
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -20,45 +21,47 @@
 
         .header {
             text-align: center;
-            padding: 15px;
+            padding: 10px;
             background: rgba(0, 0, 0, 0.4);
             flex-shrink: 0;
             border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
 
-        h1 { margin: 0; font-size: 2.5rem; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
-        h2 { margin: 5px 0 0 0; font-size: 1.5rem; color: #a8b2d1; }
+        h1 { margin: 0; font-size: 2rem; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+        h2 { margin: 2px 0 0 0; font-size: 1.2rem; color: #a8b2d1; }
         
         .content-wrapper {
             flex-grow: 1;
             display: flex;
-            padding: 20px;
-            gap: 20px;
+            padding: 15px;
+            gap: 15px;
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
             box-sizing: border-box;
-            height: calc(100vh - 85px); /* approximate header deduction */
+            height: calc(100vh - 75px);
         }
 
         .content-wrapper.fade-out { opacity: 0; }
 
         .left-col {
-            flex: 1;
+            flex: 4;
             display: flex;
             flex-direction: column;
             background: rgba(25, 25, 35, 0.6);
             border-radius: 12px;
-            padding: 20px;
+            padding: 15px;
             border: 1px solid rgba(255,255,255,0.05);
             box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
-            gap: 20px;
+            gap: 15px;
+            height: 100%;
         }
 
         .right-col {
-            flex: 1;
+            flex: 6;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
+            height: 100%;
         }
         
         .story-img-container {
@@ -73,41 +76,37 @@
         }
 
         .story-text {
-            font-size: 1.25rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.5;
             color: #e2e8f0;
             text-align: justify;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-            max-height: 35%;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 6;
-            line-clamp: 6;
-            -webkit-box-orient: vertical;
         }
 
         .metrics-card, .cloud-card, .chart-card {
             background: rgba(25, 25, 35, 0.6);
             border-radius: 12px;
-            padding: 20px;
+            padding: 10px 15px; /* lower top/bottom padding */
             border: 1px solid rgba(255,255,255,0.05);
             position: relative;
         }
 
-        .cloud-card { flex: 1; display: flex; flex-direction: column; }
-        .chart-card { flex: 1; display: flex; flex-direction: column;}
+        .metrics-card { flex-shrink: 0; }
+        .chart-card { flex: 4; display: flex; flex-direction: column; min-height: 0; }
+        .cloud-card { flex: 5; display: flex; flex-direction: column; min-height: 0; }
         
         .card-title {
-            font-size: 1.2rem;
+            font-size: 0.95rem; /* slightly smaller headers */
             text-transform: uppercase;
             letter-spacing: 2px;
             color: rgba(255,255,255,0.5);
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 5px; /* reduce bottom margin */
         }
 
         #wordCloudCanvas {
             width: 100%;
+            height: 100%;
             flex: 1;
             display: block;
         }
@@ -122,7 +121,6 @@
             display: flex;
             justify-content: space-between;
             gap: 10px;
-            margin-bottom: 20px;
         }
         
         .metric-badge {
@@ -130,12 +128,12 @@
             background: rgba(0,0,0,0.3);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
-            padding: 10px;
+            padding: 4px; /* lower padding to save vertical space */
             text-align: center;
         }
 
-        .metric-val { font-size: 1.8rem; font-weight: bold; color: #fff; }
-        .metric-lbl { font-size: 0.9rem; color: #8892b0; text-transform: capitalize; margin-top: 5px; }
+        .metric-val { font-size: 1.3rem; font-weight: bold; color: #fff; } /* lower font size */
+        .metric-lbl { font-size: 0.75rem; color: #8892b0; text-transform: capitalize; margin-top: 0; }
 
         #noDataMsg {
             position: absolute;
@@ -145,7 +143,6 @@
             color: rgba(255,255,255,0.5);
             display: none;
         }
-
     </style>
 </head>
 <body>
@@ -160,7 +157,7 @@
         <div class="left-col">
             <h3 class="card-title">AI Interpretation</h3>
             <div class="story-img-container" id="aiImageDisplay"></div>
-            <div class="track-details-display" style="text-align: center; margin-top: -10px; margin-bottom: 5px;">
+            <div class="track-details-display" style="text-align: center; margin-top: 10px; margin-bottom: 15px;">
                 <h4 id="aiTrackNameDisplay" style="margin: 0; color: #fff; font-size: 1.2rem;"></h4>
                 <div id="aiTrackDescDisplay" style="color: #a8b2d1; font-size: 0.9rem; margin-top: 5px;"></div>
             </div>
@@ -332,28 +329,13 @@
             const tStoryObj = trackStories[track.id];
             let displayTitle = track.title;
             if (tStoryObj && tStoryObj.newName && !tStoryObj.newName.includes("Untitled")) {
-        function updateView() {
-            if (allTracks.length === 0) {
-                document.getElementById('noDataMsg').style.display = 'block';
-                document.getElementById('contentGrid').style.display = 'none';
-                return;
+                displayTitle = tStoryObj.newName.replace(/\*|\#/g, '').trim(); 
             }
-
-            document.getElementById('noDataMsg').style.display = 'none';
-            document.getElementById('contentGrid').style.display = 'flex';
-
-            const track = allTracks[currentViewIndex];
+            document.getElementById('trackTitleDisplay').innerText = displayTitle;
             
-            // Format time header
-            const st = new Date(track.start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            const et = new Date(track.end).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            
-            let totalEng = 0;
-            const events = trackEventsMap[track.id] || [];
-            totalEng = events.length;
-
-            document.getElementById('trackTitleDisplay').textContent = track.title || 'Unknown Track';
-            document.getElementById('trackSubDisplay').textContent = `Track Played: ${st} - ${et} • ${totalEng} Total Engagements`;
+            const startStr = new Date(track.start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const endStr = new Date(track.end).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            document.getElementById('trackSubDisplay').innerText = `Track Played: ${startStr} - ${endStr} • ${events.length} Total Engagements`;
 
             // Setup AI Story & Image
             const storyData = trackStories[track.id];
@@ -369,11 +351,18 @@
                 const newN = storyData.newName ? storyData.newName.replace(/\*|\#/g, '').trim() : 'Renamed Track';
                 const origN = storyData.originalTitle || track.title || 'Original Track';
                 nameEl.textContent = `${newN} - ${origN}`;
-                descEl.textContent = storyData.description ? storyData.description.replace(/\*|\#/g, '').trim() : "AI track description"; // You can map a specific description here if the API provides one
-                storyEl.textContent = storyData.story ? storyData.story.replace(/\*|\#/g, '').trim() : "No story text.";
+                
+                // Add the new line for description extraction from the story text (first sentence heuristic)
+                const fullStoryText = storyData.story ? storyData.story.replace(/\*|\#/g, '').trim() : "No story text.";
+                const firstSentenceMatch = fullStoryText.match(/^(.*?[.!?])\s/);
+                const descText = storyData.description ? storyData.description : (firstSentenceMatch ? firstSentenceMatch[1] : "");
+                
+                if (descEl) descEl.textContent = descText;
+                
+                storyEl.textContent = fullStoryText;
             } else {
-                nameEl.textContent = track.title || 'Unknown Track';
-                descEl.textContent = '';
+                nameEl.textContent = `Pending AI Name - ${track.title || 'Unknown Track'}`;
+                if (descEl) descEl.textContent = "";
                 storyEl.textContent = "AI synopsis not available for this track yet.";
             }
 
@@ -382,10 +371,13 @@
                 imgEl.querySelector('.no-image-msg').remove();
             }
 
-            if (imgData && imgData.imageBase64) {
-                imgEl.style.backgroundImage = `url(data:image/jpeg;base64,${imgData.imageBase64})`;
+            const imgObj = trackImages[track.id];
+            if (imgObj && imgObj.imageBase64) {
+                imgEl.style.backgroundImage = `url('data:image/jpeg;base64,${imgObj.imageBase64}')`;
+            } else if (imgObj && imgObj.imagePath) {
+                imgEl.style.backgroundImage = `url('${imgObj.imagePath}')`;
             } else {
-                imgEl.style.backgroundImage = 'none';
+                imgEl.style.backgroundImage = `linear-gradient(45deg, #111, #333)`;
                 const noImgDiv = document.createElement('div');
                 noImgDiv.className = 'no-image-msg';
                 noImgDiv.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;text-align:center;';
@@ -473,7 +465,7 @@
                     }]
                 },
                 options: {
-                    responsive: true, maintainAspectRatio: false,
+                    responsive: false, maintainAspectRatio: true,
                     animation: { duration: 0 },
                     scales: { 
                         x: { type: 'time', time: { unit: 'minute' }, grid: { color: 'rgba(255,255,255,0.05)' } }, 
@@ -517,6 +509,22 @@
                 wCtx.font = '20px sans-serif';
                 wCtx.fillText('No words collected', wordCanvas.width/2, wordCanvas.height/2);
             }
+        }
+
+        function updateView() {
+            if (allTracks.length === 0) {
+                document.getElementById('noDataMsg').style.display = 'block';
+                document.getElementById('contentGrid').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('noDataMsg').style.display = 'none';
+            document.getElementById('contentGrid').style.display = 'flex';
+
+            const track = allTracks[currentViewIndex];
+            const tEvents = trackEventsMap[track.id] || [];
+            
+            renderTrackData(track, tEvents);
         }
 
         // Start loop

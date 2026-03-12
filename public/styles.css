@@ -175,6 +175,7 @@ textarea {
   border-radius: 12px;
   padding: 10px 12px;
   outline: none;
+  font-size: 16px; /* Prevents iOS auto-zoom */
 }
 
 input[type="email"]::placeholder,
@@ -195,9 +196,12 @@ textarea {
 
 /* Checkbox */
 input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: rgba(242, 243, 245, 0.85);
+  width: 20px;
+  height: 20px;
+  accent-color: #32ff96; /* Brighter, high-contrast color for visibility */
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 4px;
 }
 
 /* ---------- Wheels ---------- */

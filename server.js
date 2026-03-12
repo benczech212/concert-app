@@ -216,8 +216,8 @@ app.post('/api/track/end', (req, res) => {
 app.post('/api/events', (req, res) => {
   const event = req.body;
 
-  // Attach current track if there is one
-  if (currentTrack) {
+  // Attach current track if there is one, but don't overwrite explicit trackIds from the client payload (crucial for post-track notes)
+  if (currentTrack && !event.trackId) {
     event.trackId = currentTrack.id;
     event.trackTitle = currentTrack.title;
   }

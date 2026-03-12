@@ -1031,6 +1031,7 @@ function connectStream() {
 
         // If a track just finished, pop up the word cloud prompt
         if (finishedTrack) {
+          lastFinishedTrackId = finishedTrack.id;
           const wordCloudTitle = document.getElementById("wordCloudTitle");
           if (wordCloudTitle) {
             wordCloudTitle.textContent = `How did "${finishedTrack.title}" make you feel?`;
@@ -1050,9 +1051,11 @@ function connectStream() {
   };
 }
 
+let lastFinishedTrackId = null;
+
 if (btnSkipWordCloud) {
   btnSkipWordCloud.addEventListener("click", () => {
-    recordEvent("note_skip", "skipped");
+    recordEvent("note_skip", "skipped", { trackId: lastFinishedTrackId });
     wordCloudModal.style.display = "none";
   });
 }
@@ -1061,7 +1064,7 @@ if (btnCloseWordCloud) {
   btnCloseWordCloud.addEventListener("click", () => {
     const note = commentEl.value.trim();
     if (note) {
-      recordEvent("note", note);
+      recordEvent("note", note, { trackId: lastFinishedTrackId });
       setMessage(successMsgEl, "Note saved.", false);
       setTimeout(() => {
         setMessage(successMsgEl, "", false);
@@ -1069,7 +1072,7 @@ if (btnCloseWordCloud) {
       }, 1000); // short delay to show 'saved' before closing
     } else {
       // If empty, treat as skip
-      recordEvent("note_skip", "skipped");
+      recordEvent("note_skip", "skipped", { trackId: lastFinishedTrackId });
       wordCloudModal.style.display = "none";
     }
   });

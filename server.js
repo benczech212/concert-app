@@ -31,9 +31,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Temporarily expose archives for download
-app.use('/archives', express.static(path.join(__dirname, 'archives')));
-
 // Expose config.yaml to frontend
 app.get('/config.yaml', (req, res) => {
   res.sendFile(path.join(__dirname, 'config.yaml'));

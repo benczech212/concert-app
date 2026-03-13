@@ -105,6 +105,14 @@
                 <div id="statusMsg" role="status" aria-live="polite" style="margin-top: 15px;"></div>
             </section>
 
+            <section class="card" aria-label="Server Backups" style="text-align: center;">
+                <h2>Archived Production Logs</h2>
+                <p class="note">Download compressed (.tar.gz) backups of previous show data.</p>
+                <div id="archivesList" style="display:flex; flex-direction:column; gap:10px; margin-top:15px;">
+                    <span class="note">Loading archives...</span>
+                </div>
+            </section>
+
             <section class="card" aria-label="Data Preview">
                 <h2>Data Preview</h2>
                 <div style="display:flex;gap:10px;margin-top:15px;flex-wrap:wrap;">
@@ -144,6 +152,7 @@
                 adminContent.style.display = "block";
                 fetchConfigTracks();
                 startPollingState();
+                fetchArchives();
             } else {
                 loginError.textContent = "Incorrect password.";
             }
@@ -169,6 +178,23 @@
         async function fetchConfigTracks() {
             // Track selection dropdown has been removed per user request.
             // Function preserved empty to avoid breaking the startup sequence.
+        }
+
+        async function fetchArchives() {
+            try {
+                const res = await fetch('/api/archives');
+                const files = await res.json();
+                const listEl = document.getElementById("archivesList");
+                if (files.length === 0) {
+                    listEl.innerHTML = '<span class="note">No archives found on the server.</span>';
+                    return;
+                }
+                listEl.innerHTML = files.map(file => 
+                    `<a href="/archives/${file}" download="${file}" class="secondary" style="text-decoration:none; padding:10px; border-radius:6px; background:rgba(255,255,255,0.05); text-align: left; display: block;">&#128190; &nbsp; ${file}</a>`
+                ).join('');
+            } catch (e) {
+                document.getElementById("archivesList").innerHTML = '<span class="error">Failed to load archives.</span>';
+            }
         }
 
         async function updateState(newState) {

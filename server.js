@@ -31,6 +31,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Serve archive files
+app.use('/archives', express.static(path.join(__dirname, 'archives')));
+
+// API to list available archives
+app.get('/api/archives', (req, res) => {
+  const archivesDir = path.join(__dirname, 'archives');
+  if (fs.existsSync(archivesDir)) {
+    const files = fs.readdirSync(archivesDir).filter(file => file.endsWith('.tar.gz') || file.endsWith('.json') || file.endsWith('.jsonl'));
+    res.json(files);
+  } else {
+    res.json([]);
+  }
+});
+
 // Expose config.yaml to frontend
 app.get('/config.yaml', (req, res) => {
   res.sendFile(path.join(__dirname, 'config.yaml'));

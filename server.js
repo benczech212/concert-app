@@ -34,6 +34,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Temporarily expose archives for download
 app.use('/archives', express.static(path.join(__dirname, 'archives')));
 
+app.get('/api/list-archives', (req, res) => {
+  const archivesDir = path.join(__dirname, 'archives');
+  if (fs.existsSync(archivesDir)) {
+    res.json(fs.readdirSync(archivesDir));
+  } else {
+    res.json([]);
+  }
+});
+
 // Expose config.yaml to frontend
 app.get('/config.yaml', (req, res) => {
   res.sendFile(path.join(__dirname, 'config.yaml'));

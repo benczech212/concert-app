@@ -69,6 +69,19 @@ try {
 }
 
 let users = {}; // Map of email -> user object
+
+// Load users from disk if available
+const usersDbPath = path.join(__dirname, 'logs', 'users.json');
+try {
+  if (fs.existsSync(usersDbPath)) {
+    const data = fs.readFileSync(usersDbPath, 'utf8');
+    users = JSON.parse(data);
+    console.log(`Loaded ${Object.keys(users).length} users from disk.`);
+  }
+} catch (e) {
+  console.error("Failed to load users DB", e);
+}
+
 let currentTrack = null;
 let connectedClients = [];
 let showState = 'PRE_SHOW';
@@ -398,6 +411,14 @@ app.post('/api/users', (req, res) => {
   };
 
   console.log("Registered user:", users[user.email]);
+  
+  // Persist users to disk
+  try {
+    fs.writeFileSync(usersDbPath, JSON.stringify(users, null, 2));
+  } catch (e) {
+    console.error("Failed to persist users DB", e);
+  }
+
   res.json({ success: true, user: users[user.email] });
 });
 

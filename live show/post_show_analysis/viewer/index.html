@@ -972,7 +972,7 @@
         let activeImageIndex = 0;
 
         function fetchAiHistory(trackId) {
-            fetch('http://localhost:8000/api/stories')
+            fetch('/api/stories')
                 .then(r => r.json())
                 .then(data => {
                     const trackStories = data.filter(d => d.trackId === trackId);
@@ -991,7 +991,7 @@
                     }
                 }).catch(e => console.error("Error fetching AI:", e));
                 
-            fetch('http://localhost:8000/api/images')
+            fetch('/api/images')
                 .then(r => r.json())
                 .then(data => {
                     const trackImages = data.filter(d => d.trackId === trackId);
@@ -1094,7 +1094,7 @@
         }
         
         function selectStoryVersion(trackId, index) {
-            fetch('http://localhost:8000/api/debug/select-story', {
+            fetch('/api/debug/select-story', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ trackId: trackId, index: index })
@@ -1113,7 +1113,7 @@
         function deleteStoryVersion(trackId, index) {
             if (!confirm(`Are you sure you want to delete AI variation ${index + 1}?`)) return;
             
-            fetch('http://localhost:8000/api/debug/delete-story', {
+            fetch('/api/debug/delete-story', {
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ trackId: trackId, index: index })
@@ -1138,7 +1138,7 @@
         }
 
         function selectImageVersion(trackId) {
-            fetch('http://localhost:8000/api/debug/select-image', {
+            fetch('/api/debug/select-image', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ trackId: trackId, index: activeImageIndex })
@@ -1154,7 +1154,7 @@
 
         function deleteImageVersion(trackId) {
             if (!confirm(`Are you sure you want to delete visual variation ${activeImageIndex + 1}?`)) return;
-            fetch('http://localhost:8000/api/debug/delete-image', {
+            fetch('/api/debug/delete-image', {
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ trackId: trackId, index: activeImageIndex })
@@ -1213,7 +1213,7 @@ Output format should be JSON exactly like this, no markdown formatting:
             btn.innerHTML = '⏳ Generating Text...';
             btn.disabled = true;
 
-            fetch('http://localhost:8000/api/debug/generate-text', {
+            fetch('/api/debug/generate-text', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ trackId: trackId, customPrompt: customPrompt })
@@ -1273,7 +1273,7 @@ Output format should be JSON exactly like this, no markdown formatting:
             btn.innerHTML = '⏳ Generating Image...';
             btn.disabled = true;
 
-            fetch('http://localhost:8000/api/debug/generate-image-direct', {
+            fetch('/api/debug/generate-image-direct', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ trackId: trackId, title: title, imagePrompt: customPrompt })
@@ -1304,7 +1304,7 @@ Output format should be JSON exactly like this, no markdown formatting:
             btn.innerHTML = '⏳ Refining...';
             btn.disabled = true;
 
-            fetch('http://localhost:8000/api/debug/refine-image-prompt', {
+            fetch('/api/debug/refine-image-prompt', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ trackId: trackId, imagePrompt: customPrompt })
@@ -1334,7 +1334,7 @@ Output format should be JSON exactly like this, no markdown formatting:
             btn.innerHTML = '⏳ Refining...';
             btn.disabled = true;
 
-            fetch('http://localhost:8000/api/debug/refine-text-prompt', {
+            fetch('/api/debug/refine-text-prompt', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ trackId: trackId, textPrompt: customPrompt })
@@ -1430,9 +1430,9 @@ Output format should be JSON exactly like this, no markdown formatting:
             grid.innerHTML = '<p style="color: var(--text-muted); width: 100%;">Loading content...</p>';
             
             try {
-                const storiesRes = await fetch('http://localhost:8000/api/stories');
+                const storiesRes = await fetch('/api/stories');
                 const stories = await storiesRes.json();
-                const imagesRes = await fetch('http://localhost:8000/api/images');
+                const imagesRes = await fetch('/api/images');
                 const images = await imagesRes.json();
                 
                 let html = '';
@@ -1596,7 +1596,7 @@ Output format should be JSON exactly like this, no markdown formatting:
                 // 2. Fire Request for Text
                 batchLog(`>> Requesting Story generation...`);
                 try {
-                    const textRes = await fetch('http://localhost:8000/api/debug/generate-text', {
+                    const textRes = await fetch('/api/debug/generate-text', {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify({ trackId: trackId, customPrompt: textPrompt })
@@ -1634,7 +1634,7 @@ Output format should be JSON exactly like this, no markdown formatting:
                     
                     // 4. Fire Request for Image
                     batchLog(`>> Requesting Visuals generation...`);
-                    const imgRes = await fetch('http://localhost:8000/api/debug/generate-image-direct', {
+                    const imgRes = await fetch('/api/debug/generate-image-direct', {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify({ trackId: trackId, title: generatedName, imagePrompt: imagePrompt })

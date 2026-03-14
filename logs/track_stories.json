@@ -334,5 +334,26 @@
       "moods": {},
       "minutes": {}
     }
+  },
+  {
+    "trackId": "trk_combined_s2_t1",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Cobalt Harmonies in Deep Orange",
+    "story": "Propelled by funky deep orange rhythms, we drift outside of space and time, sailing through a celestial cobalt melancholy painted with splashes of turquoise joy. Here, high in the heavens, swirling fever dreams harmonize into a powerful, comforting embrace that feels profoundly like home.",
+    "thoughts": "",
+    "geminiPrompt": "Act as a visionary poet and synesthetic music critic. Translate the following live audience telemetry from a piano jazz concert into an evocative, lyrical masterpiece. Audience Data: Colors: Deep Orange, Turquoise, Cobalt, Yellow, Orange. Moods: Joy, Mystery, Melancholy, Anticipation, Power. Reactions: like, applause. Notes: Abstract | Connecting | Drifting floating sailing | Harmony | High in the heavens | Outside of space and time | Fever dreams | Kissyfish! | High | Home | Amazing | Confusing | Funky. Using this vivid palette, weave a celestial yet grounded narrative. Capture the intoxicating blend of rhythmic power, melancholy, and the drifting sensation of being 'outside space and time.' Generate: 1. A spellbinding, evocative title (max 5 words). 2. A highly poetic, deeply immersive description (max 2 sentences) that paints the track's sonic landscape. Output strictly as a raw JSON object with no markdown, exactly like this: {\"newName\": \"Name\", \"story\": \"Story.\"}",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773462246079,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
   }
 ]

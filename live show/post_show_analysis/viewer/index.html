@@ -972,7 +972,7 @@
         let activeImageIndex = 0;
 
         function fetchAiHistory(trackId) {
-            fetch('/api/stories')
+            fetch(`/api/stories?t=${Date.now()}`)
                 .then(r => r.json())
                 .then(data => {
                     const trackStories = data.filter(d => d.trackId === trackId);
@@ -991,7 +991,7 @@
                     }
                 }).catch(e => console.error("Error fetching AI:", e));
                 
-            fetch('/api/images')
+            fetch(`/api/images?t=${Date.now()}`)
                 .then(r => r.json())
                 .then(data => {
                     const trackImages = data.filter(d => d.trackId === trackId);
@@ -1430,9 +1430,9 @@ Output format should be JSON exactly like this, no markdown formatting:
             grid.innerHTML = '<p style="color: var(--text-muted); width: 100%;">Loading content...</p>';
             
             try {
-                const storiesRes = await fetch('/api/stories');
+                const storiesRes = await fetch(`/api/stories?t=${Date.now()}`);
                 const stories = await storiesRes.json();
-                const imagesRes = await fetch('/api/images');
+                const imagesRes = await fetch(`/api/images?t=${Date.now()}`);
                 const images = await imagesRes.json();
                 
                 let html = '';

@@ -1,0 +1,9 @@
+"SequenceID","TrackTitle","TrackID","StartTime","EndTime","DurationSecs","TotalEvents"
+1,"Pre-Show","trk_combined_pre_show","2026-03-12T23:19:35.340Z","2026-03-12T23:52:58.941Z",2004,68
+4,"Section 1 - Track 1","trk_combined_s1_t1","2026-03-12T23:38:59.264Z","2026-03-12T23:47:44.287290837Z",525,78
+6,"Section 1 - Track 2","trk_combined_s1_t2","2026-03-12T23:47:46.351Z","2026-03-12T23:50:52.575Z",186,33
+8,"Section 1 - Track 3","trk_combined_s1_t3","2026-03-12T23:50:54.695Z","2026-03-12T23:54:03.288339573Z",189,43
+12,"Section 1 - Track 4, 5, 6","trk_combined_s1_t456","2026-03-12T23:54:33.191Z","2026-03-13T00:15:46.700Z",1274,99
+14,"Section 2 - Track 1","trk_combined_s2_t1","2026-03-13T00:14:28.675Z","2026-03-13T00:20:38.888360413Z",370,159
+16,"Section 2 - Track 2","trk_combined_s2_t2","2026-03-13T00:21:07.544Z","2026-03-13T00:24:42.53670928Z",215,84
+19,"Section 2 - Track 3","trk_combined_s2_t3","2026-03-13T00:25:15.438Z","2026-03-13T00:42:55.558Z",1060,201

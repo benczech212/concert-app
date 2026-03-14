@@ -92,12 +92,31 @@
         const container = document.getElementById('stories-container');
         container.innerHTML = '';
         
-        if (stories.length === 0) {
+        // Filter stories to only show the chosen one per track
+        const processedStories = [];
+        const trackGroups = {};
+        
+        stories.forEach(story => {
+            if (!trackGroups[story.trackId]) trackGroups[story.trackId] = [];
+            trackGroups[story.trackId].push(story);
+        });
+
+        Object.keys(trackGroups).forEach(trackId => {
+            const group = trackGroups[trackId];
+            // Prioritize the chosen version, otherwise fallback to the most recent generation
+            let chosenStory = group.find(s => s.isChosen);
+            if (!chosenStory) {
+                chosenStory = group[group.length - 1]; // Latest generated
+            }
+            if (chosenStory) processedStories.push(chosenStory);
+        });
+
+        if (processedStories.length === 0) {
           container.innerHTML = '<div class="loading">No stories have been generated yet.</div>';
           return;
         }
 
-        stories.forEach(story => {
+        processedStories.forEach(story => {
           const card = document.createElement('div');
           card.className = 'story-card';
           

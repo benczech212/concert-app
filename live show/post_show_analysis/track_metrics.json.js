@@ -1,0 +1,2093 @@
+window.metricsDataExport = 
+[
+  {
+    "id": "trk_combined_pre_show",
+    "title": "Pre-Show",
+    "startTime": 1773357575340,
+    "endTime": 1773359578941,
+    "totalEvents": 68,
+    "uniqueUsers": [
+      "participant_f10a0cce@participant.local",
+      "kevin.young.m@gmail.com",
+      "anon_1773357342171_da4ead55ec82b@anonymous.local",
+      "anon_1773357847698_fca6b6158cc838@anonymous.local",
+      "anon_1773358255188_761c336402c488@anonymous.local",
+      "anon_1773358290750_6e1a566d26784@anonymous.local",
+      "gjrosasco@yahoo.com",
+      "anon_1773358403908_bb99d04588bc9@anonymous.local",
+      "anon_1773358533513_928475e7c7a7@anonymous.local",
+      "anon_1773357533730_42e616eba1d9e8@anonymous.local",
+      "anon_1773358612951_1f9ccb76baaf4@anonymous.local",
+      "anon_1773358619020_5c14a39dca106@anonymous.local",
+      "finmac40@msn.com",
+      "ron@ronbuening.com",
+      "maeganmarlow@icloud.com",
+      "maggieleslie13@gmail.com",
+      "laura_f4476f2e@participant.local",
+      "sjsmemay263@gmail.coms",
+      "anon_1773358674682_f70b3b25bd532@anonymous.local",
+      "lilyquay_a127efbb@participant.local",
+      "slogs.hasty1f@icloud.com",
+      "anon_1773358685797_7f15bd20b00d8@anonymous.local",
+      "thetanclan@aol.com"
+    ],
+    "categories": {
+      "color": 24,
+      "mood": 12,
+      "reaction": 7,
+      "note": 0,
+      "combined_reaction": 9,
+      "note_skip": 16
+    },
+    "histogram": {
+      "0s": 1,
+      "580s": 2,
+      "610s": 2,
+      "620s": 6,
+      "640s": 2,
+      "650s": 6,
+      "660s": 1,
+      "680s": 1,
+      "690s": 2,
+      "720s": 1,
+      "730s": 1,
+      "740s": 1,
+      "750s": 1,
+      "840s": 2,
+      "870s": 2,
+      "880s": 2,
+      "970s": 1,
+      "980s": 1,
+      "990s": 1,
+      "1030s": 2,
+      "1040s": 3,
+      "1050s": 4,
+      "1070s": 2,
+      "1080s": 3,
+      "1090s": 2,
+      "1100s": 1,
+      "1150s": 9,
+      "1160s": 1,
+      "1190s": 1,
+      "1230s": 1,
+      "1280s": 1,
+      "1540s": 1,
+      "2000s": 1
+    },
+    "itemHistograms": {
+      "Green": {
+        "580s": 1,
+        "650s": 2
+      },
+      "Joy": {
+        "580s": 1,
+        "690s": 1,
+        "730s": 1,
+        "750s": 1
+      },
+      "Harlequin": {
+        "610s": 1
+      },
+      "White": {
+        "610s": 1
+      },
+      "Mystery": {
+        "620s": 2,
+        "1040s": 1,
+        "1050s": 1
+      },
+      "Transparent": {
+        "620s": 2
+      },
+      "like": {
+        "620s": 1,
+        "690s": 1,
+        "740s": 1,
+        "750s": 1,
+        "880s": 2,
+        "1050s": 2,
+        "1070s": 1,
+        "1090s": 1
+      },
+      "Confusion": {
+        "620s": 1,
+        "870s": 1,
+        "880s": 1
+      },
+      "Turquoise": {
+        "640s": 2
+      },
+      "Sapphire": {
+        "650s": 1
+      },
+      "Capri": {
+        "650s": 1,
+        "1080s": 1,
+        "1100s": 1
+      },
+      "Anticipation": {
+        "650s": 2,
+        "990s": 1
+      },
+      "Cerulean": {
+        "650s": 1,
+        "660s": 1
+      },
+      "Violet": {
+        "680s": 1,
+        "750s": 1
+      },
+      "Azure": {
+        "720s": 1
+      },
+      "Yellow": {
+        "840s": 2
+      },
+      "Ultramarine": {
+        "870s": 1,
+        "880s": 1
+      },
+      "Blue": {
+        "970s": 1,
+        "980s": 1,
+        "1040s": 1,
+        "1050s": 1,
+        "1070s": 1,
+        "1080s": 1
+      },
+      "Purple": {
+        "1030s": 1,
+        "1050s": 1
+      },
+      "Cyan": {
+        "1030s": 1
+      },
+      "Power": {
+        "1040s": 1,
+        "1050s": 1
+      },
+      "Chartreuse": {
+        "1050s": 1
+      },
+      "Melancholy": {
+        "1080s": 2
+      },
+      "Spring Bud": {
+        "1090s": 1
+      }
+    },
+    "colors": {
+      "Green": 3,
+      "Harlequin": 1,
+      "White": 1,
+      "Transparent": 2,
+      "Turquoise": 2,
+      "Sapphire": 1,
+      "Capri": 3,
+      "Cerulean": 2,
+      "Violet": 2,
+      "Azure": 1,
+      "Yellow": 2,
+      "Ultramarine": 2,
+      "Blue": 6,
+      "Purple": 2,
+      "Cyan": 1,
+      "Chartreuse": 1,
+      "Spring Bud": 1
+    },
+    "moods": {
+      "Joy": 4,
+      "Mystery": 4,
+      "Confusion": 3,
+      "Anticipation": 3,
+      "Power": 2,
+      "Melancholy": 2
+    },
+    "reactions": {
+      "like": 10
+    },
+    "notesList": [],
+    "uniqueUsersCount": 23,
+    "durationSecs": 2004
+  },
+  {
+    "id": "trk_combined_s1_t1",
+    "title": "Section 1 - Track 1",
+    "startTime": 1773358739264,
+    "endTime": 1773359294274,
+    "totalEvents": 78,
+    "uniqueUsers": [
+      "anon_1773358674682_f70b3b25bd532@anonymous.local",
+      "ron@ronbuening.com",
+      "wes.lipschultz@gmail.com",
+      "laura_f4476f2e@participant.local",
+      "slogs.hasty1f@icloud.com",
+      "maggieleslie13@gmail.com",
+      "sjsmemay263@gmail.coms",
+      "maeganmarlow@icloud.com",
+      "mpfaffko@gmail.com",
+      "kevin.young.m@gmail.com",
+      "anon_1773357342171_da4ead55ec82b@anonymous.local",
+      "anon_1773358533513_928475e7c7a7@anonymous.local",
+      "anon_1773358685797_7f15bd20b00d8@anonymous.local",
+      "anon_1773358612951_1f9ccb76baaf4@anonymous.local",
+      "anon_1773358403908_bb99d04588bc9@anonymous.local"
+    ],
+    "categories": {
+      "color": 23,
+      "mood": 15,
+      "reaction": 14,
+      "note": 4,
+      "combined_reaction": 17,
+      "note_skip": 5
+    },
+    "histogram": {
+      "0s": 5,
+      "10s": 2,
+      "20s": 2,
+      "30s": 1,
+      "40s": 2,
+      "60s": 2,
+      "70s": 2,
+      "80s": 5,
+      "90s": 4,
+      "110s": 6,
+      "120s": 11,
+      "130s": 3,
+      "150s": 1,
+      "160s": 2,
+      "170s": 4,
+      "190s": 2,
+      "200s": 2,
+      "300s": 1,
+      "310s": 2,
+      "360s": 1,
+      "370s": 2,
+      "380s": 2,
+      "390s": 2,
+      "410s": 2,
+      "430s": 2,
+      "440s": 1,
+      "490s": 2,
+      "500s": 1,
+      "520s": 1,
+      "550s": 3
+    },
+    "itemHistograms": {
+      "Cobalt": {
+        "0s": 1,
+        "10s": 1,
+        "80s": 1,
+        "90s": 1,
+        "110s": 1,
+        "520s": 1
+      },
+      "Emerald": {
+        "0s": 1,
+        "80s": 1,
+        "360s": 1,
+        "380s": 1
+      },
+      "Capri": {
+        "0s": 1,
+        "60s": 1,
+        "90s": 1,
+        "370s": 1
+      },
+      "Blue": {
+        "0s": 1,
+        "380s": 1,
+        "440s": 1
+      },
+      "Black": {
+        "0s": 1
+      },
+      "Anticipation": {
+        "10s": 1,
+        "30s": 1,
+        "40s": 1,
+        "60s": 1,
+        "110s": 1,
+        "120s": 1,
+        "190s": 1,
+        "200s": 1,
+        "390s": 2,
+        "410s": 1,
+        "440s": 1
+      },
+      "Ultramarine": {
+        "20s": 1,
+        "40s": 1
+      },
+      "like": {
+        "20s": 1,
+        "40s": 1,
+        "80s": 1,
+        "90s": 1,
+        "110s": 1,
+        "120s": 2,
+        "170s": 1,
+        "410s": 1,
+        "440s": 1
+      },
+      "applause": {
+        "40s": 1,
+        "60s": 1,
+        "110s": 1,
+        "120s": 2,
+        "130s": 1,
+        "160s": 1,
+        "170s": 2,
+        "200s": 2,
+        "300s": 1,
+        "370s": 1,
+        "380s": 1
+      },
+      "Joy": {
+        "70s": 1,
+        "120s": 1,
+        "130s": 1,
+        "150s": 1,
+        "160s": 1,
+        "310s": 1
+      },
+      "Magenta": {
+        "70s": 1
+      },
+      "Melancholy": {
+        "80s": 1,
+        "120s": 1,
+        "170s": 1
+      },
+      "Chaos": {
+        "80s": 1,
+        "90s": 1
+      },
+      "Green": {
+        "90s": 1,
+        "120s": 1
+      },
+      "Mystery": {
+        "110s": 1,
+        "120s": 2
+      },
+      "Cyan": {
+        "110s": 1,
+        "120s": 1
+      },
+      "Hot Pink": {
+        "120s": 1,
+        "170s": 1
+      },
+      "Indigo": {
+        "120s": 1,
+        "130s": 1
+      },
+      "Orange": {
+        "130s": 2
+      },
+      "Spring Bud": {
+        "190s": 1,
+        "200s": 1
+      },
+      "Yellow": {
+        "310s": 1
+      },
+      "Sapphire": {
+        "430s": 2
+      }
+    },
+    "colors": {
+      "Cobalt": 6,
+      "Emerald": 4,
+      "Capri": 4,
+      "Blue": 3,
+      "Black": 1,
+      "Ultramarine": 2,
+      "Magenta": 1,
+      "Green": 2,
+      "Cyan": 2,
+      "Hot Pink": 2,
+      "Indigo": 2,
+      "Orange": 2,
+      "Spring Bud": 2,
+      "Yellow": 1,
+      "Sapphire": 2
+    },
+    "moods": {
+      "Anticipation": 12,
+      "Joy": 6,
+      "Melancholy": 3,
+      "Chaos": 2,
+      "Mystery": 3
+    },
+    "reactions": {
+      "like": 10,
+      "applause": 14
+    },
+    "notesList": [
+      {
+        "text": "Drifting",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Open",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Immersion",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Uneasy",
+        "uid": "slogs.hasty1f@icloud.com"
+      }
+    ],
+    "uniqueUsersCount": 15,
+    "durationSecs": 555
+  },
+  {
+    "id": "trk_combined_s1_t2",
+    "title": "Section 1 - Track 2",
+    "startTime": 1773359266351,
+    "endTime": 1773359452575,
+    "totalEvents": 33,
+    "uniqueUsers": [
+      "slogs.hasty1f@icloud.com",
+      "laura_f4476f2e@participant.local",
+      "maeganmarlow@icloud.com",
+      "mpfaffko@gmail.com",
+      "ron@ronbuening.com",
+      "anon_1773357342171_da4ead55ec82b@anonymous.local",
+      "kevin.young.m@gmail.com"
+    ],
+    "categories": {
+      "color": 10,
+      "mood": 6,
+      "reaction": 4,
+      "note": 2,
+      "combined_reaction": 10,
+      "note_skip": 1
+    },
+    "histogram": {
+      "0s": 1,
+      "10s": 4,
+      "20s": 1,
+      "30s": 2,
+      "50s": 3,
+      "60s": 3,
+      "70s": 1,
+      "80s": 3,
+      "90s": 3,
+      "100s": 3,
+      "110s": 3,
+      "130s": 1,
+      "150s": 3,
+      "180s": 2
+    },
+    "itemHistograms": {
+      "Anticipation": {
+        "0s": 1,
+        "20s": 1,
+        "90s": 2
+      },
+      "Indigo": {
+        "10s": 2
+      },
+      "Joy": {
+        "10s": 2
+      },
+      "applause": {
+        "10s": 2,
+        "20s": 1,
+        "150s": 2
+      },
+      "Cobalt": {
+        "20s": 1
+      },
+      "Amber": {
+        "30s": 2
+      },
+      "like": {
+        "50s": 1,
+        "60s": 1,
+        "100s": 1
+      },
+      "Power": {
+        "50s": 1,
+        "60s": 1
+      },
+      "Transparent": {
+        "50s": 1
+      },
+      "Orange": {
+        "60s": 2
+      },
+      "Sapphire": {
+        "60s": 1,
+        "100s": 2,
+        "110s": 1
+      },
+      "Mint": {
+        "70s": 1
+      },
+      "Harlequin": {
+        "80s": 1,
+        "90s": 1
+      },
+      "Melancholy": {
+        "90s": 1,
+        "100s": 1,
+        "110s": 1
+      },
+      "Crimson": {
+        "130s": 1
+      },
+      "Spring Bud": {
+        "150s": 1
+      }
+    },
+    "colors": {
+      "Indigo": 2,
+      "Cobalt": 1,
+      "Amber": 2,
+      "Transparent": 1,
+      "Orange": 2,
+      "Sapphire": 4,
+      "Mint": 1,
+      "Harlequin": 2,
+      "Crimson": 1,
+      "Spring Bud": 1
+    },
+    "moods": {
+      "Anticipation": 4,
+      "Joy": 2,
+      "Power": 2,
+      "Melancholy": 3
+    },
+    "reactions": {
+      "applause": 5,
+      "like": 3
+    },
+    "notesList": [
+      {
+        "text": "Opening",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Nice",
+        "uid": "maeganmarlow@icloud.com"
+      }
+    ],
+    "uniqueUsersCount": 7,
+    "durationSecs": 186
+  },
+  {
+    "id": "trk_combined_s1_t3",
+    "title": "Section 1 - Track 3",
+    "startTime": 1773359454695,
+    "endTime": 1773360585134,
+    "totalEvents": 43,
+    "uniqueUsers": [
+      "slogs.hasty1f@icloud.com",
+      "kevin.young.m@gmail.com",
+      "maeganmarlow@icloud.com",
+      "laura_f4476f2e@participant.local",
+      "mpfaffko@gmail.com",
+      "thetanclan@aol.com",
+      "sjsmemay263@gmail.coms"
+    ],
+    "categories": {
+      "color": 11,
+      "mood": 6,
+      "reaction": 5,
+      "note": 2,
+      "combined_reaction": 8,
+      "note_skip": 11
+    },
+    "histogram": {
+      "0s": 3,
+      "10s": 3,
+      "20s": 3,
+      "30s": 1,
+      "40s": 2,
+      "50s": 4,
+      "70s": 1,
+      "80s": 3,
+      "90s": 1,
+      "100s": 1,
+      "110s": 2,
+      "120s": 4,
+      "130s": 5,
+      "140s": 2,
+      "170s": 2,
+      "190s": 1,
+      "200s": 1,
+      "230s": 1,
+      "380s": 1,
+      "870s": 1,
+      "1130s": 1
+    },
+    "itemHistograms": {
+      "Amber": {
+        "0s": 1,
+        "40s": 1
+      },
+      "Mystery": {
+        "0s": 1,
+        "40s": 1
+      },
+      "Gray": {
+        "0s": 1,
+        "20s": 1
+      },
+      "applause": {
+        "10s": 1,
+        "40s": 1,
+        "50s": 2,
+        "80s": 1,
+        "90s": 1,
+        "130s": 1
+      },
+      "Melancholy": {
+        "10s": 1,
+        "20s": 1
+      },
+      "like": {
+        "10s": 1,
+        "20s": 1
+      },
+      "Yellow": {
+        "50s": 2,
+        "70s": 1,
+        "90s": 1
+      },
+      "Anticipation": {
+        "50s": 2,
+        "130s": 1
+      },
+      "Joy": {
+        "80s": 1,
+        "90s": 1,
+        "140s": 2
+      },
+      "Rose": {
+        "100s": 1
+      },
+      "Crimson": {
+        "110s": 2
+      },
+      "Raspberry": {
+        "120s": 2,
+        "130s": 2
+      },
+      "Purple": {
+        "120s": 1
+      },
+      "Cobalt": {
+        "120s": 1,
+        "140s": 1
+      },
+      "Candy Apple": {
+        "130s": 1
+      }
+    },
+    "colors": {
+      "Amber": 2,
+      "Gray": 2,
+      "Yellow": 4,
+      "Rose": 1,
+      "Crimson": 2,
+      "Raspberry": 4,
+      "Purple": 1,
+      "Cobalt": 2,
+      "Candy Apple": 1
+    },
+    "moods": {
+      "Mystery": 2,
+      "Melancholy": 2,
+      "Anticipation": 3,
+      "Joy": 4
+    },
+    "reactions": {
+      "applause": 7,
+      "like": 2
+    },
+    "notesList": [
+      {
+        "text": "Mischief",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Intriguing",
+        "uid": "laura_f4476f2e@participant.local"
+      }
+    ],
+    "uniqueUsersCount": 7,
+    "durationSecs": 1130
+  },
+  {
+    "id": "trk_combined_s1_t456",
+    "title": "Section 1 - Track 4, 5, 6",
+    "startTime": 1773359673191,
+    "endTime": 1773360946700,
+    "totalEvents": 99,
+    "uniqueUsers": [
+      "laura_f4476f2e@participant.local",
+      "slogs.hasty1f@icloud.com",
+      "kevin.young.m@gmail.com",
+      "anon_1773358533092_bfa16b4d857e8@anonymous.local",
+      "thetanclan@aol.com",
+      "mpfaffko@gmail.com",
+      "ron@ronbuening.com",
+      "anon_1773360540231_d5e4c54904dbb8@anonymous.local",
+      "maeganmarlow@icloud.com",
+      "anon_1773357342171_da4ead55ec82b@anonymous.local",
+      "anon_1773357847698_fca6b6158cc838@anonymous.local",
+      "wes.lipschultz@gmail.com",
+      "elycemairn@gmail.com",
+      "lilyquay_a127efbb@participant.local"
+    ],
+    "categories": {
+      "color": 16,
+      "mood": 19,
+      "reaction": 17,
+      "note": 13,
+      "combined_reaction": 25,
+      "note_skip": 9
+    },
+    "histogram": {
+      "0s": 1,
+      "10s": 4,
+      "20s": 5,
+      "30s": 6,
+      "40s": 1,
+      "50s": 2,
+      "90s": 1,
+      "100s": 1,
+      "140s": 1,
+      "150s": 5,
+      "160s": 2,
+      "170s": 5,
+      "180s": 6,
+      "190s": 3,
+      "200s": 3,
+      "220s": 1,
+      "230s": 2,
+      "260s": 1,
+      "270s": 3,
+      "300s": 2,
+      "320s": 2,
+      "340s": 2,
+      "350s": 1,
+      "360s": 2,
+      "370s": 1,
+      "660s": 1,
+      "670s": 2,
+      "690s": 1,
+      "700s": 2,
+      "730s": 2,
+      "780s": 1,
+      "880s": 1,
+      "900s": 6,
+      "910s": 1,
+      "930s": 1,
+      "940s": 1,
+      "1150s": 5,
+      "1170s": 3,
+      "1180s": 1,
+      "1190s": 1,
+      "1200s": 3,
+      "1210s": 3,
+      "1270s": 1
+    },
+    "itemHistograms": {
+      "Cobalt": {
+        "0s": 1,
+        "20s": 1
+      },
+      "Melancholy": {
+        "10s": 1,
+        "20s": 1,
+        "30s": 1,
+        "40s": 1,
+        "50s": 2
+      },
+      "Transparent": {
+        "10s": 1,
+        "20s": 1,
+        "230s": 1,
+        "700s": 1
+      },
+      "like": {
+        "10s": 1,
+        "20s": 1,
+        "30s": 2,
+        "180s": 1,
+        "190s": 1,
+        "200s": 2,
+        "910s": 1,
+        "1150s": 1
+      },
+      "Anticipation": {
+        "10s": 1,
+        "20s": 1,
+        "180s": 2,
+        "190s": 1,
+        "270s": 1,
+        "900s": 2
+      },
+      "applause": {
+        "20s": 2,
+        "30s": 1,
+        "40s": 1,
+        "100s": 1,
+        "150s": 1,
+        "160s": 1,
+        "170s": 1,
+        "180s": 1,
+        "190s": 1,
+        "270s": 1,
+        "300s": 1,
+        "320s": 1,
+        "360s": 1,
+        "370s": 1,
+        "700s": 1,
+        "730s": 1,
+        "780s": 1,
+        "900s": 3,
+        "1150s": 1
+      },
+      "Blue": {
+        "20s": 1,
+        "30s": 1
+      },
+      "Mystery": {
+        "30s": 2,
+        "270s": 2,
+        "690s": 1,
+        "730s": 1
+      },
+      "Green": {
+        "30s": 1,
+        "50s": 1
+      },
+      "Joy": {
+        "90s": 1,
+        "160s": 1,
+        "360s": 1,
+        "370s": 1
+      },
+      "Azure": {
+        "150s": 1,
+        "170s": 1,
+        "180s": 1
+      },
+      "Power": {
+        "150s": 1,
+        "340s": 1,
+        "350s": 1,
+        "670s": 2
+      },
+      "Sadness": {
+        "150s": 1,
+        "170s": 1,
+        "180s": 1,
+        "200s": 2,
+        "900s": 1
+      },
+      "Violet": {
+        "170s": 2,
+        "660s": 1,
+        "670s": 1,
+        "880s": 1
+      },
+      "Amethyst": {
+        "180s": 1,
+        "190s": 1,
+        "940s": 1
+      },
+      "Cyan": {
+        "190s": 1,
+        "200s": 1
+      },
+      "Black": {
+        "220s": 1
+      },
+      "Gray": {
+        "230s": 1
+      },
+      "Chaos": {
+        "300s": 1,
+        "320s": 1,
+        "900s": 1
+      },
+      "Cerise": {
+        "340s": 1,
+        "350s": 1
+      },
+      "Purple": {
+        "900s": 2
+      }
+    },
+    "colors": {
+      "Cobalt": 2,
+      "Transparent": 4,
+      "Blue": 2,
+      "Green": 2,
+      "Azure": 3,
+      "Violet": 5,
+      "Amethyst": 3,
+      "Cyan": 2,
+      "Black": 1,
+      "Gray": 1,
+      "Cerise": 2,
+      "Purple": 2
+    },
+    "moods": {
+      "Melancholy": 6,
+      "Anticipation": 8,
+      "Mystery": 6,
+      "Joy": 4,
+      "Power": 5,
+      "Sadness": 6,
+      "Chaos": 3
+    },
+    "reactions": {
+      "like": 10,
+      "applause": 22
+    },
+    "notesList": [
+      {
+        "text": "Clarity",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Butterfly",
+        "uid": "laura_f4476f2e@participant.local"
+      },
+      {
+        "text": "I’m waiting for an airplane to land in Tampa.  What a great way to wait!",
+        "uid": "thetanclan@aol.com"
+      },
+      {
+        "text": "Wonder",
+        "uid": "laura_f4476f2e@participant.local"
+      },
+      {
+        "text": "Deliberate",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "After jazz today, looking forward to baseball.",
+        "uid": "thetanclan@aol.com"
+      },
+      {
+        "text": "Where is this story going?",
+        "uid": "thetanclan@aol.com"
+      },
+      {
+        "text": "Familiar but don’t know the names.",
+        "uid": "thetanclan@aol.com"
+      },
+      {
+        "text": "Jazzay",
+        "uid": "maeganmarlow@icloud.com"
+      },
+      {
+        "text": "Sad because the concert will end soon.",
+        "uid": "thetanclan@aol.com"
+      },
+      {
+        "text": "Expansive",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Lovely 😌",
+        "uid": "maeganmarlow@icloud.com"
+      },
+      {
+        "text": "Reclining",
+        "uid": "laura_f4476f2e@participant.local"
+      }
+    ],
+    "uniqueUsersCount": 14,
+    "durationSecs": 1274
+  },
+  {
+    "id": "trk_combined_s2_t1",
+    "title": "Section 2 - Track 1",
+    "startTime": 1773360868675,
+    "endTime": 1773361334898,
+    "totalEvents": 159,
+    "uniqueUsers": [
+      "anon_1773357342171_da4ead55ec82b@anonymous.local",
+      "maeganmarlow@icloud.com",
+      "anon_1773358674682_f70b3b25bd532@anonymous.local",
+      "laura_f4476f2e@participant.local",
+      "wes.lipschultz@gmail.com",
+      "lilyquay_a127efbb@participant.local",
+      "kevin.young.m@gmail.com",
+      "elycemairn@gmail.com",
+      "anon_1773357847698_fca6b6158cc838@anonymous.local",
+      "slogs.hasty1f@icloud.com",
+      "mpfaffko@gmail.com"
+    ],
+    "categories": {
+      "color": 40,
+      "mood": 29,
+      "reaction": 25,
+      "note": 15,
+      "combined_reaction": 42,
+      "note_skip": 8
+    },
+    "histogram": {
+      "0s": 4,
+      "10s": 6,
+      "20s": 8,
+      "30s": 7,
+      "40s": 8,
+      "50s": 3,
+      "60s": 11,
+      "70s": 2,
+      "80s": 3,
+      "90s": 8,
+      "100s": 7,
+      "110s": 4,
+      "120s": 4,
+      "130s": 4,
+      "140s": 5,
+      "150s": 4,
+      "160s": 3,
+      "170s": 1,
+      "190s": 1,
+      "200s": 4,
+      "220s": 2,
+      "230s": 2,
+      "240s": 6,
+      "250s": 1,
+      "270s": 3,
+      "280s": 7,
+      "290s": 6,
+      "300s": 10,
+      "310s": 7,
+      "320s": 3,
+      "330s": 1,
+      "340s": 1,
+      "350s": 2,
+      "360s": 5,
+      "380s": 3,
+      "400s": 2,
+      "460s": 1
+    },
+    "itemHistograms": {
+      "Orange": {
+        "0s": 1,
+        "40s": 1,
+        "50s": 2
+      },
+      "Joy": {
+        "0s": 1,
+        "40s": 1,
+        "60s": 1,
+        "80s": 2,
+        "90s": 3,
+        "100s": 2,
+        "110s": 1,
+        "120s": 1,
+        "160s": 1,
+        "170s": 1,
+        "280s": 1,
+        "290s": 3,
+        "300s": 1,
+        "310s": 2,
+        "320s": 2
+      },
+      "applause": {
+        "0s": 1,
+        "40s": 2,
+        "60s": 2,
+        "90s": 2,
+        "100s": 2,
+        "110s": 1,
+        "120s": 1,
+        "150s": 2,
+        "160s": 1,
+        "170s": 1,
+        "240s": 2,
+        "280s": 2,
+        "300s": 3,
+        "310s": 1
+      },
+      "like": {
+        "0s": 1,
+        "20s": 3,
+        "30s": 1,
+        "40s": 2,
+        "70s": 1,
+        "80s": 2,
+        "90s": 1,
+        "100s": 1,
+        "120s": 1,
+        "130s": 2,
+        "200s": 1,
+        "240s": 1,
+        "280s": 1,
+        "290s": 3,
+        "300s": 1,
+        "310s": 4,
+        "350s": 1
+      },
+      "Purple": {
+        "10s": 1
+      },
+      "Violet": {
+        "10s": 2,
+        "20s": 1
+      },
+      "Amethyst": {
+        "10s": 1,
+        "60s": 1
+      },
+      "Mystery": {
+        "10s": 1,
+        "20s": 5,
+        "40s": 1,
+        "90s": 1,
+        "200s": 2
+      },
+      "Capri": {
+        "10s": 1,
+        "20s": 1
+      },
+      "Deep Orange": {
+        "20s": 1,
+        "30s": 2,
+        "50s": 1,
+        "350s": 1,
+        "360s": 1
+      },
+      "Chartreuse": {
+        "20s": 1
+      },
+      "Cobalt": {
+        "30s": 1,
+        "100s": 2,
+        "250s": 1,
+        "300s": 1
+      },
+      "Melancholy": {
+        "30s": 2,
+        "150s": 2,
+        "300s": 2,
+        "310s": 2
+      },
+      "Yellow": {
+        "30s": 1,
+        "80s": 1,
+        "300s": 1,
+        "310s": 2
+      },
+      "Anticipation": {
+        "40s": 1,
+        "60s": 1,
+        "70s": 1,
+        "100s": 1,
+        "240s": 2
+      },
+      "Green": {
+        "60s": 1,
+        "90s": 1
+      },
+      "Harlequin": {
+        "60s": 1
+      },
+      "Lemon": {
+        "60s": 1,
+        "100s": 1
+      },
+      "Black": {
+        "60s": 2
+      },
+      "Chaos": {
+        "60s": 2
+      },
+      "Amber": {
+        "60s": 1,
+        "100s": 1,
+        "140s": 1,
+        "150s": 1
+      },
+      "Emerald": {
+        "60s": 1,
+        "90s": 1
+      },
+      "Azure": {
+        "90s": 2
+      },
+      "Magenta": {
+        "110s": 1,
+        "120s": 1,
+        "230s": 1,
+        "240s": 1
+      },
+      "Turquoise": {
+        "110s": 1,
+        "120s": 1,
+        "140s": 2,
+        "270s": 1,
+        "280s": 1
+      },
+      "Crimson": {
+        "120s": 1,
+        "130s": 1
+      },
+      "Mint": {
+        "130s": 1
+      },
+      "Power": {
+        "150s": 1,
+        "300s": 1,
+        "310s": 1,
+        "350s": 1
+      },
+      "Vermilion": {
+        "160s": 1,
+        "170s": 1
+      },
+      "Cerulean": {
+        "190s": 1,
+        "200s": 1
+      },
+      "Ultramarine": {
+        "230s": 1,
+        "240s": 1
+      },
+      "Confusion": {
+        "280s": 2
+      },
+      "Bright Green": {
+        "290s": 4
+      },
+      "Blue": {
+        "300s": 1,
+        "310s": 1
+      },
+      "Cyan": {
+        "320s": 1,
+        "330s": 1
+      },
+      "Anger": {
+        "360s": 1
+      }
+    },
+    "colors": {
+      "Orange": 4,
+      "Purple": 1,
+      "Violet": 3,
+      "Amethyst": 2,
+      "Capri": 2,
+      "Deep Orange": 6,
+      "Chartreuse": 1,
+      "Cobalt": 5,
+      "Yellow": 5,
+      "Green": 2,
+      "Harlequin": 1,
+      "Lemon": 2,
+      "Black": 2,
+      "Amber": 4,
+      "Emerald": 2,
+      "Azure": 2,
+      "Magenta": 4,
+      "Turquoise": 6,
+      "Crimson": 2,
+      "Mint": 1,
+      "Vermilion": 2,
+      "Cerulean": 2,
+      "Ultramarine": 2,
+      "Bright Green": 4,
+      "Blue": 2,
+      "Cyan": 2
+    },
+    "moods": {
+      "Joy": 23,
+      "Mystery": 10,
+      "Melancholy": 8,
+      "Anticipation": 6,
+      "Chaos": 2,
+      "Power": 4,
+      "Confusion": 2,
+      "Anger": 1
+    },
+    "reactions": {
+      "applause": 23,
+      "like": 27
+    },
+    "notesList": [
+      {
+        "text": "Abstract",
+        "uid": "kevin.young.m@gmail.com"
+      },
+      {
+        "text": "Connecting",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Drifting floating sailing",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Harmony",
+        "uid": "kevin.young.m@gmail.com"
+      },
+      {
+        "text": "High in the heavens",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Outside of space and time",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Fever dreams",
+        "uid": "kevin.young.m@gmail.com"
+      },
+      {
+        "text": "Kissyfish!",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "High",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Home",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Amazing",
+        "uid": "anon_1773357342171_da4ead55ec82b@anonymous.local"
+      },
+      {
+        "text": "Confusing",
+        "uid": "laura_f4476f2e@participant.local"
+      },
+      {
+        "text": "Funky",
+        "uid": "maeganmarlow@icloud.com"
+      }
+    ],
+    "uniqueUsersCount": 11,
+    "durationSecs": 466
+  },
+  {
+    "id": "trk_combined_s2_t2",
+    "title": "Section 2 - Track 2",
+    "startTime": 1773361267544,
+    "endTime": 1773361946707,
+    "totalEvents": 84,
+    "uniqueUsers": [
+      "slogs.hasty1f@icloud.com",
+      "anon_1773357847698_fca6b6158cc838@anonymous.local",
+      "wes.lipschultz@gmail.com",
+      "maeganmarlow@icloud.com",
+      "anon_1773358674682_f70b3b25bd532@anonymous.local",
+      "elycemairn@gmail.com",
+      "lilyquay_a127efbb@participant.local",
+      "anon_1773358685797_7f15bd20b00d8@anonymous.local",
+      "anon_1773357342171_da4ead55ec82b@anonymous.local",
+      "kevin.young.m@gmail.com",
+      "laura_f4476f2e@participant.local"
+    ],
+    "categories": {
+      "color": 17,
+      "mood": 11,
+      "reaction": 9,
+      "note": 14,
+      "combined_reaction": 18,
+      "note_skip": 15
+    },
+    "histogram": {
+      "0s": 5,
+      "10s": 6,
+      "20s": 3,
+      "30s": 2,
+      "40s": 7,
+      "50s": 4,
+      "60s": 4,
+      "70s": 6,
+      "80s": 9,
+      "90s": 1,
+      "100s": 1,
+      "110s": 3,
+      "120s": 6,
+      "130s": 2,
+      "140s": 3,
+      "150s": 4,
+      "160s": 1,
+      "190s": 7,
+      "200s": 1,
+      "230s": 2,
+      "240s": 2,
+      "260s": 1,
+      "270s": 2,
+      "580s": 1,
+      "670s": 1
+    },
+    "itemHistograms": {
+      "Amethyst": {
+        "0s": 1,
+        "10s": 1
+      },
+      "Anticipation": {
+        "0s": 1
+      },
+      "Malachite": {
+        "0s": 1,
+        "10s": 1
+      },
+      "Mystery": {
+        "0s": 1,
+        "10s": 1,
+        "20s": 1,
+        "30s": 1,
+        "50s": 1,
+        "60s": 1,
+        "80s": 2,
+        "90s": 1,
+        "100s": 1,
+        "120s": 1,
+        "160s": 1
+      },
+      "Hot Pink": {
+        "0s": 1,
+        "50s": 1,
+        "80s": 2
+      },
+      "like": {
+        "10s": 2,
+        "30s": 1,
+        "50s": 1,
+        "70s": 1,
+        "80s": 1,
+        "120s": 1,
+        "160s": 1
+      },
+      "applause": {
+        "10s": 2,
+        "40s": 1,
+        "60s": 1,
+        "80s": 3,
+        "120s": 1,
+        "130s": 1
+      },
+      "Magenta": {
+        "10s": 1,
+        "20s": 1
+      },
+      "Vermilion": {
+        "20s": 1,
+        "60s": 1
+      },
+      "Red": {
+        "40s": 2
+      },
+      "Purple": {
+        "60s": 2
+      },
+      "Sapphire": {
+        "70s": 1,
+        "80s": 1
+      },
+      "Raspberry": {
+        "70s": 1
+      },
+      "Cobalt": {
+        "70s": 1,
+        "80s": 1,
+        "120s": 1,
+        "130s": 1,
+        "140s": 1
+      },
+      "Melancholy": {
+        "70s": 2,
+        "80s": 1
+      },
+      "Power": {
+        "80s": 1
+      },
+      "Orange": {
+        "110s": 2
+      },
+      "Violet": {
+        "110s": 1,
+        "160s": 1
+      },
+      "Joy": {
+        "120s": 1,
+        "130s": 1
+      },
+      "Gray": {
+        "130s": 1
+      },
+      "Emerald": {
+        "190s": 1
+      }
+    },
+    "colors": {
+      "Amethyst": 2,
+      "Malachite": 2,
+      "Hot Pink": 4,
+      "Magenta": 2,
+      "Vermilion": 2,
+      "Red": 2,
+      "Purple": 2,
+      "Sapphire": 2,
+      "Raspberry": 1,
+      "Cobalt": 5,
+      "Orange": 2,
+      "Violet": 2,
+      "Gray": 1,
+      "Emerald": 1
+    },
+    "moods": {
+      "Anticipation": 1,
+      "Mystery": 12,
+      "Melancholy": 3,
+      "Power": 1,
+      "Joy": 2
+    },
+    "reactions": {
+      "like": 8,
+      "applause": 9
+    },
+    "notesList": [
+      {
+        "text": "Immersed",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "High",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Electric transcending modern tech",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Mesmerizing",
+        "uid": "anon_1773358674682_f70b3b25bd532@anonymous.local"
+      },
+      {
+        "text": "Cold distant inhuman",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Robot sex",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Exploration",
+        "uid": "anon_1773358685797_7f15bd20b00d8@anonymous.local"
+      },
+      {
+        "text": "Serpant",
+        "uid": "kevin.young.m@gmail.com"
+      },
+      {
+        "text": "Curious and exploratory",
+        "uid": "anon_1773358685797_7f15bd20b00d8@anonymous.local"
+      },
+      {
+        "text": "Wonderful",
+        "uid": "maeganmarlow@icloud.com"
+      },
+      {
+        "text": "Chaotic",
+        "uid": "laura_f4476f2e@participant.local"
+      },
+      {
+        "text": "Awesome",
+        "uid": "elycemairn@gmail.com"
+      }
+    ],
+    "uniqueUsersCount": 11,
+    "durationSecs": 679
+  },
+  {
+    "id": "trk_combined_s2_t3",
+    "title": "Section 2 - Track 3",
+    "startTime": 1773361515438,
+    "endTime": 1773373963831,
+    "totalEvents": 201,
+    "uniqueUsers": [
+      "anon_1773358685797_7f15bd20b00d8@anonymous.local",
+      "wes.lipschultz@gmail.com",
+      "anon_1773358674682_f70b3b25bd532@anonymous.local",
+      "slogs.hasty1f@icloud.com",
+      "anon_1773357847698_fca6b6158cc838@anonymous.local",
+      "kevin.young.m@gmail.com",
+      "maeganmarlow@icloud.com",
+      "elycemairn@gmail.com",
+      "anon_1773357342171_da4ead55ec82b@anonymous.local",
+      "mpfaffko@gmail.com",
+      "laura_f4476f2e@participant.local",
+      "lilyquay_a127efbb@participant.local",
+      "gjrosasco@yahoo.com"
+    ],
+    "categories": {
+      "color": 34,
+      "mood": 31,
+      "reaction": 31,
+      "note": 29,
+      "combined_reaction": 65,
+      "note_skip": 11
+    },
+    "histogram": {
+      "0s": 2,
+      "10s": 4,
+      "20s": 4,
+      "30s": 7,
+      "40s": 5,
+      "50s": 6,
+      "60s": 8,
+      "70s": 2,
+      "80s": 1,
+      "90s": 1,
+      "100s": 4,
+      "110s": 2,
+      "120s": 2,
+      "130s": 1,
+      "140s": 4,
+      "150s": 1,
+      "170s": 2,
+      "180s": 2,
+      "190s": 8,
+      "200s": 3,
+      "220s": 1,
+      "230s": 1,
+      "240s": 3,
+      "250s": 5,
+      "260s": 3,
+      "270s": 4,
+      "280s": 6,
+      "290s": 4,
+      "300s": 4,
+      "310s": 1,
+      "340s": 2,
+      "350s": 7,
+      "360s": 8,
+      "370s": 4,
+      "380s": 5,
+      "390s": 3,
+      "400s": 6,
+      "410s": 7,
+      "420s": 4,
+      "430s": 1,
+      "440s": 3,
+      "450s": 6,
+      "460s": 9,
+      "480s": 1,
+      "520s": 2,
+      "530s": 3,
+      "540s": 4,
+      "560s": 2,
+      "590s": 1,
+      "600s": 1,
+      "610s": 1,
+      "620s": 2,
+      "630s": 1,
+      "700s": 4,
+      "710s": 3,
+      "720s": 1,
+      "820s": 1,
+      "830s": 1,
+      "850s": 3,
+      "860s": 1,
+      "870s": 1,
+      "1060s": 1,
+      "12440s": 1
+    },
+    "itemHistograms": {
+      "Red": {
+        "0s": 1,
+        "260s": 1,
+        "270s": 1,
+        "380s": 2
+      },
+      "Gray": {
+        "0s": 1,
+        "10s": 1
+      },
+      "Anticipation": {
+        "10s": 2,
+        "590s": 1,
+        "600s": 1
+      },
+      "like": {
+        "10s": 2,
+        "20s": 1,
+        "30s": 1,
+        "60s": 2,
+        "110s": 1,
+        "120s": 1,
+        "280s": 1,
+        "420s": 1,
+        "850s": 2
+      },
+      "Magenta": {
+        "10s": 1,
+        "30s": 1,
+        "90s": 1,
+        "100s": 1
+      },
+      "Confusion": {
+        "20s": 1,
+        "30s": 1,
+        "40s": 1,
+        "50s": 1,
+        "60s": 2,
+        "180s": 2,
+        "280s": 1,
+        "310s": 1
+      },
+      "meh": {
+        "30s": 3,
+        "50s": 1,
+        "60s": 2
+      },
+      "Vermilion": {
+        "30s": 1,
+        "80s": 1
+      },
+      "Joy": {
+        "40s": 1,
+        "50s": 1,
+        "60s": 1,
+        "80s": 1,
+        "100s": 2,
+        "190s": 2,
+        "350s": 2,
+        "360s": 1,
+        "370s": 1,
+        "400s": 1,
+        "410s": 1,
+        "440s": 1,
+        "450s": 1,
+        "460s": 2,
+        "700s": 2
+      },
+      "applause": {
+        "40s": 1,
+        "70s": 1,
+        "80s": 1,
+        "100s": 2,
+        "140s": 2,
+        "190s": 2,
+        "200s": 2,
+        "250s": 2,
+        "270s": 1,
+        "280s": 1,
+        "300s": 2,
+        "310s": 1,
+        "350s": 2,
+        "360s": 2,
+        "370s": 2,
+        "380s": 2,
+        "390s": 1,
+        "400s": 1,
+        "410s": 1,
+        "440s": 1,
+        "450s": 1,
+        "460s": 2,
+        "530s": 2,
+        "620s": 1,
+        "630s": 1,
+        "700s": 2,
+        "710s": 1,
+        "720s": 1
+      },
+      "Melancholy": {
+        "40s": 1,
+        "60s": 1,
+        "360s": 2,
+        "380s": 2,
+        "390s": 1,
+        "460s": 1,
+        "530s": 2,
+        "850s": 2
+      },
+      "White": {
+        "50s": 1,
+        "60s": 1
+      },
+      "Raspberry": {
+        "60s": 1,
+        "390s": 1
+      },
+      "Crimson": {
+        "60s": 2,
+        "280s": 1,
+        "310s": 1,
+        "370s": 1,
+        "380s": 1
+      },
+      "Yellow": {
+        "100s": 1,
+        "120s": 1,
+        "190s": 2,
+        "400s": 1,
+        "410s": 1,
+        "450s": 1,
+        "460s": 1
+      },
+      "Power": {
+        "110s": 1,
+        "120s": 1,
+        "140s": 2
+      },
+      "Harlequin": {
+        "130s": 1,
+        "140s": 1,
+        "290s": 1
+      },
+      "Cobalt": {
+        "240s": 1,
+        "250s": 1,
+        "350s": 1
+      },
+      "Mystery": {
+        "250s": 2,
+        "420s": 2,
+        "460s": 2
+      },
+      "Anger": {
+        "270s": 2
+      },
+      "Capri": {
+        "340s": 2
+      },
+      "Azure": {
+        "350s": 2,
+        "360s": 1,
+        "370s": 1
+      },
+      "Spring Bud": {
+        "350s": 1,
+        "360s": 1
+      },
+      "Cyan": {
+        "360s": 2,
+        "610s": 1,
+        "630s": 1
+      },
+      "Indigo": {
+        "360s": 1,
+        "370s": 1
+      },
+      "Black": {
+        "400s": 1,
+        "410s": 1
+      },
+      "Ultramarine": {
+        "410s": 1,
+        "420s": 1
+      },
+      "Cerulean": {
+        "430s": 1,
+        "450s": 1,
+        "830s": 1,
+        "850s": 1
+      },
+      "Purple": {
+        "450s": 1,
+        "460s": 1
+      },
+      "Amethyst": {
+        "480s": 1
+      },
+      "Chartreuse": {
+        "520s": 1,
+        "530s": 1
+      },
+      "Chaos": {
+        "560s": 2
+      },
+      "Sadness": {
+        "620s": 1,
+        "630s": 1
+      },
+      "Mint": {
+        "700s": 2
+      }
+    },
+    "colors": {
+      "Red": 5,
+      "Gray": 2,
+      "Magenta": 4,
+      "Vermilion": 2,
+      "White": 2,
+      "Raspberry": 2,
+      "Crimson": 6,
+      "Yellow": 8,
+      "Harlequin": 3,
+      "Cobalt": 3,
+      "Capri": 2,
+      "Azure": 4,
+      "Spring Bud": 2,
+      "Cyan": 4,
+      "Indigo": 2,
+      "Black": 2,
+      "Ultramarine": 2,
+      "Cerulean": 4,
+      "Purple": 2,
+      "Amethyst": 1,
+      "Chartreuse": 2,
+      "Mint": 2
+    },
+    "moods": {
+      "Anticipation": 4,
+      "Confusion": 10,
+      "Joy": 20,
+      "Melancholy": 12,
+      "Power": 4,
+      "Mystery": 6,
+      "Anger": 2,
+      "Chaos": 2,
+      "Sadness": 2
+    },
+    "reactions": {
+      "like": 12,
+      "meh": 6,
+      "applause": 41
+    },
+    "notesList": [
+      {
+        "text": "Robot sex",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Electric collective",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Dreamy",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Glitch",
+        "uid": "kevin.young.m@gmail.com"
+      },
+      {
+        "text": "Kissyfish",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Far East",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Everything everywhere all at once",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Curious",
+        "uid": "maeganmarlow@icloud.com"
+      },
+      {
+        "text": "Alice Coltrane",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Trippy",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "High",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Hogh",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "The boundlessness of human creativity",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Death and the afterlife",
+        "uid": "anon_1773358674682_f70b3b25bd532@anonymous.local"
+      },
+      {
+        "text": "Tampa",
+        "uid": "slogs.hasty1f@icloud.com"
+      },
+      {
+        "text": "Waves",
+        "uid": "elycemairn@gmail.com"
+      },
+      {
+        "text": "The passage of time in relative context",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Reminds me of hikes I’ve taken in Frick Park in Pittsburgh",
+        "uid": "wes.lipschultz@gmail.com"
+      },
+      {
+        "text": "Introspective",
+        "uid": "anon_1773358685797_7f15bd20b00d8@anonymous.local"
+      },
+      {
+        "text": "Synesthesia to the extreme wonderful",
+        "uid": "gjrosasco@yahoo.com"
+      }
+    ],
+    "uniqueUsersCount": 13,
+    "durationSecs": 12448
+  }
+]
+;
+window.colorHexMapExport = 
+{
+  "Green": "#00ff00",
+  "Harlequin": "#2bff00",
+  "White": "#ffffff",
+  "Transparent": "transparent",
+  "Turquoise": "#00ffd5",
+  "Sapphire": "#0055ff",
+  "Capri": "#00aaff",
+  "Cerulean": "#00d5ff",
+  "Violet": "#8000ff",
+  "Azure": "#0080ff",
+  "Yellow": "#ffff00",
+  "Ultramarine": "#2b00ff",
+  "Blue": "#0000ff",
+  "Purple": "#aa00ff",
+  "Cyan": "#00ffff",
+  "Chartreuse": "#aaff00",
+  "Spring Bud": "#80ff00",
+  "Cobalt": "#002aff",
+  "Emerald": "#00ff2a",
+  "Black": "#000000",
+  "Magenta": "#ff00ff",
+  "Hot Pink": "#ff00d4",
+  "Indigo": "#5500ff",
+  "Orange": "#ffaa00",
+  "Amber": "#ffd400",
+  "Mint": "#00ffaa",
+  "Crimson": "#ff002b",
+  "Gray": "#808080",
+  "Rose": "#ff0080",
+  "Raspberry": "#ff0055",
+  "Candy Apple": "#ff2b00",
+  "Amethyst": "#d400ff",
+  "Cerise": "#ff00aa",
+  "Deep Orange": "#ff8000",
+  "Lemon": "#d4ff00",
+  "Vermilion": "#ff5500",
+  "Bright Green": "#55ff00",
+  "Malachite": "#00ff55",
+  "Red": "#ff0000"
+}
+;

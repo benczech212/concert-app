@@ -1,1 +1,338 @@
-[]
+[
+  {
+    "trackId": "trk_combined_s1_t1",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Currents of Cobalt and Chaos",
+    "story": "An immersive plunge into deep ultramarine and emerald shadows, where open, joyous melodies slowly drift toward an uneasy melancholy. Fueled by mysterious anticipation, the piano weaves an unpredictable spell that ultimately unravels into a beautiful, resounding chaos.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Cobalt, Emerald, Capri, Blue, Ultramarine\n- Primary moods felt: Anticipation, Joy, Melancholy, Mystery, Chaos\n- Top reactions: applause, like\n- Audience notes (sample): Drifting | Open | Immersion | Uneasy\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773458300735,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_pre_show",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Transparent Tides of Turquoise",
+    "story": "Cool, aquatic melodies weave through a labyrinth of shifting jazz chords, plunging the listener into a joyful yet delightfully disorienting wash of glass-like blues and greens. As the mysterious rhythm builds, a sweeping undercurrent of anticipation suddenly breaks into a pure, powerful crescendo.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Blue, Green, Capri, Transparent, Turquoise\n- Primary moods felt: Joy, Mystery, Confusion, Anticipation, Power\n- Top reactions: like\n- Audience notes (sample): None\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773458698246,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s1_t1",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Drifting the Cobalt Undertow",
+    "story": "Sweeping cascades of deep blue and emerald piano notes invite you to drift through an expansive, oceanic soundscape that is both wondrously open and thrillingly uneasy. As the rhythm dances between joyful anticipation and a beautifully chaotic mystery, it pulls the listener into a profound state of melancholy immersion.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Cobalt, Emerald, Capri, Blue, Ultramarine\n- Primary moods felt: Anticipation, Joy, Melancholy, Mystery, Chaos\n- Top reactions: applause, like\n- Audience notes (sample): Drifting | Open | Immersion | Uneasy\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773458720185,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s1_t2",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Prelude in Indigo and Amber",
+    "story": "The performance opens with a sweeping, sapphire-tinged melancholy that dances along the keys, building a sense of breathless anticipation in the room. Soon, those deep indigo shadows give way to a powerful, harlequin-bright crescendo, washing the audience in the joyous, orange and amber warmth of a newly awakened musical sunrise.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Sapphire, Indigo, Amber, Orange, Harlequin\n- Primary moods felt: Anticipation, Melancholy, Joy, Power\n- Top reactions: applause, like\n- Audience notes (sample): Opening | Nice\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773458740944,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s1_t3",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Unnamed Track",
+    "story": "**Title**\nWhispers of Amber Mischief \n\n**Description**\nJoyful splashes of yellow and warm amber dance playfully against a melancholy, gray veil of shadow. Tinged with crimson and raspberry, this intriguing jazz piano melody weaves a mischievous tale of lingering mystery and breathless anticipation.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Yellow, Raspberry, Amber, Gray, Crimson\n- Primary moods felt: Joy, Anticipation, Mystery, Melancholy\n- Top reactions: applause, like\n- Audience notes (sample): Mischief | Intriguing\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773458760498,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s1_t456",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Waiting Beneath Amethyst Skies",
+    "story": "Suspended in a clear, expansive twilight of cobalt and violet, this deliberate melody builds a powerful yet melancholy sense of anticipation. It flutters like a butterfly through an unfolding mystery, inviting the listener to recline in tranquil wonder as they wait to see where the story lands.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Violet, Transparent, Azure, Amethyst, Cobalt\n- Primary moods felt: Anticipation, Melancholy, Mystery, Sadness, Power\n- Top reactions: applause, like\n- Audience notes (sample): Clarity | Butterfly | I’m waiting for an airplane to land in Tampa.  What a great way to wait! | Wonder | Deliberate | After jazz today, looking forward to baseball. | Where is this story going? | Familiar but don’t know the names. | Jazzay | Sad because the concert will end soon. | Expansive | Lovely 😌 | Reclining\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773458780261,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s2_t1",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Fever Dreams in Cobalt Skies",
+    "story": "Brilliantly painted in fiery oranges and deep turquoise, this funky, ethereal piece floats completely outside of space and time. It invites the listener on a powerful, mysterious journey that feels like drifting through a joyous fever dream until you finally arrive home.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Deep Orange, Turquoise, Cobalt, Yellow, Orange\n- Primary moods felt: Joy, Mystery, Melancholy, Anticipation, Power\n- Top reactions: like, applause\n- Audience notes (sample): Abstract | Connecting | Drifting floating sailing | Harmony | High in the heavens | Outside of space and time | Fever dreams | Kissyfish! | High | Home | Amazing | Confusing | Funky\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773458802689,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s2_t2",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Unnamed Track",
+    "story": "**1. Title**\nNeon Serpentine in Amethyst\n\n**2. Description**\nWinding like a mechanical serpent through vivid flashes of malachite and hot pink, this mesmerizing piece bridges organic jazz piano with cold, cybernetic chaos. It pulls the listener from a distant, mysterious melancholy into an electric, exploratory crescendo of joyous power.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Cobalt, Hot Pink, Amethyst, Malachite, Magenta\n- Primary moods felt: Mystery, Melancholy, Joy, Anticipation, Power\n- Top reactions: applause, like\n- Audience notes (sample): Immersed | High | Electric transcending modern tech | Mesmerizing | Cold distant inhuman | Robot sex | Exploration | Serpant | Curious and exploratory | Wonderful | Chaotic | Awesome\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773458822177,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s2_t3",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Electric Pulse of the Boundless",
+    "story": "A frenetic, boundary-pushing piano voyage where deeply spiritual melodies fracture into glitchy, electric cascades of crimson and azure. Joy and melancholy collide in this trippy soundscape, leaving listeners suspended between the profound mysteries of the afterlife and the dizzying, surreal chaos of tomorrow.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Yellow, Crimson, Red, Magenta, Azure\n- Primary moods felt: Joy, Melancholy, Confusion, Mystery, Anticipation\n- Top reactions: applause, like, meh\n- Audience notes (sample): Robot sex | Electric collective | Dreamy | Glitch | Kissyfish | Far East | Everything everywhere all at once | Curious | Alice Coltrane | Trippy | High | Hogh | The boundlessness of human creativity | Death and the afterlife | Tampa\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773458846017,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s1_t3",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Amber Mischief, Crimson Secrets",
+    "story": "Bright sparks of joy dance mischievously through an intriguing haze of gray melancholy. This amber-soaked melody keeps listeners suspended in a sweet, mysterious anticipation.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Yellow, Raspberry, Amber, Gray, Crimson\n- Primary moods felt: Joy, Anticipation, Mystery, Melancholy\n- Top reactions: applause, like\n- Audience notes (sample): Mischief | Intriguing\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.\n\nOutput format should be JSON exactly like this, no markdown formatting:\n{\n  \"newName\": \"The Generated Name\",\n  \"story\": \"The generated story.\"\n}",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773459767522,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s2_t2",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Electric Serpent's Neon Embrace",
+    "story": "Neon strikes of magenta and cobalt pierce through a mesmerizing cybernetic haze, blending cold mechanical power with chaotic piano exploration. It is an electric, serpentine journey that pulls the listener into a realm both thrillingly inhuman and profoundly joyful.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Cobalt, Hot Pink, Amethyst, Malachite, Magenta\n- Primary moods felt: Mystery, Melancholy, Joy, Anticipation, Power\n- Top reactions: applause, like\n- Audience notes (sample): Immersed | High | Electric transcending modern tech | Mesmerizing | Cold distant inhuman | Robot sex | Exploration | Serpant | Curious and exploratory | Wonderful | Chaotic | Awesome\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.\n\nOutput format should be JSON exactly like this, no markdown formatting:\n{\n  \"newName\": \"The Generated Name\",\n  \"story\": \"The generated story.\"\n}",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773459827895,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s2_t1",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Midnight Smoke and Applause",
+    "story": "The piano keys dance through a smoky haze, wrapping the captivated room in a warm embrace. Sudden bursts of applause break the spell, echoing the shared heartbeat of an unforgettable night.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert... Please generate: 1. A creative, evocative title for this track (max 5 words). 2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773460383188,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s2_t3",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Dreams of Electric Creativity",
+    "story": "A kaleidoscopic blur of joyful crimson and melancholic azure, this track pulses like a trippy glitch in the fabric of a dream. It weaves the boundless mysteries of the afterlife with the electric curiosity of a modern jazz collective.",
+    "thoughts": "",
+    "geminiPrompt": "Based on the following audience interaction data for a musical track during a live piano jazz concert:\n- Most prominent colors selected: Yellow, Crimson, Red, Magenta, Azure\n- Primary moods felt: Joy, Melancholy, Confusion, Mystery, Anticipation\n- Top reactions: applause, like, meh\n- Audience notes (sample): Robot sex | Electric collective | Dreamy | Glitch | Kissyfish | Far East | Everything everywhere all at once | Curious | Alice Coltrane | Trippy | High | Hogh | The boundlessness of human creativity | Death and the afterlife | Tampa\n\nPlease generate:\n1. A creative, evocative title for this track (max 5 words).\n2. A short, poetic description (max 2 sentences) describing the vibe of the song based on this data.\n\nOutput format should be JSON exactly like this, no markdown formatting:\n{\n  \"newName\": \"The Generated Name\",\n  \"story\": \"The generated story.\"\n}",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773460437413,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s1_t1",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Drifting the Uneasy Cobalt Deep",
+    "story": "The piano's crystalline notes dissolve into an open ultramarine expanse, pulling the soul into a beautifully uneasy immersion where joyous currents collide with chaotic, melancholic depths. Drifting through this emerald sonic trench, the listeners are swallowed by a profound aquatic mystery that sparks triumphant applause.",
+    "thoughts": "",
+    "geminiPrompt": "Act as a master poet and synesthetic storyteller. Translate the following live audience interaction data from a jazz piano concert into a deeply evocative and vivid narrative. The audience visualized deep aquatic hues: Cobalt, Emerald, Capri, Blue, and Ultramarine. Their emotional journey swept through Anticipation, Joy, Melancholy, Mystery, and Chaos, culminating in resounding 'applause' and 'like' reactions. Audience whispers included words like: Drifting, Open, Immersion, and Uneasy. Synthesize these contrasting feelings of immersive depths and uneasy anticipation to generate: 1. A captivating, evocative title for the track (maximum 5 words) that captures its blue-green mystery. 2. A breathtaking, poetic micro-story (maximum 2 sentences) describing the song's sonic landscape and emotional undertow. Output strictly as JSON exactly like this, with no markdown or formatting tags: {\\\"newName\\\": \\\"Your Title\\\", \\\"story\\\": \\\"Your poetic story.\\\"}",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773461355841,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s1_t2",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Midnight Indigo to Amber Fire",
+    "story": "The piano first whispers with the sapphire thrill of anticipation, gently weeping into an indigo melancholy that holds the breathless room. Suddenly, the keys ignite with joyous amber and roaring orange fire, culminating in a striking harlequin crescendo of raw power that commands thunderous applause.",
+    "thoughts": "",
+    "geminiPrompt": "Act as a master storyteller and poet. Transform the raw audience data from a live piano jazz concert into a vivid, evocative track title and a deeply poetic mini-story. The audience's emotional journey was painted in deep Sapphire, rich Indigo, glowing Amber, vibrant Orange, and striking Harlequin. Their hearts swelled through a profound arc of Anticipation, Melancholy, Joy, and Power. Reactions culminated in enthusiastic applause and likes, marked by the notes: 'Opening | Nice'. Using this rich tapestry of metrics, generate: 1. A captivating, evocative title for this track (maximum 5 words). 2. A breathtaking, poetic description (maximum 2 sentences) translating these colors and moods into a vivid depiction of the song's soul-stirring vibe. Output strictly as a flat JSON object exactly like this: {\\\"newName\\\": \\\"Your Creative Title\\\", \\\"story\\\": \\\"Your poetic description.\\\"}",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773461541317,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  },
+  {
+    "trackId": "trk_combined_s1_t3",
+    "originalTitle": "Pre-Generated Track",
+    "newName": "Amber Glow of Mischievous Mystery",
+    "story": "Under a glowing Amber stage, crisp piano notes painted Bright Yellow Joy and lush Raspberry Anticipation, sparking enthusiastic applause and whispers of Mischief and Intriguing charm. Suddenly, shadowy Gray Melancholy and deep Crimson Mystery enveloped the room, earning genuine likes for its beautifully complex emotional tapestry.",
+    "thoughts": "",
+    "geminiPrompt": "Act as a master storyteller and synesthetic music critic. Translate live audience interaction data from a spellbinding piano jazz concert into a vivid, atmospheric narrative. The music painted a complex emotional landscape. Colors: Bright Yellow, lush Raspberry, glowing Amber, shadowy Gray, and deep Crimson. Moods: A tapestry of Joy, Anticipation, Mystery, and Melancholy. Reactions: Enthusiastic 'applause' and 'like'. Audience whispers: 'Mischief' and 'Intriguing'. Imbue your response with lyrical beauty. Generate: 1. A deeply evocative, imaginative title for this piece (maximum 5 words). 2. A highly poetic description (maximum 2 sentences) capturing the song's mischievous charm, sudden melancholy shadows, and mysterious depth. Make the reader feel the amber glow of the stage and the crisp notes. Output pure JSON exactly like this, without markdown formatting: { \"newName\": \"[5-word title]\", \"story\": \"[2-sentence poetic description]\" }",
+    "rawData": {
+      "title": "Pre-Generated Track",
+      "startTime": 1773461655978,
+      "reactions": {
+        "meh": 0,
+        "like": 1,
+        "applause": 0
+      },
+      "words": [],
+      "colors": {},
+      "moods": {},
+      "minutes": {}
+    }
+  }
+]

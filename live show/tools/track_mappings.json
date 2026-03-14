@@ -1,0 +1,30 @@
+{
+    "trk_1773357487644": { "mappedId": "trk_combined_pre_show", "mappedTitle": "Pre-Show" },
+    "trk_1773358701641": { "mappedId": "trk_combined_pre_show", "mappedTitle": "Pre-Show" },
+    "trk_1773357485385": { "mappedId": "trk_combined_pre_show", "mappedTitle": "Pre-Show" },
+
+    "trk_1773358703627": { "mappedId": "trk_combined_s1_t1", "mappedTitle": "Section 1 - Track 1" },
+    "trk_1773359201453": { "mappedId": "trk_combined_s1_t1", "mappedTitle": "Section 1 - Track 1" },
+
+    "trk_1773359264287": { "mappedId": "trk_combined_s1_t2", "mappedTitle": "Section 1 - Track 2" },
+    "trk_1773359429791": { "mappedId": "trk_combined_s1_t2", "mappedTitle": "Section 1 - Track 2" },
+
+    "trk_1773359435309": { "mappedId": "trk_combined_s1_t3", "mappedTitle": "Section 1 - Track 3" },
+    "trk_1773359471163": { "mappedId": "trk_combined_s1_t3", "mappedTitle": "Section 1 - Track 3" },
+    "trk_1773359471679": { "mappedId": "trk_combined_s1_t3", "mappedTitle": "Section 1 - Track 3" },
+    "trk_1773359604086": { "mappedId": "trk_combined_s1_t3", "mappedTitle": "Section 1 - Track 3" },
+
+    "trk_1773359643288": { "mappedId": "trk_combined_s1_t456", "mappedTitle": "Section 1 - Track 4, 5, 6" },
+    "trk_1773360834111": { "mappedId": "trk_combined_s1_t456", "mappedTitle": "Section 1 - Track 4, 5, 6" },
+
+    "trk_1773360854231": { "mappedId": "trk_combined_s2_t1", "mappedTitle": "Section 2 - Track 1" },
+    "trk_1773361203874": { "mappedId": "trk_combined_s2_t1", "mappedTitle": "Section 2 - Track 1" },
+
+    "trk_1773361238887": { "mappedId": "trk_combined_s2_t2", "mappedTitle": "Section 2 - Track 2" },
+    "trk_1773361409617": { "mappedId": "trk_combined_s2_t2", "mappedTitle": "Section 2 - Track 2" },
+    "trk_1773361432834": { "mappedId": "trk_combined_s2_t2", "mappedTitle": "Section 2 - Track 2" },
+
+    "trk_1773361482537": { "mappedId": "trk_combined_s2_t3", "mappedTitle": "Section 2 - Track 3" },
+    "trk_1773361950266": { "mappedId": "trk_combined_s2_t3", "mappedTitle": "Section 2 - Track 3" },
+    "trk_1773362029087": { "mappedId": "trk_combined_s2_t3", "mappedTitle": "Section 2 - Track 3" }
+}

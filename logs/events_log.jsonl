@@ -454,3 +454,15 @@
 {"id":"fc68f354-00d9-4cbb-b129-55f15eb01227","sessionId":"95dde0b4-b66f-4148-ad48-01b11112c6db","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:49.643Z","category":"combined_reaction","value":1,"colorName":"None","mood":"Joy","colorRgba":"transparent","reactionLabel":"None","note":"None"}
 {"id":"c5350428-580d-4627-bdc0-56f0249a0956","sessionId":"45cdd0f3-3e68-4eb5-b260-be81ec5a2c08","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:55.740Z","category":"mood","value":"Joy"}
 {"id":"ede97fe6-9dfb-4bd5-8c65-77865203b78c","sessionId":"45cdd0f3-3e68-4eb5-b260-be81ec5a2c08","userId":"benczech212@gmail.com","userName":"Ben","mockIp":"18.164.104.94","timestamp":"2026-03-12T18:39:58.370Z","category":"combined_reaction","value":1,"colorName":"None","mood":"Joy","colorRgba":"transparent","reactionLabel":"None","note":"None"}
+{"id":"evt_users_1773340844266","timestamp":"2026-03-12T18:40:44.266Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773340904266","timestamp":"2026-03-12T18:41:44.266Z","category":"system","value":"connected_users","count":3}
+{"id":"evt_users_1773340964267","timestamp":"2026-03-12T18:42:44.267Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773341024266","timestamp":"2026-03-12T18:43:44.266Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773341084266","timestamp":"2026-03-12T18:44:44.266Z","category":"system","value":"connected_users","count":2}
+{"id":"evt_users_1773430907384","timestamp":"2026-03-13T19:41:47.384Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773430967384","timestamp":"2026-03-13T19:42:47.384Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773434390439","timestamp":"2026-03-13T20:39:50.439Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773434570439","timestamp":"2026-03-13T20:42:50.439Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773440366933","timestamp":"2026-03-13T22:19:26.933Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773457829089","timestamp":"2026-03-14T03:10:29.089Z","category":"system","value":"connected_users","count":1}
+{"id":"evt_users_1773459149349","timestamp":"2026-03-14T03:32:29.349Z","category":"system","value":"connected_users","count":1}

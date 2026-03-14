@@ -1,0 +1,9 @@
+TrackTitle,TrackID,DurationSec,TotalEvents,UniqueUsers,MostPopularColor,MostPopularMood,MostPopularReaction,TotalNotes
+"Pre-Show","trk_combined_pre_show",2004,68,23,"Blue (6)","Joy (4)","like (10)",0
+"Section 1 - Track 1","trk_combined_s1_t1",555,78,15,"Cobalt (6)","Anticipation (12)","applause (14)",4
+"Section 1 - Track 2","trk_combined_s1_t2",186,33,7,"Sapphire (4)","Anticipation (4)","applause (5)",2
+"Section 1 - Track 3","trk_combined_s1_t3",1130,43,7,"Yellow (4)","Joy (4)","applause (7)",2
+"Section 1 - Track 4, 5, 6","trk_combined_s1_t456",1274,99,14,"Violet (5)","Anticipation (8)","applause (22)",13
+"Section 2 - Track 1","trk_combined_s2_t1",466,159,11,"Deep Orange (6)","Joy (23)","like (27)",13
+"Section 2 - Track 2","trk_combined_s2_t2",679,84,11,"Cobalt (5)","Mystery (12)","applause (9)",12
+"Section 2 - Track 3","trk_combined_s2_t3",12448,201,13,"Yellow (8)","Joy (20)","applause (41)",20

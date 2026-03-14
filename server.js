@@ -8,6 +8,8 @@ const client = require('prom-client');
 const https = require('https');
 require('dotenv').config();
 
+const { GoogleGenAI, Type } = require('@google/genai');
+
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -21,6 +23,8 @@ try {
 }
 
 const geminiApiKey = process.env.GEMINI_API_KEY;
+const ai = new GoogleGenAI({ apiKey: geminiApiKey });
+
 const STORY_MODEL = (config.ai_models && config.ai_models.story_model) ? config.ai_models.story_model : 'gemini-3.1-pro-preview';
 const IMAGE_MODEL = (config.ai_models && config.ai_models.image_model) ? config.ai_models.image_model : 'gemini-3.1-flash-image-preview';
 
@@ -33,6 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve archive files
 app.use('/archives', express.static(path.join(__dirname, 'archives')));
+
+// Serve post show analysis files
+app.use('/analysis', express.static(path.join(__dirname, 'live show', 'post_show_analysis')));
 
 // API to list available archives
 app.get('/api/archives', (req, res) => {
@@ -258,14 +265,139 @@ app.post('/api/track/end', (req, res) => {
   res.json({ success: true });
 });
 
-app.post('/api/debug/generate', (req, res) => {
-    const { trackId } = req.body;
+app.post('/api/debug/generate-text', async (req, res) => {
+    const { trackId, customPrompt } = req.body;
     if (!trackId) {
         return res.status(400).json({ error: 'Missing trackId' });
     }
-    console.log(`[Manual Override] Triggering automated generation for ${trackId}`);
-    triggerAutomaticStoryGeneration(trackId);
-    res.json({ success: true, message: `Story and Image generation triggered for ${trackId}` });
+    console.log(`[Manual Override] Triggering text generation for ${trackId}`);
+    try {
+        const result = await generateShowStories(trackId, customPrompt);
+        if (result && result.storyData) {
+            broadcast({ type: 'stories_ready' });
+            res.json({ success: true, storyData: result.storyData, topWords: result.topWords, topColors: result.topColors });
+        } else {
+            res.status(500).json({ error: 'Failed to generate text or skip condition met' });
+        }
+    } catch(e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+app.post('/api/debug/refine-image-prompt', async (req, res) => {
+    const { trackId, imagePrompt } = req.body;
+    if (!imagePrompt) {
+        return res.status(400).json({ error: 'Missing imagePrompt' });
+    }
+    console.log(`[Prompt Refine] Refining image prompt for ${trackId || 'unknown'}`);
+    
+    try {
+        const refineInstruction = `You are an expert AI prompt engineer specializing in generative image models like Imagen. 
+Your task is to take the following baseline prompt and refine it into a highly detailed, extremely evocative, visually stunning prompt specifically optimized for an image generation AI. 
+
+Ensure you retain the core themes, colors, moods, and specific references mentioned in the original prompt, but expand upon them to create a stronger, more beautiful visual composition. 
+Keep it under 1000 characters.
+
+ORIGINAL PROMPT:
+"${imagePrompt}"`;
+
+        const response = await ai.models.generateContent({
+            model: STORY_MODEL,
+            contents: [{
+                role: 'user',
+                parts: [{ text: refineInstruction }]
+            }],
+            config: {
+                thinkingConfig: {
+                    thinkingLevel: 'HIGH'
+                },
+                responseMimeType: 'application/json',
+                responseSchema: {
+                    type: Type.OBJECT,
+                    required: ["refinedPrompt"],
+                    properties: {
+                        refinedPrompt: { type: Type.STRING }
+                    }
+                }
+            }
+        });
+        
+        let parsed;
+        try {
+            parsed = JSON.parse(response.text || "{}");
+        } catch(e) {
+            parsed = { refinedPrompt: response.text };
+        }
+        res.json({ success: true, refinedPrompt: (parsed.refinedPrompt || "").trim() });
+    } catch(e) {
+        console.error("Refinement error:", e);
+        res.status(500).json({ error: e.message });
+    }
+});
+
+app.post('/api/debug/refine-text-prompt', async (req, res) => {
+    const { trackId, textPrompt } = req.body;
+    if (!textPrompt) {
+        return res.status(400).json({ error: 'Missing textPrompt' });
+    }
+    console.log(`[Prompt Refine] Refining text prompt for ${trackId || 'unknown'}`);
+    
+    try {
+        const refineInstruction = `You are an expert AI prompt engineer. 
+Your task is to take the following baseline prompt and refine it into a highly detailed, evocative, and compelling prompt specifically optimized for a text generation AI to create a story and title. 
+
+Ensure you retain the core metrics, colors, moods, and specific references mentioned in the original prompt, but expand upon the prompt's instructions to ensure the AI generates the most creative and poetic response possible. 
+Keep it under 1000 characters.
+
+ORIGINAL PROMPT:
+"${textPrompt}"`;
+
+        const response = await ai.models.generateContent({
+            model: STORY_MODEL,
+            contents: [{
+                role: 'user',
+                parts: [{ text: refineInstruction }]
+            }],
+            config: {
+                thinkingConfig: {
+                    thinkingLevel: 'HIGH'
+                },
+                responseMimeType: 'application/json',
+                responseSchema: {
+                    type: Type.OBJECT,
+                    required: ["refinedPrompt"],
+                    properties: {
+                        refinedPrompt: { type: Type.STRING }
+                    }
+                }
+            }
+        });
+        
+        let parsed;
+        try {
+            parsed = JSON.parse(response.text || "{}");
+        } catch(e) {
+            parsed = { refinedPrompt: response.text };
+        }
+        res.json({ success: true, refinedPrompt: (parsed.refinedPrompt || "").trim() });
+    } catch(e) {
+        console.error("Text Refinement error:", e);
+        res.status(500).json({ error: e.message });
+    }
+});
+
+app.post('/api/debug/generate-image-direct', async (req, res) => {
+    const { trackId, title, imagePrompt } = req.body;
+    if (!trackId || !imagePrompt) {
+        return res.status(400).json({ error: 'Missing trackId or imagePrompt' });
+    }
+    console.log(`[Manual Override] Triggering direct image generation for ${trackId}`);
+    try {
+        await generateImageForTrack(trackId, title || "Unknown Track", title || "Unknown Track", "Custom Prompt Image", "", "", imagePrompt);
+        res.json({ success: true, message: `Image generation triggered for ${trackId}` });
+    } catch(e) {
+        res.status(500).json({ error: e.message });
+    }
 });
 
 // Manual Test Track Inject
@@ -492,7 +624,7 @@ app.get('/api/stories', (req, res) => {
 });
 
 // Generate stories using Gemini
-async function generateShowStories(specificTrackId = null) {
+async function generateShowStories(specificTrackId = null, customPrompt = null) {
   if (!geminiApiKey) {
     console.log("No GEMINI_API_KEY found, skipping story generation.");
     return null;
@@ -572,6 +704,19 @@ async function generateShowStories(specificTrackId = null) {
     }
   });
   
+  if (specificTrackId && !trackData[specificTrackId]) {
+      console.log(`Track ${specificTrackId} not found in live memory. Injecting mock shell to allow customPrompt generation.`);
+      trackData[specificTrackId] = {
+          title: "Pre-Generated Track",
+          startTime: Date.now(),
+          reactions: { meh: 0, like: 1, applause: 0 }, // fake interaction to bypass skipping
+          words: [],
+          colors: {},
+          moods: {},
+          minutes: {}
+      };
+  }
+
   const stories = [];
   
   console.log(`Aggregated trackData keys: ${Object.keys(trackData).length}`);
@@ -584,6 +729,13 @@ async function generateShowStories(specificTrackId = null) {
     // Only process tracks with at least some interaction
     if (data.reactions.applause === 0 && data.reactions.like === 0 && data.words.length === 0 && Object.keys(data.colors).length === 0 && Object.keys(data.moods).length === 0) {
         console.log(`Skipping track ${trackId} because of zero interaction.`);
+        if (specificTrackId) {
+            return {
+                storyData: { trackId, originalTitle: data.title, newName: data.title, story: "No audience interaction collected.", rawData: data },
+                topWords: [],
+                topColors: ''
+            };
+        }
         continue;
     }
     
@@ -636,7 +788,9 @@ async function generateShowStories(specificTrackId = null) {
     }
     const timelineStr = timelineOverview.join('\\n');
     
-    const prompt = `You are a creative storyteller. A live audience just listened to a musical track titled "${data.title}".\\n We want your help coming up with a name for this track. During the performance, they interacted using an app. Here is their aggregated data:
+    let prompt = customPrompt;
+    if (!prompt) {
+      prompt = `You are a creative storyteller. A live audience just listened to a musical track titled "${data.title}" during a live piano jazz concert.\\n We want your help coming up with a name for this track. During the performance, they interacted using an app. Here is their aggregated data:
 
 OVERALL TRACK SUMMARY:
 - Applause: ${data.reactions.applause}
@@ -658,91 +812,76 @@ Output format should be JSON exactly like this, no markdown formatting:
   "newName": "The Generated Name",
   "story": "The generated story."
 }`;
+    }
 
-    try {
-      const responseText = await new Promise((resolve, reject) => {
-        const payload = JSON.stringify({
-           contents: [{ parts: [{ text: prompt }] }]
-        });
-        const reqPost = https.request({
-            hostname: 'generativelanguage.googleapis.com',
-            path: `/v1beta/models/${STORY_MODEL}:generateContent?key=${geminiApiKey}`,
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Content-Length': Buffer.byteLength(payload)
-            }
-        }, (resPost) => {
-            let body = '';
-            resPost.on('data', d => body += d);
-            resPost.on('end', () => {
-                if (resPost.statusCode >= 200 && resPost.statusCode < 300) {
-                    resolve(body);
-                } else {
-                    reject(new Error(`Story API returned ${resPost.statusCode}: ${body}`));
+      try {
+        const response = await ai.models.generateContent({
+            model: STORY_MODEL,
+            contents: [{
+                role: 'user',
+                parts: [{ text: prompt }]
+            }],
+            config: {
+                thinkingConfig: {
+                    thinkingLevel: 'HIGH'
+                },
+                responseMimeType: 'application/json',
+                responseSchema: {
+                    type: Type.OBJECT,
+                    required: ["newName", "story"],
+                    properties: {
+                        newName: { type: Type.STRING },
+                        story: { type: Type.STRING }
+                    }
                 }
-            });
+            }
         });
-        reqPost.on('error', reject);
-        reqPost.write(payload);
-        reqPost.end();
-      });
-      
-      const geminiData = JSON.parse(responseText);
-      
-      // Save exact prompt & response pair to log file
-      try {
-          const logPayload = { timestamp: new Date().toISOString(), model: STORY_MODEL, trackId, prompt: prompt, response: geminiData };
-          fs.appendFileSync('/home/benczech/dev/concert-app/logs/ai_prompts.jsonl', JSON.stringify(logPayload) + '\\n');
-      } catch (logErr) {
-          console.error("Failed to append to ai_prompts.jsonl", logErr);
-      }
+        
+        let rawText = response.text || "";
+        let nativeThoughts = ""; // gemini-3.1-pro-preview handles thoughts internally and does not expose them structurally to the user via the `part.thought` object
+        
+        // Ensure string is correctly parsed
+        let parsed;
+        try {
+            parsed = JSON.parse(rawText);
+        } catch (e) {
+            console.error("Strict JSON parse failed despite schema enforcement:", e);
+            parsed = { newName: "Unnamed Track", story: rawText };
+        }
+        
+        // Save exact prompt & response pair to log file
+        try {
+            const logPayload = { timestamp: new Date().toISOString(), model: STORY_MODEL, trackId, prompt: prompt, response: { text: rawText, thoughts: nativeThoughts }};
+            fs.appendFileSync('/home/benczech/dev/concert-app/logs/ai_prompts.jsonl', JSON.stringify(logPayload) + '\n');
+        } catch (logErr) {
+            console.error("Failed to append to ai_prompts.jsonl", logErr);
+        }
 
-      if (geminiData.error) {
-          console.error("Skipping track generation due to Gemini Error:", geminiData);
-          continue;
-      }
-      let rawText = geminiData.candidates && geminiData.candidates[0] && geminiData.candidates[0].content && geminiData.candidates[0].content.parts && geminiData.candidates[0].content.parts[0] ? geminiData.candidates[0].content.parts[0].text : "";
-      
-      let parsed = { newName: "Unknown Story", story: "No story generated." };
-      
-      try {
-          if (rawText.includes('\`\`\`json')) {
-             rawText = rawText.split('\`\`\`json')[1].split('\`\`\`')[0].trim();
-          } else if (rawText.includes('\`\`\`')) {
-             rawText = rawText.split('\`\`\`')[1].trim();
-          }
-          parsed = JSON.parse(rawText);
-      } catch (parseErr) {
-          console.error(`Failed to parse Gemini generated JSON for track ${trackId}:`, parseErr);
-          console.error(`Raw text was: ${rawText}`);
-      }
-
-      stories.push({
-        trackId: trackId,
+        stories.push({
+          trackId: trackId,
         originalTitle: data.title,
         newName: parsed.newName || "Unnamed Track",
         story: parsed.story || "No story available.",
+        thoughts: nativeThoughts || "",
         geminiPrompt: prompt,
         rawData: data
       });
       console.log(`Generated story for ${data.title}`);
       
       if (specificTrackId) {
-          // Keep existing stories and just update/append this one
+          // Keep existing stories and just append this one
           let existingStories = [];
           const storiesPath = path.join(__dirname, 'logs', 'track_stories.json');
           if (fs.existsSync(storiesPath)) {
               try { existingStories = JSON.parse(fs.readFileSync(storiesPath, 'utf8')); } catch(e) {}
           }
-          existingStories = existingStories.filter(s => s.trackId !== trackId);
           existingStories.push(stories[stories.length - 1]);
           fs.writeFileSync(storiesPath, JSON.stringify(existingStories, null, 2));
           
           // Return early for single runs to chain to image generation
           return {
               storyData: stories[stories.length - 1],
-              topWords: getAllWords,
+              topWords: data.words,
               topColors: topColors
           };
       }
@@ -765,6 +904,155 @@ Output format should be JSON exactly like this, no markdown formatting:
   }
   return null;
 }
+
+// Select a specific story version to be the public designated one
+app.post('/api/debug/select-story', (req, res) => {
+    const { trackId, index } = req.body;
+    let existingStories = [];
+    const storiesPath = path.join(__dirname, 'logs', 'track_stories.json');
+    if (fs.existsSync(storiesPath)) {
+        try { existingStories = JSON.parse(fs.readFileSync(storiesPath, 'utf8')); } catch(e) {}
+    }
+
+    // Isolate all generations for this specific track
+    const trackGenerations = existingStories.filter(s => s.trackId === trackId);
+    
+    if (index >= 0 && index < trackGenerations.length) {
+        // Find the precise entry we want to mark as chosen
+        const targetStory = trackGenerations[index];
+        
+        // Reset flags for all variations of this track
+        existingStories.forEach(s => {
+            if (s.trackId === trackId) {
+                s.isChosen = false;
+            }
+        });
+        
+        // Find the target inside the main array and flag it
+        if (masterIndex !== -1) {
+            existingStories[masterIndex].isChosen = true;
+            fs.writeFileSync(storiesPath, JSON.stringify(existingStories, null, 2));
+            broadcast({ type: 'stories_ready' });
+            res.json({ success: true });
+        } else {
+             res.status(404).json({ error: 'Target generation instance not found in master list.' });
+        }
+    } else {
+        res.status(400).json({ error: 'Invalid selection index.' });
+    }
+});
+
+// Delete a specific story version from history
+app.delete('/api/debug/delete-story', (req, res) => {
+    const { trackId, index } = req.body;
+    let existingStories = [];
+    const storiesPath = path.join(__dirname, 'logs', 'track_stories.json');
+    if (fs.existsSync(storiesPath)) {
+        try { existingStories = JSON.parse(fs.readFileSync(storiesPath, 'utf8')); } catch(e) {}
+    }
+
+    // Isolate all generations for this specific track
+    const trackGenerations = existingStories.filter(s => s.trackId === trackId);
+    
+    if (index >= 0 && index < trackGenerations.length) {
+        const targetStory = trackGenerations[index];
+        const masterIndex = existingStories.findIndex(s => s.trackId === trackId && s.newName === targetStory.newName && s.story === targetStory.story);
+        
+        if (masterIndex !== -1) {
+            const wasChosen = existingStories[masterIndex].isChosen;
+            existingStories.splice(masterIndex, 1);
+            
+            // If we deleted the actively chosen item, and there are still options left, pick the newest one by default
+            if (wasChosen) {
+                const remainingForTrack = existingStories.filter(s => s.trackId === trackId);
+                if (remainingForTrack.length > 0) {
+                    const latestMatchIndex = existingStories.lastIndexOf(remainingForTrack[remainingForTrack.length - 1]);
+                    existingStories[latestMatchIndex].isChosen = true;
+                }
+            }
+            
+            fs.writeFileSync(storiesPath, JSON.stringify(existingStories, null, 2));
+            broadcast({ type: 'stories_ready' });
+            res.json({ success: true, deleted: true });
+        } else {
+             res.status(404).json({ error: 'Target generation instance not found for deletion.' });
+        }
+    } else {
+        res.status(400).json({ error: 'Invalid deletion index.' });
+    }
+});
+
+// Select a specific image version to be the public designated one
+app.post('/api/debug/select-image', (req, res) => {
+    const { trackId, index } = req.body;
+    let existingImages = [];
+    const imagesPath = path.join(__dirname, 'logs', 'track_images.json');
+    if (fs.existsSync(imagesPath)) {
+        try { existingImages = JSON.parse(fs.readFileSync(imagesPath, 'utf8')); } catch(e) {}
+    }
+
+    const trackGenerations = existingImages.filter(i => i.trackId === trackId);
+    
+    if (index >= 0 && index < trackGenerations.length) {
+        const targetImage = trackGenerations[index];
+        
+        existingImages.forEach(i => {
+            if (i.trackId === trackId) {
+                i.isChosen = false;
+            }
+        });
+        
+        const masterIndex = existingImages.findIndex(i => i.trackId === trackId && i.imageBase64 === targetImage.imageBase64);
+        if (masterIndex !== -1) {
+            existingImages[masterIndex].isChosen = true;
+            fs.writeFileSync(imagesPath, JSON.stringify(existingImages, null, 2));
+            broadcast({ type: 'images_ready' });
+            res.json({ success: true });
+        } else {
+             res.status(404).json({ error: 'Target generation instance not found in master list.' });
+        }
+    } else {
+        res.status(400).json({ error: 'Invalid selection index.' });
+    }
+});
+
+// Delete a specific image version from history
+app.delete('/api/debug/delete-image', (req, res) => {
+    const { trackId, index } = req.body;
+    let existingImages = [];
+    const imagesPath = path.join(__dirname, 'logs', 'track_images.json');
+    if (fs.existsSync(imagesPath)) {
+        try { existingImages = JSON.parse(fs.readFileSync(imagesPath, 'utf8')); } catch(e) {}
+    }
+
+    const trackGenerations = existingImages.filter(i => i.trackId === trackId);
+    
+    if (index >= 0 && index < trackGenerations.length) {
+        const targetImage = trackGenerations[index];
+        const masterIndex = existingImages.findIndex(i => i.trackId === trackId && i.imageBase64 === targetImage.imageBase64);
+        
+        if (masterIndex !== -1) {
+            const wasChosen = existingImages[masterIndex].isChosen;
+            existingImages.splice(masterIndex, 1);
+            
+            if (wasChosen) {
+                const remainingForTrack = existingImages.filter(i => i.trackId === trackId);
+                if (remainingForTrack.length > 0) {
+                    const latestMatchIndex = existingImages.lastIndexOf(remainingForTrack[remainingForTrack.length - 1]);
+                    existingImages[latestMatchIndex].isChosen = true;
+                }
+            }
+            
+            fs.writeFileSync(imagesPath, JSON.stringify(existingImages, null, 2));
+            broadcast({ type: 'images_ready' });
+            res.json({ success: true, deleted: true });
+        } else {
+             res.status(404).json({ error: 'Target generation instance not found for deletion.' });
+        }
+    } else {
+        res.status(400).json({ error: 'Invalid deletion index.' });
+    }
+});
 
 // Generate image prompts for admin review
 app.get('/api/images/preview', (req, res) => {
@@ -848,13 +1136,13 @@ app.get('/api/images/preview', (req, res) => {
   res.json({ success: true, prompts });
 });
 
-async function generateImageForTrack(trackId, title, aiName, aiStory, topWords, topColors) {
+async function generateImageForTrack(trackId, title, aiName, aiStory, topWords, topColors, overrideImagePrompt = null) {
     if (!geminiApiKey) {
         console.log('GEMINI_API_KEY not found, skipping automated image generation');
         return;
     }
 
-    const promptText = `Create a highly abstract, atmospheric, wide 16:9 concert visual background based on a song titled "${aiName}". \nStory meaning: ${aiStory}. \nThe dominant colors should be: ${topColors || 'vibrant shifting hues'}. \nThe visual mood and themes should reflect these words: ${topWords || 'ambient, energetic, musical'}. Do not include any text or UI elements in the image.`;
+    const promptText = overrideImagePrompt || `Create a highly abstract, atmospheric, wide 16:9 concert visual background based on a song titled "${aiName}". \nStory meaning: ${aiStory}. \nThe dominant colors should be: ${topColors || 'vibrant shifting hues'}. \nThe visual mood and themes should reflect these words: ${topWords || 'ambient, energetic, musical'}. Do not include any text or UI elements in the image.`;
 
     try {
         console.log(`Generating automated Imagen image for ${trackId}...`);
@@ -864,10 +1152,7 @@ async function generateImageForTrack(trackId, title, aiName, aiStory, topWords, 
                     parts: [{ text: promptText }]
                 }],
                 generationConfig: {
-                    responseModalities: ["Image"],
-                    imageConfig: {
-                        aspectRatio: "16:9"
-                    }
+                    responseModalities: ["Image"]
                 }
             });
             
@@ -922,7 +1207,6 @@ async function generateImageForTrack(trackId, title, aiName, aiStory, topWords, 
                     if (Array.isArray(parsedData)) existingImages = parsedData;
                 } catch(e) {}
             }
-            existingImages = existingImages.filter(i => i.trackId !== trackId);
             existingImages.push({
                 trackId: trackId,
                 trackTitle: title,
@@ -948,12 +1232,12 @@ async function generateImageForTrack(trackId, title, aiName, aiStory, topWords, 
     }
 }
 
-async function triggerAutomaticStoryGeneration(trackId) {
+async function triggerAutomaticStoryGeneration(trackId, customPrompt = null) {
     if (!trackId) return;
     console.log(`Triggering automated story + image generation cycle for ${trackId}`);
     
     try {
-        const result = await generateShowStories(trackId);
+        const result = await generateShowStories(trackId, customPrompt);
         if (result && result.storyData) {
             broadcast({ type: 'stories_ready' });
             // Chain the image generation immediately
@@ -981,7 +1265,14 @@ app.post('/api/images/generate', async (req, res) => {
     return res.status(400).json({ error: 'Missing or empty prompts array' });
   }
 
-  const images = [];
+  let images = [];
+  const imgPath = path.join(__dirname, 'logs', 'track_images.json');
+  if (fs.existsSync(imgPath)) {
+      try { 
+          const parsedData = JSON.parse(fs.readFileSync(imgPath, 'utf8')); 
+          if (Array.isArray(parsedData)) images = parsedData;
+      } catch(e) {}
+  }
 
   for (const p of prompts) {
     try {
@@ -991,10 +1282,7 @@ app.post('/api/images/generate', async (req, res) => {
                 parts: [{ text: p.prompt }]
             }],
             generationConfig: {
-                responseModalities: ["Image"],
-                imageConfig: {
-                    aspectRatio: "16:9"
-                }
+                responseModalities: ["Image"]
             }
         });
         

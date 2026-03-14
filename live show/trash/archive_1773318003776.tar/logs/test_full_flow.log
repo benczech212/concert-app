@@ -1,0 +1,30 @@
+=== Starting Full Flow Test ===
+1. Starting Track 1 (First Track)
+   Wait 5s (Check frontend for Now Playing popup)
+2. Sending audience reactions for Track 1 for 20s
+   Sent random reaction/color/mood bundle 1
+   Sent random reaction/color/mood bundle 2
+   Sent random reaction/color/mood bundle 3
+   Sent random reaction/color/mood bundle 4
+   Sent random reaction/color/mood bundle 5
+   Sent random reaction/color/mood bundle 6
+   Sent random reaction/color/mood bundle 7
+   Sent random reaction/color/mood bundle 8
+   Sent random reaction/color/mood bundle 9
+   Sent random reaction/color/mood bundle 10
+   Sent random reaction/color/mood bundle 11
+   Sent random reaction/color/mood bundle 12
+   Sent random reaction/color/mood bundle 13
+   Sent random reaction/color/mood bundle 14
+   Sent random reaction/color/mood bundle 15
+   Sent random reaction/color/mood bundle 16
+   Sent random reaction/color/mood bundle 17
+   Sent random reaction/color/mood bundle 18
+   Sent random reaction/color/mood bundle 19
+   Sent random reaction/color/mood bundle 20
+3. Ending Track 1
+   Wait 3s (Check frontend for Word Cloud popup)
+4. Sending words for Track 1
+   Sent words.
+5. Starting Track 2 (Second Track)
+   Wait 5s (Check frontend for Now Playing popup again)

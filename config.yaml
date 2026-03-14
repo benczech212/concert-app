@@ -11,8 +11,7 @@ copy:
 
 ai_models:
   story_model: "gemini-3.1-pro-preview"
-  image_model: "gemini-3.1-pro-preview"
-  # image_model: "gemini-3-pro-image-preview"
+  image_model: "gemini-3.1-flash-image-preview"
 
 moods:
   - name: "Anticipation"
